@@ -2,10 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/categories/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.org/</loc>
+    <lastmod>2025-03-19T11:55:01+08:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/</loc>
+    <lastmod>2025-03-19T11:55:01+08:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/test/</loc>
+    <lastmod>2025-03-19T11:55:01+08:00</lastmod>
+  </url><url>
+    <loc>https://example.org/categories/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.org/projects/</loc>
@@ -39,9 +45,6 @@
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.org/posts/markdown-syntax/</loc>
-    <lastmod>2023-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.org/posts/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.org/categories/%E5%8F%82%E8%80%83/</loc>
