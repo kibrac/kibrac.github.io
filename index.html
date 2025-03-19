@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My New Hugo Site</title>
+  <title>Kibrac&#39;s Blog</title>
   <meta name="description" content="">
   
   
@@ -26,14 +26,14 @@
   </script>
   
   <meta property="og:url" content="https://kibrac.github.io/">
-  <meta property="og:site_name" content="My New Hugo Site">
-  <meta property="og:title" content="My New Hugo Site">
+  <meta property="og:site_name" content="Kibrac&#39;s Blog">
+  <meta property="og:title" content="Kibrac&#39;s Blog">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
   
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="My New Hugo Site">
+  <meta name="twitter:title" content="Kibrac&#39;s Blog">
 
   
 </head>
@@ -42,7 +42,7 @@
     <header class="site-header">
       <div class="header-container">
   <div class="site-branding">
-    <a href="/" class="site-title">My New Hugo Site</a>
+    <a href="/" class="site-title">Kibrac&#39;s Blog</a>
     
   </div>
   
@@ -53,7 +53,7 @@
       <span class="menu-icon"></span>
     </button>
     
-    <ul class="menu">
+    <ul class="menu" id="primary-menu">
       
       
     </ul>
@@ -86,42 +86,43 @@
     
     <main class="main-content">
       
+<div class="home-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Kibrac&#39;s Blog</h1>
+    
+    
+  </div>
+</div>
+
 <div class="home-container">
   <div class="posts">
-    <h1 class="page-heading">My New Hugo Site</h1>
-    
-    
+    <h2 class="section-heading">最新文章</h2>
     
     
     
     <div class="post-list">
       
       <article class="post-item">
-        <div class="post-item-header">
-          <h2 class="post-item-title">
-            <a href="https://kibrac.github.io/posts/test/">Test</a>
-          </h2>
-          <span class="post-date">2025-03-19</span>
-        </div>
         
         
-        
-        <div class="post-summary">
-          <p>这是一个测试。</p>
+        <div class="post-content-wrapper">
+          <div class="post-item-header">
+            <h2 class="post-item-title">
+              <a href="https://kibrac.github.io/posts/test/">Test</a>
+            </h2>
+            <span class="post-date">2025-03-19</span>
+          </div>
+          
+          <div class="post-summary">
+            <p>这是一个测试。</p>
+            
+          </div>
+          
           
         </div>
-        
-        
       </article>
       
       <article class="post-item">
-        <div class="post-item-header">
-          <h2 class="post-item-title">
-            <a href="https://kibrac.github.io/posts/markdown-syntax/">Markdown语法指南</a>
-          </h2>
-          <span class="post-date">2023-01-15</span>
-        </div>
-        
         
         <div class="post-featured-image">
           <a href="https://kibrac.github.io/posts/markdown-syntax/">
@@ -130,8 +131,16 @@
         </div>
         
         
-        <div class="post-summary">
-          <h2 id="markdown基础语法">Markdown基础语法</h2>
+        <div class="post-content-wrapper">
+          <div class="post-item-header">
+            <h2 class="post-item-title">
+              <a href="https://kibrac.github.io/posts/markdown-syntax/">Markdown语法指南</a>
+            </h2>
+            <span class="post-date">2023-01-15</span>
+          </div>
+          
+          <div class="post-summary">
+            <h2 id="markdown基础语法">Markdown基础语法</h2>
 <p>这篇文章展示了PointFive主题中Markdown的渲染效果，可以作为创建内容的参考。</p>
 <h3 id="标题">标题</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># 一级标题
@@ -215,30 +224,24 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">&gt; </span><span style="font-style:italic">这是引用的第二段。
 </span></span></span></code></pre></div><blockquote>
 <p>这是一段引用文本。</p>
+            
+            <a href="https://kibrac.github.io/posts/markdown-syntax/" class="read-more">阅读更多 &rarr;</a>
+            
+          </div>
           
-          <a href="https://kibrac.github.io/posts/markdown-syntax/" class="read-more">阅读更多 &rarr;</a>
+          
+          <div class="post-tags">
+            
+            <a href="/tags/markdown/" class="tag">#Markdown</a>
+            
+            <a href="/tags/%E8%AF%AD%E6%B3%95/" class="tag">#语法</a>
+            
+          </div>
           
         </div>
-        
-        
-        <div class="post-tags">
-          
-          <a href="/tags/markdown/" class="tag">#Markdown</a>
-          
-          <a href="/tags/%E8%AF%AD%E6%B3%95/" class="tag">#语法</a>
-          
-        </div>
-        
       </article>
       
       <article class="post-item">
-        <div class="post-item-header">
-          <h2 class="post-item-title">
-            <a href="https://kibrac.github.io/posts/welcome/">欢迎使用PointFive主题</a>
-          </h2>
-          <span class="post-date">2023-01-10</span>
-        </div>
-        
         
         <div class="post-featured-image">
           <a href="https://kibrac.github.io/posts/welcome/">
@@ -247,8 +250,16 @@
         </div>
         
         
-        <div class="post-summary">
-          <h2 id="欢迎使用pointfive主题">欢迎使用PointFive主题！</h2>
+        <div class="post-content-wrapper">
+          <div class="post-item-header">
+            <h2 class="post-item-title">
+              <a href="https://kibrac.github.io/posts/welcome/">欢迎使用PointFive主题</a>
+            </h2>
+            <span class="post-date">2023-01-10</span>
+          </div>
+          
+          <div class="post-summary">
+            <h2 id="欢迎使用pointfive主题">欢迎使用PointFive主题！</h2>
 <p>感谢你选择PointFive主题。这个主题专为博客和内容网站设计，提供了简洁现代的界面和丰富的功能。</p>
 <h3 id="主题特点">主题特点</h3>
 <ul>
@@ -279,18 +290,19 @@
 <li>构建并部署</li>
 </ol>
 <p>希望你喜欢这个主题！如有任何问题，请查看<a href="/docs">文档</a>或<a href="/about">联系我</a>。</p>
+            
+          </div>
+          
+          
+          <div class="post-tags">
+            
+            <a href="/tags/hugo/" class="tag">#Hugo</a>
+            
+            <a href="/tags/%E4%B8%BB%E9%A2%98/" class="tag">#主题</a>
+            
+          </div>
           
         </div>
-        
-        
-        <div class="post-tags">
-          
-          <a href="/tags/hugo/" class="tag">#Hugo</a>
-          
-          <a href="/tags/%E4%B8%BB%E9%A2%98/" class="tag">#主题</a>
-          
-        </div>
-        
       </article>
       
     </div>
@@ -307,7 +319,7 @@
       <div class="footer-container">
   <div class="footer-content">
     <div class="footer-info">
-      <p class="copyright">&copy; 2025 My New Hugo Site. All rights reserved.</p>
+      <p class="copyright">&copy; 2025 Kibrac&#39;s Blog. All rights reserved.</p>
       
       
     </div>

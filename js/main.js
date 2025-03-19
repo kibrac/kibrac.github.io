@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const mainNavigation = document.querySelector('.main-navigation');
   
   if (menuToggle && menu && mainNavigation) {
+    // 初始化时检查窗口大小
+    if (window.innerWidth <= 768) {
+      menu.style.display = 'none';
+    } else {
+      menu.style.display = 'flex';
+    }
+    
     menuToggle.addEventListener('click', function(e) {
       e.stopPropagation();
       menu.classList.toggle('active');
@@ -29,10 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const isExpanded = menu.classList.contains('active');
       menuToggle.setAttribute('aria-expanded', isExpanded);
       
-      // 添加页面滚动控制
+      // 明确设置display属性，解决样式优先级问题
       if (isExpanded) {
+        menu.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       } else {
+        menu.style.display = 'none';
         document.body.style.overflow = '';
       }
     });
@@ -43,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.remove('active');
         menuToggle.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+        menu.style.display = 'none';
         document.body.style.overflow = '';
       }
     });
@@ -53,7 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
       item.addEventListener('click', function() {
         if (window.innerWidth <= 768) {
           menu.classList.remove('active');
+          menuToggle.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
+          menu.style.display = 'none';
           document.body.style.overflow = '';
         }
       });
@@ -65,7 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.remove('active');
         menuToggle.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+        menu.style.display = 'flex';
         document.body.style.overflow = '';
+      } else if (!menu.classList.contains('active')) {
+        menu.style.display = 'none';
       }
     });
     
