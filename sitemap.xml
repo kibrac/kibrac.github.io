@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/</loc>
+    <loc>https://kibrac.github.io/</loc>
     <lastmod>2025-03-19T11:55:01+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/</loc>
+    <loc>https://kibrac.github.io/posts/</loc>
     <lastmod>2025-03-19T11:55:01+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/test/</loc>
+    <loc>https://kibrac.github.io/posts/test/</loc>
     <lastmod>2025-03-19T11:55:01+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/</loc>
+    <loc>https://kibrac.github.io/categories/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/projects/</loc>
+    <loc>https://kibrac.github.io/projects/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>https://kibrac.github.io/tags/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/ui%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://kibrac.github.io/tags/ui%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/projects/project2/</loc>
+    <loc>https://kibrac.github.io/projects/project2/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://kibrac.github.io/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/%E9%A1%B9%E7%9B%AE/</loc>
+    <loc>https://kibrac.github.io/categories/%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/hugo/</loc>
+    <loc>https://kibrac.github.io/tags/hugo/</loc>
     <lastmod>2023-01-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/web%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://kibrac.github.io/tags/web%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2023-01-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/projects/project1/</loc>
+    <loc>https://kibrac.github.io/projects/project1/</loc>
     <lastmod>2023-01-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/markdown/</loc>
+    <loc>https://kibrac.github.io/tags/markdown/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/markdown-syntax/</loc>
+    <loc>https://kibrac.github.io/posts/markdown-syntax/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/%E5%8F%82%E8%80%83/</loc>
+    <loc>https://kibrac.github.io/categories/%E5%8F%82%E8%80%83/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/%E8%AF%AD%E6%B3%95/</loc>
+    <loc>https://kibrac.github.io/tags/%E8%AF%AD%E6%B3%95/</loc>
     <lastmod>2023-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/%E4%B8%BB%E9%A2%98/</loc>
+    <loc>https://kibrac.github.io/tags/%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2023-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://kibrac.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2023-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/welcome/</loc>
+    <loc>https://kibrac.github.io/posts/welcome/</loc>
     <lastmod>2023-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/about/</loc>
+    <loc>https://kibrac.github.io/about/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url>
 </urlset>
