@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
           resultItem.innerHTML = `
             <h3 class="result-title"><a href="${item.url}">${title}</a></h3>
             <div class="result-snippet">${snippet}</div>
-            <a href="${item.url}" class="result-link">阅读全文</a>
           `;
           
           searchResultsList.appendChild(resultItem);
