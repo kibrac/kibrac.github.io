@@ -1,41 +1,41 @@
 /* PointFive Theme Styles */
 
 :root {
-  /* Light Mode Colors */
-  --bg-color: #ffffff;
+  /* Light Mode Colors - 更深的配色以提高可读性 */
+  --bg-color: #f9f7f5;
   --text-color: #333333;
   --heading-color: #222222;
-  --link-color: #0066cc;
-  --link-hover-color: #004499;
-  --border-color: #eeeeee;
-  --light-bg: #f8f8f8;
-  --accent-color: #3498db;
-  --code-bg: #f5f5f5;
-  --code-color: #e74c3c;
-  --blockquote-color: #888888;
-  --tag-bg: #f0f0f0;
-  --tag-color: #666666;
-  --meta-color: #777777;
+  --link-color: #4a7aa6;
+  --link-hover-color: #2a5a85;
+  --border-color: #e5e0db;
+  --light-bg: #f0ece8;
+  --accent-color: #5b88b2;
+  --code-bg: #f0ece8;
+  --code-color: #b05b4e;
+  --blockquote-color: #666666;
+  --tag-bg: #eae5e0;
+  --tag-color: #444444;
+  --meta-color: #666666;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Mode Colors */
+/* Dark Mode Colors - 更高对比度的夜间配色 */
 html.dark-mode {
   --bg-color: #1a1a1a;
-  --text-color: #e0e0e0;
+  --text-color: #e8e0d9;
   --heading-color: #ffffff;
-  --link-color: #5b9dd9;
-  --link-hover-color: #7eb6e6;
-  --border-color: #333333;
-  --light-bg: #252525;
-  --accent-color: #3498db;
+  --link-color: #8bb7d7;
+  --link-hover-color: #abd0e9;
+  --border-color: #3d3d3d;
+  --light-bg: #2a2a2a;
+  --accent-color: #7ba8d2;
   --code-bg: #2a2a2a;
-  --code-color: #e9e9e9;
-  --blockquote-color: #aaaaaa;
+  --code-color: #e8d0cb;
+  --blockquote-color: #c8c0b9;
   --tag-bg: #333333;
-  --tag-color: #cccccc;
-  --meta-color: #999999;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --tag-color: #e0d8d0;
+  --meta-color: #c8c0b9;
+  --shadow-color: rgba(0, 0, 0, 0.25);
 }
 
 /* Base Styles */
@@ -775,49 +775,48 @@ html.dark-mode .moon-icon {
   margin: 0 auto;
 }
 
+.tags-cloud-container {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  margin: 2em auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--light-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+  padding: 1em;
+}
+
 .tag-cloud-item {
   color: var(--text-color);
   transition: all 0.3s ease;
   padding: 0.4em 0.9em;
-  background-color: var(--tag-bg);
-  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.05);
   display: inline-flex;
   align-items: center;
-  box-shadow: 0 2px 5px var(--shadow-color);
   position: relative;
-  overflow: hidden;
-}
-
-.tag-cloud-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .tag-cloud-item:hover {
-  color: white;
-  transform: translateY(-3px) rotate(1deg);
-  box-shadow: 0 5px 10px var(--shadow-color);
-}
-
-.tag-cloud-item:hover::before {
-  transform: translateX(100%);
+  z-index: 100;
 }
 
 .tag-count {
   margin-left: 0.3em;
   font-size: 0.8em;
-  opacity: 0.8;
-  background-color: rgba(0,0,0,0.1);
+  opacity: 0.9;
+  background-color: var(--accent-color);
+  color: white;
   border-radius: 10px;
-  padding: 0.1em 0.4em;
+  padding: 0.1em 0.5em;
   line-height: 1.2;
+  font-weight: 500;
 }
 
 .sidebar-social-icons {
@@ -890,9 +889,20 @@ html.dark-mode .moon-icon {
 /* Footer */
 .site-footer {
   margin-top: 4em;
-  padding: 2em 0;
+  padding: 3em 0 2em;
   border-top: 1px solid var(--border-color);
   background-color: var(--light-bg);
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--accent-color), transparent, var(--accent-color));
 }
 
 .footer-container {
@@ -900,6 +910,9 @@ html.dark-mode .moon-icon {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2em;
 }
 
 .footer-content {
@@ -908,36 +921,55 @@ html.dark-mode .moon-icon {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .footer-info {
   flex: 1;
   min-width: 300px;
+  padding: 0 1em;
 }
 
 .copyright {
-  margin: 0 0 0.5em;
+  margin: 0 0 0.8em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .footer-text {
   margin: 0;
-  color: var(--meta-color);
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.6;
 }
 
 .social-icons {
   display: flex;
-  gap: 1em;
-  margin: 1em 0;
+  gap: 1.2em;
+  margin: 1.5em 0;
+  justify-content: center;
 }
 
 .social-icon {
   color: var(--text-color);
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  padding: 0.5em;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
 .social-icon:hover {
-  color: var(--accent-color);
+  color: white;
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .rss-link {
@@ -946,16 +978,21 @@ html.dark-mode .moon-icon {
 
 .rss-link a {
   display: inline-block;
-  padding: 0.3em 0.8em;
+  padding: 0.5em 1em;
   background-color: var(--accent-color);
   color: white;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 0.9em;
-  transition: background-color 0.2s ease;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .rss-link a:hover {
   background-color: var(--link-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* List Pages */
