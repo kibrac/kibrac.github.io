@@ -25,8 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化时检查窗口大小
     if (window.innerWidth <= 768) {
       menu.style.display = 'none';
+      menu.style.opacity = '0';
+      menu.style.visibility = 'hidden';
     } else {
       menu.style.display = 'flex';
+      menu.style.opacity = '1';
+      menu.style.visibility = 'visible';
     }
     
     menuToggle.addEventListener('click', function(e) {
@@ -39,10 +43,29 @@ document.addEventListener('DOMContentLoaded', function() {
       // 明确设置display属性，解决样式优先级问题
       if (isExpanded) {
         menu.style.display = 'flex';
+        menu.style.opacity = '1';
+        menu.style.visibility = 'visible';
         document.body.style.overflow = 'hidden';
+        
+        // 为菜单项添加延迟动画
+        const menuItems = menu.querySelectorAll('.menu-item');
+        menuItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 50 * index);
+        });
       } else {
-        menu.style.display = 'none';
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
         document.body.style.overflow = '';
+        
+        // 延迟隐藏菜单，等待过渡动画完成
+        setTimeout(() => {
+          if (!menu.classList.contains('active')) {
+            menu.style.display = 'none';
+          }
+        }, 300);
       }
     });
     

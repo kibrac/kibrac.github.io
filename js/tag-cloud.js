@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!container || !tagCloud || tags.length === 0) return;
   
+  // 定义一个函数来初始化标签云
+  function initTagCloud() {
+  
   // 清除现有的flex布局样式
   tagCloud.style.display = 'block';
   tagCloud.style.position = 'relative';
@@ -21,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const containerHeight = container.offsetHeight;
   
   // 设置容器最小高度，确保有足够空间显示所有标签
-  container.style.minHeight = `${Math.max(500, tags.length * 15)}px`;
+  // 在移动设备上使用较小的高度
+  const isMobile = window.innerWidth <= 768;
+  container.style.minHeight = `${Math.max(isMobile ? 400 : 500, tags.length * (isMobile ? 12 : 15))}px`;
   
   // 文字云布局参数
   const centerX = containerWidth / 2;
@@ -84,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 计算标签的重要性
     const importance = (count - minCount) / (maxCount - minCount || 1);
     
-    // 根据重要性设置字体大小 - 更大的差异
-    const fontSize = 0.8 + importance * 1.2;
+    // 根据重要性设置字体大小 - 更合理的差异
+    const fontSize = 0.9 + importance * 0.8;
     tag.style.fontSize = `${fontSize}rem`;
     
     // 根据重要性选择颜色
@@ -95,18 +100,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 设置基本样式
     tag.style.position = 'absolute';
     tag.style.color = color;
-    tag.style.fontWeight = 500 + Math.floor(importance * 300);
+    tag.style.fontWeight = 500 + Math.floor(importance * 200);
     tag.style.textDecoration = 'none';
     tag.style.border = 'none';
-    tag.style.background = 'rgba(255, 255, 255, 0.1)';
-    tag.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
-    tag.style.padding = '0.4em 0.6em';
-    tag.style.borderRadius = '4px';
-    tag.style.lineHeight = '1.2';
+    tag.style.background = 'rgba(255, 255, 255, 0.15)';
+    tag.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.08)';
+    tag.style.padding = '0.5em 0.8em';
+    tag.style.borderRadius = '6px';
+    tag.style.lineHeight = '1.3';
     tag.style.transition = 'all 0.3s ease';
     tag.style.opacity = '1';
     tag.style.transform = 'rotate(0deg)';
-    tag.style.textShadow = '0 1px 1px rgba(0, 0, 0, 0.05)';
+    tag.style.textShadow = '0 1px 1px rgba(0, 0, 0, 0.03)';
     
     // 随机旋转角度 - 仅对次要标签应用
     const rotation = importance < 0.5 ? (Math.random() * 30 - 15) : 0;
@@ -192,5 +197,37 @@ document.addEventListener('DOMContentLoaded', function() {
       this.style.background = 'rgba(255, 255, 255, 0.1)';
       this.style.transition = 'all 0.3s ease';
     };
+  });
+  }
+  
+  // 初始化标签云
+  initTagCloud();
+  
+  // 监听窗口大小变化，重新布局标签云
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    // 清除之前的定时器，防止频繁触发
+    clearTimeout(resizeTimeout);
+    
+    // 设置新的定时器，延迟执行重新布局
+    resizeTimeout = setTimeout(function() {
+      // 清除所有标签的样式和事件
+      tagData.forEach(tagInfo => {
+        const tag = tagInfo.element;
+        tag.removeAttribute('style');
+        tag.onmouseover = null;
+        tag.onmouseout = null;
+      });
+      
+      // 重置标签云容器
+      tagCloud.style = '';
+      tagCloud.style.display = 'block';
+      tagCloud.style.position = 'relative';
+      tagCloud.style.width = '100%';
+      tagCloud.style.height = '100%';
+      
+      // 重新初始化标签云
+      initTagCloud();
+    }, 300);
   });
 });

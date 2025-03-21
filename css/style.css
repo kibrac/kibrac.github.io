@@ -1,40 +1,40 @@
 /* PointFive Theme Styles */
 
 :root {
-  /* Light Mode Colors - 更深的配色以提高可读性 */
-  --bg-color: #f9f7f5;
-  --text-color: #333333;
-  --heading-color: #222222;
-  --link-color: #4a7aa6;
-  --link-hover-color: #2a5a85;
-  --border-color: #e5e0db;
-  --light-bg: #f0ece8;
-  --accent-color: #5b88b2;
-  --code-bg: #f0ece8;
-  --code-color: #b05b4e;
-  --blockquote-color: #666666;
-  --tag-bg: #eae5e0;
-  --tag-color: #444444;
-  --meta-color: #666666;
+  /* Light Mode Colors - 更深的蓝色系配色 */
+  --bg-color: #f5f9ff;
+  --text-color: #2c3e50;
+  --heading-color: #1a365d;
+  --link-color: #3182ce;
+  --link-hover-color: #2c5282;
+  --border-color: #d6e4ff;
+  --light-bg: #e6f0ff;
+  --accent-color: #4299e1;
+  --code-bg: #edf2ff;
+  --code-color: #c53030;
+  --blockquote-color: #4a5568;
+  --tag-bg: #ebf4ff;
+  --tag-color: #2b6cb0;
+  --meta-color: #4a5568;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Dark Mode Colors - 更高对比度的夜间配色 */
 html.dark-mode {
-  --bg-color: #1a1a1a;
-  --text-color: #e8e0d9;
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
   --heading-color: #ffffff;
-  --link-color: #8bb7d7;
-  --link-hover-color: #abd0e9;
-  --border-color: #3d3d3d;
-  --light-bg: #2a2a2a;
-  --accent-color: #7ba8d2;
-  --code-bg: #2a2a2a;
-  --code-color: #e8d0cb;
-  --blockquote-color: #c8c0b9;
-  --tag-bg: #333333;
-  --tag-color: #e0d8d0;
-  --meta-color: #c8c0b9;
+  --link-color: #90cdf4;
+  --link-hover-color: #63b3ed;
+  --border-color: #2d3748;
+  --light-bg: #1a202c;
+  --accent-color: #4299e1;
+  --code-bg: #2d3748;
+  --code-color: #feb2b2;
+  --blockquote-color: #a0aec0;
+  --tag-bg: #2a4365;
+  --tag-color: #bee3f8;
+  --meta-color: #a0aec0;
   --shadow-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -691,6 +691,7 @@ html.dark-mode .moon-icon {
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px var(--shadow-color);
   font-weight: 500;
+  border: 1px solid var(--border-color);
 }
 
 .tag:hover {
@@ -698,6 +699,7 @@ html.dark-mode .moon-icon {
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px var(--shadow-color);
+  border-color: var(--accent-color);
 }
 
 /* Sidebar */
@@ -785,7 +787,7 @@ html.dark-mode .moon-icon {
   background-color: var(--light-bg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border-color);
-  padding: 1em;
+  padding: 1.5em;
 }
 
 .tag-cloud-item {
@@ -808,15 +810,21 @@ html.dark-mode .moon-icon {
 }
 
 .tag-count {
-  margin-left: 0.3em;
-  font-size: 0.8em;
-  opacity: 0.9;
+  margin-left: 0.4em;
+  font-size: 0.75em;
+  opacity: 0.95;
   background-color: var(--accent-color);
   color: white;
-  border-radius: 10px;
-  padding: 0.1em 0.5em;
+  border-radius: 12px;
+  padding: 0.15em 0.6em;
   line-height: 1.2;
   font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  text-align: center;
 }
 
 .sidebar-social-icons {
@@ -891,7 +899,6 @@ html.dark-mode .moon-icon {
   margin-top: 4em;
   padding: 3em 0 2em;
   border-top: 1px solid var(--border-color);
-  background-color: var(--light-bg);
   position: relative;
 }
 
@@ -903,6 +910,29 @@ html.dark-mode .moon-icon {
   right: 0;
   height: 3px;
   background: linear-gradient(to right, var(--accent-color), transparent, var(--accent-color));
+}
+
+.footer-wave {
+  position: absolute;
+  top: -70px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.footer-wave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70px;
+  transform: rotateY(180deg);
+}
+
+.footer-wave path {
+  fill: var(--light-bg);
+  opacity: 0.2;
 }
 
 .footer-container {
@@ -957,19 +987,21 @@ html.dark-mode .moon-icon {
   transition: all 0.3s ease;
   padding: 0.5em;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--light-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
+  border: 1px solid var(--border-color);
 }
 
 .social-icon:hover {
   color: white;
   background-color: var(--accent-color);
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-color: var(--accent-color);
 }
 
 .rss-link {
@@ -986,13 +1018,13 @@ html.dark-mode .moon-icon {
   font-weight: 500;
   letter-spacing: 0.03em;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .rss-link a:hover {
   background-color: var(--link-hover-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 /* List Pages */
@@ -1244,16 +1276,20 @@ html.dark-mode .moon-icon {
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 1em;
+    position: relative;
+    z-index: 1000;
   }
   
   .site-branding {
-    margin-bottom: 0.5em;
+    margin-bottom: 0;
     margin-right: 0;
+    flex: 1;
   }
   
   .main-navigation {
     width: auto;
-    margin-bottom: 0.5em;
+    margin-bottom: 0;
     position: relative;
     order: 3;
     flex-basis: 100%;
@@ -1263,6 +1299,14 @@ html.dark-mode .moon-icon {
     display: flex;
     margin-left: auto;
     order: 2;
+    z-index: 1001;
+    background: transparent;
+    padding: 0.5em;
+    border-radius: 4px;
+  }
+  
+  .menu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
   }
   
   .menu {
@@ -1280,17 +1324,31 @@ html.dark-mode .moon-icon {
     background-color: var(--bg-color);
     box-shadow: 0 4px 6px var(--shadow-color);
     display: none;
-    z-index: 100;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
   
   .menu.active {
     display: flex;
+    opacity: 1;
+    visibility: visible;
   }
   
   .menu-item {
     margin-right: 0;
     margin-bottom: 1.5em;
     font-size: 1.2em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .menu.active .menu-item {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
   }
   
   .menu-item:last-child {
@@ -1352,5 +1410,19 @@ html.dark-mode .moon-icon {
   
   .sidebar-container {
     grid-template-columns: 1fr;
+  }
+  
+  .tags-cloud-container {
+    min-height: 400px;
+    padding: 1em;
+  }
+  
+  .tag-cloud-item {
+    padding: 0.4em 0.6em;
+  }
+  
+  .tag-count {
+    font-size: 0.7em;
+    padding: 0.1em 0.5em;
   }
 }
