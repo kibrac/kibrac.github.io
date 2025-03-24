@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kibrac.github.io/categories/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
     <loc>https://kibrac.github.io/</loc>
-    <lastmod>2025-03-19T11:55:01+08:00</lastmod>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/posts/</loc>
-    <lastmod>2025-03-19T11:55:01+08:00</lastmod>
-  </url><url>
-    <loc>https://kibrac.github.io/posts/test/</loc>
-    <lastmod>2025-03-19T11:55:01+08:00</lastmod>
-  </url><url>
-    <loc>https://kibrac.github.io/categories/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://kibrac.github.io/projects/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/tags/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/posts/create-thoughts/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/categories/%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/projects/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/tags/ui%E8%AE%BE%E8%AE%A1/</loc>

@@ -23,15 +23,24 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (menuToggle && menu && mainNavigation) {
     // 初始化时检查窗口大小
-    if (window.innerWidth <= 768) {
-      menu.style.display = 'none';
-      menu.style.opacity = '0';
-      menu.style.visibility = 'hidden';
-    } else {
-      menu.style.display = 'flex';
-      menu.style.opacity = '1';
-      menu.style.visibility = 'visible';
-    }
+    const updateMenuState = () => {
+      if (window.innerWidth <= 768) {
+        menu.style.display = 'none';
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
+        menu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.style.display = 'flex';
+        menu.style.opacity = '1';
+        menu.style.visibility = 'visible';
+        document.body.style.overflow = '';
+      }
+    };
+    
+    // 初始化菜单状态
+    updateMenuState();
     
     menuToggle.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -50,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 为菜单项添加延迟动画
         const menuItems = menu.querySelectorAll('.menu-item');
         menuItems.forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
           setTimeout(() => {
             item.style.opacity = '1';
             item.style.transform = 'translateY(0)';

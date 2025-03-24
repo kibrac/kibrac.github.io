@@ -1,6 +1,8 @@
 /**
  * 文字云标签效果脚本
- * 实现更自然、随机的文字云布局
+ * 实现优雅、平衡的文字云布局
+ * 提供清晰的视觉层次和美观的标签展示
+ * 优化移动端体验和交互效果
  */
 document.addEventListener('DOMContentLoaded', function() {
   // 获取标签云容器和所有标签
@@ -24,22 +26,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const containerHeight = container.offsetHeight;
   
   // 设置容器最小高度，确保有足够空间显示所有标签
-  // 在移动设备上使用较小的高度
+  // 根据设备类型和标签数量动态调整高度
   const isMobile = window.innerWidth <= 768;
-  container.style.minHeight = `${Math.max(isMobile ? 400 : 500, tags.length * (isMobile ? 12 : 15))}px`;
+  const isSmallMobile = window.innerWidth <= 480;
+  const baseHeight = isSmallMobile ? 350 : (isMobile ? 400 : 500);
+  const tagHeightFactor = isSmallMobile ? 10 : (isMobile ? 12 : 15);
+  container.style.minHeight = `${Math.max(baseHeight, tags.length * tagHeightFactor)}px`;
   
-  // 文字云布局参数
+  // 文字云布局参数 - 优化布局算法
   const centerX = containerWidth / 2;
   const centerY = containerHeight / 2;
-  const maxRadius = Math.min(containerWidth, containerHeight) * 0.42; // 最大半径
+  const maxRadius = Math.min(containerWidth, containerHeight) * 0.45; // 增加最大半径以获得更好的分布
   
-  // 文字云颜色方案 - 使用更深、更鲜明的色彩
+  // 文字云颜色方案 - 使用柔和、协调的色彩
   const colors = [
-    // 深色主色调
-    '#4a78a2', '#5b88b2', '#3a6a95', '#2a5a85', '#1a4a75',
-    '#4a6b4c', '#5a7b5c', '#3a5b3c', '#2a4b2c', '#1a3b1c',
-    '#8a4a3a', '#7a3a2a', '#6a2a1a', '#9a5a4a', '#8a4a3a',
-    '#6a3a6a', '#5a2a5a', '#4a1a4a', '#7a4a7a', '#4a2a7a'
+    // 主色调
+    '#3a7ca5', '#4a8db6', '#5a9dc7', '#6aadd8', 
+    '#7abde9',
+    '#4a6b8c', '#5a7b9c', '#6a8bac', '#7a9bbc', '#8aabcc',
+    '#4a6b7c', '#5a7b8c', '#6a8b9c', '#7a9bac', '#8aabbc',
+    '#4a5b6c', '#5a6b7c', '#6a7b8c', '#7a8b9c', '#8a9bac'
   ];
   
   // 获取所有标签的数量值
@@ -67,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // 用于检测碰撞的标签位置数组
   const placedTags = [];
   
-  // 检测位置是否与已放置标签重叠
+  // 检测位置是否与已放置标签重叠 - 优化碰撞检测
   function checkCollision(x, y, width, height) {
-    const padding = 5; // 标签间距
+    const padding = 10; // 增加标签间距，使布局更加宽松
     for (const placed of placedTags) {
       if (x + width + padding > placed.x - padding && 
           x - padding < placed.x + placed.width + padding && 
@@ -89,8 +95,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 计算标签的重要性
     const importance = (count - minCount) / (maxCount - minCount || 1);
     
-    // 根据重要性设置字体大小 - 更合理的差异
-    const fontSize = 0.9 + importance * 0.8;
+    // 根据重要性设置字体大小 - 更平衡的差异
+    // 在移动设备上使用较小的字体大小范围
+    const fontSizeMin = isSmallMobile ? 0.85 : (isMobile ? 0.9 : 0.95);
+    const fontSizeMax = isSmallMobile ? 1.2 : (isMobile ? 1.4 : 1.6);
+    const fontSize = fontSizeMin + importance * (fontSizeMax - fontSizeMin);
     tag.style.fontSize = `${fontSize}rem`;
     
     // 根据重要性选择颜色
@@ -100,21 +109,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // 设置基本样式
     tag.style.position = 'absolute';
     tag.style.color = color;
-    tag.style.fontWeight = 500 + Math.floor(importance * 200);
+    tag.style.fontWeight = 400 + Math.floor(importance * 200);
     tag.style.textDecoration = 'none';
-    tag.style.border = 'none';
-    tag.style.background = 'rgba(255, 255, 255, 0.15)';
-    tag.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.08)';
-    tag.style.padding = '0.5em 0.8em';
-    tag.style.borderRadius = '6px';
-    tag.style.lineHeight = '1.3';
+    tag.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+    tag.style.background = 'rgba(255, 255, 255, 0.5)';
+    tag.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.05)';
+    tag.style.padding = isSmallMobile ? '0.4em 0.7em' : '0.5em 0.9em';
+    tag.style.borderRadius = '20px';
+    tag.style.lineHeight = '1.4';
     tag.style.transition = 'all 0.3s ease';
-    tag.style.opacity = '1';
+    tag.style.opacity = '0.9';
     tag.style.transform = 'rotate(0deg)';
-    tag.style.textShadow = '0 1px 1px rgba(0, 0, 0, 0.03)';
+    tag.style.textShadow = 'none';
     
-    // 随机旋转角度 - 仅对次要标签应用
-    const rotation = importance < 0.5 ? (Math.random() * 30 - 15) : 0;
+    // 不再使用随机旋转，保持所有标签水平
+    const rotation = 0;
     
     // 尝试找到一个不重叠的位置
     let placed = false;
@@ -138,13 +147,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const startRadius = importance > 0.7 ? 0 : maxRadius * 0.3;
     
     while (!placed && attempts < 100) {
-      // 使用螺旋分布 + 随机偏移
-      angle = index * (Math.PI * (3 - Math.sqrt(5))) + (Math.random() * 0.5);
+      // 使用改进的螺旋分布算法
+      angle = index * (Math.PI * (3 - Math.sqrt(5))) + (Math.random() * 0.3);
       radius = startRadius + (attempts / 100) * (maxRadius - startRadius);
       
-      // 计算位置，重要标签更靠近中心
-      x = centerX + radius * Math.cos(angle) * (1 - importance * 0.3);
-      y = centerY + radius * Math.sin(angle) * (1 - importance * 0.3);
+      // 计算位置，重要标签更靠近中心，提高重要性因子的影响
+      x = centerX + radius * Math.cos(angle) * (1 - importance * 0.4);
+      y = centerY + radius * Math.sin(angle) * (1 - importance * 0.4);
       
       // 检查是否超出容器边界
       if (x - width/2 < 0) x = width/2;
@@ -164,6 +173,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       attempts++;
+      
+      // 在移动设备上减少尝试次数，提高性能
+      if (isMobile && attempts > 50) break;
     }
     
     // 如果尝试多次仍无法放置，则强制放置
@@ -177,24 +189,24 @@ document.addEventListener('DOMContentLoaded', function() {
     tag.style.top = `${y}px`;
     tag.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
     
-    // 添加更明显的悬停效果
+    // 添加优雅的悬停效果
     tag.onmouseover = function() {
-      this.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(1.15)`;
+      this.style.transform = `translate(-50%, -50%) scale(1.1)`;
       this.style.zIndex = '100';
       this.style.opacity = '1';
-      this.style.textShadow = '0 0 6px rgba(0, 0, 0, 0.2)';
-      this.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.15)';
-      this.style.background = 'rgba(255, 255, 255, 0.2)';
-      this.style.transition = 'all 0.4s ease';
+      this.style.color = '#ffffff';
+      this.style.background = color;
+      this.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+      this.style.transition = 'all 0.3s ease';
     };
     
     tag.onmouseout = function() {
-      this.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+      this.style.transform = `translate(-50%, -50%)`;
       this.style.zIndex = '';
-      this.style.opacity = '1';
-      this.style.textShadow = '0 1px 1px rgba(0, 0, 0, 0.05)';
-      this.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
-      this.style.background = 'rgba(255, 255, 255, 0.1)';
+      this.style.opacity = '0.9';
+      this.style.color = color;
+      this.style.background = 'rgba(255, 255, 255, 0.5)';
+      this.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.05)';
       this.style.transition = 'all 0.3s ease';
     };
   });
@@ -229,5 +241,29 @@ document.addEventListener('DOMContentLoaded', function() {
       // 重新初始化标签云
       initTagCloud();
     }, 300);
+  });
+  
+  // 初始化时检查设备方向变化（对移动设备特别重要）
+  window.addEventListener('orientationchange', function() {
+    // 延迟执行以确保方向变化完成
+    setTimeout(function() {
+      // 清除所有标签的样式和事件
+      tagData.forEach(tagInfo => {
+        const tag = tagInfo.element;
+        tag.removeAttribute('style');
+        tag.onmouseover = null;
+        tag.onmouseout = null;
+      });
+      
+      // 重置标签云容器
+      tagCloud.style = '';
+      tagCloud.style.display = 'block';
+      tagCloud.style.position = 'relative';
+      tagCloud.style.width = '100%';
+      tagCloud.style.height = '100%';
+      
+      // 重新初始化标签云
+      initTagCloud();
+    }, 500);
   });
 });
