@@ -1,0 +1,29 @@
+/* 标签云样式 */
+
+/* 标签部分 */
+.tags-section {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+/* 标签云容器样式 */
+.tags-cloud-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--light-bg);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .tags-cloud-container {
+    min-height: 300px;
+    padding: 1rem;
+  }
+}

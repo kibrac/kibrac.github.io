@@ -1,0 +1,254 @@
+/* 文章列表和归档页面布局样式 */
+
+/* 文章网格布局 */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.article-card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--accent-color);
+  opacity: 0.7;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--meta-color);
+}
+
+.article-date {
+  font-weight: 500;
+  background-color: var(--light-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.article-categories {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.article-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.article-title a {
+  color: var(--heading-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.article-title a:hover {
+  color: var(--accent-color);
+}
+
+.article-summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  flex-grow: 1;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.read-more:hover {
+  transform: translateX(3px);
+}
+
+/* 归档时间线布局 */
+.archives-timeline {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.timeline-year {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.timeline-year:last-child {
+  margin-bottom: 0;
+}
+
+.year-marker {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.year-badge {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
+  display: inline-block;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-entries {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--border-color);
+  margin-left: 1rem;
+}
+
+.timeline-month {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.timeline-month:last-child {
+  margin-bottom: 0;
+}
+
+.month-heading {
+  font-size: 1.1rem;
+  margin: 0 0 1rem -2.5rem;
+  background-color: var(--light-bg);
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  color: var(--heading-color);
+  position: relative;
+  z-index: 2;
+  border-left: 3px solid var(--accent-color);
+}
+
+.month-entries {
+  position: relative;
+}
+
+.timeline-entry {
+  display: flex;
+  margin-bottom: 0.75rem;
+  position: relative;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.timeline-entry:hover {
+  background-color: var(--light-bg);
+  transform: translateX(3px);
+  border-color: var(--accent-color);
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: -2.35rem;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.entry-date {
+  min-width: 100px;
+  font-size: 0.9rem;
+  color: var(--meta-color);
+  margin-right: 1rem;
+}
+
+.entry-title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.entry-title a {
+  color: var(--heading-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.entry-title a:hover {
+  color: var(--accent-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-entries {
+    padding-left: 1.5rem;
+  }
+  
+  .month-heading {
+    margin-left: -2rem;
+    font-size: 1rem;
+  }
+  
+  .timeline-entry {
+    flex-direction: column;
+  }
+  
+  .entry-date {
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+}

@@ -1,13 +1,16 @@
-// PointFive Theme JavaScript
+/**
+ * 主题和菜单功能
+ * 包含主题切换、移动菜单和搜索切换功能
+ */
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Theme Toggle
+  // 主题切换功能
   const themeToggle = document.querySelector('.theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', function() {
       document.documentElement.classList.toggle('dark-mode');
       
-      // Save preference to localStorage
+      // 保存偏好到localStorage
       if (document.documentElement.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
       } else {
@@ -16,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Mobile Menu Toggle
+  // 移动端菜单切换
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
   const mainNavigation = document.querySelector('.main-navigation');
@@ -129,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Search Toggle
+  // 搜索切换功能
   const searchToggle = document.querySelector('.search-toggle');
   const searchFormContainer = document.querySelector('.search-form-container');
   
@@ -139,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
       searchFormContainer.style.display = isVisible ? 'none' : 'block';
     });
     
-    // Close search when clicking outside
+    // 点击外部区域关闭搜索
     document.addEventListener('click', function(event) {
       if (!searchToggle.contains(event.target) && !searchFormContainer.contains(event.target)) {
         searchFormContainer.style.display = 'none';
@@ -147,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Search Results Close
+  // 搜索结果关闭按钮
   const closeSearch = document.querySelector('.close-search');
   const searchResults = document.querySelector('.search-results');
   

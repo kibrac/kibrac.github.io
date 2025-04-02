@@ -1,0 +1,35 @@
+/* 分类和标签样式 */
+.post-categories,
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+/* 在单篇文章页面中的样式 */
+.post-header .post-meta-tags {
+  margin-top: 1rem;
+}
+
+/* 在列表页面中的样式 */
+.post-item-simple .post-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* 在归档页面中的样式 */
+.archives-simple .post-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* 在分类页面中的样式 */
+.post-card-footer .post-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

@@ -13,7 +13,7 @@
       <link>https://kibrac.github.io/posts/create-thoughts/</link>
       <pubDate>Mon, 24 Mar 2025 17:15:01 +0800</pubDate>
       <guid>https://kibrac.github.io/posts/create-thoughts/</guid>
-      <description>&lt;p&gt;这是一个测试。&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;这是一个测试。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;已经不知道是第几次写下这句话了，两三年的时间，从 Hexo 到 Hugo，从 Butterfly 到 PointFive，为了拥有一个自己的博客主页，我花费了很多个日日夜夜去配置去折腾，结果是什么也没有留下，直到现在。&lt;/p&gt;&#xA;&lt;p&gt;回过头再看，建站 - 放弃 - 建站 - 放弃，这样断断续续的循环之后，除了存下了几个教程的链接，其实自己在技术方面还是一无所获，只会笨拙地看着配置文档一点点设置，但凡遇到某些细微之处不太满意便是一筹莫展。&lt;/p&gt;&#xA;&lt;p&gt;技术力低下又偏偏又是强迫症患者，真是一件令人头疼的事。所以就开始不断地选择不断地尝试，试图期待在某一个角落，有一个完美契合我的需求的博客主页让我拿来即用——其实我现在意识到这根本是不可能的，因为我压根不知道我想要什么，又怎么会满意呢。&lt;/p&gt;&#xA;&lt;p&gt;终于决定放弃寻找，得益于现在 AI 技术的强大，我决定自己写一个主页，也就是现在看到的这个，我把这个 Hugo 主题命名为 PointFive，含义是从零到一，但是它始终处于零点五的状态，因为我会一直修改下去。&lt;/p&gt;&#xA;&lt;p&gt;但是博客似乎是用来记录的？无数次尝试后半途而废的一个很重要的原因就是自己并没有产出用来展示，没有模特所以衣服好不好看压根挂不出来。&lt;/p&gt;&#xA;&lt;p&gt;不仅仅是博客网站，在笔记软件上我也花费了相当长的时间去挑选和使用，当然这又是另外一个故事了，总之，在极其低效地各种尝试之后，终于还是明白了在各大教程和推荐视频或者文章下面总会出现的一句话：重要的是内容。&lt;/p&gt;&#xA;&lt;p&gt;所以，不挑了。&lt;/p&gt;&#xA;&lt;p&gt;先开始吧。&lt;/p&gt;</description>
     </item>
     <item>
       <title>示例项目：移动应用</title>

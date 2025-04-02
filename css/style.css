@@ -1,50 +1,62 @@
 /* PointFive Theme Styles */
 
+/* 导入字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css');
+
 :root {
-  /* Light Mode Colors - 更深的蓝色系配色 */
-  --bg-color: #f5f9ff;
+  /* Light Mode Colors - 青花瓷水墨风格配色 */
+  --bg-color: #f8f9fa;
   --text-color: #2c3e50;
-  --heading-color: #1a365d;
-  --link-color: #3182ce;
-  --link-hover-color: #2c5282;
-  --border-color: #d6e4ff;
-  --light-bg: #e6f0ff;
-  --accent-color: #4299e1;
-  --code-bg: #edf2ff;
+  --heading-color: #1a3a5f;
+  --link-color: #1e50a2;
+  --link-hover-color: #0f3b75;
+  --border-color: #c6d8e4;
+  --light-bg: #edf1f5;
+  --accent-color: #1e50a2;
+  --accent-color-rgb: 30, 80, 162; /* RGB值用于渐变和透明度 */
+  --code-bg: #edf1f5;
   --code-color: #c53030;
   --blockquote-color: #4a5568;
-  --tag-bg: #ebf4ff;
-  --tag-color: #2b6cb0;
+  --tag-bg: #e6eef4;
+  --tag-color: #1e50a2;
   --meta-color: #4a5568;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  /* 水墨风格背景纹理 */
+  --ink-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%231e50a2' fill-opacity='0.03' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
 }
 
-/* Dark Mode Colors - 更高对比度的夜间配色 */
+/* Dark Mode Colors - 青花瓷水墨风格夜间配色 */
 html.dark-mode {
-  --bg-color: #0f172a;
+  --bg-color: #0f1a2a;
   --text-color: #e2e8f0;
   --heading-color: #ffffff;
-  --link-color: #90cdf4;
-  --link-hover-color: #63b3ed;
+  --link-color: #84a9d1;
+  --link-hover-color: #5d8bc3;
   --border-color: #2d3748;
   --light-bg: #1a202c;
-  --accent-color: #4299e1;
+  --accent-color: #3a6ea5;
+  --accent-color-rgb: 58, 110, 165; /* RGB值用于渐变和透明度 */
   --code-bg: #2d3748;
   --code-color: #feb2b2;
   --blockquote-color: #a0aec0;
   --tag-bg: #2a4365;
-  --tag-color: #bee3f8;
+  --tag-color: #b6d4f0;
   --meta-color: #a0aec0;
   --shadow-color: rgba(0, 0, 0, 0.25);
+  /* 水墨风格背景纹理 - 深色模式 */
+  --ink-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%233a6ea5' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* Base Styles */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Noto Sans', 'LXGW WenKai', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
+  background-image: var(--ink-texture);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -94,7 +106,7 @@ img {
 }
 
 code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 0.9em;
   background-color: var(--code-bg);
   color: var(--code-color);
@@ -118,14 +130,29 @@ pre code {
   color: var(--code-color);
   font-size: 0.95em;
   line-height: 1.5;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 blockquote {
   border-left: 4px solid var(--accent-color);
-  padding-left: 1em;
+  padding: 1em 1em 1em 2em;
   margin-left: 0;
   color: var(--blockquote-color);
   font-style: italic;
+  /* 青花瓷水墨风格引用 */
+  background-color: rgba(var(--accent-color-rgb), 0.03);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+}
+
+blockquote::before {
+  content: '"';
+  font-size: 2em;
+  color: var(--accent-color);
+  opacity: 0.3;
+  position: absolute;
+  left: 0.3em;
+  top: 0.3em;
 }
 
 hr {
@@ -382,35 +409,213 @@ html.dark-mode .moon-icon {
   margin-bottom: 3em;
   text-align: center;
   border-radius: 8px;
+  background-image: linear-gradient(135deg, var(--light-bg) 0%, var(--bg-color) 100%);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+  /* 青花瓷水墨风格背景 */
+  border: 1px solid var(--accent-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cfilter id='blur' x='0' y='0'%3E%3CfeGaussianBlur stdDeviation='5'/%3E%3C/filter%3E%3C/defs%3E%3Cpath fill='%231e50a2' fill-opacity='0.05' filter='url(%23blur)' d='M40 70c0 0 10-20 40-20s40 20 40 20 10 20-10 40-40 10-60 0S40 70 40 70z'/%3E%3C/svg%3E"), linear-gradient(135deg, var(--light-bg) 0%, var(--bg-color) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0.6;
+  z-index: 0;
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2em;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-title {
-  font-size: 2.5em;
+  font-size: 2.8em;
   margin-bottom: 0.5em;
   color: var(--heading-color);
+  letter-spacing: -0.5px;
+  font-weight: 800;
+  text-shadow: 0 1px 2px var(--shadow-color);
 }
 
 .hero-subtitle {
-  font-size: 1.3em;
+  font-size: 1.4em;
   color: var(--meta-color);
   line-height: 1.5;
+  margin-bottom: 1.5em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-search {
+  max-width: 500px;
+  margin: 2em auto 0;
+}
+
+.hero-search-form {
+  display: flex;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.hero-search-input {
+  flex-grow: 1;
+  padding: 1em 1.5em;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1em;
+  outline: none;
+}
+
+.hero-search-submit {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5em 1.2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.hero-search-submit:hover {
+  background-color: var(--link-hover-color);
 }
 
 .home-container {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 2fr 1fr;
   gap: 2em;
+  margin-bottom: 3em;
+  margin-top: 2em;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    margin-top: 2em;
+  }
+  
+  .post-item-simple {
+    grid-template-columns: 1fr;
+    gap: 0.4em;
+  }
+  
+  .post-date {
+    margin-bottom: 0.3em;
+  }
+  
+  .post-tags-simple {
+    justify-content: flex-start;
+    margin-top: 0.5em;
+  }
+}
+
+/* 特色分类区域 */
+.featured-categories {
+  margin: 3em auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2em;
+  margin-bottom: 3em;
+}
+
+.category-card {
+  background-color: var(--light-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  position: relative;
+  border: 1px solid var(--accent-color);
+  /* 青花瓷风格装饰 */
+  background-image: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.05) 0%, rgba(var(--accent-color-rgb), 0.01) 100%);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0) 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-card:hover::before {
+  opacity: 1;
+}
+
+.category-link {
+  display: block;
+  padding: 2em;
+  text-align: center;
+  color: var(--heading-color);
+  position: relative;
+  z-index: 1;
+}
+
+.category-name {
+  margin: 0 0 0.5em;
+  font-size: 1.4em;
+  transition: color 0.3s ease;
+}
+
+.category-card:hover .category-name {
+  color: var(--accent-color);
+}
+
+.category-count {
+  color: var(--meta-color);
+  font-size: 0.9em;
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  background-color: rgba(var(--accent-color-rgb), 0.1);
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category-card:hover .category-count {
+  background-color: var(--accent-color);
+  color: white;
 }
 
 .section-heading {
-  font-size: 1.8em;
-  margin-bottom: 1.5em;
+  font-size: 1.1em;
+  margin-bottom: 1em;
   position: relative;
   padding-bottom: 0.5em;
 }
@@ -423,6 +628,10 @@ html.dark-mode .moon-icon {
   width: 50px;
   height: 2px;
   background-color: var(--accent-color);
+  /* 青花瓷风格装饰 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='2' viewBox='0 0 50 2'%3E%3Cpath fill='%231e50a2' d='M0 0 L50 0 L50 1 C37.5 2 12.5 2 0 1 L0 0Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 50px 2px;
 }
 
 /* Post List - Modern Card Style */
@@ -437,47 +646,59 @@ html.dark-mode .moon-icon {
 .post-list-simple {
   display: flex;
   flex-direction: column;
-  gap: 0.8em;
-  margin-bottom: 2em;
+  gap: 0.4em;
+  margin-bottom: 1.5em;
+  padding: 0.5em 0;
+}
+
+.post-title-simple {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.1;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .post-item-simple {
-  padding: 0.8em 1em;
-  border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.2s ease;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  padding: 0.4em 0.6em;
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
   gap: 1em;
+  margin-bottom: 0.2em;
+  border-radius: 4px;
+  flex-wrap: wrap;
 }
 
 .post-item-simple:hover {
   background-color: var(--light-bg);
+  transform: translateX(5px);
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .post-date {
   color: var(--meta-color);
   font-size: 0.85em;
   white-space: nowrap;
-}
-
-.post-title-simple {
-  margin: 0;
-  font-size: 1.2em;
-  line-height: 1.3;
+  min-width: 90px;
 }
 
 .post-categories-simple {
   display: flex;
-  gap: 0.3em;
+  gap: 0.2em;
   margin: 0;
+  flex-wrap: wrap;
 }
 
 .post-tags-simple {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3em;
-  justify-content: flex-end;
+  gap: 0.5em;
+  margin: 0;
+  margin-left: auto;
+  align-items: center;
 }
 
 /* Categories Grid */
@@ -519,19 +740,29 @@ html.dark-mode .moon-icon {
 }
 
 .post-card {
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   background-color: var(--bg-color);
   box-shadow: 0 5px 15px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--border-color);
+  position: relative;
+  /* 青花瓷风格边框 */
+  border: 1px solid var(--accent-color);
+  background-image: linear-gradient(to right, rgba(var(--accent-color-rgb), 0.03), rgba(var(--accent-color-rgb), 0.01));
 }
 
 .post-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+.post-card:hover .post-card-title a {
+  color: var(--accent-color);
 }
 
 .post-card-inner {
@@ -610,6 +841,9 @@ html.dark-mode .moon-icon {
   font-weight: 500;
   font-size: 0.9em;
   transition: background-color 0.2s ease;
+  /* 青花瓷风格按钮 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(to right, var(--accent-color), rgba(var(--accent-color-rgb), 0.9));
 }
 
 .read-more-btn:hover {
@@ -685,20 +919,23 @@ html.dark-mode .moon-icon {
   display: inline-block;
   background-color: var(--tag-bg);
   color: var(--tag-color);
-  padding: 0.4em 0.8em;
-  border-radius: 20px;
-  font-size: 0.85em;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  font-size: 0.8em;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px var(--shadow-color);
   font-weight: 500;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--accent-color);
+  margin: 0.1em 0.1em;
+  /* 青花瓷风格标签 */
+  background-image: linear-gradient(to right, rgba(var(--accent-color-rgb), 0.1), rgba(var(--accent-color-rgb), 0.05));
 }
 
 .tag:hover {
   background-color: var(--accent-color);
   color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--shadow-color);
   border-color: var(--accent-color);
 }
 
@@ -714,15 +951,15 @@ html.dark-mode .moon-icon {
 }
 
 .sidebar-section {
-  background-color: var(--light-bg);
-  border-radius: 8px;
-  padding: 1.5em;
+  padding: 0.8em 0;
+  margin-bottom: 1.5em;
+  border-bottom: none;
 }
 
 .sidebar-title {
   margin-top: 0;
   margin-bottom: 1em;
-  font-size: 1.2em;
+  font-size: 1.1em;
   position: relative;
   padding-bottom: 0.5em;
 }
@@ -735,13 +972,37 @@ html.dark-mode .moon-icon {
   width: 50px;
   height: 2px;
   background-color: var(--accent-color);
+  /* 青花瓷风格装饰 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='2' viewBox='0 0 50 2'%3E%3Cpath fill='%231e50a2' d='M0 0 L50 0 L50 1 C37.5 2 12.5 2 0 1 L0 0Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 50px 2px;
 }
 
 .sidebar-avatar {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   margin-bottom: 1em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 3px 10px var(--shadow-color);
+  /* 青花瓷风格头像边框 */
+  position: relative;
+}
+
+.sidebar-avatar::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-color);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .sidebar-list {
@@ -751,8 +1012,8 @@ html.dark-mode .moon-icon {
 }
 
 .sidebar-list li {
-  margin-bottom: 0.8em;
-  padding-bottom: 0.8em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -829,7 +1090,9 @@ html.dark-mode .moon-icon {
 
 .sidebar-social-icons {
   display: flex;
-  gap: 1em;
+  gap: 1.2em;
+  justify-content: center;
+  margin-top: 1em;
 }
 
 /* Single Post */
@@ -909,7 +1172,11 @@ html.dark-mode .moon-icon {
   left: 0;
   right: 0;
   height: 3px;
+  /* 青花瓷风格页脚装饰 */
   background: linear-gradient(to right, var(--accent-color), transparent, var(--accent-color));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='3' viewBox='0 0 100 3'%3E%3Cpath fill='%231e50a2' d='M0 0 L100 0 L100 1 C75 3 25 3 0 1 L0 0Z'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px 3px;
 }
 
 .footer-wave {
@@ -1189,12 +1456,13 @@ html.dark-mode .moon-icon {
   display: inline-block;
   background-color: var(--accent-color);
   color: white;
-  padding: 0.3em 0.7em;
-  border-radius: 20px;
-  font-size: 0.85em;
+  padding: 0.2em 0.5em;
+  border-radius: 15px;
+  font-size: 0.8em;
   font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  margin: 0.1em 0.1em;
 }
 
 .post-category:hover {
