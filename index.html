@@ -14,6 +14,7 @@
   
   <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
   <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
   
   
   <script>
@@ -34,6 +35,7 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Kibrac&#39;s Blog">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
 
   
 </head>
@@ -85,6 +87,21 @@
   
   <div class="header-actions">
     
+    <div class="search-container">
+      <button class="search-toggle" aria-label="搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <div class="search-form-container">
+        <form class="search-form" role="search">
+          <input type="search" class="search-input" placeholder="搜索..." aria-label="搜索">
+          <button type="submit" class="search-submit">搜索</button>
+        </form>
+      </div>
+    </div>
+    
     
     <button class="theme-toggle" aria-label="切换主题">
       <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -106,6 +123,16 @@
 </div>
 
 
+<div class="search-results">
+  <div class="search-results-container">
+    <div class="search-results-header">
+      <h2>搜索结果</h2>
+      <button class="close-search">&times;</button>
+    </div>
+    <div class="search-results-list"></div>
+  </div>
+</div>
+
     </header>
     
     <main class="main-content">
@@ -126,27 +153,50 @@
     
     
     
-    <div class="post-list">
+    <div class="post-list-simple">
       
-      <article class="post-item">
-        
-        
-        <div class="post-content-wrapper">
-          <div class="post-item-header">
-            <h2 class="post-item-title">
-              <a href="https://kibrac.github.io/posts/create-thoughts/">先开始吧！</a>
-            </h2>
-            <span class="post-date">2025-03-24</span>
-          </div>
+      <article class="post-item-simple">
+        <div class="post-date">2025-04-07</div>
+        <div>
+          <h2 class="post-title-simple">
+            <a href="https://kibrac.github.io/posts/c&#43;&#43;1/">面向对象的程序设计学习笔记1</a>
+          </h2>
+        </div>
+        <div class="post-meta-side">
           
-          <div class="post-summary">
+          <div class="post-categories-simple">
             
-              这里讲述了建立这个站点一路以来的零碎想法。
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">学习笔记</a>
             
           </div>
           
           
-          <div class="post-tags">
+          <div class="post-tags-simple">
+            
+            <a href="/tags/c&#43;&#43;/" class="tag">#C&#43;&#43;</a>
+            
+          </div>
+          
+        </div>
+      </article>
+      
+      <article class="post-item-simple">
+        <div class="post-date">2025-03-24</div>
+        <div>
+          <h2 class="post-title-simple">
+            <a href="https://kibrac.github.io/posts/create-thoughts/%E5%85%88%E5%BC%80%E5%A7%8B%E5%90%A7/">先开始吧！</a>
+          </h2>
+        </div>
+        <div class="post-meta-side">
+          
+          <div class="post-categories-simple">
+            
+            <a href="/categories/%E5%BF%83%E5%BE%97/" class="post-category">心得</a>
+            
+          </div>
+          
+          
+          <div class="post-tags-simple">
             
             <a href="/tags/%E5%BB%BA%E7%AB%99/" class="tag">#建站</a>
             
@@ -155,45 +205,23 @@
         </div>
       </article>
       
-      <article class="post-item">
-        
-        <div class="post-featured-image">
-          <a href="https://kibrac.github.io/posts/markdown-syntax/">
-            <img src="https://kibrac.github.io/images/markdown.svg" alt="Markdown语法指南">
-          </a>
+      <article class="post-item-simple">
+        <div class="post-date">2023-01-15</div>
+        <div>
+          <h2 class="post-title-simple">
+            <a href="https://kibrac.github.io/posts/markdown-syntax/">Markdown语法指南</a>
+          </h2>
         </div>
-        
-        
-        <div class="post-content-wrapper">
-          <div class="post-item-header">
-            <h2 class="post-item-title">
-              <a href="https://kibrac.github.io/posts/markdown-syntax/">Markdown语法指南</a>
-            </h2>
-            <span class="post-date">2023-01-15</span>
-          </div>
+        <div class="post-meta-side">
           
-          <div class="post-summary">
+          <div class="post-categories-simple">
             
-              <h2 id="markdown基础语法">Markdown基础语法</h2>
-<p>这篇文章展示了PointFive主题中Markdown的渲染效果，可以作为创建内容的参考。</p>
-<h3 id="标题">标题</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># 一级标题
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## 二级标题
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">### 三级标题
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#### 四级标题
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">##### 五级标题
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">###### 六级标题
-</span></span></span></code></pre></div><h3 id="强调">强调</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>*斜体文本*
-</span></span><span style="display:flex;"><span><span style="font-style:italic">_也是斜体文本_</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">**粗体文本**</span>
-</span></span><span style="display:flex;"><span><span style="font-weight:bold">__ …</span></span></span></span></span></span></span></span></span></span></span></code></pre></div>
+            <a href="/categories/%E5%8F%82%E8%80%83/" class="post-category">参考</a>
             
           </div>
           
           
-          <div class="post-tags">
+          <div class="post-tags-simple">
             
             <a href="/tags/markdown/" class="tag">#Markdown</a>
             
@@ -204,38 +232,23 @@
         </div>
       </article>
       
-      <article class="post-item">
-        
-        <div class="post-featured-image">
-          <a href="https://kibrac.github.io/posts/welcome/">
-            <img src="https://kibrac.github.io/images/welcome.svg" alt="欢迎使用PointFive主题">
-          </a>
+      <article class="post-item-simple">
+        <div class="post-date">2023-01-10</div>
+        <div>
+          <h2 class="post-title-simple">
+            <a href="https://kibrac.github.io/posts/welcome/">欢迎使用PointFive主题</a>
+          </h2>
         </div>
-        
-        
-        <div class="post-content-wrapper">
-          <div class="post-item-header">
-            <h2 class="post-item-title">
-              <a href="https://kibrac.github.io/posts/welcome/">欢迎使用PointFive主题</a>
-            </h2>
-            <span class="post-date">2023-01-10</span>
-          </div>
+        <div class="post-meta-side">
           
-          <div class="post-summary">
+          <div class="post-categories-simple">
             
-              <h2 id="欢迎使用pointfive主题">欢迎使用PointFive主题！</h2>
-<p>感谢你选择PointFive主题。这个主题专为博客和内容网站设计，提供了简洁现代的界面和丰富的功能。</p>
-<h3 id="主题特点">主题特点</h3>
-<ul>
-<li><strong>响应式设计</strong>：适配各种设备，从手机到桌面电脑</li>
-<li><strong>暗黑模式</strong>：支持自动切换或手动选择暗黑/明亮模式</li>
-<li><strong>内置搜索</strong>：快速查找站点内容</li>
-<li><strong>社交媒体集成</strong>：轻松添加社交媒体链 …</li></ul>
+            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">教程</a>
             
           </div>
           
           
-          <div class="post-tags">
+          <div class="post-tags-simple">
             
             <a href="/tags/hugo/" class="tag">#Hugo</a>
             
@@ -251,7 +264,60 @@
     
   </div>
   
-  
+  <div class="author-section">
+    <h2 class="section-heading">关于作者</h2>
+    <div class="author-container">
+      
+      <img src="https://kibrac.github.io/images/avatar.jpg" alt="Kibrac" class="author-avatar">
+      
+      
+      <h3 class="author-name">Kibrac</h3>
+      
+      <div class="author-social-icons">
+        
+        <a href="https://github.com/kibrac" target="_blank" rel="noopener noreferrer" class="social-icon github" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+        
+        
+        
+        <a href="https://blog.csdn.net/qq_65728717" target="_blank" rel="noopener noreferrer" class="social-icon csdn" aria-label="CSDN">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 7c-1.5-1.5-3.5-2-5.5-2C6.5 5 3 8.5 3 13s3.5 8 7.5 8c2 0 4-.5 5.5-2"/>
+          </svg>
+        </a>
+        
+        
+        
+        <a href="https://space.bilibili.com/414688996" target="_blank" rel="noopener noreferrer" class="social-icon bilibili" aria-label="哔哩哔哩">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906L17.813 4.653zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773H5.333zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/>
+          </svg>
+        </a>
+        
+        
+        
+        <a href="https://x.com/kibra_chen" target="_blank" rel="noopener noreferrer" class="social-icon twitter" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        
+        
+        
+        <a href="mailto:kibrachen@outlook.com" class="social-icon email" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+          </svg>
+        </a>
+        
+      </div>
+      
+      <p class="author-bio">莫听穿林打叶声 一蓑烟雨任平生</p>
+    </div>
+  </div>
 </div>
 
     </main>
@@ -283,7 +349,10 @@
   
   
   <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
   
+  
+  <script src="https://kibrac.github.io/js/search.js"></script>
   
   
   

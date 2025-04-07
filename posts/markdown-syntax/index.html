@@ -96,6 +96,7 @@ Hugo官网
   
   <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
   <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
   
   
   <script>
@@ -133,6 +134,7 @@ Hugo官网
 粗斜体文本
 列表 无序列表 - 项目1 - 项目2 - 子项目2.1 - 子项目2.2 - 项目3 项目1 项目2 子项目2.1 子项目2.2 项目3 有序列表 1. 第一项 2. 第二项 3. 第三项 第一项 第二项 第三项 链接 [Hugo官网](https://gohugo.io/) Hugo官网
 图片 ![Hugo Logo](/images/hugo-logo.svg) 表格 | 表头1 | 表头2 | 表头3 | | ----- | ----- | ----- | | 单元格1 | 单元格2 | 单元格3 | | 单元格4 | 单元格5 | 单元格6 | 表头1 表头2 表头3 单元格1 单元格2 单元格3 单元格4 单元格5 单元格6 引用 &gt; 这是一段引用文本。 &gt; &gt; 这是引用的第二段。 这是一段引用文本。">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
 
   
 </head>
@@ -184,6 +186,21 @@ Hugo官网
   
   <div class="header-actions">
     
+    <div class="search-container">
+      <button class="search-toggle" aria-label="搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <div class="search-form-container">
+        <form class="search-form" role="search">
+          <input type="search" class="search-input" placeholder="搜索..." aria-label="搜索">
+          <button type="submit" class="search-submit">搜索</button>
+        </form>
+      </div>
+    </div>
+    
     
     <button class="theme-toggle" aria-label="切换主题">
       <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -205,43 +222,54 @@ Hugo官网
 </div>
 
 
+<div class="search-results">
+  <div class="search-results-container">
+    <div class="search-results-header">
+      <h2>搜索结果</h2>
+      <button class="close-search">&times;</button>
+    </div>
+    <div class="search-results-list"></div>
+  </div>
+</div>
+
     </header>
     
     <main class="main-content">
       
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">Markdown语法指南</h1>
-    
-    <div class="post-meta">
-      <time datetime="2023-01-15T00:00:00Z">
-        2023-01-15
-      </time>
+<div class="post-container">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Markdown语法指南</h1>
       
-      
-      <span class="post-author">
-        PointFive作者
-      </span>
-      
-      
-      
-      <div class="post-categories">
+      <div class="post-meta">
+        <time datetime="2023-01-15T00:00:00Z">
+          2023-01-15
+        </time>
         
-        <a href="/categories/%E5%8F%82%E8%80%83/">参考</a>
+        
+        <span class="post-author">
+          PointFive作者
+        </span>
+        
+        
+        
+        <div class="post-categories">
+          
+          <a href="/categories/%E5%8F%82%E8%80%83/">参考</a>
+          
+        </div>
         
       </div>
-      
+    </header>
+    
+    
+    <div class="post-featured-image">
+      <img src="https://kibrac.github.io/images/markdown.svg" alt="Markdown语法指南">
     </div>
-  </header>
-  
-  
-  <div class="post-featured-image">
-    <img src="https://kibrac.github.io/images/markdown.svg" alt="Markdown语法指南">
-  </div>
-  
-  
-  <div class="post-content">
-    <h2 id="markdown基础语法">Markdown基础语法</h2>
+    
+    
+    <div class="post-content">
+      <h2 id="markdown基础语法">Markdown基础语法</h2>
 <p>这篇文章展示了PointFive主题中Markdown的渲染效果，可以作为创建内容的参考。</p>
 <h3 id="标题">标题</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># 一级标题
@@ -364,30 +392,57 @@ Hugo官网
 </ol>
 </div>
 
+    </div>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/markdown/" class="tag">#Markdown</a>
+      
+      <a href="/tags/%E8%AF%AD%E6%B3%95/" class="tag">#语法</a>
+      
+    </div>
+    
+    
+    <div class="post-navigation">
+      
+      <a class="prev-post" href="https://kibrac.github.io/posts/welcome/">&larr; 欢迎使用PointFive主题</a>
+      
+      
+      
+      <a class="next-post" href="https://kibrac.github.io/posts/create-thoughts/%E5%85%88%E5%BC%80%E5%A7%8B%E5%90%A7/">先开始吧！ &rarr;</a>
+      
+    </div>
+    
+    
+  </article>
+  
+  <aside class="post-toc">
+    <div class="toc-container">
+  <div class="toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#markdown基础语法">Markdown基础语法</a>
+      <ul>
+        <li><a href="#标题">标题</a></li>
+        <li><a href="#强调">强调</a></li>
+        <li><a href="#列表">列表</a></li>
+        <li><a href="#链接">链接</a></li>
+        <li><a href="#图片">图片</a></li>
+        <li><a href="#表格">表格</a></li>
+        <li><a href="#引用">引用</a></li>
+        <li><a href="#代码">代码</a></li>
+        <li><a href="#水平线">水平线</a></li>
+        <li><a href="#任务列表">任务列表</a></li>
+        <li><a href="#脚注">脚注</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
-  
-  
-  <div class="post-tags">
-    
-    <a href="/tags/markdown/" class="tag">#Markdown</a>
-    
-    <a href="/tags/%E8%AF%AD%E6%B3%95/" class="tag">#语法</a>
-    
-  </div>
-  
-  
-  <div class="post-navigation">
-    
-    <a class="prev-post" href="https://kibrac.github.io/posts/welcome/">&larr; 欢迎使用PointFive主题</a>
-    
-    
-    
-    <a class="next-post" href="https://kibrac.github.io/posts/create-thoughts/">先开始吧！ &rarr;</a>
-    
-  </div>
-  
-  
-</article>
+</div>
+  </aside>
+</div>
 
     </main>
     
@@ -418,7 +473,10 @@ Hugo官网
   
   
   <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
   
+  
+  <script src="https://kibrac.github.io/js/search.js"></script>
   
   
   

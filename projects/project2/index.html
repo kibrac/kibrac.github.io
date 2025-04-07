@@ -56,6 +56,7 @@ Figma: UI/UX设计
   
   <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
   <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
   
   
   <script>
@@ -89,6 +90,7 @@ Figma: UI/UX设计
 项目特点 直观的用户界面 任务分类和标签 提醒和通知功能 数据同步和备份 暗黑模式支持 离线工作能力 技术栈 React Native: 跨平台移动应用框架 Redux: 状态管理 Firebase: 后端服务和数据存储 Figma: UI/UX设计 项目截图 项目链接 源代码 应用商店 开发过程 开发这个应用的过程包括以下几个阶段：
 市场调研和用户需求分析 原型设计和用户测试 前端界面开发 后端功能实现 测试和优化 发布和维护 遇到的挑战 在开发过程中，我们遇到了一些挑战，包括：
 确保应用在不同设备上的一致性 优化应用性能和电池使用 实现可靠的离线功能 处理用户数据的安全问题 如果你对这个项目有任何问题或建议，欢迎联系我。">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
 
   
 </head>
@@ -140,6 +142,21 @@ Figma: UI/UX设计
   
   <div class="header-actions">
     
+    <div class="search-container">
+      <button class="search-toggle" aria-label="搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <div class="search-form-container">
+        <form class="search-form" role="search">
+          <input type="search" class="search-input" placeholder="搜索..." aria-label="搜索">
+          <button type="submit" class="search-submit">搜索</button>
+        </form>
+      </div>
+    </div>
+    
     
     <button class="theme-toggle" aria-label="切换主题">
       <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -161,43 +178,54 @@ Figma: UI/UX设计
 </div>
 
 
+<div class="search-results">
+  <div class="search-results-container">
+    <div class="search-results-header">
+      <h2>搜索结果</h2>
+      <button class="close-search">&times;</button>
+    </div>
+    <div class="search-results-list"></div>
+  </div>
+</div>
+
     </header>
     
     <main class="main-content">
       
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">示例项目：移动应用</h1>
-    
-    <div class="post-meta">
-      <time datetime="2023-01-25T00:00:00Z">
-        2023-01-25
-      </time>
+<div class="post-container">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">示例项目：移动应用</h1>
       
-      
-      <span class="post-author">
-        PointFive作者
-      </span>
-      
-      
-      
-      <div class="post-categories">
+      <div class="post-meta">
+        <time datetime="2023-01-25T00:00:00Z">
+          2023-01-25
+        </time>
         
-        <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
+        
+        <span class="post-author">
+          PointFive作者
+        </span>
+        
+        
+        
+        <div class="post-categories">
+          
+          <a href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
+          
+        </div>
         
       </div>
-      
+    </header>
+    
+    
+    <div class="post-featured-image">
+      <img src="https://kibrac.github.io/images/project2.svg" alt="示例项目：移动应用">
     </div>
-  </header>
-  
-  
-  <div class="post-featured-image">
-    <img src="https://kibrac.github.io/images/project2.svg" alt="示例项目：移动应用">
-  </div>
-  
-  
-  <div class="post-content">
-    <h2 id="项目概述">项目概述</h2>
+    
+    
+    <div class="post-content">
+      <h2 id="项目概述">项目概述</h2>
 <p>这是一个移动应用开发项目，旨在创建一个简洁、易用的任务管理应用。该应用帮助用户组织日常任务，提高工作效率。</p>
 <h3 id="项目特点">项目特点</h3>
 <ul>
@@ -242,28 +270,50 @@ Figma: UI/UX设计
 </ul>
 <p>如果你对这个项目有任何问题或建议，欢迎<a href="/about">联系我</a>。</p>
 
+    </div>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="tag">#移动开发</a>
+      
+      <a href="/tags/ui%E8%AE%BE%E8%AE%A1/" class="tag">#UI设计</a>
+      
+    </div>
+    
+    
+    <div class="post-navigation">
+      
+      <a class="prev-post" href="https://kibrac.github.io/projects/project1/">&larr; 示例项目：个人博客</a>
+      
+      
+      
+    </div>
+    
+    
+  </article>
+  
+  <aside class="post-toc">
+    <div class="toc-container">
+  <div class="toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#项目概述">项目概述</a>
+      <ul>
+        <li><a href="#项目特点">项目特点</a></li>
+        <li><a href="#技术栈">技术栈</a></li>
+        <li><a href="#项目截图">项目截图</a></li>
+        <li><a href="#项目链接">项目链接</a></li>
+        <li><a href="#开发过程">开发过程</a></li>
+        <li><a href="#遇到的挑战">遇到的挑战</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
-  
-  
-  <div class="post-tags">
-    
-    <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="tag">#移动开发</a>
-    
-    <a href="/tags/ui%E8%AE%BE%E8%AE%A1/" class="tag">#UI设计</a>
-    
-  </div>
-  
-  
-  <div class="post-navigation">
-    
-    <a class="prev-post" href="https://kibrac.github.io/projects/project1/">&larr; 示例项目：个人博客</a>
-    
-    
-    
-  </div>
-  
-  
-</article>
+</div>
+  </aside>
+</div>
 
     </main>
     
@@ -294,7 +344,10 @@ Figma: UI/UX设计
   
   
   <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
   
+  
+  <script src="https://kibrac.github.io/js/search.js"></script>
   
   
   

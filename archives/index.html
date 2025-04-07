@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
   <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
   
   
   <script>
@@ -35,6 +36,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Archives">
   <meta name="twitter:description" content="这里是所有文章的时间线视图，您可以按年份浏览所有内容。">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
 
   
 </head>
@@ -86,6 +88,21 @@
   
   <div class="header-actions">
     
+    <div class="search-container">
+      <button class="search-toggle" aria-label="搜索">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <div class="search-form-container">
+        <form class="search-form" role="search">
+          <input type="search" class="search-input" placeholder="搜索..." aria-label="搜索">
+          <button type="submit" class="search-submit">搜索</button>
+        </form>
+      </div>
+    </div>
+    
     
     <button class="theme-toggle" aria-label="切换主题">
       <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -107,6 +124,16 @@
 </div>
 
 
+<div class="search-results">
+  <div class="search-results-container">
+    <div class="search-results-header">
+      <h2>搜索结果</h2>
+      <button class="close-search">&times;</button>
+    </div>
+    <div class="search-results-list"></div>
+  </div>
+</div>
+
     </header>
     
     <main class="main-content">
@@ -127,11 +154,38 @@
       <div class="post-list-simple">
         
         <article class="post-item-simple">
+          <div class="post-date">2025-04-07</div>
+          <div>
+            <h3 class="post-title-simple">
+              <a href="https://kibrac.github.io/posts/c&#43;&#43;1/">面向对象的程序设计学习笔记1</a>
+            </h3>
+          </div>
+          <div class="post-meta-side">
+            
+            <div class="post-categories-simple">
+              
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">学习笔记</a>
+              
+            </div>
+            
+            
+            <div class="post-tags-simple">
+              
+              <a href="/tags/c&#43;&#43;/" class="tag">#C&#43;&#43;</a>
+              
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="post-item-simple">
           <div class="post-date">2025-03-24</div>
           <div>
             <h3 class="post-title-simple">
-              <a href="https://kibrac.github.io/posts/create-thoughts/">先开始吧！</a>
+              <a href="https://kibrac.github.io/posts/create-thoughts/%E5%85%88%E5%BC%80%E5%A7%8B%E5%90%A7/">先开始吧！</a>
             </h3>
+          </div>
+          <div class="post-meta-side">
             
             <div class="post-categories-simple">
               
@@ -139,14 +193,14 @@
               
             </div>
             
-          </div>
-          
-          <div class="post-tags-simple">
             
-            <a href="/tags/%E5%BB%BA%E7%AB%99/" class="tag">#建站</a>
+            <div class="post-tags-simple">
+              
+              <a href="/tags/%E5%BB%BA%E7%AB%99/" class="tag">#建站</a>
+              
+            </div>
             
           </div>
-          
         </article>
         
       </div>
@@ -162,6 +216,8 @@
             <h3 class="post-title-simple">
               <a href="https://kibrac.github.io/posts/markdown-syntax/">Markdown语法指南</a>
             </h3>
+          </div>
+          <div class="post-meta-side">
             
             <div class="post-categories-simple">
               
@@ -169,16 +225,16 @@
               
             </div>
             
+            
+            <div class="post-tags-simple">
+              
+              <a href="/tags/markdown/" class="tag">#Markdown</a>
+              
+              <a href="/tags/%E8%AF%AD%E6%B3%95/" class="tag">#语法</a>
+              
+            </div>
+            
           </div>
-          
-          <div class="post-tags-simple">
-            
-            <a href="/tags/markdown/" class="tag">#Markdown</a>
-            
-            <a href="/tags/%E8%AF%AD%E6%B3%95/" class="tag">#语法</a>
-            
-          </div>
-          
         </article>
         
         <article class="post-item-simple">
@@ -187,6 +243,8 @@
             <h3 class="post-title-simple">
               <a href="https://kibrac.github.io/posts/welcome/">欢迎使用PointFive主题</a>
             </h3>
+          </div>
+          <div class="post-meta-side">
             
             <div class="post-categories-simple">
               
@@ -194,16 +252,16 @@
               
             </div>
             
+            
+            <div class="post-tags-simple">
+              
+              <a href="/tags/hugo/" class="tag">#Hugo</a>
+              
+              <a href="/tags/%E4%B8%BB%E9%A2%98/" class="tag">#主题</a>
+              
+            </div>
+            
           </div>
-          
-          <div class="post-tags-simple">
-            
-            <a href="/tags/hugo/" class="tag">#Hugo</a>
-            
-            <a href="/tags/%E4%B8%BB%E9%A2%98/" class="tag">#主题</a>
-            
-          </div>
-          
         </article>
         
       </div>
@@ -243,7 +301,10 @@
   
   
   <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
   
+  
+  <script src="https://kibrac.github.io/js/search.js"></script>
   
   
   

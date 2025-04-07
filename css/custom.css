@@ -1,0 +1,110 @@
+/* 自定义样式 - 首页文章列表优化 */
+
+/* 首页最新文章列表样式优化 */
+.home-container .post-list-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em; /* 减小文章项之间的间距，使布局更紧凑 */
+}
+
+.home-container .post-item-simple {
+  padding: 0.5em 1em; /* 减小内边距，使布局更紧凑 */
+  border-bottom: none; /* 移除文章项之间的分割线 */
+  transition: background-color 0.2s ease;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.home-container .post-item-simple:hover {
+  background-color: var(--light-bg);
+}
+
+/* 隐藏首页最新文章中的分类与标签信息 */
+.home-container .post-meta-side {
+  display: none; /* 完全隐藏分类和标签容器 */
+}
+
+/* 保留其他页面的分类和标签样式 */
+.post-meta-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  margin-top: 0.5em;
+}
+
+/* 确保在移动设备上也能正常显示 */
+@media (max-width: 768px) {
+  .post-meta-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .home-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 作者信息板块样式 */
+.author-section {
+  height: fit-content;
+  /* 移除背景色、边框和内边距，使其与最新文章板块风格一致 */
+}
+
+.author-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.author-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1em;
+  object-fit: cover;
+  /* 移除头像边框 */
+}
+
+.author-name {
+  font-size: 1.3em;
+  margin: 0.5em 0;
+  color: var(--heading-color);
+}
+
+.author-bio {
+  color: var(--text-color);
+  line-height: 1.5;
+  font-size: 0.95em;
+  margin-top: 0.8em; /* 调整与社交图标的间距 */
+}
+
+.author-social-icons {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.5em 0; /* 调整上下边距 */
+}
+
+.author-social-icons .social-icon {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: none; /* 移除背景色 */
+  border: none; /* 移除边框 */
+  padding: 0; /* 移除内边距 */
+}
+
+.author-social-icons .social-icon:hover {
+  color: var(--accent-color);
+  transform: none; /* 移除位置变化效果 */
+  box-shadow: none; /* 移除阴影效果 */
+}
