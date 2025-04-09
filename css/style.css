@@ -15,15 +15,15 @@
   --border-color: #d6e4ff;
   --light-bg: #e6f0ff;
   --accent-color: #4299e1;
-  --code-bg: #f0f5fa;
+  --code-bg: #f8fafc;
   --code-color: #24292e;
-  --code-keyword: #d73a49;
-  --code-function: #6f42c1;
-  --code-string: #22863a;
-  --code-number: #005cc5;
-  --code-comment: #6a737d;
-  --code-operator: #d73a49;
-  --code-class: #e36209;
+  --code-keyword: #cf222e;
+  --code-function: #8250df;
+  --code-string: #0a7d33;
+  --code-number: #0550ae;
+  --code-comment: #6e7781;
+  --code-operator: #cf222e;
+  --code-class: #953800;
   --code-variable: #24292e;
   --blockquote-color: #4a5568;
   --tag-bg: #ebf4ff;
@@ -42,15 +42,15 @@ html.dark-mode {
   --border-color: #2d3748;
   --light-bg: #1a202c;
   --accent-color: #4299e1;
-  --code-bg: #1e293b;
+  --code-bg: #1a2234;
   --code-color: #e1e4e8;
   --code-keyword: #ff7b72;
   --code-function: #d2a8ff;
-  --code-string: #7ee787;
-  --code-number: #79c0ff;
-  --code-comment: #8b949e;
-  --code-operator: #ff7b72;
-  --code-class: #ffa657;
+  --code-string: #a5d6a7;
+  --code-number: #90caf9;
+  --code-comment: #9aa5b1;
+  --code-operator: #ff9e9e;
+  --code-class: #ffcc80;
   --code-variable: #e1e4e8;
   --blockquote-color: #a0aec0;
   --tag-bg: #2a4365;
@@ -126,9 +126,9 @@ code {
 /* 代码块容器 */
 .code-block-container {
   margin: 1.5em 0;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 3px 8px var(--shadow-color);
+  box-shadow: 0 4px 10px var(--shadow-color);
   transition: all 0.3s ease;
 }
 
@@ -180,14 +180,14 @@ code {
 
 pre {
   background-color: var(--code-bg);
-  padding: 1em;
-  border-radius: 0 0 8px 8px;
+  padding: 1.2em;
+  border-radius: 0 0 10px 10px;
   overflow-x: auto;
   margin: 0;
   border: none;
   position: relative;
   font-size: 0.95em;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* 行号样式 */
@@ -368,17 +368,17 @@ hr {
 }
 
 .menu-toggle {
-  display: none;
+  display: none; /* 默认隐藏，在小屏幕上通过媒体查询显示 */
   background: none;
   border: none;
   padding: 0.5em;
   cursor: pointer;
   position: relative;
   z-index: 10;
-  width: 30px;
-  height: 30px;
-  flex-direction: column;
-  justify-content: space-around;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-icon {
@@ -391,16 +391,12 @@ hr {
   transition: all 0.3s ease;
 }
 
-.menu-toggle.active .menu-icon:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+.menu-toggle.active svg {
+  transform: rotate(90deg);
 }
 
-.menu-toggle.active .menu-icon:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active .menu-icon:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.menu-toggle svg {
+  transition: transform 0.3s ease;
 }
 
 /* 移除冗余样式，统一使用.active类 */
@@ -409,6 +405,7 @@ hr {
 .header-actions {
   display: flex;
   align-items: center;
+  gap: 0.5em; /* 减小按钮之间的间距 */
 }
 
 .theme-toggle,
@@ -417,9 +414,21 @@ hr {
   border: none;
   color: var(--text-color);
   cursor: pointer;
-  padding: 0.5em;
-  margin-left: 1em;
+  padding: 0.4em;
+  margin: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.4em;
+  margin: 0;
+  display: none; /* 默认隐藏菜单按钮，只在移动设备上显示 */
   align-items: center;
   justify-content: center;
 }
@@ -1567,6 +1576,35 @@ html.dark-mode .moon-icon {
 }
 
 @media (max-width: 768px) {
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .site-branding {
+    order: 1;
+    flex: 1;
+  }
+  
+  .main-navigation {
+    order: 3;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .header-actions {
+    order: 2;
+    margin-right: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.3em; /* 在移动设备上进一步减小间距 */
+  }
+  
+  /* 确保菜单折叠按钮在小屏幕上显示 */
+  .menu-toggle {
+    display: flex !important;
+  }
+  
   .container {
     padding: 0 15px;
     width: 100%;
@@ -1600,18 +1638,28 @@ html.dark-mode .moon-icon {
     width: auto;
     margin-bottom: 0;
     position: relative;
-    order: 3;
-    flex-basis: 100%;
+    order: 2;
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
   }
   
   .menu-toggle {
-    display: flex;
-    margin-left: auto;
-    order: 2;
+    display: flex !important;
     z-index: 1001;
     background: transparent;
     padding: 0.5em;
     border-radius: 4px;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    color: var(--text-color);
   }
   
   .menu-toggle:hover {

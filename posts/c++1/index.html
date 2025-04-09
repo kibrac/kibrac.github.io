@@ -54,11 +54,6 @@
   </div>
   
   <nav class="main-navigation">
-    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-      <span class="menu-icon"></span>
-      <span class="menu-icon"></span>
-      <span class="menu-icon"></span>
-    </button>
     
     <ul class="menu" id="primary-menu">
       
@@ -83,14 +78,17 @@
         <a href="/tags/" >标签</a>
       </li>
       
-      <li class="menu-item  ">
-        <a href="/projects/" >项目</a>
-      </li>
-      
     </ul>
   </nav>
   
   <div class="header-actions">
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
     
     <div class="search-container">
       <button class="search-toggle" aria-label="搜索">
@@ -172,16 +170,16 @@
     
     <div class="post-content">
       <p>课程链接：<a href="https://www.icourse163.org/course/PKU-1002029030">程序设计与算法（三）C++面向对象程序设计_北京大学_中国大学MOOC(慕课)</a></p>
-<h2 id="1-引用">1. 引用</h2>
+<h2 id="1引用">1.引用</h2>
 <h3 id="引用写法">引用写法</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">类型名</span> <span style="color:#f92672">&amp;</span> <span style="color:#960050;background-color:#1e0010">引用名</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">某变量名</span>
-</span></span></code></pre></div><ul>
-<li>定义引用是一定要将其<em>初始化</em>成引用某个变量</li>
+<pre tabindex="0"><code>类型名 &amp; 引用名 = 某变量名
+</code></pre><ul>
+<li>定义引用是一定要将其<strong>初始化</strong>成引用某个变量</li>
 <li>初始化后，它就一直引用该变量，不会再引用别的变量了</li>
 <li>引用只能引用变量，不能引用常量和表达式</li>
 </ul>
 <p>引用应用的简单举例：两数交换</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swap</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span> a,<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span> b)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swap</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span> a,<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span> b)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> tmp;
 </span></span><span style="display:flex;"><span>	tmp<span style="color:#f92672">=</span>a;a<span style="color:#f92672">=</span>b;b<span style="color:#f92672">=</span>tmp;
@@ -194,21 +192,21 @@
 <ul>
 <li>不能通过常引用去修改其引用的内容</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span> r<span style="color:#f92672">=</span>n;
 </span></span><span style="display:flex;"><span>r<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>;<span style="color:#75715e">//编译错
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>n<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>;<span style="color:#75715e">//没问题
 </span></span></span></code></pre></div><p><strong>const T &amp; 和 T &amp; 是不同的类型！</strong></p>
 <ul>
 <li>T &amp; 类型的引用或 T 类型的变量可以用来初始化 const T &amp; 类型的引用</li>
-<li>const T 类型的常变量和 const T &amp; 类型的引用则不能用来初始化 T &amp; 类型的引用，除非进行<em>强制类型转换</em>。</li>
+<li>const T 类型的常变量和 const T &amp; 类型的引用则不能用来初始化 T &amp; 类型的引用，除非进行<strong>强制类型转换</strong>。</li>
 </ul>
 <h2 id="2const-关键字">2.const 关键字</h2>
 <p>常量指针 <code>const int *</code></p>
 <ul>
 <li>不可通过常量指针修改其指向的内容</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n,m;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n,m;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>n;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>p<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;<span style="color:#75715e">//编译出错
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>n<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>;<span style="color:#75715e">//ok
@@ -216,14 +214,14 @@
 </span></span></span></code></pre></div><ul>
 <li>不能把常量指针赋值给非常量指针，反过来可以</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p1;<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p2;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p1;<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p2;
 </span></span><span style="display:flex;"><span>p1<span style="color:#f92672">=</span>p2;<span style="color:#75715e">//ok
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>p2<span style="color:#f92672">=</span>p1;<span style="color:#75715e">//error
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>p2<span style="color:#f92672">=</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span>)p1;<span style="color:#75715e">//ok，强制类型转换
 </span></span></span></code></pre></div><ul>
 <li>函数参数为常量指针时，可避免函数内部不小心改变参数指针所指地方的内容</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">MyPrintf</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> p)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">MyPrintf</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> p)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	strcpy(p,<span style="color:#e6db74">&#34;this&#34;</span>);<span style="color:#75715e">//编译出错
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	printf(<span style="color:#e6db74">&#34;%s&#34;</span>,p);<span style="color:#75715e">//ok
@@ -231,44 +229,44 @@
 </span></span></code></pre></div><h2 id="3动态内存分配">3.动态内存分配</h2>
 <h3 id="用-new-运算符实现动态内存分配">用 new 运算符实现动态内存分配</h3>
 <h4 id="第一种用法-分配一个变量">第一种用法 分配一个变量</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>P <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T;
-</span></span></code></pre></div><p>T 是任意<strong>类型名</strong>，P 是类型为 <code>T *</code> 的指针，动态分配出一片大小为 <em>sizeof(T)</em> 字节的内存空间，并且将该内存空间的起始地址复制给 P。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> pn;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>P <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T;
+</span></span></code></pre></div><p>T 是任意<strong>类型名</strong>，P 是类型为 <code>T *</code> 的指针，动态分配出一片大小为 <strong>sizeof(T)</strong> 字节的内存空间，并且将该内存空间的起始地址复制给 P。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> pn;
 </span></span><span style="display:flex;"><span>pn<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">*</span> pn<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
 </span></span></code></pre></div><h4 id="第二种用法-分配一个数组">第二种用法 分配一个数组</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>P <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T[N];
-</span></span></code></pre></div><p>T 是任意<strong>类型名</strong>，P 是类型为 <code>T *</code> 的指针，N 是要分配的数组元素的个数，可以是<em>整形表达式</em>，动态分配出一片大小为 N*sizeof(T) 字节的内存空间，并且将该内存空间的<strong>起始地址</strong>赋值给 P。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> pn;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>P <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T[N];
+</span></span></code></pre></div><p>T 是任意<strong>类型名</strong>，P 是类型为 <code>T *</code> 的指针，N 是要分配的数组元素的个数，可以是<strong>整形表达式</strong>，动态分配出一片大小为 N*sizeof(T) 字节的内存空间，并且将该内存空间的<strong>起始地址</strong>赋值给 P。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> pn;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
 </span></span><span style="display:flex;"><span>pn<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[i<span style="color:#f92672">*</span><span style="color:#ae81ff">20</span>];
 </span></span><span style="display:flex;"><span>pn[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>;
 </span></span><span style="display:flex;"><span>pn[<span style="color:#ae81ff">100</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>;<span style="color:#75715e">//编译没问题，运行时数组越界
 </span></span></span></code></pre></div><h3 id="用-delete-运算符释放动态分配的内存">用 delete 运算符释放动态分配的内存</h3>
-<p><em>用“new”动态分配的内存空间，一定要用“delete”运算符进行释放</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#960050;background-color:#1e0010">指针</span>;<span style="color:#75715e">//该指针必须指向new出来的空间
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>;
+<p><strong>用“new”动态分配的内存空间，一定要用“delete”运算符进行释放</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#960050;background-color:#1e0010">指针</span>;<span style="color:#75715e">//该指针必须指向new出来的空间
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">*</span> p<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> p;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> p;<span style="color:#75715e">//导致异常，一片空间不能多次被delete
 </span></span></span></code></pre></div><h3 id="用-delete-运算符释放动态分配的数组">用 delete 运算符释放动态分配的数组</h3>
-<p><em>用“delete”释放动态分配的数组，要加“[]”</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> [] <span style="color:#960050;background-color:#1e0010">指针</span>;<span style="color:#75715e">//该指针必须指向new出来的数组
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[<span style="color:#ae81ff">20</span>];
+<p><strong>用“delete”释放动态分配的数组，要加“[]”</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> [] <span style="color:#960050;background-color:#1e0010">指针</span>;<span style="color:#75715e">//该指针必须指向new出来的数组
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[<span style="color:#ae81ff">20</span>];
 </span></span><span style="display:flex;"><span>p[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> []p;
 </span></span></code></pre></div><h2 id="4内联函数函数重载函数缺省参数">4.内联函数、函数重载、函数缺省参数</h2>
 <h3 id="内联函数">内联函数</h3>
 <p>在函数定义前面加“inline”关键字，即可定义内联函数</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">int</span> a,<span style="color:#66d9ef">int</span> b)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">int</span> a,<span style="color:#66d9ef">int</span> b)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(a<span style="color:#f92672">&gt;</span>b)<span style="color:#66d9ef">return</span> a;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> b;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="函数重载">函数重载</h3>
-<p>一个或多个函数，名字相同，然而<em>参数个数</em>或<em>参数类型</em>不相同，这叫做函数的重载。</p>
+<p>一个或多个函数，名字相同，然而<strong>参数个数</strong>或<strong>参数类型</strong>不相同，这叫做函数的重载。</p>
 <p>以下三个函数是重载关系</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">double</span> f1,<span style="color:#66d9ef">double</span> f2){}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">double</span> f1,<span style="color:#66d9ef">double</span> f2){}
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">int</span> n1,<span style="color:#66d9ef">int</span> n2){}
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">int</span> n1,<span style="color:#66d9ef">int</span> n2,<span style="color:#66d9ef">int</span> n3){}
 </span></span></code></pre></div><ul>
@@ -277,7 +275,7 @@
 </ul>
 <h3 id="函数的缺省参数">函数的缺省参数</h3>
 <p>C++ 中，定义函数的时候可以让<strong>最右边的连续若干个</strong>参数有<strong>缺省值</strong>，那么调用函数的时候，若相应位置不写参数，参数就是<strong>缺省值</strong>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> x1,<span style="color:#66d9ef">int</span> x2<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">int</span> x3<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>){}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> x1,<span style="color:#66d9ef">int</span> x2<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">int</span> x3<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>){}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>func(<span style="color:#ae81ff">10</span>);<span style="color:#75715e">//等效于func(10,2,3)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>func(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">8</span>);<span style="color:#75715e">//等效于func(10,8,3)
@@ -289,10 +287,10 @@
 <h3 id="从客观事物中抽象出类">从客观事物中抽象出类</h3>
 <p><img src="https://raw.githubusercontent.com/kibrac/img_vault/main/Obsidian_img/202504071705153.png" alt="image.png"></p>
 <ul>
-<li>将长、宽变量和设置长、宽，求面积，以及求周长的三个函数<em>封装</em>在一起，就能形成一个<em>矩形类</em>。</li>
-<li>长、宽变量成为该“矩形类”的<em>成员变量</em>，三个函数成为该类的<em>成员函数</em>。成员变量和成员函数统称为<em>类的成员</em>。</li>
+<li>将长、宽变量和设置长、宽，求面积，以及求周长的三个函数<strong>封装</strong>在一起，就能形成一个<strong>矩形类</strong>。</li>
+<li>长、宽变量成为该“矩形类”的<strong>成员变量</strong>，三个函数成为该类的<strong>成员函数</strong>。成员变量和成员函数统称为<strong>类的成员</strong>。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CRectangle</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CRectangle</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> w,h;
@@ -308,7 +306,7 @@
 </span></span><span style="display:flex;"><span>		}
 </span></span><span style="display:flex;"><span>};<span style="color:#75715e">//必须有分号
 </span></span></span></code></pre></div><p>如何使用类？</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> w,h;
 </span></span><span style="display:flex;"><span>	CRectangle r;<span style="color:#75715e">//r是一个对象
@@ -332,29 +330,29 @@
 <li>
 <p><strong>比较（<code>==</code>、<code>&gt;</code> 等）</strong>：<br>
 但如果你想比较两本书哪本更厚，复印机不会自动判断——除非你<strong>亲自告诉它规则</strong>（重载运算符）。比如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;</span>(Book a, Book b) { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a.page_count <span style="color:#f92672">&gt;</span> b.page_count; 
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>这样 <code>book1 &gt; book2</code> 就能比较页数了。</p>
 </li>
 </ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;</span>(Book a, Book b) { 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> a.page_count <span style="color:#f92672">&gt;</span> b.page_count;  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样 <code>book1 &gt; book2</code> 就能比较页数了。</p>
 <p>为什么这样设计？</p>
 <p>• <strong>赋值</strong>：对象内部可能有复杂数据，直接复制内存是最简单的默认行为。<br>
 • <strong>比较</strong>：不同对象比较规则不同（比如学生按分数比，汽车按价格比），必须由程序员自定义。</p>
 <p>简单说：<strong><code>=</code> 是 &quot; 无脑复制 &ldquo;，而 <code>==</code> 需要你教计算机怎么比</strong>。</p>
 <h3 id="使用类的成员变量和成员函数">使用类的成员变量和成员函数</h3>
 <p>用法一：对象名.成员名</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>CRectangle r1,r2;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CRectangle r1,r2;
 </span></span><span style="display:flex;"><span>r1.w<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
 </span></span><span style="display:flex;"><span>r2.Init(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>);<span style="color:#75715e">//Init 函数作用在r2上，访问到的w，h是属于r2这个对象的，不会影响到r1
-</span></span></span></code></pre></div><p>用法二：指针-&gt;成员名</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>CRectangle r1,r2;
+</span></span></span></code></pre></div><p>用法二：指针 -&gt;成员名</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CRectangle r1,r2;
 </span></span><span style="display:flex;"><span>CRectangle <span style="color:#f92672">*</span> p1<span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span> r1;
 </span></span><span style="display:flex;"><span>CRectangle <span style="color:#f92672">*</span> p2<span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span> r2;
 </span></span><span style="display:flex;"><span>p1<span style="color:#f92672">-&gt;</span>w<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
 </span></span><span style="display:flex;"><span>p2<span style="color:#f92672">-&gt;</span>Init(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>);<span style="color:#75715e">//Init 作用在 p2 指向的对象上
 </span></span></span></code></pre></div><p>用法三：引用名.成员名</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>CRectangle r2;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CRectangle r2;
 </span></span><span style="display:flex;"><span>CRectangle <span style="color:#f92672">&amp;</span> rr <span style="color:#f92672">=</span> r2;
 </span></span><span style="display:flex;"><span>rr.w<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
 </span></span><span style="display:flex;"><span>rr.Init(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>);<span style="color:#75715e">//rr的值变，r2的值也变
@@ -385,7 +383,7 @@
   <div class="toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-引用">1. 引用</a>
+    <li><a href="#1引用">1.引用</a>
       <ul>
         <li><a href="#引用写法">引用写法</a></li>
         <li><a href="#常引用">常引用</a></li>

@@ -1,5 +1,13 @@
 /* 自定义样式 - 首页文章列表优化 */
 
+/* 文章描述样式 */
+.post-description {
+  font-size: 0.9em;
+  color: var(--meta-color);
+  margin-top: 0.3em;
+  line-height: 1.4;
+}
+
 /* 首页最新文章列表样式优化 */
 .home-container .post-list-simple {
   display: flex;
