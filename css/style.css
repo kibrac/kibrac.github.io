@@ -1078,6 +1078,28 @@ html.dark-mode .post-content strong {
   margin: 1.5em 0;
 }
 
+/* 版权声明 */
+.post-copyright {
+  margin: 2em 0;
+  padding: 1.5em;
+  background-color: var(--light-bg);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-color);
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.copyright-info p {
+  margin: 0.5em 0;
+  color: var(--text-color);
+}
+
+.copyright-info a {
+  word-break: break-all;
+  border-bottom: 1px dashed var(--accent-color);
+}
+
+/* Post Navigation */
 .post-navigation {
   display: flex;
   justify-content: space-between;
