@@ -132,6 +132,23 @@ code {
   transition: all 0.3s ease;
 }
 
+/* KaTeX 数学公式样式 */
+.katex {
+  font-size: 1.1em;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+}
+
+/* 暗色模式下的KaTeX样式调整 */
+html.dark-mode .katex .katex-html {
+  color: var(--text-color);
+}
+
 .code-block-container:hover {
   box-shadow: 0 5px 15px var(--shadow-color);
   transform: translateY(-2px);
@@ -1042,6 +1059,19 @@ html.dark-mode .moon-icon {
 
 .post-content {
   margin-bottom: 2em;
+}
+
+/* 优化加粗文本样式，使其更加明显 */
+.post-content strong {
+  font-weight: 800;
+  color: var(--heading-color);
+  border-bottom: 1px solid var(--accent-color);
+  padding-bottom: 1px;
+}
+
+html.dark-mode .post-content strong {
+  color: #ffffff;
+  border-bottom-color: var(--accent-color);
 }
 
 .post-content img {

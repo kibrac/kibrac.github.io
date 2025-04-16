@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
   
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  
+  
   <script>
     
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -90,21 +93,6 @@
       </svg>
     </button>
     
-    <div class="search-container">
-      <button class="search-toggle" aria-label="搜索">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </button>
-      <div class="search-form-container">
-        <form class="search-form" role="search">
-          <input type="search" class="search-input" placeholder="搜索..." aria-label="搜索">
-          <button type="submit" class="search-submit">搜索</button>
-        </form>
-      </div>
-    </div>
-    
     
     <button class="theme-toggle" aria-label="切换主题">
       <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -125,16 +113,6 @@
   </div>
 </div>
 
-
-<div class="search-results">
-  <div class="search-results-container">
-    <div class="search-results-header">
-      <h2>搜索结果</h2>
-      <button class="close-search">&times;</button>
-    </div>
-    <div class="search-results-list"></div>
-  </div>
-</div>
 
     </header>
     
@@ -285,7 +263,17 @@
 <h2 id="5类和对象的基本概念">5.类和对象的基本概念</h2>
 <p>面向对象的程序设计具有<strong>抽象、封装、继承、多态</strong>四个基本特点。</p>
 <h3 id="从客观事物中抽象出类">从客观事物中抽象出类</h3>
-<p><img src="https://raw.githubusercontent.com/kibrac/img_vault/main/Obsidian_img/202504071705153.png" alt="image.png"></p>
+<blockquote>
+<p><strong>举例</strong>
+写一个程序，输入矩形的长和宽，输出面积和周长</p>
+<blockquote>
+<p>比如对于“矩形”这种东西，要用一个类表示，该如何做抽象？</p>
+<blockquote>
+<p>矩形的属性就是长和宽。因此需要两个变量，分别代表长和宽。</p></blockquote>
+<p>一个矩形，可以有哪些行为呢？</p>
+<blockquote>
+<p>矩形可以设置长和宽，算面积以及算周长这三种行为（当然也可以设置其他行为）
+这三种行为，可以各用一个函数来实现，他们都需要用到长和宽这两个变量。</p></blockquote></blockquote></blockquote>
 <ul>
 <li>将长、宽变量和设置长、宽，求面积，以及求周长的三个函数<strong>封装</strong>在一起，就能形成一个<strong>矩形类</strong>。</li>
 <li>长、宽变量成为该“矩形类”的<strong>成员变量</strong>，三个函数成为该类的<strong>成员函数</strong>。成员变量和成员函数统称为<strong>类的成员</strong>。</li>
@@ -449,7 +437,22 @@
   <script src="https://kibrac.github.io/js/code-block.js"></script>
   
   
-  <script src="https://kibrac.github.io/js/search.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+  
   
   
   

@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
   
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  
+  
   <script>
     
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -90,21 +93,6 @@
       </svg>
     </button>
     
-    <div class="search-container">
-      <button class="search-toggle" aria-label="搜索">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </button>
-      <div class="search-form-container">
-        <form class="search-form" role="search">
-          <input type="search" class="search-input" placeholder="搜索..." aria-label="搜索">
-          <button type="submit" class="search-submit">搜索</button>
-        </form>
-      </div>
-    </div>
-    
     
     <button class="theme-toggle" aria-label="切换主题">
       <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -125,16 +113,6 @@
   </div>
 </div>
 
-
-<div class="search-results">
-  <div class="search-results-container">
-    <div class="search-results-header">
-      <h2>搜索结果</h2>
-      <button class="close-search">&times;</button>
-    </div>
-    <div class="search-results-list"></div>
-  </div>
-</div>
 
     </header>
     
@@ -249,7 +227,22 @@
   <script src="https://kibrac.github.io/js/code-block.js"></script>
   
   
-  <script src="https://kibrac.github.io/js/search.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+  
   
   
   
