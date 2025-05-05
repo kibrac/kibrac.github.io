@@ -1,13 +1,25 @@
 // PointFive Theme JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Theme Toggle
+  // 侧边栏菜单切换
+  const menuToggle = document.querySelector('.menu-toggle');
+  const sidebar = document.querySelector('.site-sidebar');
+  
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', function() {
+      menuToggle.classList.toggle('active');
+      sidebar.classList.toggle('expanded');
+      document.body.classList.toggle('sidebar-open');
+    });
+  }
+  
+  // 主题切换
   const themeToggle = document.querySelector('.theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', function() {
       document.documentElement.classList.toggle('dark-mode');
       
-      // Save preference to localStorage
+      // 保存偏好到localStorage
       if (document.documentElement.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
       } else {
@@ -16,8 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Mobile Menu Toggle
-  const menuToggle = document.querySelector('.menu-toggle');
+  // 旧的移动菜单切换（保留以兼容旧代码）
   const menu = document.querySelector('.menu');
   const mainNavigation = document.querySelector('.main-navigation');
   
