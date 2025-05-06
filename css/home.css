@@ -1,0 +1,135 @@
+/* 首页特定样式 */
+
+.home-content {
+    margin-top: 0;
+}
+
+/* 最近文章部分 */
+.recent-posts {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* 社交链接样式 */
+.sidebar .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px 0;
+    gap: 10px;
+}
+
+.sidebar .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--social-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .social-links a:hover {
+    transform: translateY(-3px);
+    background-color: var(--link-color);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-link:hover {
+    background-color: #e1e1e1;
+    text-decoration: none;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.page-item.active .page-link {
+    background-color: #0366d6;
+    color: #fff;
+    border-color: #0366d6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .author-avatar {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* 标签和分类列表样式 */
+.terms-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.term-item {
+    margin: 0 10px 10px 0;
+}
+
+.term-link {
+    display: block;
+    padding: 8px 15px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.term-link:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+.term-count {
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}

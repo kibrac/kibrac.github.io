@@ -1,0 +1,44 @@
+/* 社交媒体图标样式 */
+.social-links {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--social-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    background-color: var(--link-color);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* 深色模式下的社交图标 */
+[data-theme="dark"] .social-links a {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .social-links a:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}

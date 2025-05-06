@@ -1,0 +1,233 @@
+/* 主题颜色变量 */
+:root {
+    /* 浅色模式（默认）*/
+    --bg-color: #f8f9fa;
+    --content-bg: #fff;
+    --text-color: #333;
+    --text-muted: #666;
+    --link-color: #0366d6;
+    --link-hover: #0256b9;
+    --border-color: #eee;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --menu-hover: #f1f1f1;
+    --social-bg: #f1f1f1;
+    --social-hover: #e0e0e0;
+}
+
+/* 深色模式 */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --content-bg: #1e1e1e;
+    --text-color: #f0f0f0;
+    --text-muted: #bbb;
+    --link-color: #64b5f6;
+    --link-hover: #90caf9;
+    --border-color: #333;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    --menu-hover: #2c2c2c;
+    --social-bg: #2c2c2c;
+    --social-hover: #3d3d3d;
+}
+
+/* 应用主题变量 */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+.sidebar {
+    background-color: var(--content-bg);
+    box-shadow: var(--shadow);
+}
+
+.site-title {
+    color: var(--text-color);
+}
+
+.author-bio {
+    color: var(--text-muted);
+}
+
+.menu-item {
+    color: var(--text-muted);
+}
+
+.menu-item:hover {
+    background-color: var(--menu-hover);
+}
+
+.post-item, .post, .recent-posts {
+    background-color: var(--content-bg);
+    box-shadow: var(--shadow);
+}
+
+.post-meta {
+    color: var(--text-muted);
+}
+
+.section-title {
+    border-bottom-color: var(--border-color);
+}
+
+.social-links a {
+    background-color: var(--social-bg);
+    color: var(--text-color);
+}
+
+.social-links a:hover {
+    background-color: var(--social-hover);
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.theme-toggle-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-2px);
+    color: var(--link-color);
+}
+
+.theme-toggle-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .layout-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+        overflow-y: visible;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .sidebar-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .author-section {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        flex: 1;
+    }
+    
+    .author-avatar {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .author-avatar img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .sidebar-nav {
+        width: 100%;
+        order: 3;
+    }
+    
+    .social-links {
+        order: 2;
+    }
+    
+    .theme-toggle {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        order: 4;
+    }
+}
+
+@media (max-width: 576px) {
+    .post, .post-item, .recent-posts {
+        padding: 15px;
+    }
+    
+    .post-title {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .author-section {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .author-avatar {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .author-avatar img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .author-name {
+        font-size: 1.2rem;
+    }
+    
+    .author-bio {
+        font-size: 0.9rem;
+    }
+    
+    .social-links {
+        margin: 10px 0;
+    }
+    
+    .social-links a {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .theme-toggle-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

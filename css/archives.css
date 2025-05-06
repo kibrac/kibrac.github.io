@@ -1,0 +1,70 @@
+/* 归档页面样式 */
+
+.archives {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.archive-year {
+    margin-bottom: 30px;
+}
+
+.year-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.archive-month {
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.month-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.archive-posts {
+    list-style: none;
+    margin-left: 15px;
+}
+
+.archive-post {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: #666;
+    width: 60px;
+    margin-right: 15px;
+}
+
+.archive-post .post-title {
+    color: #0366d6;
+}
+
+.archive-post .post-title:hover {
+    text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .archive-post {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+    
+    .post-date {
+        margin-bottom: 5px;
+    }
+}
