@@ -1,286 +1,191 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en-us">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tags - Kibrac&#39;s Blog</title>
+  <meta name="description" content="">
+  
+  
+  <link rel="icon" type="image/png" href="https://kibrac.github.io/favicon.png">
+  
+  
+  <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  
+  
+  <script>
     
-    <title>Tags - </title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="Kibrac">
-    
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kibrac.github.io/tags/">
-    <meta property="og:title" content="Tags - ">
-    <meta property="og:description" content="">
-    
-    
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://kibrac.github.io/tags/">
-    <meta property="twitter:title" content="Tags - ">
-    <meta property="twitter:description" content="">
-    
-    
-    
-    <link rel="canonical" href="https://kibrac.github.io/tags/">
-    
-    
-    <link rel="preload" href="/css/style.css" as="style">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="preload" href="/css/theme.css" as="style">
-    <link rel="stylesheet" href="/css/theme.css">
-    <link rel="preload" href="/css/social.css" as="style">
-    <link rel="stylesheet" href="/css/social.css">
-    
-    
-    
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
-    <link rel="dns-prefetch" href="//kibrac.github.io">
-    <link rel="preconnect" href="https://kibrac.github.io/">
-    
-    
-    <link rel="preload" href="/js/theme.js" as="script">
-    <link rel="preload" href="/js/toc.js" as="script">
-    
-    
-    <script>
-        
-        function checkImageSupport() {
-            
-            var webpImg = new Image();
-            webpImg.onload = function() {
-                var result = (webpImg.width > 0) && (webpImg.height > 0);
-                localStorage.setItem('webpSupport', result ? 'true' : 'false');
-            };
-            webpImg.onerror = function() {
-                localStorage.setItem('webpSupport', 'false');
-            };
-            webpImg.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
-            
-            
-            var avifImg = new Image();
-            avifImg.onload = function() {
-                var result = (avifImg.width > 0) && (avifImg.height > 0);
-                localStorage.setItem('avifSupport', result ? 'true' : 'false');
-            };
-            avifImg.onerror = function() {
-                localStorage.setItem('avifSupport', 'false');
-            };
-            avifImg.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=';
-        }
-        checkImageSupport();
-    </script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+  
+  <meta property="og:url" content="https://kibrac.github.io/tags/">
+  <meta property="og:site_name" content="Kibrac&#39;s Blog">
+  <meta property="og:title" content="Tags">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tags">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
+
+  
 </head>
 <body>
-    <div class="layout-container">
-        
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                
-                <a href="https://kibrac.github.io/" class="site-title"></a>
-                
-                
-                <div class="author-section">
-                    
-                    <div class="author-avatar">
-                        
-                        <img src="/images/avatar.jpg" alt="Kibrac" loading="lazy" decoding="async">
-                    </div>
-                    
-                    <div class="author-info">
-                        <h3 class="author-name">Kibrac</h3>
-                        
-                        <p class="author-bio">悲观者总是正确，乐观者始终前行</p>
-                        
-                    </div>
-                </div>
-                
-                
-                <div class="social-links">
-                    
-                    <a href="https://github.com/kibrac" target="_blank" aria-label="GitHub" title="GitHub">
-                        <svg class="social-icon"><use xlink:href="/icons/social-icons.svg#icon-github"></use></svg>
-                    </a>
-                    
-                    
-                    <a href="https://x.com/kibra_chen" target="_blank" aria-label="Twitter" title="Twitter">
-                        <svg class="social-icon"><use xlink:href="/icons/social-icons.svg#icon-twitter"></use></svg>
-                    </a>
-                    
-                    
-                    <a href="https://blog.csdn.net/qq_65728717" target="_blank" aria-label="CSDN" title="CSDN">
-                        <svg class="social-icon"><use xlink:href="/icons/social-icons.svg#icon-csdn"></use></svg>
-                    </a>
-                    
-                    
-                    <a href="mailto:kibrachen@outlook.com" aria-label="Email" title="Email">
-                        <svg class="social-icon"><use xlink:href="/icons/social-icons.svg#icon-email"></use></svg>
-                    </a>
-                    
-                    
-                </div>
-                
-                
-                <nav class="sidebar-nav">
-                    <ul class="main-menu">
-                        
-                        <li><a href="/" class="menu-item">首页</a></li>
-                        
-                        <li><a href="/posts/" class="menu-item">文章</a></li>
-                        
-                        <li><a href="/archives/" class="menu-item">归档</a></li>
-                        
-                        <li><a href="/categories/" class="menu-item">分类</a></li>
-                        
-                        <li><a href="/tags/" class="menu-item">标签</a></li>
-                        
-                        <li><a href="/about/" class="menu-item">关于</a></li>
-                        
-                    </ul>
-                </nav>
-                
-                
-                <div class="theme-toggle">
-                    <button id="theme-toggle-btn" class="theme-toggle-btn">
-                        <span id="theme-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                        </span>
-                        <span id="theme-text" style="display:none">切换到深色</span>
-                    </button>
-                </div>
-            </div>
-        </aside>
-        
-        
-        <main class="main-content">
-            
-<div class="taxonomy-list">
-    <h1 class="page-title">Tags</h1>
-    <ul class="terms-list">
-        
-        <li class="term-item">
-            <a href="https://kibrac.github.io/tags/c&#43;&#43;/" class="term-link">
-                <span class="term-name">C&#43;&#43;</span>
-                <span class="term-count">(3)</span>
-            </a>
-        </li>
-        
-        <li class="term-item">
-            <a href="https://kibrac.github.io/tags/%E5%BB%BA%E7%AB%99/" class="term-link">
-                <span class="term-name">建站</span>
-                <span class="term-count">(1)</span>
-            </a>
-        </li>
-        
+  <div class="container">
+    <header class="site-header">
+      <div class="header-container">
+  <div class="site-branding">
+    <a href="/" class="site-title">Kibrac&#39;s Blog</a>
+    
+  </div>
+  
+  <nav class="main-navigation">
+    
+    <ul class="menu" id="primary-menu">
+      
+      
+      <li class="menu-item  ">
+        <a href="/" class="home-link">首页</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/posts/" >文章</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/archives/" >归档</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/categories/" >分类</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/tags/" >标签</a>
+      </li>
+      
     </ul>
+  </nav>
+  
+  <div class="header-actions">
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    
+    
+    <button class="theme-toggle" aria-label="切换主题">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
 </div>
 
-        </main>
+
+    </header>
+    
+    <main class="main-content">
+      
+<div class="list-container">
+  <header class="list-header">
+    <h1 class="list-title">Tags</h1>
+    
+  </header>
+  
+  <div class="tags-cloud-container">
+    <div class="tag-cloud">
+      
+      <a href="https://kibrac.github.io/tags/c&#43;&#43;/" class="tag-cloud-item" style="font-size: 0.9647918433002165rem;">
+        C&#43;&#43; <span class="tag-count">(3)</span>
+      </a>
+      
+      <a href="https://kibrac.github.io/tags/%E5%BB%BA%E7%AB%99/" class="tag-cloud-item" style="font-size: 0.8rem;">
+        建站 <span class="tag-count">(1)</span>
+      </a>
+      
     </div>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Kibrac. All rights reserved.</p>
-        </div>
+  </div>
+</div>
+
+
+<script src="/js/tag-cloud.js"></script>
+
+    </main>
+    
+    <footer class="site-footer">
+      <div class="footer-container">
+  <div class="footer-wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+    </svg>
+  </div>
+  
+  <div class="footer-content">
+    <div class="footer-info">
+      <p class="copyright">&copy; 2025 Kibrac&#39;s Blog. All rights reserved.</p>
+      
+      
+    </div>
+    
+    
+  </div>
+  
+  <div class="footer-bottom">
+    
+  </div>
+</div>
     </footer>
-    
-    <script src="/js/theme.js" defer async></script>
-    <script src="/js/toc.js" defer async></script>
-    <script src="/js/image-optimizer.min.js" defer async></script>
-    
-    
-    <link rel="preload" href="/fonts/main-font.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/js/image-optimizer.min.js" as="script">
-    
-    
-    <script>
-    if ('performance' in window && 'PerformanceObserver' in window) {
-        
-        const observer = new PerformanceObserver((list) => {
-            for (const entry of list.getEntries()) {
-                
-                if (entry.entryType === 'largest-contentful-paint') {
-                    console.log(`LCP: ${entry.startTime}`);
-                } else if (entry.entryType === 'first-input') {
-                    console.log(`FID: ${entry.processingStart - entry.startTime}`);
-                } else if (entry.entryType === 'layout-shift') {
-                    console.log(`CLS: ${entry.value}`);
-                }
-            }
-        });
-        
-        
-        observer.observe({entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift']});
-    }
-    </script>
-    
-    
-    <script>
-        
-        if ('loading' in HTMLImageElement.prototype) {
-            
-            console.log('Browser supports native lazy loading');
-        } else {
-            
-            const script = document.createElement('script');
-            script.src = '\/js\/lazysizes.min.js';
-            script.async = true;
-            document.body.appendChild(script);
-            
-            
-            document.addEventListener('DOMContentLoaded', function() {
-                const images = document.querySelectorAll('img[loading="lazy"]');
-                images.forEach(img => {
-                    img.classList.add('lazyload');
-                    img.setAttribute('data-src', img.src);
-                    
-                    if (img.width && img.height) {
-                        
-                        const ratio = (img.height / img.width * 100).toFixed(2);
-                        const placeholder = `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${img.width} ${img.height}" width="${img.width}" height="${img.height}"%3E%3Crect width="100%" height="100%" fill="%23f0f0f0"%3E%3C/rect%3E%3C/svg%3E`;
-                        img.src = placeholder;
-                        
-                        if (img.parentNode) {
-                            img.parentNode.style.position = 'relative';
-                            img.parentNode.style.paddingBottom = `${ratio}%`;
-                            img.parentNode.style.height = '0';
-                            img.parentNode.style.overflow = 'hidden';
-                            img.style.position = 'absolute';
-                            img.style.top = '0';
-                            img.style.left = '0';
-                            img.style.width = '100%';
-                            img.style.height = '100%';
-                        }
-                    } else {
-                        img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
-                    }
-                });
-            });
-        }
-        
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            images.forEach(img => {
-                img.addEventListener('load', function() {
-                    
-                    img.style.transition = 'opacity 0.3s ease-in';
-                    img.style.opacity = '1';
-                });
-                
-                img.style.opacity = '0';
-            });
-        });
-    </script>
+  </div>
+  
+  
+  <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
+  
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+  
+  
+  
+  
 </body>
 </html>
