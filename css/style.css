@@ -896,12 +896,12 @@ html.dark-mode .moon-icon {
 
 .post-item-simple {
   padding: 0.8em 1em;
-  border-bottom: 1px solid var(--border-color);
   transition: background-color 0.2s ease;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1em;
+  margin-bottom: 0.5em;
 }
 
 .post-item-simple:hover {
@@ -1849,22 +1849,11 @@ html.dark-mode .post-content strong {
 .list-header {
   margin-bottom: 2.5em;
   padding-bottom: 1.2em;
-  border-bottom: 1px solid var(--border-color);
   text-align: center;
   position: relative;
 }
 
-.list-header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: var(--accent-color);
-  border-radius: 3px;
-}
+
 
 .list-title {
   margin-bottom: 0.5em;
@@ -1907,7 +1896,6 @@ html.dark-mode .post-content strong {
 
 .archive-year .post-list-simple {
   margin-left: 0.5em;
-  border-left: 2px solid var(--border-color);
   padding-left: 1em;
 }
 
@@ -1916,17 +1904,7 @@ html.dark-mode .post-content strong {
   padding: 0.5em 0.8em;
 }
 
-.archive-year .post-item-simple::before {
-  content: '';
-  position: absolute;
-  left: -1.65em;
-  top: 1.5em;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--accent-color);
-  border: 2px solid var(--bg-color);
-}
+
 
 /* Legacy Archives Styles - Kept for compatibility */
 .archives-list {
