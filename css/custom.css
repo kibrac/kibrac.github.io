@@ -112,6 +112,7 @@
   margin-bottom: 1.5rem;
   padding-bottom: 0.8rem;
   border-bottom: 2px solid var(--border-color);
+  position: relative;
 }
 
 .section-title {
@@ -121,6 +122,20 @@
   margin: 0;
   /* 移除查看全部按钮后，标题占据全部空间 */
   width: 100%;
+  position: relative;
+  display: flex; /* Added for consistency */
+  align-items: center; /* Added for consistency */
+  line-height: 1.4; /* Added for consistent vertical spacing */
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.8rem;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
 }
 
 /* 移除查看全部按钮 */
@@ -147,10 +162,8 @@
   border: 1px solid var(--border-color);
   position: relative;
   margin-bottom: 1.5rem;
-  height: 240px; /* 减少高度 */
-  max-width: 1000px; /* 增加最大宽度 */
-  margin-left: auto;
-  margin-right: auto;
+  height: 240px; /* 固定高度 */
+  width: 100%; /* 确保宽度一致 */
   flex-direction: row; /* 确保所有文章项都是同一方向 */
 }
 
@@ -318,25 +331,48 @@
 /* 侧边栏样式 */
 .sidebar-section {
   background-color: transparent;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding: 0;
   /* 移除边框和阴影 */
   border: none;
   box-shadow: none;
   border-radius: 0;
+  display: block;
+}
+
+/* 侧边栏标题容器，与section-header保持一致 */
+.sidebar-title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--border-color);
+  position: relative;
 }
 
 .sidebar-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--heading-color);
-  margin: 0 0 1.5rem 0;
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid var(--border-color);
+  margin: 0;
+  /* 移除padding-bottom，由sidebar-title-container处理 */
+  /* 移除border-bottom，由sidebar-title-container处理 */
   /* 与section-title保持一致 */
   display: flex;
   align-items: center;
   width: 100%; /* 与section-title保持一致 */
+  position: relative;
+  line-height: 1.4; /* Added for consistent vertical spacing */
+}
+
+.sidebar-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.8rem; /* 保持与section-title一致 */
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
 }
 
 .sidebar-section .section-heading {
@@ -354,25 +390,36 @@
 
 /* 作者信息板块样式 */
 .author-container {
-  display: flex;
+  display: flex; /* 显示作者信息 */
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
 }
 
 .author-avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   object-fit: cover;
-  /* 移除边框 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: 3px solid var(--accent-color-light);
+}
+
+.author-social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
 }
 
 .author-name {
-  font-size: 1.3rem;
-  margin: 0.5rem 0 0.25rem;
+  font-size: 1.4rem;
+  margin: 0.75rem 0 0.5rem;
   color: var(--text-color);
   font-weight: 700;
 }
@@ -380,36 +427,32 @@
 .author-bio {
   color: var(--meta-color);
   line-height: 1.6;
-  font-size: 0.9rem;
-  margin: 0.75rem 0 0.5rem;
-}
-
-.author-social-icons {
-  display: flex;
-  gap: 0.8rem;
-  justify-content: center;
-  margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+  margin: 0.75rem 0;
 }
 
 .author-social-icons .social-icon {
   color: var(--meta-color);
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: var(--light-bg);
+  background-color: var(--card-bg-light);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .author-social-icons .social-icon:hover {
   color: var(--accent-color);
   transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: var(--accent-color-light);
 }
 
-/* 社交媒体图标 - 更新样式 */
+/* 社交媒体图标 - 全新样式 */
 .social-icon.twitter::before { content: '\f099'; font-family: 'Font Awesome 5 Brands'; }
 .social-icon.facebook::before { content: '\f39e'; font-family: 'Font Awesome 5 Brands'; }
 .social-icon.instagram::before { content: '\f16d'; font-family: 'Font Awesome 5 Brands'; }
@@ -418,26 +461,23 @@
 .social-icon.youtube::before { content: '\f167'; font-family: 'Font Awesome 5 Brands'; }
 .social-icon.weibo::before { content: '\f18a'; font-family: 'Font Awesome 5 Brands'; }
 .social-icon.wechat::before { content: '\f1d7'; font-family: 'Font Awesome 5 Brands'; }
-.social-icon.bilibili::before { content: '\e3d3'; font-family: 'Font Awesome 5 Brands'; } /* 更新B站图标 */
-.social-icon.csdn::before { content: '\f1a9'; font-family: 'Font Awesome 5 Brands'; } /* 添加CSDN图标 */
+.social-icon.bilibili::before { content: '\f03d'; font-family: 'Font Awesome 5 Free'; font-weight: 900; } /* 使用视频图标代替 */
+.social-icon.csdn::before { content: '\f126'; font-family: 'Font Awesome 5 Free'; font-weight: 900; } /* 使用代码分支图标代替 */
+.social-icon.zhihu::before { content: '\f63f'; font-family: 'Font Awesome 5 Brands'; } /* 添加知乎图标 */
+.social-icon.douban::before { content: '\f10e'; font-family: 'Font Awesome 5 Brands'; } /* 添加豆瓣图标 */
 .social-icon.email::before { content: '\f0e0'; font-family: 'Font Awesome 5 Free'; font-weight: 900; }
 .social-icon.rss::before { content: '\f09e'; font-family: 'Font Awesome 5 Free'; font-weight: 900; }
 
-/* 社交图标悬停效果 */
-.author-social-icons .social-icon:hover {
-  color: white;
-  background-color: var(--accent-color);
-  transform: translateY(-3px);
-  box-shadow: 0 3px 8px rgba(var(--accent-color-rgb), 0.3);
-}
+/* 社交图标悬停效果 - 已移至上方与.author-social-icons .social-icon:hover合并 */
 
 /* 两栏布局样式 */
 .home-two-column-layout {
   display: grid;
-  grid-template-columns: 1fr 4fr; /* 调整比例，让文章部分占据更多空间 */
-  gap: 2rem;
+  grid-template-columns: 1fr 3fr; /* 调整比例，防止两栏重叠 */
+  gap: 3rem; /* 增加间距 */
   margin-top: 2rem;
-  align-items: start; /* 确保两栏顶部对齐 */
+  align-items: start; /* 改为start，确保顶部对齐 */
+  min-height: 100%; /* 确保最小高度 */
 }
 
 .home-main-content {
@@ -446,38 +486,80 @@
 
 .home-sidebar {
   width: 100%;
-  /* 移除sticky定位，使左右两栏高度对齐 */
-  height: 100%; /* 确保侧边栏高度填充 */
   display: flex;
   flex-direction: column;
+  background-color: transparent; /* 移除背景色 */
+  padding: 0; /* 移除内边距 */
+  box-shadow: none; /* 移除阴影 */
+  border: none; /* 移除边框 */
+  height: 100%; /* 确保侧边栏高度与主内容区一致 */
+  visibility: visible; /* 确保可见性 */
 }
 
 /* 作者卡片样式优化 */
 .author-card {
+  display: block; /* 显示作者卡片 */
   margin-bottom: 2rem;
 }
 
-.author-card .sidebar-title {
+.sidebar-section.author {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.author-card .section-header {
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.author-card .section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  position: relative;
+  margin: 0;
+  /* padding-bottom: 0.5rem; Removed, handled by container */
+  width: 100%; /* Added for consistency */
+  display: flex; /* Added for consistency */
+  align-items: center; /* Added for consistency */
+  line-height: 1.4; /* Added for consistent vertical spacing */
+}
+
+.author-card .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.8rem; /* Changed from -1px to match .section-title::after positioning */
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
 }
 
 /* 社交图标样式 */
 .author-social-icons {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 0.25rem 0 1rem;
 }
 
 .author-social-icons .social-icon {
   color: var(--meta-color);
   font-size: 1.2rem;
   transition: color 0.3s ease, transform 0.3s ease;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .author-social-icons .social-icon:hover {
   color: var(--accent-color);
   transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: var(--accent-color-light);
 }
 
 /* 响应式设计 */
