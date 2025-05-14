@@ -62,7 +62,7 @@
 /* 蝴蝶主题文章卡片样式 */
 .post-item-butterfly {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* 确保封面图在上、文字在下 */
   background-color: var(--card-bg, #ffffff);
   border-radius: 0.8rem;
   overflow: hidden;
@@ -87,6 +87,7 @@
   overflow: hidden;
   position: relative;
   background-color: var(--light-bg, #f3f4f6);
+  order: -1; /* 确保图片始终显示在顶部 */
 }
 
 .post-item-image img {
