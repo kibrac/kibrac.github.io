@@ -76,36 +76,50 @@
   display: none;
 }
 
+/* 首页布局 - 左侧文章列表和右侧边栏 */
+.home-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* 左侧文章列表 */
+.left-column {
+  width: 100%;
+}
+
+/* 右侧边栏 */
+.right-sidebar {
+  width: 100%;
+}
+
 /* 蝴蝶样式文章列表布局 */
 .post-list-butterfly {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-bottom: 2rem;
-  margin-top: 0;
-  padding-top: 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 /* 蝴蝶样式文章项 - 蝴蝶主题风格 */
 .post-item-butterfly {
   display: flex;
+  flex-direction: column; /* 确保封面图在上、文字在下 */
   background-color: var(--card-bg, #ffffff);
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
   position: relative;
-  height: 260px; /* 增加高度 */
-  max-height: 260px;
+  height: auto;
+  max-height: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post-item-butterfly:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* 调整文章列表与作者卡片的对齐 */
@@ -114,27 +128,15 @@
   margin-top: 0; /* 确保没有顶部外边距 */
 }
 
-/* 调整文章列表容器的边距 */
-.post-list-butterfly {
-  margin-top: 0; /* 移除顶部边距 */
-}
-
-.post-item-content {
-  flex: 1;
-  padding: 1.5rem 1.8rem; /* 增加内边距 */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 内容均匀分布 */
-  position: relative;
-  overflow: hidden;
-}
-
+/* 封面图样式优化 */
 .post-item-image {
-  width: 280px;
-  min-width: 280px;
+  width: 100%;
+  min-width: 100%;
+  height: 180px;
   overflow: hidden;
   position: relative;
   background-color: var(--light-bg, #f3f4f6);
+  order: -1; /* 确保图片始终显示在顶部 */
 }
 
 .post-item-image img {
@@ -148,12 +150,28 @@
   transform: scale(1.05);
 }
 
+/* 文章内容区域样式 */
+.post-item-content {
+  flex: 1;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 文章标题样式 */
 .post-item-title {
-  font-size: 1.5rem; /* 增加标题字体大小 */
-  margin: 0 0 0.8rem 0; /* 增加下边距 */
-  line-height: 1.3;
+  font-size: 1.1rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .post-item-title a {
@@ -171,15 +189,15 @@
   color: var(--accent-color);
 }
 
+/* 文章元数据样式 */
 .post-meta {
   display: flex;
-  align-items: center;
-  margin-bottom: 0.8rem;
-  font-size: 0.9rem;
-  gap: 1rem;
-  color: var(--meta-color, #888888);
-  gap: 0.6rem;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--meta-color, #777777);
 }
 
 .post-date {
@@ -226,48 +244,51 @@
   font-size: 0.75rem;
 }
 
+/* 文章摘要样式 */
 .post-summary {
   color: var(--text-color, #666666);
-  font-size: 0.9rem; /* 增加摘要字体大小 */
-  line-height: 1.6; /* 增加行高 */
-  margin-bottom: 0.3rem; /* 添加底部边距 */
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 4.32em; /* 调整最大高度以适应新的行高 */
 }
 
-/* 首页标题样式 */
-.section-heading {
-  font-size: 2.25rem;
-  margin-bottom: 2.5rem;
-  color: var(--text-color);
-  font-weight: 800;
+/* 移除最新文章标题下的实线，只保留渐变线 */
+.section-header {
   position: relative;
-  padding-bottom: 0.75rem;
-  letter-spacing: -0.02em;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border-bottom: none !important; /* 移除实线 */
 }
 
-.section-heading::before {
+.section-header::after,
+.section-header::before {
+  display: none !important; /* 确保所有可能的边框都被移除 */
+}
+
+.section-heading {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: none !important;
+}
+
+.section-heading::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-}
-
-/* 移除短粗强调线，只保留渐变线条 */
-.section-heading::after {
-  display: none;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-color), transparent);
+  border-radius: 2px;
+  display: block !important; /* 确保渐变线显示 */
 }
 
 /* 侧边栏样式 */
@@ -447,8 +468,6 @@
   flex-direction: column;
 }
 
-
-
 /* 删除作者卡片标题相关样式 */
 .sidebar-title-container {
   display: none; /* 隐藏所有标题容器 */
@@ -476,50 +495,6 @@
   color: var(--accent-color);
   transform: translateY(-3px);
   background: none;
-}
-
-/* 响应式设计 */
-@media (max-width: 1100px) {
-  .post-list-modern {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-  
-  .hero-title {
-    font-size: 2.4rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .home-content-wrapper {
-    margin: 2rem auto;
-  }
-  
-  .home-hero {
-    padding: 3rem 1.5rem;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  /* 在移动设备上改为单列布局 */
-  .home-two-column-layout {
-    grid-template-columns: 1fr;
-  }
-  
-  .home-sidebar {
-    margin-top: 2rem;
-  }
-  
-  /* 在移动设备上保持作者卡片的sticky定位 */
-  .author-card {
-    position: relative;
-    top: 0;
-  }
 }
 
 /* 列表页面标题样式 */
@@ -567,46 +542,31 @@
   line-height: 1.6;
 }
 
-/* 最新文章标题样式 */
-.section-header {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 1.5rem;
-}
-
-.section-heading {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--heading-color);
-  margin: 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--accent-color);
+/* 确保hero区域正确显示 */
+.home-hero {
+  margin-bottom: 1rem;
+  padding: 3rem 0;
 }
 
 /* iconfont图标样式 */
 .iconfont {
   font-size: 1.2rem;
 }
-.section-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 1.5rem 0;
-  color: var(--heading-color, #333333);
-  position: relative;
-  padding-bottom: 0.5rem;
-}
 
-.section-heading:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background-color: var(--accent-color);
-}
-
+/* 响应式布局调整 */
 @media (max-width: 768px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .right-sidebar {
+    margin-top: 2rem;
+  }
+  
+  .post-list-butterfly {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+  
   .section-heading {
     font-size: 1.75rem;
     margin-bottom: 1.2rem;
@@ -655,199 +615,22 @@
   
   /* 移动设备上的作者卡片样式 */
   .author-container {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
   }
   
-  .author-avatar {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 0.8rem;
+  .home-sidebar {
+    margin-top: 2rem;
   }
   
-  .author-name {
-    font-size: 1rem;
-  }
-  
-  .author-bio {
-    font-size: 0.8rem;
-    margin: 0.4rem 0;
+  /* 在移动设备上保持作者卡片的sticky定位 */
+  .author-card {
+    position: relative;
+    top: 0;
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .home-content-wrapper {
-    margin: 2rem auto;
-  }
-  
-  .home-hero {
-    padding: 3rem 1rem;
-    margin: 1rem 0;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-    margin: 1.5rem auto 1.5rem;
-  }
-  
-  .hero-quick-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    justify-content: center;
-  }
-  
-  .quick-nav-item {
-    min-width: auto;
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* 简约现代页脚样式 */
-.site-footer {
-  margin-top: 3rem;
-  padding: 2rem 0 1.5rem;
-  border-top: 1px solid var(--border-color);
-  position: relative;
-  /* 移除背景色 */
-}
-
-/* 深色模式适配 - 更新 */
-html.dark-mode .home-hero {
-  background-color: var(--bg-color);
-}
-
-/* 深色模式下的蝴蝶样式文章列表 */
-html.dark-mode .post-item-butterfly {
-  background-color: var(--light-bg);
-  border-color: var(--border-color);
-}
-
-html.dark-mode .post-item-title a {
-  color: var(--heading-color);
-}
-
-html.dark-mode .post-summary {
-  color: var(--text-color);
-}
-
-html.dark-mode .post-meta {
-  color: var(--meta-color);
-}
-
-html.dark-mode .post-category {
-  color: var(--accent-color);
-}
-
-
-
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(var(--accent-color-rgb), 0.1);
-}
-
-.footer-info {
-  flex: 1;
-  min-width: 250px;
-  padding: 0;
-}
-
-.copyright {
-  margin: 0 0 0.5rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
-  color: var(--text-color);
-}
-
-.footer-text {
-  margin: 0;
-  color: var(--meta-color);
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-.social-icons {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.social-icon {
-  color: var(--meta-color);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.social-icon:hover {
-  color: var(--accent-color);
-  transform: translateY(-2px);
-}
-
-.footer-bottom {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: var(--meta-color);
-  margin-top: 1rem;
-}
-
-.footer-bottom a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.footer-bottom a:hover {
-  opacity: 0.8;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.footer-separator {
-  color: var(--border-color);
-  margin: 0 0.2rem;
-}
-
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  
-  .social-icons {
-    justify-content: center;
-    margin: 0.5rem 0;
+@media (max-width: 1024px) and (min-width: 769px) {
+  .post-list-butterfly {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
