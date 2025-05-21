@@ -94,11 +94,12 @@
 
 /* 侧边栏组件通用样式 */
 .sidebar-widget {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  padding: 1.2rem;
   margin-bottom: 2rem;
+  margin-top: 2rem; /* 添加顶部外边距使其与左侧最新文章水平对齐 */
 }
 
 /* 作者卡片样式 */
@@ -152,25 +153,31 @@
 }
 
 .sidebar-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  position: relative;
+  display: inline-block;
   margin-top: 0;
   margin-bottom: 1.2rem;
-  position: relative;
-  padding-left: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text-color);
+  border-bottom: none !important;
 }
 
-.sidebar-title::before {
+.sidebar-title::after {
   content: '';
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0.8rem;
-  height: 0.8rem;
-  background-color: var(--accent-color);
-  border-radius: 50%;
+  bottom: -5px;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-color), transparent);
+  border-radius: 2px;
+  display: block !important; /* 确保渐变线显示 */
+}
+
+/* 覆盖style.css中的sidebar-title::before样式，移除竖线 */
+.sidebar-title::before {
+  content: none;
 }
 
 /* 分类组件样式 */
@@ -198,7 +205,7 @@
 }
 
 .category-count {
-  background-color: #f5f5f5;
+  background-color: var(--light-bg);
   border-radius: 20px;
   padding: 0.2rem 0.8rem;
   font-size: 0.9rem;
@@ -215,7 +222,7 @@
 .tag-item {
   display: inline-flex;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: var(--light-bg);
   border-radius: 20px;
   padding: 0.3rem 0.8rem;
   font-size: 0.9rem;
@@ -510,6 +517,11 @@
   margin-bottom: 1.5rem;
 }
 
+/* 隐藏最新文章部分的标题 */
+.home-main-content .section-header {
+  display: none;
+}
+
 .section-heading {
   position: relative;
   display: inline-block;
@@ -581,10 +593,18 @@
   line-height: 1.6;
 }
 
-/* 确保hero区域正确显示 */
+/* 确保hero区域正确显示并与下方内容对齐 */
 .home-hero {
   margin-bottom: 1rem;
   padding: 3rem 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* iconfont图标样式 */

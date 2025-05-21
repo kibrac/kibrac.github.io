@@ -335,7 +335,7 @@ hr {
 
 .site-title {
   font-size: 1.5em;
-  font-weight: 750;
+  font-weight: 800;
   margin: 0;
   color: var(--heading-color);
 }
@@ -2235,7 +2235,7 @@ html.dark-mode .post-content strong {
   margin-top: 3em;
   list-style: none;
   padding: 0;
-  gap: 0.5em;
+  gap: 0.3em;
 }
 
 .page-item {
@@ -2246,23 +2246,24 @@ html.dark-mode .post-content strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  height: 40px;
-  padding: 0.5em 1em;
+  min-width: 30px;
+  height: 30px;
+  padding: 0.3em 0.7em;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 4px;
   color: var(--text-color);
   background-color: var(--bg-color);
   font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 1px 3px var(--shadow-color);
+  font-size: 0.85em;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px var(--shadow-color);
 }
 
 .page-link:hover {
-  background-color: var(--light-bg);
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
   transform: translateY(-1px);
-  box-shadow: 0 3px 6px var(--shadow-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
   border-color: var(--accent-color);
 }
 
