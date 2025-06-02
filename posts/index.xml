@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Kibrac&#39;s Blog</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Kibrac&#39;s Blog</description>
+    <image>
+      <title>Kibrac&#39;s Blog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.147.3</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 15 May 2025 21:57:01 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>面向对象的程序设计学习笔记 6</title>
+      <link>http://localhost:1313/posts/c&#43;&#43;6/</link>
+      <pubDate>Thu, 15 May 2025 21:57:01 +0800</pubDate>
+      <guid>http://localhost:1313/posts/c&#43;&#43;6/</guid>
+      <description>第六章 多态</description>
+    </item>
+    <item>
+      <title>面向对象的程序设计学习笔记 5</title>
+      <link>http://localhost:1313/posts/c&#43;&#43;5/</link>
+      <pubDate>Tue, 13 May 2025 11:52:51 +0800</pubDate>
+      <guid>http://localhost:1313/posts/c&#43;&#43;5/</guid>
+      <description>第五章 继承</description>
+    </item>
+    <item>
+      <title>面向对象的程序设计学习笔记 4</title>
+      <link>http://localhost:1313/posts/c&#43;&#43;4/</link>
+      <pubDate>Thu, 08 May 2025 18:03:55 +0800</pubDate>
+      <guid>http://localhost:1313/posts/c&#43;&#43;4/</guid>
+      <description>第四章 运算符重载</description>
+    </item>
+    <item>
+      <title>面向对象的程序设计学习笔记 3</title>
+      <link>http://localhost:1313/posts/c&#43;&#43;3/</link>
+      <pubDate>Mon, 28 Apr 2025 19:40:24 +0800</pubDate>
+      <guid>http://localhost:1313/posts/c&#43;&#43;3/</guid>
+      <description>第三章 类和对象提高</description>
+    </item>
+    <item>
+      <title>面向对象的程序设计学习笔记 2</title>
+      <link>http://localhost:1313/posts/c&#43;&#43;2/</link>
+      <pubDate>Wed, 16 Apr 2025 20:27:27 +0800</pubDate>
+      <guid>http://localhost:1313/posts/c&#43;&#43;2/</guid>
+      <description>第二章 类和对象基础</description>
+    </item>
+    <item>
+      <title>面向对象的程序设计学习笔记 1</title>
+      <link>http://localhost:1313/posts/c&#43;&#43;1/</link>
+      <pubDate>Mon, 07 Apr 2025 17:48:55 +0800</pubDate>
+      <guid>http://localhost:1313/posts/c&#43;&#43;1/</guid>
+      <description>第一章 从 C 到 C&#43;&#43;</description>
+    </item>
+  </channel>
+</rss>
