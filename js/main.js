@@ -157,54 +157,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Table of Contents Highlight
-  const tocLinks = document.querySelectorAll('.toc-content a');
+  // 为文章内标题添加ID，以便未来可能的功能扩展
   const headings = document.querySelectorAll('.post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
   
-  if (tocLinks.length > 0 && headings.length > 0) {
-    // 创建Intersection Observer来监视标题元素
-    const headingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // 当标题进入视口
-        if (entry.isIntersecting) {
-          // 获取当前标题的ID
-          const id = entry.target.getAttribute('id');
-          
-          // 移除所有链接的active类
-          tocLinks.forEach(link => {
-            link.parentElement.classList.remove('active');
-          });
-          
-          // 为当前标题对应的目录链接添加active类
-          const activeLink = document.querySelector(`.toc-content a[href="#${id}"]`);
-          if (activeLink) {
-            activeLink.parentElement.classList.add('active');
-          }
-        }
-      });
-    }, {
-      rootMargin: '-100px 0px -80% 0px' // 调整观察区域，使标题在接近顶部时触发
-    });
-    
-    // 观察所有标题元素
-    headings.forEach(heading => {
-      headingObserver.observe(heading);
-    });
-    
-    // 点击目录链接时平滑滚动
-    tocLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80, // 考虑固定头部的高度
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  }
+  // 确保每个标题都有ID
+  headings.forEach(heading => {
+    if (!heading.id) {
+      const id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '');
+      heading.id = id;
+    }
+  });
 });

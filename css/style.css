@@ -1667,114 +1667,11 @@ html.dark-mode .post-content strong {
   border-top: 1px solid var(--border-color);
 }
 
-/* Table of Contents Styles */
-.post-toc {
-  position: relative;
-}
-
-.toc-container {
-  position: sticky;
-  top: 2em;
-  font-size: 0.95em;
-  max-height: calc(100vh - 4em);
-  overflow-y: auto;
-  padding: 0 0.5em;
-}
-
-.toc-header {
-  font-weight: 700;
-  margin-bottom: 1em;
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--heading-color);
-  font-size: 1.1em;
-  text-align: center;
-}
-
-.toc-content nav {
-  margin-left: -0.5em;
-}
-
-.toc-content ul {
-  list-style: none;
-  padding-left: 1.2em;
-  margin: 0;
-}
-
-.toc-content li {
-  margin-bottom: 0.8em;
-  line-height: 1.5;
-  position: relative;
-  padding-left: 0.5em;
-}
-
-.toc-content li {
-  position: relative;
-}
-
-/* 为不同层级的目录项添加不同的样式 */
-.toc-content ul ul li {
-  font-size: 0.95em;
-}
-
-.toc-content ul ul ul li {
-  font-size: 0.9em;
-}
-
-.toc-content a {
-  color: var(--text-color);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-block;
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-}
-
-.toc-content a:hover {
-  color: var(--accent-color);
-}
-
-.toc-content .active > a {
-  color: var(--accent-color);
-  font-weight: 600;
-}
-
-/* 优化嵌套目录的样式 */
-.toc-content ul ul {
-  margin-top: 0.5em;
-  padding-left: 1em;
-}
-
-.toc-content ul ul ul {
-  padding-left: 0.8em;
-}
-
-/* 简化滚动条 */
-.toc-container::-webkit-scrollbar {
-  width: 4px;
-}
-
-.toc-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.toc-container::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
-}
-
-.toc-container::-webkit-scrollbar-thumb:hover {
-  background: var(--meta-color);
-}
-
-/* Responsive styles for TOC */
+/* 文章页面响应式布局 */
 @media (max-width: 1024px) {
   .post-container {
     grid-template-columns: 1fr;
-  }
-  
-  .post-toc {
-    display: none;
+    padding: 0 1rem;
   }
 }
 
