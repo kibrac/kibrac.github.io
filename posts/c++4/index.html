@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>面向对象的程序设计学习笔记 4 - Kibrac&#39;s Blog</title>
+  <meta name="description" content="第四章 运算符重载">
+  
+  
+  <link rel="icon" type="image/png" href="https://kibrac.github.io/favicon.png">
+  
+  
+  <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/archives.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  
+  
+  <script>
+    
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+  
+  <meta property="og:url" content="https://kibrac.github.io/posts/c&#43;&#43;4/">
+  <meta property="og:site_name" content="Kibrac&#39;s Blog">
+  <meta property="og:title" content="面向对象的程序设计学习笔记 4">
+  <meta property="og:description" content="第四章 运算符重载">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-08T18:03:55+08:00">
+    <meta property="article:modified_time" content="2025-05-08T18:03:55+08:00">
+    <meta property="article:tag" content="C&#43;&#43;">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="面向对象的程序设计学习笔记 4">
+  <meta name="twitter:description" content="第四章 运算符重载">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-container">
+  <div class="site-branding">
+    <a href="/" class="site-title">Kibrac&#39;s Blog</a>
+    
+  </div>
+  
+  <nav class="main-navigation">
+    
+    <ul class="menu" id="primary-menu">
+      
+      
+      <li class="menu-item  ">
+        <a href="/" class="home-link">首页</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/posts/" >文章</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/archives/" >归档</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/categories/" >分类</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/tags/" >标签</a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+  <div class="header-actions">
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    
+    
+    <button class="theme-toggle" aria-label="切换主题">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+    </header>
+    
+    <main class="main-content">
+      
+<div class="post-container">
+  <article class="post">
+    
+    <div class="post-featured-image banner">
+      <img src="https://kibrac.github.io/images/cover/c&#43;&#43;.jpg" alt="面向对象的程序设计学习笔记 4">
+    </div>
+    
+    
+    <header class="post-header">
+      <h1 class="post-title">面向对象的程序设计学习笔记 4</h1>
+      
+      <div class="post-meta">
+        <time datetime="2025-05-08T18:03:55&#43;08:00">
+          2025-05-08
+        </time>
+        
+        
+        <span class="post-author">
+          Kibrac
+        </span>
+        
+        
+        
+        <div class="post-categories">
+          
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+          
+        </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-content">
+      <p>课程链接：<a href="https://www.icourse163.org/course/PKU-1002029030">程序设计与算法（三）C++面向对象程序设计_北京大学_中国大学MOOC(慕课)</a></p>
+<h2 id="1运算符重载的基本概念">1.运算符重载的基本概念</h2>
+<h3 id="运算符重载的需求">运算符重载的需求</h3>
+<blockquote>
+<p>在数学上，两个复数可以直接进行 <code>+</code>、<code>-</code> 等运算。但是在 C++ 中，直接将 <code>+</code> 或 <code>-</code> 用于复数对象是不允许的。</p>
+<p>但有时我们会希望，让对象也能够通过运算符进行计算。这样代码更简洁也更容易理解。</p>
+<p>例如：<code>complex_a</code> 和 <code>complex_b</code> 是两个复数对象，那求这两个复数的和，我们希望能直接写 <code>complex_a + complex_b</code></p></blockquote>
+<p><strong>运算符重载</strong>，就是对已有的运算符（C++ 中预定义的运算符）赋予多重的含义，使同一运算符作用于不同类型的数据时导致不同类型的行为。</p>
+<ul>
+<li>运算符重载的目的是：扩展 C++ 中提供的运算符的适用范围，使之能作用于对象。</li>
+<li>同一个运算符，对不同类型的操作数，所发生的行为不同。</li>
+</ul>
+<h3 id="运算符重载的形式">运算符重载的形式</h3>
+<ul>
+<li>运算符重载的实质是函数重载</li>
+<li>可以重载为普通函数，也可以重载为成员函数</li>
+<li>把含运算符的表达式转换成运算符函数的调用</li>
+<li>把运算符的操作数转换成运算符函数的参数</li>
+<li>运算符被多次重载时，根据实参的类型决定调用哪个运算符参数</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">返回值类型</span> <span style="color:#66d9ef">operator</span> <span style="color:#960050;background-color:#1e0010">运算符</span>(<span style="color:#960050;background-color:#1e0010">形参表</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#960050;background-color:#1e0010">……</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="运算符重载示例">运算符重载示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">double</span> real,imag;
+</span></span><span style="display:flex;"><span>		Complex(<span style="color:#66d9ef">double</span> r<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>,<span style="color:#66d9ef">double</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>)<span style="color:#f92672">:</span>real(r),imag(i){}
+</span></span><span style="display:flex;"><span>		Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">-</span>(<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c);
+</span></span><span style="display:flex;"><span>}; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> a,<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> b){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Complex</span>(a.real<span style="color:#f92672">+</span>b.real,a.imag<span style="color:#f92672">+</span>b.imag);<span style="color:#75715e">//返回一个临时对象 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Complex Complex<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">-</span>(<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Complex</span>(real<span style="color:#f92672">-</span>c.real,imag<span style="color:#f92672">-</span>c.imag);<span style="color:#75715e">//返回一个临时对象 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	Complex a(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>),b(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>),c;
+</span></span><span style="display:flex;"><span>	c<span style="color:#f92672">=</span>a<span style="color:#f92672">+</span>b;<span style="color:#75715e">//等价于c=operator+(a,b);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> c.real <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> c.imag <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> (a<span style="color:#f92672">-</span>b).real <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> (a<span style="color:#f92672">-</span>b).imag <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//a-b等价于a.operator-(b);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><ul>
+<li>重载为成员函数时，参数个数为运算符目数减一</li>
+<li>重载为普通函数时，参数个数为运算符目数</li>
+</ul>
+<p>上述示例输出为</p>
+<pre tabindex="0"><code>5,5
+3,3
+</code></pre><h2 id="2赋值运算符的重载">2.赋值运算符的重载</h2>
+<p>有时候希望赋值运算符两边的类型可以不匹配，比如，把一个 <code>int</code> 类型变量赋值给一个 <code>Complex</code> 对象，或把一个 <code>char*</code> 类型的字符串赋值给一个字符串对象，此时就需要重载赋值运算符 <code>=</code>。</p>
+<p><strong>赋值运算符 <code>=</code> 只能重载为成员函数。</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">String</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		String()<span style="color:#f92672">:</span>str(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">1</span>]){str[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">c_str</span>(){<span style="color:#66d9ef">return</span> str;};
+</span></span><span style="display:flex;"><span>		String<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> s);
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>String(){<span style="color:#66d9ef">delete</span> []str;}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>String<span style="color:#f92672">&amp;</span> String<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> s){
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//重载&#34;=&#34;以使得obj=&#34;hello&#34;能够成立
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">delete</span> []str;
+</span></span><span style="display:flex;"><span>	str<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span> [strlen(s)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>	strcpy(str,s);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>; 
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	String s;
+</span></span><span style="display:flex;"><span>	s<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Good Luck,&#34;</span>;<span style="color:#75715e">//等价于s.operator=(&#34;Good Luck&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> s.c_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//String s2=&#34;hello&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//上面这条语句要是不注释就会报错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	s<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Shenzhou 8!&#34;</span>;<span style="color:#75715e">//等价于s.operator=(&#34;Shenzhou 8!&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> s.c_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><h3 id="浅拷贝和深拷贝">浅拷贝和深拷贝</h3>
+<p>这里仍然使用上述示例进行演示</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">String</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		String()<span style="color:#f92672">:</span>str(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">1</span>]){str[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">c_str</span>(){<span style="color:#66d9ef">return</span> str;};
+</span></span><span style="display:flex;"><span>		String<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> s){
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">delete</span> []str;
+</span></span><span style="display:flex;"><span>			str<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span> [strlen(s)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>			strcpy(str,s);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>; 
+</span></span><span style="display:flex;"><span>		};
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>String(){<span style="color:#66d9ef">delete</span> []str;}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>在按照上述方法定义类之后，进行如下操作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>String S1,S2;
+</span></span><span style="display:flex;"><span>S1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;this&#34;</span>;<span style="color:#75715e">//ok
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>S2<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;that&#34;</span>;<span style="color:#75715e">//ok
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>S1<span style="color:#f92672">=</span>S2;<span style="color:#75715e">//这是有严重问题的
+</span></span></span></code></pre></div><ul>
+<li>如不定义自己的赋值运算符，那么 <code>S1=S2</code> 实际上会导致 <code>S1.str</code> 和 <code>S2.str</code> 指向同一地方。</li>
+<li>如果 <code>S1</code> 对象消亡，析构函数将会释放 <code>S1.str</code> 指向的空间，则 <code>S2</code> 消亡时还要释放一次，不妥。</li>
+<li>另外，如果执行 <code>S1=&quot;other&quot;;</code>，会导致 <code>S2.str</code> 指向的地方被 delete。</li>
+<li>因此要在 <code>class String</code> 里添加成员函数</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>String<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> String<span style="color:#f92672">&amp;</span> s){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span><span style="color:#f92672">==&amp;</span>s)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">delete</span> []str;
+</span></span><span style="display:flex;"><span>	str<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[strlen(s.str)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>	strcpy(str,s.str);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="一点补充关于-c-中赋值运算符--的行为">一点补充：关于 C++ 中赋值运算符 <code>=</code> 的行为</h3>
+<ol>
+<li>基本数据类型（如 int, double, char）<br>
+当对基本数据类型使用 <code>=</code> 时，赋值操作会直接将右侧变量的值复制给左侧变量。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> b;  <span style="color:#75715e">// 将 b 的值（20）复制到 a 中
+</span></span></span></code></pre></div><p>此时，<code>a</code> 和 <code>b</code> 是两个完全独立的变量。修改 <code>a</code> 的值不会影响 <code>b</code>，反之亦然。<br>
+关键点：这里没有指针或内存共享，只是简单的值拷贝。</p>
+<ol start="2">
+<li>对象（类或结构体实例）<br>
+如果赋值的是对象（例如自定义的类或结构体），默认行为是逐个复制对象的成员变量。这种行为称为“浅拷贝”。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string name;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Student s1{<span style="color:#ae81ff">20</span>, <span style="color:#e6db74">&#34;Alice&#34;</span>};
+</span></span><span style="display:flex;"><span>Student s2;
+</span></span><span style="display:flex;"><span>s2 <span style="color:#f92672">=</span> s1;  <span style="color:#75715e">// 复制 s1 的 age 和 name 到 s2
+</span></span></span></code></pre></div><p>此时，<code>s2.age</code> 和 <code>s2.name</code> 的值与 <code>s1</code> 完全相同。但如果类中包含指针成员，浅拷贝会导致问题：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShallowCopyExample</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> data;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 假设 data 指向堆内存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ShallowCopyExample obj1;
+</span></span><span style="display:flex;"><span>obj1.data <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ShallowCopyExample obj2;
+</span></span><span style="display:flex;"><span>obj2 <span style="color:#f92672">=</span> obj1;  <span style="color:#75715e">// 浅拷贝：obj2.data 和 obj1.data 指向同一块内存
+</span></span></span></code></pre></div><p>此时，修改 <code>*obj1.data</code> 会影响 <code>*obj2.data</code>，因为它们共享同一内存。如果释放其中一个对象的 <code>data</code>，另一个对象的指针将指向无效内存（悬空指针）。<br>
+关键点：对象默认赋值是浅拷贝，需手动实现深拷贝来复制指针指向的内容。</p>
+<ol start="3">
+<li>指针类型<br>
+指针变量存储的是内存地址。使用 <code>=</code> 赋值指针时，只会复制地址值，不会复制指针指向的内容。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">200</span>);
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> b;  <span style="color:#75715e">// a 现在指向 b 的地址（即 200 所在的内存）
+</span></span></span></code></pre></div><p>赋值后，<code>a</code> 和 <code>b</code> 指向同一块内存。修改 <code>*a</code> 会影响 <code>*b</code>，因为它们操作的是同一地址。此外，原 <code>a</code> 指向的内存（值为 100）会因未释放而导致内存泄漏。<br>
+关键点：指针赋值是地址的复制，不涉及内容拷贝；操作同一内存需谨慎。</p>
+<ol start="4">
+<li>STL 容器（如 std::string, std::vector）<br>
+STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被设计为执行“深拷贝”。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v1{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>};
+</span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v2;
+</span></span><span style="display:flex;"><span>v2 <span style="color:#f92672">=</span> v1;  <span style="color:#75715e">// 深拷贝：v2 复制了 v1 的所有元素到独立内存中
+</span></span></span></code></pre></div><p>此时，修改 <code>v1[0] = 100</code> 不会影响 <code>v2[0]</code>，因为两者存储在不同的内存区域。<br>
+关键点：STL 容器默认支持深拷贝，赋值后内容完全独立。</p>
+<ol start="5">
+<li>赋值与指针指向的内容<br>
+当被赋值的变量是指针时，<code>a = b</code> 仅让 <code>a</code> 指向 <code>b</code> 的地址，而不是复制 <code>b</code> 指向的内容。若需要复制内容，必须显式操作：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">200</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#f92672">*</span>b);  <span style="color:#75715e">// 显式复制 b 指向的内容到新内存
+</span></span></span></code></pre></div><p>此时，<code>a</code> 和 <code>b</code> 指向不同的内存，但内容相同。<br>
+关键点：指针赋值不复制内容，需手动分配新内存并复制。</p>
+<p>总结<br>
+• 基本类型：直接复制值。</p>
+<p>• 对象：默认浅拷贝（复制成员变量，共享指针成员的内存）。</p>
+<p>• 指针：复制地址，共享同一内存。</p>
+<p>• STL 容器：深拷贝，内容完全独立。</p>
+<p>核心原则：<code>=</code> 是否复制内容取决于操作数的类型。指针和对象可能共享内存，而基本类型和 STL 容器默认不共享。</p>
+<hr>
+<h3 id="注意">注意</h3>
+<p><strong>对运算符进行重载的时候，好的风格是应该尽量保留运算符原本的特性。</strong></p>
+<blockquote>
+<p>为 <code>String</code> 类编写复制构造函数的时候会面临和 <code>=</code> 同样的问题，用同样的方法处理。</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>String(String<span style="color:#f92672">&amp;</span> s){
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//这里不用判断是否和原对象一致
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//因为对象是刚刚复制出来的不可能是同一个
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	str<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span>[strlen(s.str)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>	strcpy(str,s.str);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="3运算符重载为友元函数">3.运算符重载为友元函数</h2>
+<ul>
+<li>一般情况下，将运算符重载为类的成员函数是较好的选择。</li>
+<li>但有时，重载为成员函数不能满足使用要求，重载为普通函数，又不能访问类的私有成员，所以需要将运算符重载为友元。</li>
+</ul>
+<p>举例如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">double</span> real,imag;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		Complex(<span style="color:#66d9ef">double</span> r,<span style="color:#66d9ef">double</span> i)<span style="color:#f92672">:</span>real(r),imag(i){};
+</span></span><span style="display:flex;"><span>		Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(<span style="color:#66d9ef">double</span> r);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Complex Complex<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(<span style="color:#66d9ef">double</span> r){<span style="color:#75715e">//能解释c+5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Complex</span>(real<span style="color:#f92672">+</span>r,imag);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>经过上述重载</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Complex c;
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">=</span>c<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>;<span style="color:#75715e">//有定义，相当于c=c.operator+5;
+</span></span></span></code></pre></div><p>但是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>c<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span><span style="color:#f92672">+</span>c;<span style="color:#75715e">//编译出错
+</span></span></span></code></pre></div><p>所以，为了使上述的表达式能成立，需要将 <code>+</code> 重载为普通函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(<span style="color:#66d9ef">double</span> r,<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c){<span style="color:#75715e">//能解释5+c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Complex</span>(c.real<span style="color:#f92672">+</span>r,c.imag);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>但是普通函数又不能访问私有成员，所以，需要将运算符 <code>+</code> 重载为友元。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">double</span> real,imag;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		Complex(<span style="color:#66d9ef">double</span> r,<span style="color:#66d9ef">double</span> i)<span style="color:#f92672">:</span>real(r),imag(i){};
+</span></span><span style="display:flex;"><span>		Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(<span style="color:#66d9ef">double</span> r);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">friend</span> Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(<span style="color:#66d9ef">double</span> r,<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="4运算符重载实例可变长整型数组">4.运算符重载实例：可变长整型数组</h2>
+<p><img src="https://raw.githubusercontent.com/kibrac/img_vault/main/Obsidian_img/20250504230001435.png" alt="image.png"></p>
+<p>为了实现上述图片中描述的功能，创建如下的类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CArray</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> size;<span style="color:#75715e">//数组元素的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr;<span style="color:#75715e">//指向动态分配的数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CArray(<span style="color:#66d9ef">int</span> s<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>);<span style="color:#75715e">//s代表数组元素的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		CArray(CArray<span style="color:#f92672">&amp;</span> a);
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>CArray();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_back</span>(<span style="color:#66d9ef">int</span> v);<span style="color:#75715e">//用于在数组尾部添加一个元素v
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		CArray<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> CArray<span style="color:#f92672">&amp;</span> a);<span style="color:#75715e">//用于数组对象间的赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">length</span>(){<span style="color:#66d9ef">return</span> size;}<span style="color:#75715e">//返回数组元素个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> CArray<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span>[](<span style="color:#66d9ef">int</span> i){
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//返回值为int不行！不支持a[i]=4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">//因为非引用的函数返回值不可以作为左值使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">//这里的重载用以支持根据下标访问数组元素，如n=a[i];和a[i]=4;这样的语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">return</span> ptr[i];
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>构造函数与复制构造函数如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CArray<span style="color:#f92672">::</span>CArray(<span style="color:#66d9ef">int</span> s)<span style="color:#f92672">:</span>size(s){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(s<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		ptr<span style="color:#f92672">=</span>NULL;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>		ptr<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[s];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CArray<span style="color:#f92672">::</span>CArray(CArray<span style="color:#f92672">&amp;</span> a){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>a.ptr){
+</span></span><span style="display:flex;"><span>		ptr<span style="color:#f92672">=</span>NULL;
+</span></span><span style="display:flex;"><span>		size<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	ptr<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[a.size];
+</span></span><span style="display:flex;"><span>	memcpy(ptr,a.ptr,<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>a.size);
+</span></span><span style="display:flex;"><span>	size<span style="color:#f92672">=</span>a.size;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>析构函数与 <code>=</code> 的运算符重载如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CArray<span style="color:#f92672">::~</span>CArray(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(ptr)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">delete</span> []ptr;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CArray<span style="color:#f92672">&amp;</span> CArray<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> CArray<span style="color:#f92672">&amp;</span> a){
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//赋值号的作用手机是使=左边的对象里存放的数组，大小和内容都和右边的对象一样
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span>(ptr<span style="color:#f92672">==</span>a.ptr)<span style="color:#75715e">//防止a=a这样的赋值导致出错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(a.ptr<span style="color:#f92672">==</span>NULL){<span style="color:#75715e">//如果a里面的数组是空的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span>(ptr)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">delete</span> []ptr;
+</span></span><span style="display:flex;"><span>		ptr<span style="color:#f92672">=</span>NULL;
+</span></span><span style="display:flex;"><span>		size<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(size<span style="color:#f92672">&lt;</span>a.size){<span style="color:#75715e">//如果原有空间够大，就不用分配新的空间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span>(ptr)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">delete</span> []ptr;
+</span></span><span style="display:flex;"><span>		ptr<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[a.size];
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	memcpy(ptr,a.ptr,<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>a.size);
+</span></span><span style="display:flex;"><span>	size<span style="color:#f92672">=</span>a.size;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//CArray&amp; CArray::operator=(const CArray&amp; a)
+</span></span></span></code></pre></div><p>最后是 <code>push_back</code> 函数，下面的写法实际上是比较低效的，因为每一次添加元素都会需要重新分配空间，造成大量的时间开销，比较好的做法有事先分配一片较大空间，并且在扩容时不使用逐一递增可以采用翻倍等方式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> CArray<span style="color:#f92672">::</span>push_back(<span style="color:#66d9ef">int</span> v){<span style="color:#75715e">//在数组尾部添加一个元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span>(ptr){
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> tmpPtr<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[size<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>];<span style="color:#75715e">//重新分配空间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		memcpy(tmpPtr,ptr,<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>size);<span style="color:#75715e">//拷贝原数组内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">delete</span> []ptr;
+</span></span><span style="display:flex;"><span>		ptr<span style="color:#f92672">=</span>tmpPtr;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span><span style="color:#75715e">//如果数组本来是空的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ptr<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>	ptr[size<span style="color:#f92672">++</span>]<span style="color:#f92672">=</span>v;<span style="color:#75715e">//加入新的数组元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="5流插入运算符和流提取运算符的重载">5.流插入运算符和流提取运算符的重载</h2>
+<blockquote>
+<p>本小节中提到的流插入运算符和流提取运算符本质上是左移运算符和右移运算符进行重载。</p></blockquote>
+<h3 id="问题引入">问题引入</h3>
+<blockquote>
+<p><code>cout &lt;&lt; 5 &lt;&lt; &quot;this&quot;</code> 为什么能够成立？</p>
+<p><code>cout</code> 是什么？</p>
+<p><code>&lt;&lt;</code> 为什么能用在 <code>cout</code> 上？</p></blockquote>
+<h3 id="流插入运算符的重载">流插入运算符的重载</h3>
+<ul>
+<li><code>cout</code> 是在头文件 iostream 中定义的，<strong>ostream</strong> 类的对象</li>
+<li><code>&lt;&lt;</code> 能用在 <code>cout</code> 上是因为在 iostream 里对其进行了重载</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(<span style="color:#66d9ef">int</span> n){
+</span></span><span style="display:flex;"><span>	......<span style="color:#75715e">//输出n的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> ostream<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> s){
+</span></span><span style="display:flex;"><span>	......<span style="color:#75715e">//输出s的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在上述的重载过程当中，将返回值类型设置为 <code>ostream&amp;</code> 以及返回 <code>* this</code> 的目的是使 <code>&lt;&lt;</code> 作用之后的返回值类型不变，这样就可以继续被 <code>&lt;&lt;</code> 作用。</p>
+<p><code>cout &lt;&lt; 5 &lt;&lt; &quot;this&quot;</code> 本质上的函数调用形式是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>cout.<span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#ae81ff">5</span>).<span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#e6db74">&#34;this&#34;</span>)
+</span></span></code></pre></div><p>举例如下</p>
+<blockquote>
+<p>假定下面程序输出为 <code>5hello</code>，应该补写什么？</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CStudent</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> nAge;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	CStudent s;
+</span></span><span style="display:flex;"><span>	s.nAge<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>答案如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(ostream<span style="color:#f92672">&amp;</span> o,<span style="color:#66d9ef">const</span> CStudent<span style="color:#f92672">&amp;</span> s){
+</span></span><span style="display:flex;"><span>	o<span style="color:#f92672">&lt;&lt;</span>s.nAge;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> o;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="一个复杂举例">一个复杂举例</h3>
+<p>假定 <code>c</code> 是 <code>Complex</code> 复数类的对象，现在希望写 <code>cout &lt;&lt; c;</code>，就能以 <code>a+bi</code> 的形式输出 <code>c</code> 的值，写 <code>cin &gt;&gt; c;</code>，就能从键盘接受 <code>a+bi</code> 形式的输入，并且使得 <code>c.real=a,c,imag=b</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	Complex c;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span>	cin <span style="color:#f92672">&gt;&gt;</span> c <span style="color:#f92672">&gt;&gt;</span> n;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> c <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>程序运行结果可以如下</p>
+<pre tabindex="0"><code>13.2+133i 87↓
+13.2+133i,87
+</code></pre><p>完整程序如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdlib&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">double</span> real,imag;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		Complex(<span style="color:#66d9ef">double</span> r<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">double</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">:</span>real(r),imag(i){};
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">friend</span> ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(ostream<span style="color:#f92672">&amp;</span> os,<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">friend</span> istream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;&gt;</span>(istream<span style="color:#f92672">&amp;</span> is,Complex<span style="color:#f92672">&amp;</span> c);
+</span></span><span style="display:flex;"><span>}; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(ostream<span style="color:#f92672">&amp;</span> os,<span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c){
+</span></span><span style="display:flex;"><span>	os <span style="color:#f92672">&lt;&lt;</span> c.real <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">&lt;&lt;</span> c.imag <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;i&#34;</span>;<span style="color:#75715e">//以&#34;a+bi&#34;的形式输出 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> os;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>istream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;&gt;</span>(istream<span style="color:#f92672">&amp;</span> is,Complex<span style="color:#f92672">&amp;</span> c){
+</span></span><span style="display:flex;"><span>	string s;
+</span></span><span style="display:flex;"><span>	is <span style="color:#f92672">&gt;&gt;</span> s;<span style="color:#75715e">//将&#34;a+bi&#34;作为字符串读入，&#34;a+bi&#34;中间不能有空格 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> pos<span style="color:#f92672">=</span>s.find(<span style="color:#e6db74">&#34;+&#34;</span>,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	string sTmp<span style="color:#f92672">=</span>s.substr(<span style="color:#ae81ff">0</span>,pos);<span style="color:#75715e">//分离出代表实部的字符串 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	c.real<span style="color:#f92672">=</span>atof(sTmp.c_str());<span style="color:#75715e">//atof函数能将const char*指针指向的内容转换成float 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	sTmp<span style="color:#f92672">=</span>s.substr(pos<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,s.length()<span style="color:#f92672">-</span>pos<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>);<span style="color:#75715e">//分离出代表虚部的字符串 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	c.imag<span style="color:#f92672">=</span>atof(sTmp.c_str());
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> is;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	Complex c;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span>	cin <span style="color:#f92672">&gt;&gt;</span> c <span style="color:#f92672">&gt;&gt;</span> n;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> c <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>事实上以上程序可以进行优化，优化内容如下：</p>
+<ol>
+<li>支持负数虚部​
+<ul>
+<li>使用 <code>find_last_of(&quot;+-&quot;)</code> 替代 <code>find(&quot;+&quot;)</code>，兼容虚部为负的情况（如 <code>3-4i</code>）。</li>
+</ul>
+</li>
+<li>​格式校验​​
+<ul>
+<li>检查输入字符串是否以 <code>i</code> 结尾</li>
+<li>检查分隔符位置有效性（避免首字符为分隔符）</li>
+</ul>
+</li>
+<li>错误处理​​
+<ul>
+<li>通过 <code>is.setstate(ios::failbit)</code> 设置流错误状态，使程序能处理无效输入。</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdlib&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> real, imag;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Complex(<span style="color:#66d9ef">double</span> r <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">double</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:</span> real(r), imag(i) {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">friend</span> ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(ostream<span style="color:#f92672">&amp;</span> os, <span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">friend</span> istream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;&gt;</span>(istream<span style="color:#f92672">&amp;</span> is, Complex<span style="color:#f92672">&amp;</span> c); <span style="color:#75715e">// 修正1：移除const
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ostream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;&lt;</span>(ostream<span style="color:#f92672">&amp;</span> os, <span style="color:#66d9ef">const</span> Complex<span style="color:#f92672">&amp;</span> c) {
+</span></span><span style="display:flex;"><span>    os <span style="color:#f92672">&lt;&lt;</span> c.real <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">&lt;&lt;</span> c.imag <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;i&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> os;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>istream<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&gt;&gt;</span>(istream<span style="color:#f92672">&amp;</span> is, Complex<span style="color:#f92672">&amp;</span> c) {
+</span></span><span style="display:flex;"><span>    string s;
+</span></span><span style="display:flex;"><span>    is <span style="color:#f92672">&gt;&gt;</span> s;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查字符串以i结尾
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (s.empty() <span style="color:#f92672">||</span> s.back() <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;i&#39;</span>) {
+</span></span><span style="display:flex;"><span>        is.setstate(ios<span style="color:#f92672">::</span>failbit);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> is;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 查找最后一个+或-作为分隔符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    size_t pos <span style="color:#f92672">=</span> s.find_last_of(<span style="color:#e6db74">&#34;+-&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pos <span style="color:#f92672">==</span> string<span style="color:#f92672">::</span>npos <span style="color:#f92672">||</span> pos <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        is.setstate(ios<span style="color:#f92672">::</span>failbit);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> is;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 分割实部和虚部
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    string realPart <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">0</span>, pos);
+</span></span><span style="display:flex;"><span>    string imagPart <span style="color:#f92672">=</span> s.substr(pos, s.size() <span style="color:#f92672">-</span> pos <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 去掉i
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    c.real <span style="color:#f92672">=</span> atof(realPart.c_str());
+</span></span><span style="display:flex;"><span>    c.imag <span style="color:#f92672">=</span> atof(imagPart.c_str());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> is;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    Complex c;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span>    cin <span style="color:#f92672">&gt;&gt;</span> c <span style="color:#f92672">&gt;&gt;</span> n;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> c <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> n;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="6类型转换运算符和自增自减运算符的重载">6.类型转换运算符和自增、自减运算符的重载</h2>
+<h3 id="重载类型转换运算符">重载类型转换运算符</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">double</span> real,imag;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		Complex(<span style="color:#66d9ef">double</span> r<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">double</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">:</span>real(r),imag(i){};
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">double</span>(){<span style="color:#66d9ef">return</span> real;}<span style="color:#75715e">//重载强制类型转换运算符double 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	Complex c(<span style="color:#ae81ff">1.2</span>,<span style="color:#ae81ff">3.4</span>);
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#66d9ef">double</span>)c <span style="color:#f92672">&lt;&lt;</span> endl;<span style="color:#75715e">//输出1.2 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">double</span> n<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span>c;<span style="color:#75715e">//等价于double n=2+c.operator double() 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> n;<span style="color:#75715e">//输出3.2 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="自增自减运算符的重载">自增、自减运算符的重载</h3>
+<p>自增运算符 <code>++</code>、自减运算符 <code>--</code> 有前置/后置之分，为了区分所重载的是前置运算符还是后置运算符，C++ 规定</p>
+<p><strong>前置运算符作为一元运算符重载</strong></p>
+<ul>
+<li>重载为成员函数 <code>T&amp; operator++();</code> <code>T&amp; operator--();</code></li>
+<li>重载为全局函数 <code>T1&amp; operator++(T2);</code> <code>T1&amp; operator--(T2);</code>
+<strong>后置运算符作为二元运算符重载，多写一个没用的参数</strong></li>
+<li>重载为成员函数 <code>T operator++(int);</code> <code>T operator--(int);</code></li>
+<li>重载为全局函数 <code>T1 operator++(T2,int);</code> <code>T1 operator--(T2,int);</code></li>
+</ul>
+<blockquote>
+<p>在没有后置运算符重载而有前置运算符重载的情况下，在 Visual Studio 中，<code>obj++</code> 也调用前置重载，而 DEV C++ 则令 <code>obj++</code> 编译出错。</p></blockquote>
+<p>举例说明，如下是希望实现的功能</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	CDemo d(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> (d<span style="color:#f92672">++</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;<span style="color:#75715e">//等价于d.operator++(0);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">++</span>d) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;<span style="color:#75715e">//等价于d.operator++();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> (d<span style="color:#f92672">--</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;<span style="color:#75715e">//等价于d.operator--(d,0);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">--</span>d) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;<span style="color:#75715e">//等价于d.operator--(d);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>预期的输出结果为</p>
+<pre tabindex="0"><code>5,6,7,7
+7,6,5,5
+</code></pre><p>那么应该如何编写 <code>CDemo</code>？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDemo</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CDemo(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">:</span>n(i){}
+</span></span><span style="display:flex;"><span>		CDemo<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>();<span style="color:#75715e">//用于前置形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		CDemo <span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>(<span style="color:#66d9ef">int</span>);<span style="color:#75715e">//用于后置形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">int</span>(){<span style="color:#66d9ef">return</span> n;};
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">friend</span> CDemo<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(CDemo<span style="color:#f92672">&amp;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">friend</span> CDemo <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(CDemo<span style="color:#f92672">&amp;</span>,<span style="color:#66d9ef">int</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CDemo<span style="color:#f92672">&amp;</span> CDemo<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>(){<span style="color:#75715e">//前置++
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">++</span>n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//++s即为s.operator++();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>CDemo CDemo<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>(<span style="color:#66d9ef">int</span> k){<span style="color:#75715e">//后置++
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	CDemo <span style="color:#a6e22e">tmp</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>);<span style="color:#75715e">//记录修改前的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	n<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> tmp;<span style="color:#75715e">//返回修改前的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}<span style="color:#75715e">//s++即为s.operator(0);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>CDemo<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(CDemo<span style="color:#f92672">&amp;</span> d){<span style="color:#75715e">//前置--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	d.n<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> d;
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//--s即为operator--(s);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>CDemo <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(CDemo<span style="color:#f92672">&amp;</span> d,<span style="color:#66d9ef">int</span>){<span style="color:#75715e">//后置--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	CDemo <span style="color:#a6e22e">tmp</span>(d);
+</span></span><span style="display:flex;"><span>	d.n<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> tmp;
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//s--即为operator--(s,0);
+</span></span></span></code></pre></div><hr>
+<h3 id="一点补充前置与后置的不同">一点补充：前置与后置的不同</h3>
+<p>自增（<code>++</code>）和自减（<code>--</code>）运算符的前置（如 <code>++i</code>）与后置（如 <code>i++</code>）的区别在于：</p>
+<ol>
+<li>返回值：前置运算符返回运算后的新值，后置运算符返回运算前的原始值；</li>
+<li>执行顺序：前置先增减再使用值，后置先使用值再增减；</li>
+<li>性能：前置无需创建临时变量，效率更高；后置需保留原始值的副本，可能产生额外开销；</li>
+<li>重载实现：C++ 中通过参数区分，前置无参数（<code>T&amp; operator++()</code>），后置用伪参数（<code>T operator++(int)</code>）。<br>
+例如：<code>int a=5; b=++a</code> 后 <code>a=6, b=6</code>，而 <code>b=a++</code> 后 <code>a=6, b=5</code>。</li>
+</ol>
+<h3 id="运算符重载的注意事项">运算符重载的注意事项</h3>
+<ol>
+<li>C++ 不允许定义新的运算符；</li>
+<li>重载后运算符的含义应该符合日常习惯；</li>
+<li>运算符重载不改变运算符的优先级；</li>
+<li>以下运算符不能被重载：<code>.</code> <code>.*</code> <code>::</code> <code>?:</code> <code>sizeof</code>；</li>
+<li>重载运算符 <code>()</code> <code>[]</code> <code>-&gt;</code> 或者赋值运算符 <code>=</code> 时，运算符重载函数必须声明为类的成员函数。</li>
+</ol>
+
+    </div>
+    
+    <div class="post-copyright">
+      <div class="copyright-info">
+        <p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。</p>
+        <p>本文链接：<a href="https://kibrac.github.io/posts/c&#43;&#43;4/">https://kibrac.github.io/posts/c&#43;&#43;4/</a></p>
+      </div>
+    </div>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/c&#43;&#43;/" class="tag">#C&#43;&#43;</a>
+      
+    </div>
+    
+    
+    <div class="post-navigation">
+      
+      <a class="prev-post" href="https://kibrac.github.io/posts/c&#43;&#43;3/">&larr; 面向对象的程序设计学习笔记 3</a>
+      
+      
+      
+      <a class="next-post" href="https://kibrac.github.io/posts/c&#43;&#43;5/">面向对象的程序设计学习笔记 5 &rarr;</a>
+      
+    </div>
+    
+    
+  </article>
+</div>
+
+    </main>
+    
+    <footer class="site-footer">
+      <div class="footer-container">
+  <div class="footer-content">
+    <div class="footer-info">
+      <p class="copyright">&copy; 2025 Kibrac&#39;s Blog</p>
+      
+      
+    </div>
+    
+    
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="footer-links">
+      
+      
+      <span class="footer-separator">|</span>
+      <span>使用 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> 构建</span>
+      <span class="footer-separator">|</span>
+      <span>主题 <a href="#" rel="noopener noreferrer">PointFive</a></span>
+    </div>
+</div>
+    </footer>
+  </div>
+  
+  
+  <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
+  
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+  
+  
+  
+  
+</body>
+</html>

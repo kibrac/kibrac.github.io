@@ -5,6 +5,9 @@
     <loc>https://kibrac.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2025-05-15T21:57:01+08:00</lastmod>
   </url><url>
+    <loc>https://kibrac.github.io/categories/</loc>
+    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
+  </url><url>
     <loc>https://kibrac.github.io/</loc>
     <lastmod>2025-05-15T21:57:01+08:00</lastmod>
   </url><url>
@@ -14,13 +17,10 @@
     <loc>https://kibrac.github.io/tags/</loc>
     <lastmod>2025-05-15T21:57:01+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/categories/</loc>
+    <loc>https://kibrac.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2025-05-15T21:57:01+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/posts/c&#43;&#43;6/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
-  </url><url>
-    <loc>https://kibrac.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2025-05-15T21:57:01+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/posts/c&#43;&#43;5/</loc>
@@ -38,8 +38,15 @@
     <loc>https://kibrac.github.io/posts/c&#43;&#43;1/</loc>
     <lastmod>2025-04-07T17:48:55+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/archives/</loc>
+    <loc>https://kibrac.github.io/posts/start/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/search/</loc>
+    <loc>https://kibrac.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/categories/%E9%97%B2%E8%AF%9D/</loc>
+    <lastmod>2025-03-24T17:15:01+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/archives/</loc>
   </url>
 </urlset>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>面向对象的程序设计学习笔记 3 - Kibrac&#39;s Blog</title>
+  <meta name="description" content="第三章 类和对象提高">
+  
+  
+  <link rel="icon" type="image/png" href="https://kibrac.github.io/favicon.png">
+  
+  
+  <link rel="stylesheet" href="https://kibrac.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/style.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/archives.css">
+  <link rel="stylesheet" href="https://kibrac.github.io/css/custom.css">
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  
+  
+  <script>
+    
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+  
+  <meta property="og:url" content="https://kibrac.github.io/posts/c&#43;&#43;3/">
+  <meta property="og:site_name" content="Kibrac&#39;s Blog">
+  <meta property="og:title" content="面向对象的程序设计学习笔记 3">
+  <meta property="og:description" content="第三章 类和对象提高">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-28T19:40:24+08:00">
+    <meta property="article:modified_time" content="2025-04-28T19:40:24+08:00">
+    <meta property="article:tag" content="C&#43;&#43;">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="面向对象的程序设计学习笔记 3">
+  <meta name="twitter:description" content="第三章 类和对象提高">
+      <meta name="twitter:site" content="@https://x.com/kibra_chen">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-container">
+  <div class="site-branding">
+    <a href="/" class="site-title">Kibrac&#39;s Blog</a>
+    
+  </div>
+  
+  <nav class="main-navigation">
+    
+    <ul class="menu" id="primary-menu">
+      
+      
+      <li class="menu-item  ">
+        <a href="/" class="home-link">首页</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/posts/" >文章</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/archives/" >归档</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/categories/" >分类</a>
+      </li>
+      
+      <li class="menu-item  ">
+        <a href="/tags/" >标签</a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+  <div class="header-actions">
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    
+    
+    <button class="theme-toggle" aria-label="切换主题">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+    </header>
+    
+    <main class="main-content">
+      
+<div class="post-container">
+  <article class="post">
+    
+    <div class="post-featured-image banner">
+      <img src="https://kibrac.github.io/images/cover/c&#43;&#43;.jpg" alt="面向对象的程序设计学习笔记 3">
+    </div>
+    
+    
+    <header class="post-header">
+      <h1 class="post-title">面向对象的程序设计学习笔记 3</h1>
+      
+      <div class="post-meta">
+        <time datetime="2025-04-28T19:40:24&#43;08:00">
+          2025-04-28
+        </time>
+        
+        
+        <span class="post-author">
+          Kibrac
+        </span>
+        
+        
+        
+        <div class="post-categories">
+          
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+          
+        </div>
+        
+      </div>
+    </header>
+    
+    <div class="post-content">
+      <p>课程链接：<a href="https://www.icourse163.org/course/PKU-1002029030">程序设计与算法（三）C++面向对象程序设计_北京大学_中国大学MOOC(慕课)</a></p>
+<h2 id="1this-指针">1.this 指针</h2>
+<h3 id="c-到-c-的翻译">C++ 到 C 的翻译</h3>
+<p>以下为一段 C++ 程序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCar</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> price;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetPrice</span>(<span style="color:#66d9ef">int</span> p);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> CCar<span style="color:#f92672">::</span>SetPrice(<span style="color:#66d9ef">int</span> p){
+</span></span><span style="display:flex;"><span>	price<span style="color:#f92672">=</span>p;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	CCar car;
+</span></span><span style="display:flex;"><span>	car.SetPrice(<span style="color:#ae81ff">20000</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>翻译为 C 程序如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> CCar{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> price;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetPrice</span>(<span style="color:#66d9ef">struct</span> CCar<span style="color:#f92672">*</span> this,<span style="color:#66d9ef">int</span> p){
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">-&gt;</span>price<span style="color:#f92672">=</span>p;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> CCar car;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">SetPrice</span>(<span style="color:#f92672">&amp;</span>car,<span style="color:#ae81ff">20000</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>this 指针的作用就是<strong>指向成员函数所作用的对象</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">double</span> real,imag;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Print</span>(){
+</span></span><span style="display:flex;"><span>			cout <span style="color:#f92672">&lt;&lt;</span> real <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> imag;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		Complex(<span style="color:#66d9ef">double</span> r,<span style="color:#66d9ef">double</span> i)<span style="color:#f92672">:</span>real(r),imag(i){}
+</span></span><span style="display:flex;"><span>		Complex <span style="color:#a6e22e">AddOne</span>(){
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>real<span style="color:#f92672">++</span>;<span style="color:#75715e">//等价于real++
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>Print();<span style="color:#75715e">//等价于Print
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">return</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>}; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	Complex c1(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>),c2(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	c2<span style="color:#f92672">=</span>c1.AddOne();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>} <span style="color:#75715e">//输出:2,1
+</span></span></span></code></pre></div><ul>
+<li><strong>非静态</strong>成员函数中可以直接使用 this 来代表指向该函数作用的对象的指针</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> Hello(){
+</span></span><span style="display:flex;"><span>			cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;hello&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	A<span style="color:#f92672">*</span> p<span style="color:#f92672">=</span>NULL;
+</span></span><span style="display:flex;"><span>	p<span style="color:#f92672">-&gt;</span>Hello();
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//正常输出：hello 
+</span></span></span></code></pre></div><p>以上代码如果进行下面的修改就是错误的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> Hello(){
+</span></span><span style="display:flex;"><span>			cout <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;hello&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;<span style="color:#75715e">//错误
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	A<span style="color:#f92672">*</span> p<span style="color:#f92672">=</span>NULL;
+</span></span><span style="display:flex;"><span>	p<span style="color:#f92672">-&gt;</span>Hello();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>**静态成员函数中不能使用 this 指针！**因为静态成员函数并不具体作用于某个对象，因此静态成员函数的真实的参数的个数，就是程序中写出的参数个数。</li>
+</ul>
+<h2 id="2静态成员变量">2.静态成员变量</h2>
+<h3 id="基本概念">基本概念</h3>
+<p><strong>静态成员</strong>：在说明前面加了 <code>static</code> 关键字的成员。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CRectangle</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> w,h;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> nTotalArea;<span style="color:#75715e">//静态成员变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> nTotalNumber;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CRectangle(<span style="color:#66d9ef">int</span> w_,<span style="color:#66d9ef">int</span> h_);
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>CRectangle();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintTotal</span>();<span style="color:#75715e">//静态成员函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><ul>
+<li>普通成员变量每个对象有各自的一份，而静态成员变量一共就一份，<strong>为所有对象共享</strong>。</li>
+<li><code>sizeof</code> 运算符不会计算静态成员变量。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CMyclass</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> s;
+</span></span><span style="display:flex;"><span>};<span style="color:#75715e">//则sizeof(CMyclass)等于4
+</span></span></span></code></pre></div><ul>
+<li>普通成员函数必须具体作用于某个对象，而静态成员函数<strong>并不具体作用于某个对象</strong>。</li>
+<li>因此静态成员不需要通过对象就能访问。</li>
+</ul>
+<h3 id="如何访问静态成员">如何访问静态成员</h3>
+<ol>
+<li>类名:: 成员名
+<code>CRectangle::PrintTotal();</code></li>
+<li>对象名.成员名
+<code>CRectangle r;r.PrintTotal();</code></li>
+<li>指针 -&gt;成员名
+<code>CRectangle* p=&amp;r;p-&gt;PrintTotal();</code></li>
+<li>引用.成员名
+<code>CRectangle&amp; ref=r;int n=ref.nTotalNumber;</code></li>
+</ol>
+<ul>
+<li><strong>静态成员变量本质上是全局变量，哪怕一个对象都不存在，类的静态成员变量也存在。</strong></li>
+<li>静态成员函数本质上是全局函数。</li>
+<li>设置静态成员这种机制的目的是将和某些类紧密相关的全局变量和函数写到类里面，看上去像一个整体，易于维护和理解。</li>
+</ul>
+<blockquote>
+<p>考虑一个需要随时知道矩形总数和总面积的图形处理程序</p>
+<p>可以用全局变量来记录总数和总面积</p>
+<p>用静态成员将这两个变量封装进类中，就更容易理解和维护</p></blockquote>
+<p>仍然使用之前的例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//定义类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CRectangle</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> w,h;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> nTotalArea;<span style="color:#75715e">//静态成员变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> nTotalNumber;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CRectangle(<span style="color:#66d9ef">int</span> w_,<span style="color:#66d9ef">int</span> h_);
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>CRectangle();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintTotal</span>();<span style="color:#75715e">//静态成员函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//利用构造函数和析构函数达到计数的效果
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>CRectangle<span style="color:#f92672">::</span>CRectangle(<span style="color:#66d9ef">int</span> w_,<span style="color:#66d9ef">int</span> h_){
+</span></span><span style="display:flex;"><span>	w<span style="color:#f92672">=</span>w_;
+</span></span><span style="display:flex;"><span>	h<span style="color:#f92672">=</span>h_;
+</span></span><span style="display:flex;"><span>	nTotalNumber<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>	nTotalArea<span style="color:#f92672">+=</span>w<span style="color:#f92672">*</span>h;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CRectangle<span style="color:#f92672">::~</span>CRectangle(){
+</span></span><span style="display:flex;"><span>	nTotalNumber<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>	nTotalArea<span style="color:#f92672">-=</span>w<span style="color:#f92672">*</span>h;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> CRectangle<span style="color:#f92672">::</span>PrintTotal(){
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> nTotalNumber <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> nTotalArea <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//必须在定义类的文件中对静态成员进行一次说明或初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//否则编译能通过，链接不能通过
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> CRectangle<span style="color:#f92672">::</span>nTotalNumber<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> CRectangle<span style="color:#f92672">::</span>nTotalArea<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	CRectangle r1(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>),r2(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//cout &lt;&lt; CRectangle::nTotalNumber;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//[Error] &#39;int CRectangle::nTotalNumber&#39; is private
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	CRectangle<span style="color:#f92672">::</span>PrintTotal();
+</span></span><span style="display:flex;"><span>	r1.PrintTotal();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>输出内容为</p>
+<pre tabindex="0"><code>2,13
+2,13
+</code></pre><p>**注意：**在静态成员函数中，不能访问非静态成员变量，也不能调用非静态成员函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> CRectangle<span style="color:#f92672">::</span>PrintTotal(){
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> w <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> nTotalNumber <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> nTotalArea <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//wrong，解释不通w到底是属于哪个对象的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>事实上，之前例子中的 <code>CRectangle</code> 类的写法是有严重缺陷的，这是因为</p>
+<ul>
+<li>在使用 <code>CRectangle</code> 类时，有时会调用复制构造函数生成临时的隐藏的 <code>CRectangle</code> 对象，这些对象在生成时并不会使用自定义的构造函数，而是使用编译器自动生成的复制构造函数。这里的有时指的是
+<ul>
+<li>调用一个以 <code>CRectangle</code> 类对象作为参数的函数时</li>
+<li>调用一个以 <code>CRectangle</code> 类对象作为返回值的函数时</li>
+</ul>
+</li>
+<li>临时对象在消亡时会调用析构函数，减少 <code>nTotalNumber</code> 和 <code>nTotalArea</code> 的值，可是这些临时对象在生成时却没有增加 <code>nTotalNumber</code> 和 <code>nTotalArea</code> 的值。</li>
+<li>解决办法：为 <code>CRectangle</code> 类写一个复制构造函数。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CRectangle<span style="color:#f92672">::</span>CRectangle(CRectangle<span style="color:#f92672">&amp;</span> r){
+</span></span><span style="display:flex;"><span>	w<span style="color:#f92672">=</span>r.w;h<span style="color:#f92672">=</span>r.h;
+</span></span><span style="display:flex;"><span>	nTotalNumber<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>	nTotalArea<span style="color:#f92672">+=</span>w<span style="color:#f92672">*</span>h;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="3成员对象和封闭类">3.成员对象和封闭类</h2>
+<h3 id="什么是封闭类">什么是封闭类</h3>
+<ul>
+<li>有成员对象的类称为封闭（enclosing）类
+<ul>
+<li>什么是成员对象？</li>
+<li>在 C++ 中，​<strong>​成员对象​</strong>​（Member Object）是指一个类的成员变量是另一个类的对象。</li>
+</ul>
+</li>
+</ul>
+<p>举例如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CTyre</span>{<span style="color:#75715e">//轮胎类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> radius;<span style="color:#75715e">//半径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">int</span> width;<span style="color:#75715e">//宽度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	CTyre(<span style="color:#66d9ef">int</span> r,<span style="color:#66d9ef">int</span> w)<span style="color:#f92672">:</span>radius(r),width(w){}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CEngine</span>{};<span style="color:#75715e">//引擎类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCar</span>{<span style="color:#75715e">//汽车类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span> 
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> price;
+</span></span><span style="display:flex;"><span>		CTyre tyre;
+</span></span><span style="display:flex;"><span>		CEngine engine;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CCar(<span style="color:#66d9ef">int</span> p,<span style="color:#66d9ef">int</span> tr,<span style="color:#66d9ef">int</span> tw);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CCar<span style="color:#f92672">::</span>CCar(<span style="color:#66d9ef">int</span> p,<span style="color:#66d9ef">int</span> tr,<span style="color:#66d9ef">int</span> w)<span style="color:#f92672">:</span>price(p),tyre(tr,w){}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	CCar car(<span style="color:#ae81ff">20000</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">225</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上例中，如果 <code>CCar</code> 类不定义构造函数，则下面的语句会编译出错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>CCar car;
+</span></span></code></pre></div><p>因为编译器不明白 <code>car.tyre</code> 该如何初始化。<code>car.engine</code> 的初始化没问题，用默认构造函数即可。</p>
+<p><strong>任何生成封闭类对象的语句，都要让编译器明白，对象中的成员对象，是如何初始化的。</strong></p>
+<p>具体的做法就是：<strong>通过封闭类的构造函数的初始化列表。</strong></p>
+<p>成员对象初始化列表中的参数可以是任意复杂的表达式，可以包括函数，变量，只要表达式中的函数或变量有定义就行。</p>
+<h3 id="封闭类构造函数和析构函数的执行顺序">封闭类构造函数和析构函数的执行顺序</h3>
+<ul>
+<li>封闭类对象生成时，先执行所有对象成员的构造函数，然后才执行封闭类的构造函数。</li>
+<li>对象成员的构造函数调用次序和对象成员在类中的说明次序一致，与它们在成员初始化列表中出现的次序无关。</li>
+<li>当封闭类的对象消亡时，先执行封闭类的析构函数，然后再执行成员对象的析构函数。次序和构造函数的调用次序相反。</li>
+</ul>
+<h3 id="封闭类实例">封闭类实例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CTyre</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CTyre(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;CTyre constructor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>CTyre(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;CTyre destructor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CEngine</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CEngine(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;CEngine constructor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>CEngine(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;CEngine destructor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCar</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CEngine engine;
+</span></span><span style="display:flex;"><span>		CTyre tyre;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		CCar(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;CCar constructor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">~</span>CCar(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;CCar destructor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	CCar car;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>输出内容如下</p>
+<pre tabindex="0"><code>CEngine constructor
+CTyre constructor
+CCar constructor
+CCar destructor
+CTyre destructor
+CEngine destructor
+</code></pre><h3 id="封闭类的复制构造函数">封闭类的复制构造函数</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		A(){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;default&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>		A(A<span style="color:#f92672">&amp;</span>a){cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;copy&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span>{A a;};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	B b1,b2(b1);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>输出如下</p>
+<pre tabindex="0"><code>default
+copy
+</code></pre><p>以上输出说明 <code>b2.a</code> 是用类 A 的复制构造函数初始化的。而且调用复制构造函数时的实参就是 <code>b1.a</code>。</p>
+<h2 id="4常量对象常量成员函数和常引用">4.常量对象、常量成员函数和常引用</h2>
+<h3 id="常量对象">常量对象</h3>
+<ul>
+<li>如果不希望某个对象的值被改变，则定义该对象的时候可以在前面加 <code>const</code> 关键字。</li>
+</ul>
+<h3 id="常量成员函数">常量成员函数</h3>
+<ul>
+<li>在类的成员函数说明后面可以加 <code>const</code> 关键字，则该成员函数成为常量成员函数。</li>
+<li>常量成员函数执行期间<strong>不应修改其作用的对象</strong>。因此，在常量成员函数中不能修改成员变量的值（<strong>静态成员变量除外</strong>），也不能调用同类的非常量成员函数（<strong>静态成员函数除外</strong>）。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Sample</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> value;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">GetValue</span>() <span style="color:#66d9ef">const</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(){};
+</span></span><span style="display:flex;"><span>		Sample(){}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Sample<span style="color:#f92672">::</span>GetValue() <span style="color:#66d9ef">const</span>{
+</span></span><span style="display:flex;"><span>	value<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#75715e">//wrong
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	func();<span style="color:#75715e">//wrong
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> Sample o;
+</span></span><span style="display:flex;"><span>	o.value<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>;<span style="color:#75715e">//error，常量对象不可被修改
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	o.func();<span style="color:#75715e">//error，常量对象上面不能执行非常量成员函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	o.GetValue();<span style="color:#75715e">//ok，常量对象上可以执行常量成员函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//在Dev C++中，要为Sample类编写无参构造函数才可以，Visual Studio 2010中不需要
+</span></span></span></code></pre></div><h3 id="常量成员函数的重载">常量成员函数的重载</h3>
+<ul>
+<li>两个成员函数，名字和参数表都一样，但是一个是 <code>const</code>，一个不是，算重载。</li>
+</ul>
+<h3 id="常引用">常引用</h3>
+<ul>
+<li>引用前面可以加 <code>const</code> 关键字，成为常引用。不能通过常引用，修改其引用的变量。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> r<span style="color:#f92672">=</span>n;
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;<span style="color:#75715e">//error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>n<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>;<span style="color:#75715e">//ok
+</span></span></span></code></pre></div><blockquote>
+<p>对象作为函数的参数时，生成该参数需要调用复制构造函数，效率比较低。用指针作参数，代码又不好看，如何解决？</p>
+<p>可以用对象的<strong>引用</strong>作为参数。但是随之而来的问题是若函数中不小心修改了形参，则实参也跟着变，这又如何避免？</p>
+<p>可以用对象的<strong>常引用</strong>作为参数。</p></blockquote>
+<h2 id="5友元">5.友元</h2>
+<p>友元分为<strong>友元函数</strong>和<strong>友元类</strong>两种。</p>
+<ol>
+<li>友元函数：一个类的友元函数可以访问该类的私有成员。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCar</span>;<span style="color:#75715e">//提前声明CCar类，以便后面的CDriver类使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDriver</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> ModifyCar(CCar<span style="color:#f92672">*</span> pCar);<span style="color:#75715e">//改装汽车
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCar</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> price;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MostExpensiveCar</span>(CCar cars[],<span style="color:#66d9ef">int</span> total);<span style="color:#75715e">//声明友元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> CDriver<span style="color:#f92672">::</span>ModifyCar(CCar<span style="color:#f92672">*</span> pCar);<span style="color:#75715e">//声明友元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> CDriver<span style="color:#f92672">::</span>ModifyCar(CCar<span style="color:#f92672">*</span> pCar){
+</span></span><span style="display:flex;"><span>	pCar<span style="color:#f92672">-&gt;</span>price<span style="color:#f92672">+=</span><span style="color:#ae81ff">1000</span>;<span style="color:#75715e">//汽车改装后价值增加
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MostExpensiveCar</span>(CCar cars[],<span style="color:#66d9ef">int</span> total){<span style="color:#75715e">//求最贵汽车的价格
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> tmpMax<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>total;<span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(cars[i].price<span style="color:#f92672">&gt;</span>tmpMax)
+</span></span><span style="display:flex;"><span>			tmpMax<span style="color:#f92672">=</span>cars[i].price;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> tmpMax;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;}
+</span></span></code></pre></div><ul>
+<li>可以把一个类的成员函数（包括构造、析构函数）说明为另一个类的友元。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">void</span> function();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">void</span> B<span style="color:#f92672">::</span>function();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="2">
+<li>友元类：如果 A 是 B 的友元类，那么 A 的成员函数可以访问 B 的私有成员。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCar</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> price;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDriver</span>;<span style="color:#75715e">//声明CDriver为友元类 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDriver</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	CCar myCar;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ModifyCar</span>(){<span style="color:#75715e">//改装汽车 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		myCar.price<span style="color:#f92672">+=</span><span style="color:#ae81ff">1000</span>;<span style="color:#75715e">//因CDriver是CCar的友元类，姑此处可以访问其私有成员 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	} 
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;}
+</span></span></code></pre></div><p><strong>友元类之间的关系不能传递，不能继承。</strong></p>
+
+    </div>
+    
+    <div class="post-copyright">
+      <div class="copyright-info">
+        <p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。</p>
+        <p>本文链接：<a href="https://kibrac.github.io/posts/c&#43;&#43;3/">https://kibrac.github.io/posts/c&#43;&#43;3/</a></p>
+      </div>
+    </div>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/c&#43;&#43;/" class="tag">#C&#43;&#43;</a>
+      
+    </div>
+    
+    
+    <div class="post-navigation">
+      
+      <a class="prev-post" href="https://kibrac.github.io/posts/c&#43;&#43;2/">&larr; 面向对象的程序设计学习笔记 2</a>
+      
+      
+      
+      <a class="next-post" href="https://kibrac.github.io/posts/c&#43;&#43;4/">面向对象的程序设计学习笔记 4 &rarr;</a>
+      
+    </div>
+    
+    
+  </article>
+</div>
+
+    </main>
+    
+    <footer class="site-footer">
+      <div class="footer-container">
+  <div class="footer-content">
+    <div class="footer-info">
+      <p class="copyright">&copy; 2025 Kibrac&#39;s Blog</p>
+      
+      
+    </div>
+    
+    
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="footer-links">
+      
+      
+      <span class="footer-separator">|</span>
+      <span>使用 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> 构建</span>
+      <span class="footer-separator">|</span>
+      <span>主题 <a href="#" rel="noopener noreferrer">PointFive</a></span>
+    </div>
+</div>
+    </footer>
+  </div>
+  
+  
+  <script src="https://kibrac.github.io/js/main.js"></script>
+  <script src="https://kibrac.github.io/js/code-block.js"></script>
+  
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+  
+  
+  
+  
+</body>
+</html>
