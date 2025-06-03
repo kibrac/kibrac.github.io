@@ -1577,7 +1577,8 @@ html.dark-mode .moon-icon {
 }
 
 .post-header {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
+  margin-top: 0.8em;
 }
 
 .post-title {
@@ -1601,7 +1602,24 @@ html.dark-mode .moon-icon {
 }
 
 .post-featured-image {
-  margin: 1.5em 0;
+  margin: 1em 0;
+}
+
+.post-banner {
+  width: 100%;
+  max-height: 350px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  margin-bottom: 0.5em;
+}
+
+.post-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0;
 }
 
 .post-content {
@@ -1847,16 +1865,14 @@ html.dark-mode .post-content strong {
 }
 
 .list-header {
-  margin-bottom: 2.5em;
-  padding-bottom: 1.2em;
+  margin-bottom: 1.5em;
+  padding-bottom: 0.8em;
   text-align: center;
   position: relative;
 }
 
-
-
 .list-title {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
   font-size: 2.5em;
   font-weight: 700;
   letter-spacing: -0.5px;

@@ -1,0 +1,110 @@
+/* 现代化标签云样式 */
+.modern-tag-cloud-container {
+  margin: 2em 0;
+  padding: 2em;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.modern-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+  position: relative;
+}
+
+.modern-tag-cloud-item {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.modern-tag-cloud-item:hover {
+  transform: scale(1.1) rotate(0deg) !important;
+  box-shadow: 0 6px 12px var(--shadow-color);
+  z-index: 10;
+}
+
+.tag-count {
+  margin-left: 0.4em;
+  font-size: 0.75em;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0.15em 0.6em;
+  line-height: 1.2;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.modern-tag-cloud-item:hover .tag-count {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .modern-tag-cloud-container {
+    padding: 1.5em;
+  }
+  
+  .modern-tag-cloud {
+    gap: 0.8em;
+    padding: 0.8em;
+  }
+  
+  .modern-tag-cloud-item {
+    padding: 0.4em 0.8em;
+    margin: 0.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-tag-cloud-container {
+    padding: 1em;
+  }
+  
+  .modern-tag-cloud {
+    gap: 0.6em;
+    padding: 0.6em;
+  }
+  
+  .modern-tag-cloud-item {
+    padding: 0.3em 0.6em;
+    margin: 0.3em;
+  }
+}
+
+/* 暗色模式调整 */
+html.dark-mode .modern-tag-cloud-container {
+  background-color: var(--light-bg);
+}
+
+html.dark-mode .tag-count {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+html.dark-mode .modern-tag-cloud-item:hover .tag-count {
+  background-color: rgba(255, 255, 255, 0.25);
+}
