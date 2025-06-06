@@ -1564,16 +1564,14 @@ html.dark-mode .moon-icon {
 
 /* Single Post */
 .post-container {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 250px;
-  gap: 2em;
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .post {
   max-width: 100%;
   margin: 0;
+  position: relative;
 }
 
 .post-header {
@@ -1625,6 +1623,7 @@ html.dark-mode .moon-icon {
 .post-content {
   margin-bottom: 2em;
 }
+
 
 /* 优化加粗文本样式，使其更加明显 */
 .post-content strong {
