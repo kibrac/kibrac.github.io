@@ -27,17 +27,23 @@ function createTableOfContents() {
   // 如果没有标题，不创建目录
   if (headings.length === 0) return;
   
-  // 获取侧边栏容器
-  const tocSidebar = document.getElementById('toc-sidebar');
-  if (!tocSidebar) return;
-  
-  // 创建目录标题
-  const tocHeader = document.createElement('div');
-  tocHeader.className = 'toc-header';
-  tocHeader.innerHTML = '<span>目录</span>';
-  tocSidebar.appendChild(tocHeader);
+  // 创建目录容器
+  const tocContainer = document.createElement('div');
+  tocContainer.className = 'toc-container';
+  tocContainer.innerHTML = `
+    <div class="toc-header">
+      <span class="toc-title">目录</span>
+      <button class="toc-toggle" aria-label="切换目录显示">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    <div class="toc-content"></div>
+  `;
   
   // 创建目录列表
+  const tocContent = tocContainer.querySelector('.toc-content');
   const tocList = document.createElement('ul');
   tocList.className = 'toc-list';
   
@@ -58,21 +64,39 @@ function createTableOfContents() {
     const link = document.createElement('a');
     link.href = `#${heading.id}`;
     link.textContent = heading.textContent;
-    link.setAttribute('data-target', heading.id);
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetId = this.getAttribute('data-target');
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.querySelector(`#${heading.id}`).scrollIntoView({ behavior: 'smooth' });
     });
     
     listItem.appendChild(link);
     tocList.appendChild(listItem);
   });
   
-  tocSidebar.appendChild(tocList);
+  tocContent.appendChild(tocList);
+  
+  // 添加目录到页面
+  document.body.appendChild(tocContainer);
+  
+  // 添加目录切换功能
+  const tocToggle = tocContainer.querySelector('.toc-toggle');
+  const tocTitle = tocContainer.querySelector('.toc-title');
+  
+  // 切换按钮点击事件
+  tocToggle.addEventListener('click', function() {
+    tocContainer.classList.toggle('toc-collapsed');
+  });
+  
+  // 标题点击事件 - 提供另一种展开方式
+  tocTitle.addEventListener('click', function() {
+    if (tocContainer.classList.contains('toc-collapsed')) {
+      tocContainer.classList.remove('toc-collapsed');
+    }
+  });
+  
+  // 添加鼠标悬停提示
+  tocTitle.style.cursor = 'pointer';
+  tocTitle.title = '点击展开目录';
 }
 
 /**
@@ -102,6 +126,7 @@ function createBackToTopButton() {
  */
 function handleScrollEvents() {
   const backToTopButton = document.querySelector('.back-to-top');
+  const tocContainer = document.querySelector('.toc-container');
   const tocItems = document.querySelectorAll('.toc-item a');
   const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
   
@@ -151,5 +176,20 @@ function updateTocHighlight() {
   // 添加当前高亮
   if (currentHeadingIndex >= 0 && currentHeadingIndex < tocLinks.length) {
     tocLinks[currentHeadingIndex].classList.add('active');
+    
+    // 确保当前高亮的项目在可视区域内
+    const activeLink = tocLinks[currentHeadingIndex];
+    const tocContent = document.querySelector('.toc-content');
+    if (tocContent) {
+      const linkTop = activeLink.offsetTop;
+      const linkHeight = activeLink.offsetHeight;
+      const contentHeight = tocContent.offsetHeight;
+      const scrollTop = tocContent.scrollTop;
+      
+      // 如果当前项目不在可视区域内，则滚动到可视区域
+      if (linkTop < scrollTop || linkTop + linkHeight > scrollTop + contentHeight) {
+        tocContent.scrollTop = linkTop - contentHeight / 2;
+      }
+    }
   }
 }
