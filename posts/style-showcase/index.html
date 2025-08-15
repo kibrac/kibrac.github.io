@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+<script>
+  
+  
+  (function() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>样式展示：一篇包含各种元素的文章 | Kibrac&#39;s Blog</title>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;700&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="kind-page">
+    <div id="content">
+        <header class="site-header">
+    <div class="container">
+        <h1><a href="https://kibrac.github.io/">Kibrac&#39;s Blog</a></h1>
+        <nav class="site-nav">
+            <ul>
+                
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/">主页</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="active">
+                        <a href="/posts/">文章</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/tags/">标签</a>
+                    </li>
+                
+            </ul>
+            <button id="theme-toggle" title="切换暗黑模式"></button>
+        </nav>
+    </div>
+</header>
+        <main class="main-content">
+            
+<article class="post-single">
+    <header class="page-header">
+        <h1>样式展示：一篇包含各种元素的文章</h1>
+        
+            <p class="page-content">This is a custom description for the style showcase post. It demonstrates how you can provide a specific summary for your articles.</p>
+        
+        <div class="post-meta">
+            <span>August 15, 2025</span>
+            <span class="dot">&middot;</span>
+            <span>5 min read</span>
+            
+                <span class="dot">&middot;</span>
+                <div class="tags-inline">
+                    
+                        <a href="/tags/hugo">hugo</a>
+                    
+                        <a href="/tags/theme">theme</a>
+                    
+                        <a href="/tags/showcase">showcase</a>
+                    
+                </div>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+        <h2 id="标题">标题</h2>
+<p>下面是所有级别的标题：</p>
+<h1 id="标题-1">标题 1</h1>
+<h2 id="标题-2">标题 2</h2>
+<h3 id="标题-3">标题 3</h3>
+<h4 id="标题-4">标题 4</h4>
+<h5 id="标题-5">标题 5</h5>
+<h6 id="标题-6">标题 6</h6>
+<hr>
+<h2 id="段落与文本格式">段落与文本格式</h2>
+<p>这是一段普通的文本。你可以使用 <strong>粗体</strong>、<em>斜体</em>、或者 <em><strong>粗斜体</strong></em> 来强调内容。你也可以使用 <code>行内代码</code> 来表示代码片段或技术术语。文本中可以包含<a href="https://gohugo.io/">链接</a>。</p>
+<p>你还可以使用删除线来标记<del>已作废的内容</del>。</p>
+<hr>
+<h2 id="列表">列表</h2>
+<h3 id="无序列表">无序列表</h3>
+<ul>
+<li>列表项 1</li>
+<li>列表项 2
+<ul>
+<li>嵌套列表项 2.1</li>
+<li>嵌套列表项 2.2</li>
+</ul>
+</li>
+<li>列表项 3</li>
+</ul>
+<h3 id="有序列表">有序列表</h3>
+<ol>
+<li>第一项</li>
+<li>第二项
+<ol>
+<li>嵌套第一项</li>
+<li>嵌套第二项</li>
+</ol>
+</li>
+<li>第三项</li>
+</ol>
+<hr>
+<h2 id="引用">引用</h2>
+<blockquote>
+<p>“Stay hungry, stay foolish.”</p>
+<p>这是一个经典的引用。引用块可以很好地突出显示重要的名言或段落。</p></blockquote>
+<hr>
+<h2 id="图片">图片</h2>
+<p>图片会自动应用圆角和阴影效果，并保持响应式。</p>
+<p><img src="https://images.unsplash.com/photo-1443632864897-14973fa006cf?q=80&amp;w=1740&amp;auto=format&amp;fit=crop" alt="山谷风景图">
+<em>图片来源: Unsplash</em></p>
+<hr>
+<h2 id="代码块">代码块</h2>
+<p>主题支持语法高亮，下面是一个 Go 语言的代码示例：</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">go</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Hello, Hugo!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>下面是一个 JavaScript 的例子：</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">javascript</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;theme-toggle&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">currentTheme</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-theme&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">newTheme</span> <span class="o">=</span> <span class="nx">currentTheme</span> <span class="o">===</span> <span class="s1">&#39;dark&#39;</span> <span class="o">?</span> <span class="s1">&#39;light&#39;</span> <span class="o">:</span> <span class="s1">&#39;dark&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setTheme</span><span class="p">(</span><span class="nx">newTheme</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><hr>
+<h2 id="表格">表格</h2>
+<p>表格样式简洁清晰。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">表头 1</th>
+          <th style="text-align: center">表头 2</th>
+          <th style="text-align: right">表头 3</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">左对齐</td>
+          <td style="text-align: center">居中对齐</td>
+          <td style="text-align: right">右对齐</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">cell</td>
+          <td style="text-align: center">cell</td>
+          <td style="text-align: right">cell</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">cell</td>
+          <td style="text-align: center">cell</td>
+          <td style="text-align: right">cell</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="输出和输入的重定向">输出和输入的重定向</h3>
+<p><strong>输出重定向</strong></p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">freopen</span><span class="p">(</span><span class="s">&#34;test.txt&#34;</span><span class="p">,</span><span class="s">&#34;w&#34;</span><span class="p">,</span><span class="n">stdout</span><span class="p">);</span><span class="c1">//将标准输出重定向到test.txt文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="c1">//除数为0则在屏幕上输出错误信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;error&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span><span class="c1">//cerr并没有被重定向
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">;</span><span class="c1">//输出结果到test.txt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><strong>输入重定向</strong></p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">freopen</span><span class="p">(</span><span class="s">&#34;t.txt&#34;</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">,</span><span class="n">stdin</span><span class="p">);</span><span class="c1">//cin被改为从t.txt中读取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">f</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">f</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>对于以上程序有</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">t.txt
+</span></span><span class="line"><span class="cl">3.14 123
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">输出
+</span></span><span class="line"><span class="cl">3.14,123</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="判断输入流结束">判断输入流结束</h3>
+<ul>
+<li>如果是从文件输入，比如前面有 <code>freopen(&quot;some.txt&quot;,&quot;r&quot;,stdin);</code> 那么读到文件尾部，输入流就算结束</li>
+<li>如果从键盘输入，则在单独一行输入 <code>Ctrl</code>+<code>Z</code> 代表输入流结束</li>
+</ul>
+<h3 id="istream-类的成员函数">istream 类的成员函数</h3>
+<p><code>istream&amp; getline(char* buf,int bufSize);</code></p>
+<p>从输入流中读取 <code>bufSize-1</code> 个字符到缓冲区 <code>buf</code>，或一直读取直到碰到 <code>\n</code> 为止（哪个先到算哪个）。</p>
+<p><code>istream&amp; getline(char* buf,int bufSize,char delim);</code></p>
+<p>从输入流中读取 <code>bufSize-1</code> 个字符到缓冲区 <code>buf</code>，或一直读取直到碰到 <code>delim</code> 字符为止（哪个先到算哪个）。</p>
+<p><strong>上面两个函数都自动在 <code>buf</code> 中读入的数据的结尾添加 <code>\0</code>。<code>\n</code> 或 <code>delim</code> 都不会被读入 <code>buf</code>，但会被从输入流中取走。</strong> 如果输入流中 <code>\n</code> 或 <code>delim</code> 之前的字符个数<strong>达到或超过</strong> <code>bufSize</code> 个，就导致读入出错，其结果是虽然本次读入已经完成，但是之后的读入都会失败。</p>
+<p>可以用 <code>if(!cin.getline(…))</code> 判断输入是否结束。</p>
+<p><code>bool eof();</code> 判断输入流是否结束</p>
+<p><code>int peek();</code> 返回下一个字符，但不从流中去掉</p>
+<p><code>istream&amp; putback(char c);</code> 将字符放回输入流（头部）</p>
+<p><code>istream&amp; ignore(int nCount=1,int delim=EOF);</code> 从流中删掉最多 nCount 个字符，遇到 EOF 时结束</p>
+<p>这是因为 <code>getline</code> 读到留在流中的 <code>\n</code> 就会返回。</p>
+<h2 id="2流操纵算子">2.流操纵算子</h2>
+<p><strong>使用流操纵算子需要 <code>#include &lt;iomanip&gt;</code></strong></p>
+<h3 id="整数流的基数流操纵算子-decocthexsetbase">整数流的基数：流操纵算子 <code>dec</code>，<code>oct</code>，<code>hex</code>，<code>setbase</code></h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hex</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="c1">//十六进制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		 <span class="o">&lt;&lt;</span> <span class="n">dec</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="c1">//十进制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		 <span class="o">&lt;&lt;</span> <span class="n">oct</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span><span class="c1">//八进制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出结果</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">10
+</span></span><span class="line"><span class="cl">a
+</span></span><span class="line"><span class="cl">10
+</span></span><span class="line"><span class="cl">12</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="浮点数的精度-precisionsetprecision">浮点数的精度 <code>precision</code>，<code>setprecision</code></h3>
+<ul>
+<li><code>precision</code> 是成员函数，其调用方式为：<code>cout.precision(5);</code></li>
+<li><code>setprecision</code> 是流操纵算子，其调用方式为：<code>cout &lt;&lt; setprecision(5);//可以连续输出</code></li>
+</ul>
+<p>上述两者的功能相同：<strong>指定输出浮点数的有效位数（非定点方式输出时），指定输出浮点数的小数点后的有效位数（定点方式输出时）。</strong></p>
+<p><strong>定点方式</strong>指的是小数点必须出现在个位数后面。（像科学计数法中小数点就并不是出现在个位数后面，属于非定点方式）</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="o">=</span><span class="mf">1234567.89</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mf">12.34567</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">1234567</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">m</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.23457e+006
+</span></span><span class="line"><span class="cl">12.3457
+</span></span><span class="line"><span class="cl">1234567
+</span></span><span class="line"><span class="cl">12</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>如果想要指定小数点后面指定位数</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="o">=</span><span class="mf">1234567.89</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mf">12.34567</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">1234567</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">m</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">setiosflags</span><span class="p">(</span><span class="n">ios</span><span class="o">::</span><span class="n">fixed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">;</span>	
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1234567.890000
+</span></span><span class="line"><span class="cl">12.345670
+</span></span><span class="line"><span class="cl">1234567
+</span></span><span class="line"><span class="cl">12</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><code>setiosflags(ios::fixed)</code> 是以小数点位置固定的方式进行输出</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="o">=</span><span class="mf">1234567.89</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">setiosflags</span><span class="p">(</span><span class="n">ios</span><span class="o">::</span><span class="n">fixed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">resetiosflags</span><span class="p">(</span><span class="n">ios</span><span class="o">::</span><span class="n">fixed</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">;</span>	
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容为</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1234567.890000
+</span></span><span class="line"><span class="cl">1.23457e+006</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><code>resetiosflags(ios::fixed)</code> 是取消以小数点位置固定的方式输出</p>
+<h3 id="设置域宽-setwwidth">设置域宽 <code>setw</code>，<code>width</code></h3>
+<p>两者功能相同，一个是成员函数，另一个是流操纵算子，调用方式不同</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">setw</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cin</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="c1">//4和5的区别在于结尾的\0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">setw</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><strong>宽度设置有效性是一次性的，在每次读入和输出之前都要设置宽度。</strong></p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">w</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span> <span class="n">string</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cin</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="c1">//这里的宽度5包括了结尾的\0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">string</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="n">w</span><span class="o">++</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">string</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cin</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>对以上程序有</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">输入
+</span></span><span class="line"><span class="cl">1234567890
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">输出
+</span></span><span class="line"><span class="cl">1234
+</span></span><span class="line"><span class="cl"> 5678
+</span></span><span class="line"><span class="cl">    90</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>一个综合例子</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">141</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//1)分别以十六进制、十进制、八进制先后输出n
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;1)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">hex</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">dec</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span>
+</span></span><span class="line"><span class="cl">		 <span class="o">&lt;&lt;</span> <span class="n">oct</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="o">=</span><span class="mf">1234567.89</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mf">12.34567</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//2)保留5位有效数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;2)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//3)保留小数点后面5位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;3)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">fixed</span> <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//4)科学计数法输出，且保留小数点后面5位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;4)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">scientific</span> <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">//5)非负数要显示正号，输出宽度为12字符，宽度不足则用&#34;*&#34;填补
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;5)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">showpos</span> <span class="o">&lt;&lt;</span> <span class="n">fixed</span> <span class="o">&lt;&lt;</span> <span class="n">setw</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">setfill</span><span class="p">(</span><span class="sc">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mf">12.1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//6)非负数不显示正号，输出宽度为12字符，宽度不足则右边用填充字符填充
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;6)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">noshowpos</span> <span class="o">&lt;&lt;</span> <span class="n">setw</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">left</span> <span class="o">&lt;&lt;</span> <span class="mf">12.1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//7)输出宽度为12字符，宽度不足则左边用填充字符填充
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;7)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">setw</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">right</span> <span class="o">&lt;&lt;</span> <span class="mf">12.1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//8)宽度不足时，负号和数值分列左右，中间用填充字符填充
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;8)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">setw</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">internal</span> <span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mf">12.1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;9)&#34;</span> <span class="o">&lt;&lt;</span> <span class="mf">12.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1)8d 141 215
+</span></span><span class="line"><span class="cl">2)1.2346e+006 12.346
+</span></span><span class="line"><span class="cl">3)1234567.89000 12.34567
+</span></span><span class="line"><span class="cl">4)1.23457e+006 1.23457e+001
+</span></span><span class="line"><span class="cl">5)***+12.10000
+</span></span><span class="line"><span class="cl">6)12.10000****
+</span></span><span class="line"><span class="cl">7)****12.10000
+</span></span><span class="line"><span class="cl">8)-***12.10000
+</span></span><span class="line"><span class="cl">9)12.10000</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="用户自定义的流操纵算子">用户自定义的流操纵算子</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">tab</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">output</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">output</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\t&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;aa&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">tab</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;bb&#34;</span><span class="p">;</span><span class="c1">//输出aa    bb
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>为什么可以这样操作？</p>
+<p>因为 <code>iostream</code> 里对 <code>&lt;&lt;</code> 进行了重载（成员函数）<code>ostream&amp; operator&lt;&lt;(ostream&amp;(*p)(ostream&amp;));</code>，该函数内部会调用 <code>p</code> 指向的函数，且以 <code>*this</code> 作为参数。</p>
+<p><code>hex</code>、<code>dec</code>、<code>oct</code> 都是函数。</p>
+<h2 id="3文件读写">3.文件读写</h2>
+<h3 id="文件和流">文件和流</h3>
+<p>可以将顺序文件看作一个有限字符构成的顺序字符流，然后对像 <code>cin</code>、<code>cout</code> 一样的读写。</p>
+<h3 id="创建文件">创建文件</h3>
+<ul>
+<li><code>#include &lt;fstream&gt;//首先要包含这个头文件</code></li>
+<li><code>ostream outFile(&quot;clients.dat&quot;,ios::out|ios::binary);//创建文件</code>
+<ul>
+<li>在上面这行代码中</li>
+<li><code>clients.dat</code> 是要创建的文件的名字</li>
+<li><code>ios::out</code> 是文件打开方式
+<ul>
+<li><code>ios::out</code> 输出到文件，删除原有内容</li>
+<li><code>ios::app</code> 输出到文件，保留原有内容，总是在尾部添加</li>
+</ul>
+</li>
+<li><code>ios::binary</code> 以二进制文件格式打开文件</li>
+</ul>
+</li>
+<li>也可以先创建 <code>ofstream</code> 对象，再用 <code>open</code> 函数打开</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">ofstream</span> <span class="n">fout</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fout</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#34;test.out&#34;</span><span class="p">,</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="o">|</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li>判断打开是否成功</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">fout</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;File open error!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li>文件名可以给出绝对路径，也可以给相对路径。没有交代路径信息，就是在当前文件夹下找文件。
+<ul>
+<li>绝对路径
+<ul>
+<li>&ldquo;c:\\temp\\mydir\\some.txt&rdquo;</li>
+</ul>
+</li>
+<li>相对路径
+<ul>
+<li>&ldquo;\\temp\\mydir\\some.txt&rdquo;
+<ul>
+<li>当前盘符的根目录下的 tmp\dir\some.txt</li>
+</ul>
+</li>
+<li>&ldquo;temp\\mydir\\some.txt&rdquo;
+<ul>
+<li>当前文件夹的 tmp 子文件夹</li>
+</ul>
+</li>
+<li>&ldquo;..\\temp\\mydir\\some.txt&rdquo;
+<ul>
+<li>当前文件夹的父文件夹下面的 tmp 子文件夹</li>
+</ul>
+</li>
+<li>&ldquo;..\\..\\temp\\mydir\\some.txt&rdquo;
+<ul>
+<li>当前文件夹的父文件夹的父文件夹下面的 tmp 子文件夹</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文章的读写指针">文章的读写指针</h3>
+<ul>
+<li>对于输入文件，有一个读指针</li>
+<li>对于输出文件，有一个写指针</li>
+<li>对于输入输出文件，有一个读写指针</li>
+<li>指针的作用是标识文件操作的当前位置，指针在哪，读写操作就在哪里进行</li>
+</ul>
+
+    </div>
+
+    
+<nav class="post-navigation">
+    
+    <a href="/posts/post-3/" class="prev">
+        &laquo; Post 3
+    </a>
+    
+    
+    
+</nav>
+
+
+</article>
+
+
+<aside class="hover-toc">
+    <div class="hover-toc-indicator"></div>
+    <div class="hover-toc-panel">
+        <h4>In this article</h4>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#标题">标题</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#标题-2">标题 2</a>
+      <ul>
+        <li><a href="#标题-3">标题 3</a></li>
+      </ul>
+    </li>
+    <li><a href="#段落与文本格式">段落与文本格式</a></li>
+    <li><a href="#列表">列表</a>
+      <ul>
+        <li><a href="#无序列表">无序列表</a></li>
+        <li><a href="#有序列表">有序列表</a></li>
+      </ul>
+    </li>
+    <li><a href="#引用">引用</a></li>
+    <li><a href="#图片">图片</a></li>
+    <li><a href="#代码块">代码块</a></li>
+    <li><a href="#表格">表格</a>
+      <ul>
+        <li><a href="#输出和输入的重定向">输出和输入的重定向</a></li>
+        <li><a href="#判断输入流结束">判断输入流结束</a></li>
+        <li><a href="#istream-类的成员函数">istream 类的成员函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#2流操纵算子">2.流操纵算子</a>
+      <ul>
+        <li><a href="#整数流的基数流操纵算子-decocthexsetbase">整数流的基数：流操纵算子 <code>dec</code>，<code>oct</code>，<code>hex</code>，<code>setbase</code></a></li>
+        <li><a href="#浮点数的精度-precisionsetprecision">浮点数的精度 <code>precision</code>，<code>setprecision</code></a></li>
+        <li><a href="#设置域宽-setwwidth">设置域宽 <code>setw</code>，<code>width</code></a></li>
+        <li><a href="#用户自定义的流操纵算子">用户自定义的流操纵算子</a></li>
+      </ul>
+    </li>
+    <li><a href="#3文件读写">3.文件读写</a>
+      <ul>
+        <li><a href="#文件和流">文件和流</a></li>
+        <li><a href="#创建文件">创建文件</a></li>
+        <li><a href="#文章的读写指针">文章的读写指针</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</aside>
+
+
+        </main>
+        <footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+    </div>
+</footer>
+
+    </div>
+    <a id="back-to-top" href="#" title="返回顶部">&uarr;</a>
+    <script src="/js/theme-switcher.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

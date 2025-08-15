@@ -2,42 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kibrac.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
+    <loc>https://kibrac.github.io/tags/hugo/</loc>
+    <lastmod>2025-08-15T11:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/categories/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
-  </url><url>
-    <loc>https://kibrac.github.io/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
-  </url><url>
-    <loc>https://kibrac.github.io/posts/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
+    <loc>https://kibrac.github.io/tags/showcase/</loc>
+    <lastmod>2025-08-15T11:00:00+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/tags/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
+    <lastmod>2025-08-15T11:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
+    <loc>https://kibrac.github.io/tags/theme/</loc>
+    <lastmod>2025-08-15T11:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/posts/c&#43;&#43;6/</loc>
-    <lastmod>2025-05-15T21:57:01+08:00</lastmod>
+    <loc>https://kibrac.github.io/posts/style-showcase/</loc>
+    <lastmod>2025-08-15T11:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/posts/c&#43;&#43;5/</loc>
-    <lastmod>2025-05-13T11:52:51+08:00</lastmod>
+    <loc>https://kibrac.github.io/tags/blue/</loc>
+    <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/posts/c&#43;&#43;4/</loc>
-    <lastmod>2025-05-08T18:03:55+08:00</lastmod>
+    <loc>https://kibrac.github.io/tags/green/</loc>
+    <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/posts/c&#43;&#43;3/</loc>
-    <lastmod>2025-04-28T19:40:24+08:00</lastmod>
+    <loc>https://kibrac.github.io/posts/post-3/</loc>
+    <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/posts/c&#43;&#43;2/</loc>
-    <lastmod>2025-04-16T20:27:27+08:00</lastmod>
+    <loc>https://kibrac.github.io/tags/red/</loc>
+    <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/posts/c&#43;&#43;1/</loc>
-    <lastmod>2025-04-07T17:48:55+08:00</lastmod>
+    <loc>https://kibrac.github.io/posts/post-2/</loc>
+    <lastmod>2023-02-15T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://kibrac.github.io/archives/</loc>
+    <loc>https://kibrac.github.io/posts/post-1/</loc>
+    <lastmod>2023-01-15T09:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/posts/</loc>
+    <lastmod>2023-01-01T08:30:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/</loc>
+    <lastmod>2023-01-01T08:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/categories/</loc>
   </url>
 </urlset>
