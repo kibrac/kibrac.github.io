@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+<script>
+  
+  
+  (function() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>面向对象的程序设计学习笔记 2 | Kibrac&#39;s Blog</title>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;700&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="kind-page section-posts">
+    <div id="content">
+        <header class="site-header">
+    <div class="container">
+        <h1><a href="https://kibrac.github.io/">Kibrac&#39;s Blog</a></h1>
+        <nav class="site-nav">
+            <ul>
+                
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/">Home</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="active">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/archive/">Archive</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/tags/">Tags</a>
+                    </li>
+                
+            </ul>
+            <button id="theme-toggle" title="切换暗黑模式"></button>
+        </nav>
+    </div>
+</header>
+        <main class="main-content">
+            
+<article class="post-single">
+    <header class="page-header">
+        <h1>面向对象的程序设计学习笔记 2</h1>
+        
+            <p class="page-content">第二章 类和对象基础</p>
+        
+        <div class="post-meta">
+            <span>July 31, 2025</span>
+            <span class="dot">&middot;</span>
+            <span>5 min read</span>
+            
+                <span class="dot">&middot;</span>
+                <div class="tags-inline">
+                    
+                        <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0">笔记</a>
+                    
+                </div>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+        <p>课程链接：<a href="https://www.icourse163.org/course/PKU-1002029030">程序设计与算法（三）C++面向对象程序设计_北京大学_中国大学MOOC(慕课)</a></p>
+<h2 id="1类和对象的基本概念补充">1.类和对象的基本概念（补充）</h2>
+<h3 id="类的成员函数和类的定义分开写">类的成员函数和类的定义分开写</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CRectangle</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="nf">Area</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="nf">Perimeter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">Init</span><span class="p">(</span><span class="kt">int</span> <span class="n">w_</span><span class="p">,</span><span class="kt">int</span> <span class="n">h_</span><span class="p">);</span><span class="c1">//成员函数仅在此声明
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">CRectangle</span><span class="o">::</span><span class="n">Area</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">CRectangle</span><span class="o">::</span><span class="n">Perimeter</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="o">+</span><span class="n">h</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="n">CRectangle</span><span class="o">::</span><span class="n">Init</span><span class="p">(</span><span class="kt">int</span> <span class="n">w_</span><span class="p">,</span><span class="kt">int</span> <span class="n">h_</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">w</span><span class="o">=</span><span class="n">w_</span><span class="p">;</span><span class="n">h</span><span class="o">=</span><span class="n">h_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li>CRectangle:: 说明后面的函数是 CRectangle 类的成员函数，而非普通函数。那么，一定要通过对象或对象的指针或对象的引用才能调用。</li>
+</ul>
+<h3 id="类成员的可访问范围">类成员的可访问范围</h3>
+<blockquote>
+<p>在类的定义中，用下列访问范围关键字来说明类成员可被访问的范围</p>
+<blockquote>
+<p>private: 私有成员，只能在成员函数内访问</p>
+<p>public: 共有成员，可以在任何地方访问</p>
+<p>protected: 保护成员，以后再说</p></blockquote></blockquote>
+<p>定义一个类</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">classname</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="err">私有属性和函数</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="err">共有属性和函数</span>
+</span></span><span class="line"><span class="cl">	<span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="err">保护属性和函数</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">；</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><strong>如果某个成员前面没有上述关键字，则缺省地被认为是私有成员。</strong></p>
+<blockquote>
+<p>在类的成员函数内部，能够访问</p>
+<blockquote>
+<p>当前对象的全部属性、函数
+同类其它对象的全部属性、函数</p></blockquote>
+<p>在类的成员函数以外的地方，只能够访问该类对象的公有成员</p></blockquote>
+<h3 id="私有成员变量的隐藏">私有成员变量的隐藏</h3>
+<p>设置私有成员的机制，叫“<strong>隐藏</strong>”</p>
+<p>“<strong>隐藏</strong>”的目的是强制对成员变量的访问一定要通过成员函数进行，那么以后成员变量的类型等属性修改后，只需要更改成员函数即可。否则，所有直接访问成员变量的语句都需要修改。</p>
+<h3 id="成员函数的重载及参数缺省">成员函数的重载及参数缺省</h3>
+<ul>
+<li>成员函数也可以重载</li>
+<li>成员函数也可以带缺省参数</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Location</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">valueX</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">){</span><span class="n">x</span><span class="o">=</span><span class="n">val</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="nf">valueX</span><span class="p">(){</span><span class="k">return</span> <span class="n">x</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Location</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">X</span><span class="p">,</span><span class="kt">int</span> <span class="n">Y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Location</span> <span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">.</span><span class="n">valueX</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">A</span><span class="p">.</span><span class="n">valueX</span><span class="p">();</span><span class="c1">//输出5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h2 id="2构造函数">2.构造函数</h2>
+<h3 id="构造函数的基本概念">构造函数的基本概念</h3>
+<p>构造函数是成员函数的一种</p>
+<ol>
+<li>名字与类名相同，可以有参数，不能有返回值（void 也不行）</li>
+<li><strong>作用是对对象进行初始化，如给成员变量赋初值</strong></li>
+<li>如果定义类时没写构造函数，则编译器生成一个默认的<strong>无参数</strong>的构造函数。默认构造函数无参数，不做任何操作</li>
+<li>如果定义了构造函数，则编译器不生成默认的无参数的构造函数</li>
+<li><strong>对象生成时构造函数自动被调用。对象一旦生成，就再也不能在其上执行构造函数</strong></li>
+<li>一个类可以有多个构造函数</li>
+</ol>
+<h3 id="构造函数的重要性">构造函数的重要性</h3>
+<ul>
+<li>构造函数执行必要的初始化工作，有了构造函数，就不必专门再写初始化函数，也不用担心忘记调用初始化函数</li>
+<li>有时对象没被初始化就使用，会导致程序出错</li>
+</ul>
+<h3 id="构造函数的重载">构造函数的重载</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span><span class="c1">//编译器自动生成默认构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span><span class="c1">//默认构造函数被调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span><span class="o">*</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">;</span><span class="c1">//默认构造函数被调用
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span><span class="o">::</span><span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">real</span><span class="o">=</span><span class="n">r</span><span class="p">,</span><span class="n">imag</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span><span class="c1">//error，缺少构造函数的参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span><span class="o">*</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">;</span><span class="c1">//error，没有参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span> <span class="nf">c1</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="c1">//ok
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li>一个类可以有多个构造函数，只要这多个构造函数的参数个数或者参数类型不同，就形成了重载的关系。</li>
+</ul>
+<blockquote>
+<p>一段话描述“重载”的概念</p>
+<p>在编程中，<strong>重载（Overload）<strong>可以理解为“<strong>同一个名字，多种用法</strong>”。就像你家的洗衣机有一个“洗涤”按钮，但根据你放入的衣物类型（毛衣、羽绒服、衬衫），它会自动调整水温、转速和时间。重载也是类似逻辑：程序员可以给</strong>同一个函数名</strong>写多个版本的实现，而这些版本的<strong>参数必须不同</strong>（比如参数类型、数量或顺序）。例如，一个叫 <code>加法</code> 的函数，既能处理两个整数相加，也能处理三个小数相加，甚至拼接两个字符串——只要参数不同，编译器就能自动根据你传入的数据<strong>匹配对应的版本</strong>。这样一来，代码更简洁直观，开发者不用死记硬背 <code>加整数</code>、<code>加小数</code> 等五花八门的名字，只需记住一个 <code>加法</code> 就能应对多种场景。</p></blockquote>
+<h2 id="3复制构造函数">3.复制构造函数</h2>
+<h3 id="复制构造函数的基本概念">复制构造函数的基本概念</h3>
+<ol>
+<li>只有一个参数，即对同类对象的引用</li>
+<li>形如 <code>X::X(X &amp;)</code> 或 <code>X::X(const X &amp;)</code>，二者选一，后者能以常量对象作为参数</li>
+<li>如果没有定义复制构造函数，那么编译器生成默认复制构造函数。默认的复制构造函数完成复制功能</li>
+</ol>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span><span class="c1">//调用缺省无参构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span> <span class="nf">c2</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="c1">//调用缺省的复制构造函数，将c2初始化成和c1一样
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><strong>不允许有形如 <code>X::X(X)</code> 的构造函数</strong></p>
+<h3 id="复制构造函数起作用的三种情况">复制构造函数起作用的三种情况</h3>
+<ol>
+<li>当用一个对象去初始化同类的另一个对象时</li>
+</ol>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="nf">c2</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c2</span><span class="o">=</span><span class="n">c1</span><span class="p">;</span><span class="c1">//等价于上一条语句，这是一条初始化语句，不是赋值语句
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ol start="2">
+<li>如果某函数有一个参数是类 A 的对象，那么该函数被调用时，类 A 的复制构造函数将被调用</li>
+</ol>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">(){};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">(</span><span class="n">A</span><span class="o">&amp;</span><span class="n">a</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Copy constructor called&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Func</span><span class="p">(</span><span class="n">A</span> <span class="n">a1</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span> <span class="n">a2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Func</span><span class="p">(</span><span class="n">a2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//程序输出结果为：Copy constructor called
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ol start="3">
+<li>如果函数的返回值是类 A 的对象时，则函数返回时，A 的复制构造函数将被调用</li>
+</ol>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span><span class="n">v</span><span class="o">=</span><span class="n">n</span><span class="p">;};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="n">a</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">v</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Copy constructor called&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">A</span> <span class="nf">Func</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span> <span class="n">b</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">Func</span><span class="p">().</span><span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//输出结果为4
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><hr>
+<h3 id="一点问题">一点问题</h3>
+<blockquote>
+<p>在原视频老师的讲解中，输出的内容为</p>
+<blockquote>
+<p>Copy constructor called4</p></blockquote>
+<p>但在 DEV-C++ 5.11 中实际运行以上代码，输出结果为</p>
+<blockquote>
+<p>4</p></blockquote></blockquote>
+<p>原因如下</p>
+<p>根据代码逻辑和 C++ 的拷贝构造函数调用规则，输出结果为：<strong>4</strong>，而不会打印 &ldquo;Copy constructor called&rdquo;。以下是关键原因分析：</p>
+<ol>
+<li><strong>编译器优化（拷贝省略）</strong>
+C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化（RVO, Return Value Optimization）</strong>，直接将对象构造在调用处的内存中，<strong>跳过拷贝构造函数的调用</strong>。即使拷贝构造函数显式定义了输出语句，编译器也会优化掉这次拷贝。</li>
+</ol>
+<p>在代码中，<code>Func()</code> 返回局部对象 <code>b</code>，理论上会触发拷贝构造函数。但由于 RVO 优化：</p>
+<p>• <strong>实际构造过程</strong>：直接在 <code>Func()</code> 的返回值内存区域构造 <code>b</code>，无需拷贝。</p>
+<p>• <strong>结果</strong>：<code>cout &lt;&lt; Func().v</code> 直接输出 <code>b.v</code> 的值 <code>4</code>，而不会触发拷贝构造函数的输出。</p>
+<ol start="2">
+<li><strong>若关闭编译器优化</strong></li>
+</ol>
+<p>如果强制关闭优化（例如 GCC 使用 <code>-fno-elide-constructors</code>），代码会输出：</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Copy</span> <span class="n">constructor</span> <span class="n">called4</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>此时：</p>
+<ul>
+<li><code>Func()</code> 返回 <code>b</code> 时，会调用拷贝构造函数生成临时对象。</li>
+<li>临时对象再被用来访问 <code>v</code>，输出 <code>4</code>。</li>
+</ul>
+<ol start="3">
+<li><strong>代码细节验证</strong></li>
+</ol>
+<ul>
+<li><strong>拷贝构造函数的触发条件</strong>：只有当用<strong>已有对象初始化新对象</strong>时才会调用拷贝构造函数（例如 <code>A a = b;</code>）。而返回值优化场景下，对象直接在目标内存构造，不满足这一条件。</li>
+<li><strong>C++ 标准支持</strong>：C++11 及以后版本中，RVO 是编译器必须支持的优化，即使拷贝/移动构造函数有副作用（如输出语句），优化仍然生效。</li>
+</ul>
+<p>因此 在默认编译选项下，输出为 <strong><code>4</code></strong>。若需验证拷贝构造函数的行为，需通过编译选项关闭优化。</p>
+<hr>
+<p><strong>注意，对象间赋值并不导致复制构造函数被调用</strong></p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMyclass</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMyclass</span><span class="p">(){};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMyclass</span><span class="p">(</span><span class="n">CMyclass</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">){</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="p">.</span><span class="n">n</span><span class="p">;}</span><span class="c1">//此处仅为说明问题，并不推荐复制函数这样书写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMyclass</span> <span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">c1</span><span class="p">.</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="n">c2</span><span class="o">=</span><span class="n">c1</span><span class="p">;</span><span class="n">CMyclass</span> <span class="n">c3</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;c2.n=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c2</span><span class="p">.</span><span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;c3.n=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c3</span><span class="p">.</span><span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//输出：c2.n=5,c3.n=10
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="常量引用参数的使用">常量引用参数的使用</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="n">CMyclass</span> <span class="n">obj_</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;fun&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li>这样的函数，调用时生成形参会引发复制构造函数调用，开销比较大</li>
+<li>所以可以考虑使用 CMyclass &amp;引用类型作为参数</li>
+<li>如果希望确保实参的值在函数中不应被改变，那么可以加上 const 关键字</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="k">const</span> <span class="n">CMyclass</span> <span class="o">&amp;</span> <span class="n">obj</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//函数中任何试图改变obj值的语句都变成非法语句
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h2 id="4类型转换构造函数">4.类型转换构造函数</h2>
+<h3 id="什么是类型转换构造函数">什么是类型转换构造函数</h3>
+<ol>
+<li>定义转换构造函数的目的是实现类型的自动转换</li>
+<li>只有一个参数，而且不是复制构造函数的构造函数，一般就可以看作是转换构造函数</li>
+<li>当需要时，编译系统会自动调用转换构造函数，建立一个无名的临时对象（或临时变量）</li>
+</ol>
+<h3 id="类型转换构造函数示例">类型转换构造函数示例</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Complex</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span><span class="c1">//类型转换构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IntConstructor called&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">real</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">imag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="p">){</span><span class="n">real</span><span class="o">=</span><span class="n">r</span><span class="p">;</span><span class="n">imag</span><span class="o">=</span><span class="n">i</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Complex</span> <span class="n">c1</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Complex</span> <span class="n">c2</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">c1</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span><span class="c1">//9被自动转换成一个临时Complex对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h2 id="5析构函数">5.析构函数</h2>
+<h3 id="什么是析构函数">什么是析构函数</h3>
+<ol>
+<li>名字与类名相同，在前面加 <code>~</code>，没有参数和返回值，一个类最多只能有一个析构函数</li>
+<li>析构函数对象消亡时即自动被调用。可以定义析构函数来在对象消亡前做善后工作，比如释放分配的空间等</li>
+<li>如果定义类时没写析构函数，则编译器生成缺省析构函数，缺省析构函数什么也不做</li>
+<li>如果定义了析构函数，则编译器不生成缺省析构函数</li>
+</ol>
+<h3 id="析构函数示例">析构函数示例</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">String</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">String</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">			<span class="n">p</span><span class="o">=</span><span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">String</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span><span class="o">::~</span><span class="n">String</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="k">delete</span> <span class="p">[]</span><span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="析构函数和数组">析构函数和数组</h3>
+<ul>
+<li>对象数组生命期结束时，对象数组的每个元素的析构函数都会被调用。</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Ctest</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="o">~</span><span class="n">Ctest</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;destructor called&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Ctest</span> <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;End Main&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">End Main
+</span></span><span class="line"><span class="cl">destructor called
+</span></span><span class="line"><span class="cl">destructor called</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="析构函数和运算符-delete">析构函数和运算符 delete</h3>
+<ul>
+<li>delete 运算导致析构函数被调用</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Ctest</span><span class="o">*</span> <span class="n">pTest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">pTest</span><span class="o">=</span><span class="k">new</span> <span class="n">Ctest</span><span class="p">;</span><span class="c1">//构造函数调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="n">pTest</span><span class="p">;</span><span class="c1">//析构函数调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">pTest</span><span class="o">=</span><span class="k">new</span> <span class="n">Ctest</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span><span class="c1">//构造函数调用3次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="p">[]</span><span class="n">pTest</span><span class="p">;</span><span class="c1">//析构函数调用3次
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li>若 new 一个对象数组，那么用 delete 释放时应该写 []。否则只 delete 一个对象（调用一次析构函数）</li>
+</ul>
+<h2 id="6构造函数析构函数调用时机">6.构造函数析构函数调用时机</h2>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Demo</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Demo</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">id</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;id=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; constructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">~</span><span class="n">Demo</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;id=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; destructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Demo</span> <span class="nf">d1</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Func</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="n">Demo</span> <span class="n">d2</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Demo</span> <span class="n">d3</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;func&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Demo</span> <span class="n">d4</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">d4</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;main&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Demo</span> <span class="n">d5</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;main ends&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">1</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">4</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">6</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">6</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">main</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">5</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">5</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">2</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">3</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="k">func</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">3</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">main</span> <span class="n">ends</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">6</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">2</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">id</span><span class="o">=</span><span class="mi">1</span> <span class="n">destructed</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+    </div>
+
+    
+<nav class="post-navigation">
+    
+    <a href="/posts/c&#43;&#43;1/" class="prev">
+        &laquo; 面向对象的程序设计学习笔记 1
+    </a>
+    
+    
+    
+    <a href="/posts/c&#43;&#43;3/" class="next">
+        面向对象的程序设计学习笔记 3 &raquo;
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<aside class="hover-toc">
+    <div class="hover-toc-indicator"></div>
+    <div class="hover-toc-panel">
+        <h4>In this article</h4>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1类和对象的基本概念补充">1.类和对象的基本概念（补充）</a>
+      <ul>
+        <li><a href="#类的成员函数和类的定义分开写">类的成员函数和类的定义分开写</a></li>
+        <li><a href="#类成员的可访问范围">类成员的可访问范围</a></li>
+        <li><a href="#私有成员变量的隐藏">私有成员变量的隐藏</a></li>
+        <li><a href="#成员函数的重载及参数缺省">成员函数的重载及参数缺省</a></li>
+      </ul>
+    </li>
+    <li><a href="#2构造函数">2.构造函数</a>
+      <ul>
+        <li><a href="#构造函数的基本概念">构造函数的基本概念</a></li>
+        <li><a href="#构造函数的重要性">构造函数的重要性</a></li>
+        <li><a href="#构造函数的重载">构造函数的重载</a></li>
+      </ul>
+    </li>
+    <li><a href="#3复制构造函数">3.复制构造函数</a>
+      <ul>
+        <li><a href="#复制构造函数的基本概念">复制构造函数的基本概念</a></li>
+        <li><a href="#复制构造函数起作用的三种情况">复制构造函数起作用的三种情况</a></li>
+        <li><a href="#一点问题">一点问题</a></li>
+        <li><a href="#常量引用参数的使用">常量引用参数的使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#4类型转换构造函数">4.类型转换构造函数</a>
+      <ul>
+        <li><a href="#什么是类型转换构造函数">什么是类型转换构造函数</a></li>
+        <li><a href="#类型转换构造函数示例">类型转换构造函数示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#5析构函数">5.析构函数</a>
+      <ul>
+        <li><a href="#什么是析构函数">什么是析构函数</a></li>
+        <li><a href="#析构函数示例">析构函数示例</a></li>
+        <li><a href="#析构函数和数组">析构函数和数组</a></li>
+        <li><a href="#析构函数和运算符-delete">析构函数和运算符 delete</a></li>
+      </ul>
+    </li>
+    <li><a href="#6构造函数析构函数调用时机">6.构造函数析构函数调用时机</a></li>
+  </ul>
+</nav>
+    </div>
+</aside>
+
+
+        </main>
+        <footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+    </div>
+</footer>
+
+    </div>
+    <a id="back-to-top" href="#" title="返回顶部">&uarr;</a>
+    <script src="/js/theme-switcher.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+<script>
+  
+  
+  (function() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>面向对象的程序设计学习笔记 5 | Kibrac&#39;s Blog</title>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;700&family=JetBrains+Mono&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="kind-page section-posts">
+    <div id="content">
+        <header class="site-header">
+    <div class="container">
+        <h1><a href="https://kibrac.github.io/">Kibrac&#39;s Blog</a></h1>
+        <nav class="site-nav">
+            <ul>
+                
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/">Home</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="active">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/archive/">Archive</a>
+                    </li>
+                
+                    
+                    
+                    
+                    <li class="">
+                        <a href="/tags/">Tags</a>
+                    </li>
+                
+            </ul>
+            <button id="theme-toggle" title="切换暗黑模式"></button>
+        </nav>
+    </div>
+</header>
+        <main class="main-content">
+            
+<article class="post-single">
+    <header class="page-header">
+        <h1>面向对象的程序设计学习笔记 5</h1>
+        
+            <p class="page-content">第五章 继承</p>
+        
+        <div class="post-meta">
+            <span>July 31, 2025</span>
+            <span class="dot">&middot;</span>
+            <span>7 min read</span>
+            
+                <span class="dot">&middot;</span>
+                <div class="tags-inline">
+                    
+                        <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0">笔记</a>
+                    
+                </div>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+        <p>课程链接：<a href="https://www.icourse163.org/course/PKU-1002029030">程序设计与算法（三）C++面向对象程序设计_北京大学_中国大学MOOC(慕课)</a></p>
+<h2 id="1继承和派生的基本概念">1.继承和派生的基本概念</h2>
+<h3 id="继承和派生的概念">继承和派生的概念</h3>
+<ul>
+<li><strong>继承：</strong> 在定义一个新的类 B 时，如果该类与某个已有的类 A 相似（<strong>指的是 B 拥有 A 的全部特点</strong>），那么就可以把 A 作为一个<strong>基类</strong>，而把 B 作为基类的一个<strong>派生类（也称子类）</strong>。</li>
+<li>派生类是通过对基类进行修改和扩充得到的。在派生类中，可以扩充新的成员变量和成员函数。</li>
+<li>派生类一经定义后，可以独立使用，不依赖于基类。</li>
+<li>派生类拥有基类的全部成员函数和成员变量，不论是 private、protected、public。
+<ul>
+<li>在派生类的各个成员函数中，不能访问基类中的 private 成员。</li>
+</ul>
+</li>
+</ul>
+<h3 id="派生类的写法">派生类的写法</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="err">派生类名:</span><span class="nc">public</span> <span class="err">基类名</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="p">......</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>举例如下</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CStudent</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">sName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nAge</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">bool</span> <span class="n">IsThreeGood</span><span class="p">(){};</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">SetName</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">){</span><span class="n">sName</span><span class="o">=</span><span class="n">name</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//......
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CUndergraduateStudent</span><span class="o">:</span><span class="k">public</span> <span class="n">CStudent</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nDepartment</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">bool</span> <span class="n">IsThreeGood</span><span class="p">(){...};</span><span class="c1">//覆盖
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">bool</span> <span class="nf">CanBaoYan</span><span class="p">(){...};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span><span class="c1">//派生类写法-类名:public 基类名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CGraduatedStudent</span><span class="o">:</span><span class="k">public</span> <span class="n">CStudent</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nDepartment</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">char</span> <span class="n">szMentorName</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">CountSalary</span><span class="p">(){...};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="派生类对象的内存空间">派生类对象的内存空间</h3>
+<p>派生类对象的体积，等于基类对象的体积再加上派生类对象自己的成员变量的体积。<strong>在派生类对象中，包含着基类对象</strong>，而且基类对象的存储位置位于派生类对象新增的成员变量<strong>之前</strong>。</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CBase</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDerived</span><span class="o">:</span><span class="k">public</span> <span class="n">CBase</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">v3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//CDerived对象：v1,v2,v3;CBase对象：v1,v2
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="继承实例程序学籍管理">继承实例程序：学籍管理</h3>
+<blockquote>
+<p>在原视频中展示的代码，缺少了对基类 <code>CStudent</code> 中 <code>PrintInfo</code> 和 <code>SetInfo</code> 的实现代码，此处进行了补齐。</p></blockquote>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"> 
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CStudent</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">id</span><span class="p">;</span><span class="c1">//学号 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">char</span> <span class="n">gender</span><span class="p">;</span><span class="c1">//性别，F代表女，M代表男 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	    <span class="kt">void</span> <span class="n">PrintInfo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Name:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
+</span></span><span class="line"><span class="cl">	             <span class="o">&lt;&lt;</span> <span class="s">&#34;ID:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
+</span></span><span class="line"><span class="cl">	             <span class="o">&lt;&lt;</span> <span class="s">&#34;Age:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
+</span></span><span class="line"><span class="cl">	             <span class="o">&lt;&lt;</span> <span class="s">&#34;Gender:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">gender</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	    
+</span></span><span class="line"><span class="cl">	    <span class="kt">void</span> <span class="nf">SetInfo</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name_</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">id_</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">	                <span class="kt">int</span> <span class="n">age_</span><span class="p">,</span> <span class="kt">char</span> <span class="n">gender_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	        <span class="n">name</span> <span class="o">=</span> <span class="n">name_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	        <span class="n">id</span> <span class="o">=</span> <span class="n">id_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	        <span class="n">age</span> <span class="o">=</span> <span class="n">age_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	        <span class="n">gender</span> <span class="o">=</span> <span class="n">gender_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="nf">GetName</span><span class="p">(){</span><span class="k">return</span> <span class="n">name</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CUndergraduateStudent</span><span class="o">:</span><span class="k">public</span> <span class="n">CStudent</span><span class="p">{</span><span class="c1">//本科生类，继承了CStudent类 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">department</span><span class="p">;</span><span class="c1">//学生所属系的名称 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">QualifiedForBaoyan</span><span class="p">(){</span><span class="c1">//给予保研资格 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;qualified for baoyan&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> 
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">PrintInfo</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">			<span class="n">CStudent</span><span class="o">::</span><span class="n">PrintInfo</span><span class="p">();</span><span class="c1">//调用基类的PrintInfo 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Department:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">department</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">SetInfo</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name_</span><span class="p">,</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">id_</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">					<span class="kt">int</span> <span class="n">age_</span><span class="p">,</span><span class="kt">char</span> <span class="n">gender_</span><span class="p">,</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">department_</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">			<span class="n">CStudent</span><span class="o">::</span><span class="n">SetInfo</span><span class="p">(</span><span class="n">name_</span><span class="p">,</span><span class="n">id_</span><span class="p">,</span><span class="n">age_</span><span class="p">,</span><span class="n">gender_</span><span class="p">);</span><span class="c1">//调用基类的SetInfo 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">department</span><span class="o">=</span><span class="n">department_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CUndergraduateStudent</span> <span class="n">s2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">s2</span><span class="p">.</span><span class="n">SetInfo</span><span class="p">(</span><span class="s">&#34;Harry Potter&#34;</span><span class="p">,</span><span class="s">&#34;118829212&#34;</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="sc">&#39;M&#39;</span><span class="p">,</span><span class="s">&#34;Computer Science&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s2</span><span class="p">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">s2</span><span class="p">.</span><span class="n">QualifiedForBaoyan</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="n">s2</span><span class="p">.</span><span class="n">PrintInfo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出结果</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Harry Potter qualified for baoyan
+</span></span><span class="line"><span class="cl">Name:Harry Potter
+</span></span><span class="line"><span class="cl">ID:118829212
+</span></span><span class="line"><span class="cl">Age:19
+</span></span><span class="line"><span class="cl">Gender:M
+</span></span><span class="line"><span class="cl">Department:Computer Science</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h2 id="2继承关系和复合关系">2.继承关系和复合关系</h2>
+<h3 id="类的两种关系">类的两种关系</h3>
+<ul>
+<li><strong>继承：</strong>“<strong>是</strong>”关系。
+<ul>
+<li>对于基类 A，B 是基类 A 的派生类。</li>
+<li>逻辑上要求：“一个 B 对象也<strong>是</strong>一个 A 对象”。</li>
+</ul>
+</li>
+<li><strong>复合：</strong>“<strong>有</strong>”关系。
+<ul>
+<li>类 C 中<strong>有</strong>成员变量 k，k 是类 D 的对象，则 C 和 D 是复合关系。</li>
+<li>一般逻辑上要求：“D 对象是 C 对象的固有属性或组成部分”。</li>
+</ul>
+</li>
+</ul>
+<h3 id="继承关系的使用">继承关系的使用</h3>
+<p>考虑以下情景：</p>
+<p>当我们写了一个 <code>CMan</code> 类来代表男人，后来发现还需要一个 <code>CWoman</code> 类来代表女人，<code>CWoman</code> 类和 <code>CMan</code> 类有共同之处，所以我们就让 <code>CWoman</code> 类从 <code>CWoman</code> 类从 <code>CMan</code> 类派生而来，是否合适？</p>
+<p>这显然是<strong>不合理</strong>的！因为“一个女人也是一个男人”从逻辑上不成立！</p>
+<p>好的做法是概括男人和女人的共同特点，写一个 <code>CHuman</code> 类，代表“人”，然后 <code>CMan</code> 和 <code>CWoman</code> 都从 <code>CHuman</code> 派生。</p>
+<h3 id="复合关系的使用">复合关系的使用</h3>
+<ul>
+<li>几何体程序中，需要写“点”类，也需要写“圆”类，两者的关系就是复合关系——每一个“圆”对象里都包含（<strong>有</strong>）一个“点”对象，也就是圆心。</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CPoint</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="k">class</span> <span class="nc">CCircle</span><span class="p">;</span><span class="c1">//便于CCircle类操作其圆心
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CCircle</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CPoint</span> <span class="n">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>再考虑以下情景：</p>
+<ul>
+<li>如果要写一个小区养狗管理程序，需要写一个“<strong>业主</strong>”类，还需要写一个“<strong>狗</strong>”类。</li>
+<li>而狗是有“主人”的，主人也就是业主（假定狗只有一个主人，但一个业主可以最多拥有 10 条狗）</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">classCMaster</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CDog</span> <span class="n">dogs</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMaster</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>上面这种写法是<strong>完完全全的错误</strong>（用视频中老师的说法就是你的 C++ 是保安教的吗 hhhh），在编译的时候就无法通过，因为它进行了循环定义，也就是“人中有狗，狗中有人”。可以注意到，上述写法中，一个 <code>CMaster</code> 的体积，是 10 倍的 <code>CDog</code>，而一个 <code>CDog</code> 的体积，又等同于一个 <code>CMaster</code>。</p>
+<p>另一种写法:</p>
+<ul>
+<li>为“狗”类设一个“业主”类的成员对象；</li>
+<li>为“业主”类设一个“狗”类的对象指针数组。</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CDog</span><span class="o">*</span> <span class="n">dogs</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMaster</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>这种写法实际上也是错误的，因为这样定义类实际上还是导致“狗中有人”的局面，那么在维护相同主人的多条狗里面包含的多个主人对象的信息一致性上会非常繁琐。</p>
+<p>一种凑合的写法：</p>
+<ul>
+<li>为“狗”类设一个“业主”类的对象指针；</li>
+<li>为“业主”类设一个“狗”类的对象数组。</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">;</span><span class="c1">//CMaster必须提前声明，不能先写CMaster类后写CDog类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMaster</span><span class="o">*</span> <span class="n">pm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CDog</span> <span class="n">dogs</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>这样的写法实际上是导致“人中有狗”，而每一条狗拥有一个指向主人的指针。并且这种写法会造成如果要对狗对象进行操作，都需要通过它的主人来进行，因为每一个狗对象都被包含在主人对象中。</p>
+<p><strong>正确的写法：</strong></p>
+<ul>
+<li>为“狗”类设一个“业主”类的对象指针；</li>
+<li>为“业主”类设一个“狗”类的对象指针数组。</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">;</span><span class="c1">//CMaster必须提前声明，不能先写CMaster类后写CDog类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CMaster</span><span class="o">*</span> <span class="n">pm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CDog</span><span class="o">*</span> <span class="n">dogs</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h2 id="3覆盖和保护成员">3.覆盖和保护成员</h2>
+<h3 id="覆盖">覆盖</h3>
+<p>派生类可以定义一个和基类成员同名的成员，这叫<strong>覆盖</strong>。在派生类中访问这类成员时，缺省的情况是访问派生类中定义的成员。要在派生类中访问由基类定义的<strong>同名</strong>成员时，要使用作用域符号 <code>::</code>。</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">base</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">func</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">derived</span><span class="o">:</span><span class="k">public</span> <span class="n">base</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">i</span><span class="p">;</span><span class="c1">//这里只是为了说明，实际上一般不会在基类和派生类中写同名变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">void</span> <span class="nf">access</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">func</span><span class="p">();</span><span class="c1">//但写同名函数是很常见的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">derived</span><span class="o">::</span><span class="n">access</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">j</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//error，这是基类的私有成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//引用的是派生类的i
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">base</span><span class="o">::</span><span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//引用的是基类的i
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">func</span><span class="p">();</span><span class="c1">//派生类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">base</span><span class="o">::</span><span class="n">func</span><span class="p">();</span><span class="c1">//基类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">derived</span> <span class="n">obj</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">obj</span><span class="p">.</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">obj</span><span class="p">.</span><span class="n">base</span><span class="o">::</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><strong>一般来说，基类和派生类不定义同名成员变量。</strong></p>
+<h3 id="类的保护成员">类的保护成员</h3>
+<p>存取权限说明符：<code>protected</code></p>
+<ul>
+<li>基类的 <code>private</code> 成员可以被下列函数访问
+<ul>
+<li>基类的成员函数</li>
+<li>基类的友元函数</li>
+</ul>
+</li>
+<li>基类的 <code>public</code> 成员可以被下列函数访问
+<ul>
+<li>基类的成员函数</li>
+<li>基类的友元函数</li>
+<li>派生类的成员函数</li>
+<li>派生类的友元函数</li>
+<li>其他函数</li>
+</ul>
+</li>
+<li>基类的 <code>protected</code> 成员可以被下列函数访问
+<ul>
+<li>基类的成员函数</li>
+<li>基类的友元函数</li>
+<li>派生类的成员函数可以访问当前对象（也就是派生类成员函数当前作用的对象）的基类的保护成员</li>
+</ul>
+</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Father</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nPrivate</span><span class="p">;</span><span class="c1">//私有成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nPublic</span><span class="p">;</span><span class="c1">//共有成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nProtected</span><span class="p">;</span><span class="c1">//保护成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Son</span><span class="o">:</span><span class="k">public</span> <span class="n">Father</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">AccessFather</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">		<span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//wrong
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok，访问从基类继承的protected成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Son</span> <span class="n">f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">f</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Father</span> <span class="n">f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Son</span> <span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">f</span><span class="p">.</span><span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="p">.</span><span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">f</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">f</span><span class="p">.</span><span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="p">.</span><span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><hr>
+<h3 id="一点补充针对-protected-的详细解释">一点补充：针对 <code>protected</code> 的详细解释</h3>
+<p>为什么在上述代码中，派生类的成员函数 <code>AccessFather</code> 中 <code>f.nProtected=1</code> 是可以的，但是主函数 <code>main</code> 中 <code>f.nProtected=1</code> 和 <code>s.nProtected=1</code> 都不行？</p>
+<p>​<strong>1.派生类成员函数中的 <code>f.nProtected = 1</code> 为什么合法？​</strong>​</p>
+<ul>
+<li>​<strong>上下文</strong>​：<code>Son::AccessFather()</code> 是派生类 <code>Son</code> 的成员函数。</li>
+<li>​<strong>规则</strong>​：<br>
+在派生类的成员函数中，​<strong>可以通过「派生类对象」访问其直接基类的 <code>protected</code> 成员</strong>​（无论该对象是否是当前 <code>this</code> 对象）。</li>
+<li>​<strong>代码分析</strong>​：</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Son</span> <span class="n">f</span><span class="p">;</span>         <span class="c1">// 创建一个 Son 对象 f
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ✔️ 合法：通过 Son 对象访问 Father 的 protected 成员
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>这里的 <code>f</code> 是 <code>Son</code> 类型的对象，<code>AccessFather()</code> 作为 <code>Son</code> 的成员函数，允许通过任何 <code>Son</code> 对象访问其基类 <code>Father</code> 的 <code>protected</code> 成员。</p>
+<p><strong>2.主函数中的 <code>f.nProtected = 1</code> 和 <code>s.nProtected = 1</code> 为什么非法？​</strong>​</p>
+<ul>
+<li>​<strong>上下文</strong>​：<code>main()</code> 是外部函数，不属于 <code>Father</code> 或 <code>Son</code> 的成员函数或友元。</li>
+<li>​<strong>规则</strong>​：<code>protected</code> 成员只能被以下角色访问：
+<ul>
+<li>基类自身的成员函数和友元</li>
+<li>派生类的成员函数（通过「派生类对象」或「当前 <code>this</code> 对象」）</li>
+<li>派生类的友元（通过派生类对象）</li>
+</ul>
+</li>
+<li>​<strong>代码分析</strong>​：</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Father</span> <span class="n">f</span><span class="p">;</span>  <span class="c1">// 基类对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：外部函数无法访问基类的 protected 成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">Son</span> <span class="n">s</span><span class="p">;</span>     <span class="c1">// 派生类对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">s</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：外部函数无法通过派生类对象间接访问基类的 protected 成员
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>尽管 <code>s</code> 是 <code>Son</code> 对象，但 <code>main()</code> 作为外部函数，无法直接访问任何类的 <code>protected</code> 成员。</p>
+<p><strong>3.关键区别总结</strong>​</p>
+<table>
+  <thead>
+      <tr>
+          <th>​<strong>场景</strong>​</th>
+          <th>​<strong>是否合法</strong>​</th>
+          <th>​<strong>原因</strong>​</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Son::AccessFather()</code> 中的 <code>f.nProtected</code></td>
+          <td>✔️ 合法</td>
+          <td>派生类成员函数可以通过「派生类对象」访问基类的 <code>protected</code> 成员</td>
+      </tr>
+      <tr>
+          <td><code>main()</code> 中的 <code>f.nProtected</code></td>
+          <td>❌ 非法</td>
+          <td>外部函数无法访问基类的 <code>protected</code> 成员</td>
+      </tr>
+      <tr>
+          <td><code>main()</code> 中的 <code>s.nProtected</code></td>
+          <td>❌ 非法</td>
+          <td>外部函数无法通过派生类对象间接访问基类的 <code>protected</code> 成员（即使该对象属于派生类）</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>4.进一步验证</strong>​</p>
+<p>如果尝试在 <code>Son::AccessFather()</code> 中通过 ​<strong>基类对象</strong>​ 访问 <code>protected</code> 成员，也会失败：</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Son</span><span class="o">::</span><span class="n">AccessFather</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Father</span> <span class="n">base</span><span class="p">;</span>        <span class="c1">// 创建一个基类对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">base</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：派生类无法通过基类对象访问 protected 成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>因为此处 <code>base</code> 是基类对象，而非派生类对象。</p>
+<p>​<strong>5.语言设计逻辑</strong>​</p>
+<p><code>protected</code> 的访问规则旨在实现以下目标：</p>
+<ul>
+<li><strong>允许派生类扩展基类的功能</strong>​：派生类可以访问基类的 <code>protected</code> 成员，用于实现继承相关的逻辑。</li>
+<li><strong>保持封装性</strong>​：外部代码（包括派生类的用户）无法直接访问 <code>protected</code> 成员，避免破坏基类的内部状态。</li>
+</ul>
+<p>通过这种设计，C++ 在「代码复用」和「封装性」之间取得了平衡。</p>
+<hr>
+<h2 id="4派生类的构造函数">4.派生类的构造函数</h2>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Bug</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nLegs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nType</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Bug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">PrintBug</span><span class="p">(){};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FlyBug</span><span class="o">:</span><span class="k">public</span> <span class="n">Bug</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">nWings</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nl">Public</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Bug</span><span class="o">::</span><span class="n">Bug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">nLegs</span><span class="o">=</span><span class="n">legs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">nColor</span><span class="o">=</span><span class="n">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//错误的FlyBug构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FlyBug</span><span class="o">::</span><span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">nLegs</span><span class="o">=</span><span class="n">legs</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nColor</span><span class="o">=</span><span class="n">color</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nType</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nWings</span><span class="o">=</span><span class="n">wings</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//正确的FlyBug构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FlyBug</span><span class="o">::</span><span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">)</span><span class="o">:</span><span class="n">Bug</span><span class="p">(</span><span class="n">legs</span><span class="p">,</span><span class="n">color</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//直接在初始化列表里面对基类的私有成员进行初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nWings</span><span class="o">=</span><span class="n">wings</span><span class="p">;</span><span class="c1">//这里也可以同样在初始化列表中进行初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FlyBug</span> <span class="n">fb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fb</span><span class="p">.</span><span class="n">PrintBug</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fb</span><span class="p">.</span><span class="n">nType</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fb</span><span class="p">.</span><span class="n">nLegs</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="c1">//error，nLegs是私有成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ul>
+<li><strong>在创建派生类的对象时，需要调用基类的构造函数来初始化派生类对象中从基类继承的成员。在执行一个派生类的构造函数之前，总是先执行基类的构造函数。</strong></li>
+<li>调用基类构造函数的两种方式
+<ul>
+<li>显示方式：在派生类的构造函数中，为基类的构造函数提供参数 。<code>derived::derived(arg_derived-list):base(arg_base-list)</code></li>
+<li>隐式方式：在派生类的构造函数中，省略基类构造函数，派生类的构造函数则自动调用基类的默认构造函数。</li>
+</ul>
+</li>
+<li><strong>派生类的析构函数被执行时，执行完派生类的析构函数后，会自动调用基类的析构函数。</strong></li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Base</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="n">n</span><span class="p">(</span><span class="n">i</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; constructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">Base</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; destructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span><span class="k">public</span> <span class="n">Base</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Derived</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="n">Base</span><span class="p">(</span><span class="n">i</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived constructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">Derived</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived destructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Derived</span> <span class="n">Obj</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容为</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Base</span> <span class="mi">3</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">Derived</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">Derived</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">Base</span> <span class="mi">3</span> <span class="n">destructed</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p><strong>封闭派生类对象的构造函数执行顺序</strong></p>
+<ol>
+<li>先执行基类的构造函数，用以初始化派生类对象中从基类继承的成员；</li>
+<li>在执行成员对象类的构造函数，用以初始化派生类对象中的成员对象；</li>
+<li>最后执行派生类自己的构造函数。</li>
+</ol>
+<p><strong>封闭派生类对象的析构函数执行顺序</strong></p>
+<ol>
+<li>先执行派生类自己的析构函数；</li>
+<li>再依次执行各成员对象类的析构函数；</li>
+<li>最后执行基类的析构函数。</li>
+</ol>
+<p>析构函数的调用顺序与构造函数的调用顺序相反。</p>
+<h2 id="5public-继承的赋值兼容规则">5.<code>public</code> 继承的赋值兼容规则</h2>
+<h3 id="公有继承的赋值兼容规则">公有继承的赋值兼容规则</h3>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">base</span><span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">derived</span><span class="o">:</span><span class="k">public</span> <span class="n">base</span><span class="p">{};</span><span class="c1">//实际上还可以写protected、private
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="c1">//当写public时称为公有继承
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">base</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">derived</span> <span class="n">d</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><ol>
+<li>派生类对象可以赋值给基类对象 <code>b=d;</code>(反过来写 <code>d=b;</code> 是不行的)；</li>
+<li>派生类对象可以初始化基类引用 `base&amp; br=d;</li>
+<li>派生类对象的地址可以赋值给基类指针 <code>base* pb=&amp;d;</code></li>
+</ol>
+<p><strong>需要注意的是，如果派生方式是 <code>private</code> 或 <code>protected</code>，则上述三条不可行。</strong></p>
+<h3 id="直接基类与间接基类">直接基类与间接基类</h3>
+<p>假定有类 A 派生类 B，类 B 派生类 C，类 C 派生类 D，……</p>
+<ul>
+<li>类 A 是类 B 的直接基类</li>
+<li>类 B 是类 C 的直接基类，类 A 是类 C 的间接基类</li>
+<li>类 C 是类 D 的直接基类，类 A、B 是类 D 的间接基类</li>
+</ul>
+<p>在声明派生类时，<strong>只需要</strong>列出它的直接基类</p>
+<ul>
+<li>派生类沿着类的层次自动向上继承它的间接基类</li>
+<li>派生类的成员包括
+<ul>
+<li>派生类自己定义的成员</li>
+<li>直接基类中的所有成员</li>
+<li>所有间接基类的全部成员</li>
+</ul>
+</li>
+</ul>
+<p>下面是一个多层派生的例子</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">cpp</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Base</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="n">n</span><span class="p">(</span><span class="n">i</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; constructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">Base</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; destructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span><span class="k">public</span> <span class="n">Base</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Derived</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="n">Base</span><span class="p">(</span><span class="n">i</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived constructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">Derived</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived destructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MoreDerived</span><span class="o">:</span><span class="k">public</span> <span class="n">Derived</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">MoreDerived</span><span class="p">()</span><span class="o">:</span><span class="n">Derived</span><span class="p">(</span><span class="mi">4</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;MoreDerived constructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">MoreDerived</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;MoreDerived destructed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">MoreDerived</span> <span class="n">Obj</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>输出内容为</p>
+<div class="code-block-wrapper">
+    <div class="code-block-header">
+        <span class="language-name">text</span>
+        <button class="copy-code-button" aria-label="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i>
+            <span class="copy-text">Copy</span>
+            <span class="copied-text" style="display: none;">Copied!</span>
+        </button>
+    </div>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Base</span> <span class="mi">4</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">Derived</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">MoreDerived</span> <span class="n">constructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">MoreDerived</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">Derived</span> <span class="n">destructed</span>
+</span></span><span class="line"><span class="cl"><span class="n">Base</span> <span class="mi">4</span> <span class="n">destructed</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div>
+    </div>
+
+    
+<nav class="post-navigation">
+    
+    <a href="/posts/c&#43;&#43;4/" class="prev">
+        &laquo; 面向对象的程序设计学习笔记 4
+    </a>
+    
+    
+    
+    <a href="/posts/c&#43;&#43;6/" class="next">
+        面向对象的程序设计学习笔记 6 &raquo;
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<aside class="hover-toc">
+    <div class="hover-toc-indicator"></div>
+    <div class="hover-toc-panel">
+        <h4>In this article</h4>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1继承和派生的基本概念">1.继承和派生的基本概念</a>
+      <ul>
+        <li><a href="#继承和派生的概念">继承和派生的概念</a></li>
+        <li><a href="#派生类的写法">派生类的写法</a></li>
+        <li><a href="#派生类对象的内存空间">派生类对象的内存空间</a></li>
+        <li><a href="#继承实例程序学籍管理">继承实例程序：学籍管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#2继承关系和复合关系">2.继承关系和复合关系</a>
+      <ul>
+        <li><a href="#类的两种关系">类的两种关系</a></li>
+        <li><a href="#继承关系的使用">继承关系的使用</a></li>
+        <li><a href="#复合关系的使用">复合关系的使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#3覆盖和保护成员">3.覆盖和保护成员</a>
+      <ul>
+        <li><a href="#覆盖">覆盖</a></li>
+        <li><a href="#类的保护成员">类的保护成员</a></li>
+        <li><a href="#一点补充针对-protected-的详细解释">一点补充：针对 <code>protected</code> 的详细解释</a></li>
+      </ul>
+    </li>
+    <li><a href="#4派生类的构造函数">4.派生类的构造函数</a></li>
+    <li><a href="#5public-继承的赋值兼容规则">5.<code>public</code> 继承的赋值兼容规则</a>
+      <ul>
+        <li><a href="#公有继承的赋值兼容规则">公有继承的赋值兼容规则</a></li>
+        <li><a href="#直接基类与间接基类">直接基类与间接基类</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</aside>
+
+
+        </main>
+        <footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+    </div>
+</footer>
+
+    </div>
+    <a id="back-to-top" href="#" title="返回顶部">&uarr;</a>
+    <script src="/js/theme-switcher.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

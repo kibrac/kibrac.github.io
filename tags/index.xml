@@ -5,49 +5,21 @@
     <link>https://kibrac.github.io/tags/</link>
     <description>Recent content in Tags on Kibrac&#39;s Blog</description>
     <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Aug 2025 11:00:00 +0800</lastBuildDate>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Aug 2025 21:59:22 +0800</lastBuildDate>
     <atom:link href="https://kibrac.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugo</title>
-      <link>https://kibrac.github.io/tags/hugo/</link>
-      <pubDate>Fri, 15 Aug 2025 11:00:00 +0800</pubDate>
-      <guid>https://kibrac.github.io/tags/hugo/</guid>
+      <title>C&#43;&#43;</title>
+      <link>https://kibrac.github.io/tags/c&#43;&#43;/</link>
+      <pubDate>Fri, 15 Aug 2025 21:59:22 +0800</pubDate>
+      <guid>https://kibrac.github.io/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     <item>
-      <title>Showcase</title>
-      <link>https://kibrac.github.io/tags/showcase/</link>
-      <pubDate>Fri, 15 Aug 2025 11:00:00 +0800</pubDate>
-      <guid>https://kibrac.github.io/tags/showcase/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Theme</title>
-      <link>https://kibrac.github.io/tags/theme/</link>
-      <pubDate>Fri, 15 Aug 2025 11:00:00 +0800</pubDate>
-      <guid>https://kibrac.github.io/tags/theme/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blue</title>
-      <link>https://kibrac.github.io/tags/blue/</link>
-      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://kibrac.github.io/tags/blue/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Green</title>
-      <link>https://kibrac.github.io/tags/green/</link>
-      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://kibrac.github.io/tags/green/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Red</title>
-      <link>https://kibrac.github.io/tags/red/</link>
-      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://kibrac.github.io/tags/red/</guid>
+      <title>笔记</title>
+      <link>https://kibrac.github.io/tags/%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 15 Aug 2025 21:59:22 +0800</pubDate>
+      <guid>https://kibrac.github.io/tags/%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
   </channel>
