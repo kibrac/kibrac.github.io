@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Kibrac&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Aug 2025 21:59:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Aug 2025 00:19:52 +0800</lastBuildDate>
     <atom:link href="https://kibrac.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM</title>
+      <link>https://kibrac.github.io/tags/llm/</link>
+      <pubDate>Mon, 18 Aug 2025 00:19:52 +0800</pubDate>
+      <guid>https://kibrac.github.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技术</title>
+      <link>https://kibrac.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Mon, 18 Aug 2025 00:19:52 +0800</pubDate>
+      <guid>https://kibrac.github.io/tags/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>模型部署</title>
+      <link>https://kibrac.github.io/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 18 Aug 2025 00:19:52 +0800</pubDate>
+      <guid>https://kibrac.github.io/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/</guid>
+      <description></description>
+    </item>
     <item>
       <title>C&#43;&#43;</title>
       <link>https://kibrac.github.io/tags/c&#43;&#43;/</link>

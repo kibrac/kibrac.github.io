@@ -2,16 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kibrac.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2025-08-15T21:59:22+08:00</lastmod>
-  </url><url>
     <loc>https://kibrac.github.io/</loc>
-    <lastmod>2025-08-15T21:59:22+08:00</lastmod>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/tags/llm/</loc>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/posts/</loc>
-    <lastmod>2025-08-15T21:59:22+08:00</lastmod>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/tags/</loc>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/posts/llm-deploy-locally/</loc>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2025-08-18T00:19:52+08:00</lastmod>
+  </url><url>
+    <loc>https://kibrac.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2025-08-15T21:59:22+08:00</lastmod>
   </url><url>
     <loc>https://kibrac.github.io/tags/%E7%AC%94%E8%AE%B0/</loc>
