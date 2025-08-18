@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const siteNav = document.getElementById('site-nav');
+
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener('click', () => {
+      siteNav.classList.toggle('is-active');
+      menuToggle.classList.toggle('is-active');
+    });
+  }
+
   // Back to top button
   const backToTop = document.getElementById('back-to-top');
   if (backToTop) {

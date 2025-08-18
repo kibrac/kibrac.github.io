@@ -17,7 +17,7 @@
   })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>本地部署大模型——Safetensors格式 | Kibrac&#39;s Blog</title>
+<title>本地部署大模型——Safetensors 格式 | Kibrac&#39;s Blog</title>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,48 +32,53 @@
         <header class="site-header">
     <div class="container">
         <h1><a href="https://kibrac.github.io/">Kibrac&#39;s Blog</a></h1>
-        <nav class="site-nav">
-            <ul>
-                
-                
+        <div class="header-right">
+            <nav id="site-nav" class="site-nav">
+                <ul>
                     
                     
+                        
+                        
+                        
+                        <li class="">
+                            <a href="/">Home</a>
+                        </li>
                     
-                    <li class="">
-                        <a href="/">Home</a>
-                    </li>
-                
+                        
+                        
+                        
+                        <li class="active">
+                            <a href="/posts/">Posts</a>
+                        </li>
                     
+                        
+                        
+                        
+                        <li class="">
+                            <a href="/archive/">Archive</a>
+                        </li>
                     
+                        
+                        
+                        
+                        <li class="">
+                            <a href="/tags/">Tags</a>
+                        </li>
                     
-                    <li class="active">
-                        <a href="/posts/">Posts</a>
-                    </li>
-                
-                    
-                    
-                    
-                    <li class="">
-                        <a href="/archive/">Archive</a>
-                    </li>
-                
-                    
-                    
-                    
-                    <li class="">
-                        <a href="/tags/">Tags</a>
-                    </li>
-                
-            </ul>
+                </ul>
+            </nav>
             <button id="theme-toggle" title="切换暗黑模式"></button>
-        </nav>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
     </div>
 </header>
         <main class="main-content">
             
 <article class="post-single">
     <header class="page-header">
-        <h1>本地部署大模型——Safetensors格式</h1>
+        <h1>本地部署大模型——Safetensors 格式</h1>
         
             <p class="page-content">这是一个详细的本地大模型部署实操记录，专注于在 Windows 环境下配置和编译 llama.cpp 工具链，将 Baichuan-M2-32B 模型的 Safetensors 格式转换为 GGUF 格式。文章重点分享了在 CMake 编译过程中遇到的各种问题及解决方案，包括 VS 环境配置、curl 库安装、工具链文件设置等关键技术细节，适合遇到类似部署困难的开发者参考。</p>
         
