@@ -1381,7 +1381,7 @@ html[data-theme='dark'] img:hover {
     }
 }
 
-/* --- Code Styling: Inline and Blocks --- */
+/* --- Code Styling: Inline and Blocks (GitHub Style) --- */
 
 /* Apply JetBrains Mono to all code elements */
 code, pre {
@@ -1390,27 +1390,20 @@ code, pre {
 
 /* Inline Code */
 :not(pre) > code {
-    background-color: var(--light-gray);
+    background-color: rgba(175, 184, 193, 0.2);
     padding: 0.2em 0.4em;
-    border-radius: 4px;
-    font-size: 0.85em;
-    border: 1px solid var(--border-color-light);
-}
-
-html[data-theme='dark'] :not(pre) > code {
-    background-color: #2a2a2a;
-    border-color: #3a3a3a;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 6px;
 }
 
 /* Code Block Wrapper */
 .code-block-wrapper {
     position: relative;
-    margin: 2em 0;
-    border-radius: 8px;
+    margin: 1.5em 0;
+    border-radius: 6px;
     overflow: hidden;
-    background-color: #272822; /* Monokai background */
-    border: 1px solid #3a3a3a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 1px solid #d0d7de;
 }
 
 /* Code Block Header */
@@ -1418,52 +1411,49 @@ html[data-theme='dark'] :not(pre) > code {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.25rem 1rem; /* Reduced vertical padding */
-    background-color: #3a3a3a;
-    border-bottom: 1px solid #4a4a4a;
-    min-height: auto; /* Ensure height is not fixed */
+    padding: 0.5rem 1rem;
+    background-color: #f6f8fa;
+    border-bottom: 1px solid #d0d7de;
 }
 
 .language-name {
-    color: #a0a0a0;
+    color: #57606a;
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .copy-code-button {
     background: none;
-    border: none;
-    color: #a0a0a0;
+    border: 1px solid transparent;
+    color: #57606a;
     cursor: pointer;
-    padding: 0.25rem 0.5rem; /* Reduced padding */
+    padding: 0.25rem 0.5rem;
     border-radius: 6px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.85rem;
-    transition: color 0.2s, background-color 0.2s;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
 .copy-code-button:hover {
-    color: #e0e0e0;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #eef1f4;
+    border-color: rgba(27,31,36,0.15);
 }
 
 /* Main Highlight Block from syntax.css */
 .code-block-wrapper .highlight {
     margin: 0;
-    padding: 1rem;
     overflow-x: auto;
-    /* Font size reduction */
-    font-size: 0.875rem; /* 14px if base is 16px */
+    font-size: 0.875rem;
     line-height: 1.6;
+    background-color: #fff; /* Light theme code background */
 }
 
 .code-block-wrapper .highlight pre {
     margin: 0;
-    padding: 0;
+    padding: 1rem;
 }
 
 /* Immersive Scrollbar Styling */
@@ -1477,14 +1467,12 @@ html[data-theme='dark'] :not(pre) > code {
 }
 
 .code-block-wrapper .highlight::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #c1c1c1;
     border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: content-box;
 }
 
 .code-block-wrapper .highlight::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #a8a8a8;
 }
 
 /* Collapsible Code Block */
@@ -1508,7 +1496,7 @@ html[data-theme='dark'] :not(pre) > code {
     left: 0;
     right: 0;
     height: 60px;
-    background: linear-gradient(to bottom, transparent, #272822);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
     pointer-events: none;
     z-index: 1;
 }
@@ -1518,11 +1506,9 @@ html[data-theme='dark'] :not(pre) > code {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(74, 74, 74, 0.8);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
+    background-color: #fff;
+    border: 1px solid #d0d7de;
+    color: #57606a;
     padding: 0.4rem 1rem;
     border-radius: 6px;
     cursor: pointer;
@@ -1531,8 +1517,119 @@ html[data-theme='dark'] :not(pre) > code {
 }
 
 .expand-code-button:hover {
-    background-color: rgba(90, 90, 90, 0.9);
+    background-color: #f6f8fa;
 }
 
-/* No specific light theme for code blocks, Monokai is dark by default */
-/* The wrapper will adapt based on the body's data-theme for other elements if needed, but the code itself remains dark */
+/* --- Dark Mode Overrides for Code --- */
+html[data-theme='dark'] :not(pre) > code {
+    background-color: rgba(110,118,129,0.4);
+    color: #c9d1d9;
+}
+
+html[data-theme='dark'] .code-block-wrapper {
+    border-color: #30363d;
+}
+
+html[data-theme='dark'] .code-block-header {
+    background-color: #161b22;
+    border-bottom-color: #30363d;
+}
+
+html[data-theme='dark'] .language-name {
+    color: #8b949e;
+}
+
+html[data-theme='dark'] .copy-code-button {
+    color: #8b949e;
+}
+
+html[data-theme='dark'] .copy-code-button:hover {
+    background-color: #21262d;
+    border-color: #8b949e;
+    color: #c9d1d9;
+}
+
+html[data-theme='dark'] .code-block-wrapper .highlight {
+    background-color: #0d1117; /* Dark theme code background */
+}
+
+html[data-theme='dark'] .code-block-wrapper .highlight::-webkit-scrollbar-thumb {
+    background-color: #30363d;
+}
+
+html[data-theme='dark'] .code-block-wrapper .highlight::-webkit-scrollbar-thumb:hover {
+    background-color: #484f58;
+}
+
+html[data-theme='dark'] .code-block-wrapper.is-collapsible:not(.is-expanded)::after {
+    background: linear-gradient(to bottom, rgba(13, 17, 23, 0), #0d1117);
+}
+
+html[data-theme='dark'] .expand-code-button {
+    background-color: #161b22;
+    border-color: #30363d;
+    color: #8b949e;
+}
+
+html[data-theme='dark'] .expand-code-button:hover {
+    background-color: #21262d;
+    border-color: #8b949e;
+}
+
+/* GitHub Dark Syntax Highlighting Overrides */
+html[data-theme='dark'] .chroma { color: #c9d1d9; background-color: #0d1117; }
+html[data-theme='dark'] .chroma .err { color: #f85149; }
+html[data-theme='dark'] .chroma .k { color: #ff7b72; }
+html[data-theme='dark'] .chroma .kc { color: #ff7b72; }
+html[data-theme='dark'] .chroma .kd { color: #ff7b72; }
+html[data-theme='dark'] .chroma .kn { color: #ff7b72; }
+html[data-theme='dark'] .chroma .kp { color: #ff7b72; }
+html[data-theme='dark'] .chroma .kr { color: #ff7b72; }
+html[data-theme='dark'] .chroma .kt { color: #ff7b72; }
+html[data-theme='dark'] .chroma .o { color: #ff7b72; font-weight: normal; }
+html[data-theme='dark'] .chroma .ow { color: #ff7b72; font-weight: normal; }
+html[data-theme='dark'] .chroma .c { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .ch { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .cm { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .c1 { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .cs { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .cp { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .cpf { color: #8b949e; font-style: italic; }
+html[data-theme='dark'] .chroma .gd { color: #ffa198; background-color: #490202; }
+html[data-theme='dark'] .chroma .gi { color: #56d364; background-color: #033a16; }
+html[data-theme='dark'] .chroma .gu { color: #79c0ff; }
+html[data-theme='dark'] .chroma .n { color: #c9d1d9; }
+html[data-theme='dark'] .chroma .na { color: #7ee787; }
+html[data-theme='dark'] .chroma .nb { color: #c9d1d9; }
+html[data-theme='dark'] .chroma .nc { color: #d2a8ff; font-weight: normal; }
+html[data-theme='dark'] .chroma .no { color: #79c0ff; }
+html[data-theme='dark'] .chroma .nd { color: #d2a8ff; font-weight: normal; }
+html[data-theme='dark'] .chroma .ni { color: #79c0ff; }
+html[data-theme='dark'] .chroma .ne { color: #ffa198; font-weight: normal; }
+html[data-theme='dark'] .chroma .nf { color: #d2a8ff; font-weight: normal; }
+html[data-theme='dark'] .chroma .nl { color: #79c0ff; }
+html[data-theme='dark'] .chroma .nt { color: #7ee787; }
+html[data-theme='dark'] .chroma .nv { color: #79c0ff; }
+html[data-theme='dark'] .chroma .l { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .ld { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .s { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .sa { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .sb { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .sc { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .dl { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .sd { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .s2 { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .se { color: #79c0ff; }
+html[data-theme='dark'] .chroma .sh { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .si { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .sx { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .sr { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .s1 { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .ss { color: #a5d6ff; }
+html[data-theme='dark'] .chroma .m { color: #79c0ff; }
+html[data-theme='dark'] .chroma .mb { color: #79c0ff; }
+html[data-theme='dark'] .chroma .mf { color: #79c0ff; }
+html[data-theme='dark'] .chroma .mh { color: #79c0ff; }
+html[data-theme='dark'] .chroma .mi { color: #79c0ff; }
+html[data-theme='dark'] .chroma .il { color: #79c0ff; }
+html[data-theme='dark'] .chroma .mo { color: #79c0ff; }
