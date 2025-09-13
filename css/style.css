@@ -1,15 +1,23 @@
+@import url('https://lxgw.global.ssl.fastly.net/LXGWWenKai-Regular/result.css');
+
+html {
+    font-size: 17px; /* Set base font size for a larger scale */
+}
+
 :root {
-    --primary-color: #343a40; /* Dark gray for text */
-    --secondary-color: #6c757d; /* Lighter gray for secondary text */
-    --accent-color: #007bff; /* A vibrant blue */
-    --bg-color: #e9ecef; /* A very light, clean gray */
-    --light-gray: #dee2e6; /* For hovers and subtle backgrounds */
-    --border-color: #dee2e6;
-    --border-color-light: #f1f3f5;
+    /* Simple B&W Theme - Light Mode */
+    --primary-color: #111111;   /* Near-black for text */
+    --secondary-color: #666666; /* Medium gray for secondary info */
+    --accent-color: #5a7a9a;    /* Gray-blue accent color */
+    --bg-color: #ffffff;        /* Pure white background */
+    --light-gray: #f5f5f5;    /* Light gray for hovers */
+    --border-color: #dddddd;    /* Gray for borders */
+    --border-color-light: #eeeeee; /* Lighter gray for subtle borders */
 }
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'LXGW WenKai', 'Lora', serif;
+    font-size: 1rem; /* Inherits from html, becomes 17px */
     line-height: 1.8;
     color: var(--primary-color);
     background-color: var(--bg-color);
@@ -87,15 +95,16 @@ header.site-header .container {
 
 header.site-header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Slightly increase for visual balance */
+    font-weight: normal; /* Match nav links */
+    font-family: inherit; /* Unify font with nav */
 }
 
 header.site-header h1 a {
-    font-family: 'Playfair Display', serif; /* Changed font */
     text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 700; /* Use the bold weight we imported */
-    font-style: italic; /* Added italic style */
+    color: var(--primary-color); /* Make title black (or primary text color) */
+    font-style: normal; /* Remove italic */
+    transition: color 0.2s;
 }
 
 header.site-header nav ul {
@@ -112,7 +121,7 @@ header.site-header nav li {
 header.site-header nav a {
     text-decoration: none;
     color: var(--secondary-color);
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increase nav link size */
     transition: color 0.2s;
     position: relative;
     padding-bottom: 5px;
@@ -133,6 +142,7 @@ header.site-header nav li.active a::after {
     left: 0;
 }
 
+header.site-header h1 a:hover,
 header.site-header nav a:hover {
     color: var(--accent-color);
 }
@@ -176,7 +186,7 @@ header.site-header nav a:hover {
 }
 
 .home-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--secondary-color);
     line-height: 1.7;
 }
@@ -225,12 +235,12 @@ html[data-theme='dark'] .home-posts {
 
 .home-posts .post-list-item h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family: 'Montserrat', sans-serif;
 }
 
 .home-posts .post-list-item .post-meta {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: 0.25rem;
     margin-bottom: 0;
 }
@@ -290,8 +300,8 @@ main {
 }
 
 .post-list-item h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.75rem;
+    margin: 0 0 0.75rem 0; /* Increased margin */
+    font-size: 2rem; /* Increased font size */
     font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
     transition: color 0.2s;
@@ -303,7 +313,7 @@ main {
 
 .post-list-item .post-meta {
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -312,8 +322,8 @@ main {
 }
 
 .post-list h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.75rem;
+    margin: 0 0 0.75rem 0; /* Increased margin */
+    font-size: 2rem; /* Increased font size */
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -328,7 +338,7 @@ main {
 
 .post-list .post-meta {
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
@@ -359,8 +369,8 @@ main {
 }
 
 .page-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
+    font-family: inherit; /* Use body font */
+    font-size: 2.2rem; /* Further reduce size */
     margin: 0 0 1rem 0;
 }
 
@@ -516,7 +526,7 @@ html[data-theme='dark'] .archive-item a:hover {
 }
 
 .archive-post-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: var(--primary-color);
     margin: 0 0 0.25rem 0;
@@ -528,7 +538,7 @@ html[data-theme='dark'] .archive-item a:hover {
 }
 
 .archive-post-meta {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--secondary-color);
 }
 
@@ -651,6 +661,7 @@ html[data-theme='dark'] .tag-cloud-item:hover {
 }
 
 .post-title-simple {
+    font-size: 1.25rem; /* Set explicit, larger font size */
     font-weight: bold;
     color: var(--primary-color);
     transition: color 0.2s;
@@ -665,10 +676,10 @@ html[data-theme='dark'] .tag-cloud-item:hover {
 }
 
 .post-summary {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Reduced font size */
     color: var(--secondary-color);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.7; /* Increased line height for readability */
 }
 
 .post-meta-and-date {
@@ -680,7 +691,7 @@ html[data-theme='dark'] .tag-cloud-item:hover {
 
 .post-date-simple {
     font-family: monospace;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--secondary-color);
     flex-shrink: 0;
 }
@@ -695,7 +706,7 @@ html[data-theme='dark'] .post-item-simple a:hover {
     align-items: baseline;
     flex-shrink: 0;
     gap: 1rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--secondary-color);
 }
 
@@ -746,7 +757,7 @@ html[data-theme='dark'] .post-item-simple a:hover {
 
 .post-single .post-meta {
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center; /* Center the meta items */
@@ -767,7 +778,7 @@ html[data-theme='dark'] .post-item-simple a:hover {
     padding: 0.1rem 0.6rem;
     border-radius: 1rem;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     transition: background-color 0.2s, color 0.2s;
 }
 
@@ -778,11 +789,12 @@ html[data-theme='dark'] .post-item-simple a:hover {
 
 .post-content {
     padding: 0 1rem; /* Add horizontal padding for better reading on mobile */
+    font-size: 1.05rem; /* Increase content font size */
 }
 
-.post-content h2 { font-size: 2rem; }
-.post-content h3 { font-size: 1.6rem; }
-.post-content h4 { font-size: 1.3rem; }
+.post-content h2 { font-size: 1.8rem; }
+.post-content h3 { font-size: 1.5rem; }
+.post-content h4 { font-size: 1.25rem; }
 
 .post-content a {
     color: var(--accent-color);
@@ -829,13 +841,6 @@ html[data-theme='dark'] .post-item-simple a:hover {
     margin: 3em 0;
 }
 
-/* Syntax Highlighting */
-div.highlight {
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    overflow-x: auto; /* Prevent code blocks from breaking page layout */
-}
-
 /* Footer */
 footer.site-footer {
     text-align: center;
@@ -843,7 +848,7 @@ footer.site-footer {
     margin-top: 2rem;
     /* border-top: 1px solid var(--border-color); */ /* Removed per user request */
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 
@@ -862,7 +867,7 @@ footer.site-footer {
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     transition: background-color 0.2s, color 0.2s;
 }
 
@@ -1124,11 +1129,13 @@ footer.site-footer {
 
 /* Dark Mode */
 html[data-theme='dark'] {
-    --primary-color: #dee2e6;
-    --secondary-color: #adb5bd;
-    --bg-color: #18202c; /* A true dark background */
-    --light-gray: #212529;
-    --border-color: #343a40;
+    /* Simple B&W Theme - Dark Mode (Gray BG) */
+    --primary-color: #f0f0f0;   /* Light gray for text */
+    --secondary-color: #b0b0b0; /* Medium-light gray for secondary info */
+    --accent-color: #7a9aba;    /* Lighter gray-blue for dark mode */
+    --bg-color: #2d2d2d;        /* Gray background */
+    --light-gray: #3c3c3c;    /* Lighter gray for cards/hovers */
+    --border-color: #4a4a4a;    /* Dark gray for borders */
 }
 
 
@@ -1390,11 +1397,12 @@ code, pre {
 
 /* Inline Code */
 :not(pre) > code {
-    background-color: rgba(175, 184, 193, 0.2);
+    background-color: var(--light-gray);
     padding: 0.2em 0.4em;
     margin: 0;
     font-size: 85%;
     border-radius: 6px;
+    border: 1px solid var(--border-color-light);
 }
 
 /* Code Block Wrapper */
@@ -1403,52 +1411,47 @@ code, pre {
     margin: 1.5em 0;
     border-radius: 6px;
     overflow: hidden;
-    border: 1px solid #d0d7de;
+    /* Use box-shadow instead of border to avoid the "bar" effect */
+    box-shadow: 0 0 0 1px var(--border-color);
 }
 
-/* Code Block Header */
-.code-block-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background-color: #f6f8fa;
-    border-bottom: 1px solid #d0d7de;
-}
-
-.language-name {
-    color: #57606a;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
+/* New Copy Button Style */
 .copy-code-button {
-    background: none;
-    border: 1px solid transparent;
-    color: #57606a;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
+    color: var(--secondary-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
     cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+.code-block-wrapper:hover .copy-code-button {
+    opacity: 1;
 }
 
 .copy-code-button:hover {
-    background-color: #eef1f4;
-    border-color: rgba(27,31,36,0.15);
+    background-color: var(--bg-color);
+}
+
+.copy-code-button .copied-text {
+    font-size: 0.8rem;
 }
 
 /* Main Highlight Block from syntax.css */
 .code-block-wrapper .highlight {
     margin: 0;
+    border: none; /* Ensure no residual border */
+    border-radius: 0; /* The wrapper handles the radius */
     overflow-x: auto;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     line-height: 1.6;
-    background-color: #fff; /* Light theme code background */
+    background-color: var(--bg-color); /* Use theme variable */
 }
 
 .code-block-wrapper .highlight pre {
@@ -1496,7 +1499,7 @@ code, pre {
     left: 0;
     right: 0;
     height: 60px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+    background: linear-gradient(to bottom, transparent, var(--bg-color));
     pointer-events: none;
     z-index: 1;
 }
@@ -1506,8 +1509,8 @@ code, pre {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
-    border: 1px solid #d0d7de;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     color: #57606a;
     padding: 0.4rem 1rem;
     border-radius: 6px;
@@ -1517,40 +1520,34 @@ code, pre {
 }
 
 .expand-code-button:hover {
-    background-color: #f6f8fa;
+    background-color: var(--light-gray);
 }
 
 /* --- Dark Mode Overrides for Code --- */
 html[data-theme='dark'] :not(pre) > code {
-    background-color: rgba(110,118,129,0.4);
-    color: #c9d1d9;
+    background-color: var(--light-gray);
+    color: var(--primary-color);
+    border-color: var(--border-color);
 }
 
 html[data-theme='dark'] .code-block-wrapper {
-    border-color: #30363d;
+    border-color: var(--border-color);
 }
 
-html[data-theme='dark'] .code-block-header {
-    background-color: #161b22;
-    border-bottom-color: #30363d;
-}
-
-html[data-theme='dark'] .language-name {
-    color: #8b949e;
-}
-
+/* Dark Mode for New Copy Button */
 html[data-theme='dark'] .copy-code-button {
-    color: #8b949e;
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    color: var(--secondary-color);
 }
 
 html[data-theme='dark'] .copy-code-button:hover {
-    background-color: #21262d;
-    border-color: #8b949e;
-    color: #c9d1d9;
+    background-color: var(--light-gray);
+    color: var(--primary-color);
 }
 
 html[data-theme='dark'] .code-block-wrapper .highlight {
-    background-color: #0d1117; /* Dark theme code background */
+    background-color: var(--light-gray); /* Use card color for code background */
 }
 
 html[data-theme='dark'] .code-block-wrapper .highlight::-webkit-scrollbar-thumb {
@@ -1562,22 +1559,22 @@ html[data-theme='dark'] .code-block-wrapper .highlight::-webkit-scrollbar-thumb:
 }
 
 html[data-theme='dark'] .code-block-wrapper.is-collapsible:not(.is-expanded)::after {
-    background: linear-gradient(to bottom, rgba(13, 17, 23, 0), #0d1117);
+    background: linear-gradient(to bottom, transparent, var(--light-gray));
 }
 
 html[data-theme='dark'] .expand-code-button {
-    background-color: #161b22;
-    border-color: #30363d;
-    color: #8b949e;
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    color: var(--secondary-color);
 }
 
 html[data-theme='dark'] .expand-code-button:hover {
-    background-color: #21262d;
-    border-color: #8b949e;
+    background-color: var(--light-gray);
+    border-color: var(--secondary-color);
 }
 
 /* GitHub Dark Syntax Highlighting Overrides */
-html[data-theme='dark'] .chroma { color: #c9d1d9; background-color: #0d1117; }
+html[data-theme='dark'] .chroma { color: var(--primary-color); background-color: transparent; }
 html[data-theme='dark'] .chroma .err { color: #f85149; }
 html[data-theme='dark'] .chroma .k { color: #ff7b72; }
 html[data-theme='dark'] .chroma .kc { color: #ff7b72; }

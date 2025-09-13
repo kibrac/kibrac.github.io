@@ -80,7 +80,7 @@
     <header class="page-header">
         <h1>本地部署大模型——Safetensors 格式</h1>
         
-            <p class="page-content">这是一个详细的本地大模型部署实操记录，专注于在 Windows 环境下配置和编译 llama.cpp 工具链，将 Baichuan-M2-32B 模型的 Safetensors 格式转换为 GGUF 格式。文章重点分享了在 CMake 编译过程中遇到的各种问题及解决方案，包括 VS 环境配置、curl 库安装、工具链文件设置等关键技术细节，适合遇到类似部署困难的开发者参考。</p>
+            <p class="page-content">这是一篇详细的本地大模型部署实操记录，介绍如何在Windows环境下使用llama.cpp将Baichuan-M2-32B模型的Safetensors格式转换为GGUF格式，重点分享了CMake编译过程中遇到的问题及解决方案，包括VS环境配置、curl库安装等技术细节。</p>
         
         <div class="post-meta">
             <span>August 18, 2025</span>
@@ -118,14 +118,10 @@
 <p>也可以选择自行配置 MinGW（GCC 在 Windows 上的移植版）——对于嫌麻烦的笔者来说选择上一种方法。这里两种方法的教程都附上：<a href="https://blog.csdn.net/qq_51341501/article/details/148776334">在 Windows 上安装和编译 llama.cpp-CSDN博客</a>。</p>
 <p>需要注意的是执行类似于 <code>cmake -G &quot;MinGW Makefiles&quot; ..</code> 时需要确保 <code>build</code> 文件夹中是空的，否则可能会出现这样的报错</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -143,14 +139,10 @@
 </div><h3 id="安装了但是执行-cmake-命令还是报错">安装了但是执行 <code>cmake</code> 命令还是报错？</h3>
 <p>问题当然还没有结束，笔者又遇到了下面这样的报错</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -274,14 +266,10 @@
 <p>集成 vcpkg 到 Visual Studio:</p>
 <p>在 PowerShell 中，运行以下命令（请将路径替换为你自己的 vcpkg 解压路径）：</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -298,14 +286,10 @@
 <p>使用 vcpkg 安装 CURL:</p>
 <p>现在，在同一个 vcpkg 目录下，运行：</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -320,14 +304,10 @@
 <p>重新配置项目:</p>
 <p>回到你的 <code>E:\llama.cpp-master\build</code> 目录，删除旧的 CMake 缓存文件（<code>CMakeCache.txt</code> 和 <code>CMakeFiles</code> 文件夹），然后重新运行 CMake：</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -343,14 +323,10 @@
 </ol>
 <h3 id="安装-curl-的过程可能还会遇到">安装 curl 的过程可能还会遇到？</h3>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -522,14 +498,10 @@
 <li>
 <p>清理旧的配置: 首先，确保删除掉之前失败的配置文件，以免它们干扰新的配置。</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -549,14 +521,10 @@
 </ol>
 <p>看到 <code>Found CURL</code> 这一行，就说明配置成功了！</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -573,14 +541,10 @@
 运行这个命令后，你应该会看到类似这样的输出：</li>
 </ul>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">text</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -596,14 +560,10 @@
 </div><h3 id="编译项目">编译项目</h3>
 <p>一旦 CMake 配置成功，下一步就是编译。 在 <code>E:\llama.cpp\build</code> 目录下，运行以下命令：</p>
 <div class="code-block-wrapper">
-    <div class="code-block-header">
-        <span class="language-name">PowerShell</span>
-        <button class="copy-code-button" aria-label="Copy code to clipboard">
-            <i class="fa-regular fa-copy"></i>
-            <span class="copy-text">Copy</span>
-            <span class="copied-text" style="display: none;">Copied!</span>
-        </button>
-    </div>
+    <button class="copy-code-button" aria-label="Copy code to clipboard">
+        <i class="fa-regular fa-copy"></i>
+        <span class="copied-text" style="display: none;">Copied!</span>
+    </button>
     <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -632,10 +592,6 @@
     </a>
     
     
-    
-    <a href="/posts/%E5%A4%A9%E6%89%8D%E5%9C%A8%E5%B7%A6-%E7%96%AF%E5%AD%90%E5%9C%A8%E5%8F%B3/" class="next">
-        天才在左 疯子在右 &raquo;
-    </a>
     
 </nav>
 
