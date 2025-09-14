@@ -8,7 +8,7 @@ html {
     /* Simple B&W Theme - Light Mode */
     --primary-color: #111111;   /* Near-black for text */
     --secondary-color: #666666; /* Medium gray for secondary info */
-    --accent-color: #5a7a9a;    /* Gray-blue accent color */
+    --accent-color: #607d8b;    /* Grayish Blue for links */
     --bg-color: #ffffff;        /* Pure white background */
     --light-gray: #f5f5f5;    /* Light gray for hovers */
     --border-color: #dddddd;    /* Gray for borders */
@@ -1106,7 +1106,7 @@ footer.site-footer {
     justify-content: space-between;
     margin-top: 3rem;
     padding-top: 2rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: inherit; /* Unify with body font */
     font-size: 1rem;
     font-weight: 600;
 }
@@ -1132,7 +1132,7 @@ html[data-theme='dark'] {
     /* Simple B&W Theme - Dark Mode (Gray BG) */
     --primary-color: #f0f0f0;   /* Light gray for text */
     --secondary-color: #b0b0b0; /* Medium-light gray for secondary info */
-    --accent-color: #7a9aba;    /* Lighter gray-blue for dark mode */
+    --accent-color: #81a1b1;    /* Lighter Grayish Blue for accents */
     --bg-color: #2d2d2d;        /* Gray background */
     --light-gray: #3c3c3c;    /* Lighter gray for cards/hovers */
     --border-color: #4a4a4a;    /* Dark gray for borders */
