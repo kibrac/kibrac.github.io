@@ -106,7 +106,8 @@
 <blockquote>
 <p>在数学上，两个复数可以直接进行 <code>+</code>、<code>-</code> 等运算。但是在 C++ 中，直接将 <code>+</code> 或 <code>-</code> 用于复数对象是不允许的。</p>
 <p>但有时我们会希望，让对象也能够通过运算符进行计算。这样代码更简洁也更容易理解。</p>
-<p>例如：<code>complex_a</code> 和 <code>complex_b</code> 是两个复数对象，那求这两个复数的和，我们希望能直接写 <code>complex_a + complex_b</code></p></blockquote>
+<p>例如：<code>complex_a</code> 和 <code>complex_b</code> 是两个复数对象，那求这两个复数的和，我们希望能直接写 <code>complex_a + complex_b</code></p>
+</blockquote>
 <p><strong>运算符重载</strong>，就是对已有的运算符（C++ 中预定义的运算符）赋予多重的含义，使同一运算符作用于不同类型的数据时导致不同类型的行为。</p>
 <ul>
 <li>运算符重载的目的是：扩展 C++ 中提供的运算符的适用范围，使之能作用于对象。</li>
@@ -176,7 +177,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -187,19 +188,19 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">Complex</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">real</span><span class="p">,</span><span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span><span class="c1">//返回一个临时对象 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">Complex</span><span class="o">::</span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">Complex</span><span class="p">(</span><span class="n">real</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span><span class="c1">//返回一个临时对象 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">Complex</span> <span class="n">a</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">c</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span><span class="c1">//等价于c=operator+(a,b);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">).</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">).</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//a-b等价于a.operator-(b);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> 
 </span></span></code></pre></td></tr></table>
 </div>
@@ -270,7 +271,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">String</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
@@ -284,7 +285,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">String</span><span class="o">&amp;</span> <span class="n">String</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//重载&#34;=&#34;以使得obj=&#34;hello&#34;能够成立
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">delete</span> <span class="p">[]</span><span class="n">str</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">delete</span> <span class="p">[]</span><span class="n">str</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">str</span><span class="o">=</span><span class="k">new</span> <span class="kt">char</span> <span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">	<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span> 
@@ -293,11 +294,11 @@
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">String</span> <span class="n">s</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">s</span><span class="o">=</span><span class="s">&#34;Good Luck,&#34;</span><span class="p">;</span><span class="c1">//等价于s.operator=(&#34;Good Luck&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//String s2=&#34;hello&#34;;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//上面这条语句要是不注释就会报错
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="o">=</span><span class="s">&#34;Shenzhou 8!&#34;</span><span class="p">;</span><span class="c1">//等价于s.operator=(&#34;Shenzhou 8!&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="c1">//上面这条语句要是不注释就会报错
+</span></span></span><span class="line"><span class="cl">	<span class="n">s</span><span class="o">=</span><span class="s">&#34;Shenzhou 8!&#34;</span><span class="p">;</span><span class="c1">//等价于s.operator=(&#34;Shenzhou 8!&#34;);
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl"><span class="p">}</span> 
 </span></span></code></pre></td></tr></table>
@@ -360,8 +361,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">S1</span><span class="p">,</span><span class="n">S2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">S1</span><span class="o">=</span><span class="s">&#34;this&#34;</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">S2</span><span class="o">=</span><span class="s">&#34;that&#34;</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">S1</span><span class="o">=</span><span class="n">S2</span><span class="p">;</span><span class="c1">//这是有严重问题的
+</span></span></span><span class="line"><span class="cl"><span class="n">S2</span><span class="o">=</span><span class="s">&#34;that&#34;</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="n">S1</span><span class="o">=</span><span class="n">S2</span><span class="p">;</span><span class="c1">//这是有严重问题的
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -483,7 +484,7 @@
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 假设 data 指向堆内存
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">ShallowCopyExample</span> <span class="n">obj1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">obj1</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
@@ -575,7 +576,8 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <h3 id="注意">注意</h3>
 <p><strong>对运算符进行重载的时候，好的风格是应该尽量保留运算符原本的特性。</strong></p>
 <blockquote>
-<p>为 <code>String</code> 类编写复制构造函数的时候会面临和 <code>=</code> 同样的问题，用同样的方法处理。</p></blockquote>
+<p>为 <code>String</code> 类编写复制构造函数的时候会面临和 <code>=</code> 同样的问题，用同样的方法处理。</p>
+</blockquote>
 <div class="code-block-wrapper">
     <button class="copy-code-button" aria-label="Copy code to clipboard">
         <i class="fa-regular fa-copy"></i>
@@ -593,8 +595,8 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">String</span><span class="p">(</span><span class="n">String</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//这里不用判断是否和原对象一致
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//因为对象是刚刚复制出来的不可能是同一个
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">str</span><span class="o">=</span><span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">str</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+</span></span></span><span class="line"><span class="cl">	<span class="c1">//因为对象是刚刚复制出来的不可能是同一个
+</span></span></span><span class="line"><span class="cl">	<span class="n">str</span><span class="o">=</span><span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">str</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">	<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">str</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -632,7 +634,7 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">Complex</span><span class="o">::</span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">){</span><span class="c1">//能解释c+5
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nf">Complex</span><span class="p">(</span><span class="n">real</span><span class="o">+</span><span class="n">r</span><span class="p">,</span><span class="n">imag</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">Complex</span><span class="p">(</span><span class="n">real</span><span class="o">+</span><span class="n">r</span><span class="p">,</span><span class="n">imag</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -682,7 +684,7 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">){</span><span class="c1">//能解释5+c
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nf">Complex</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="o">+</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">Complex</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="o">+</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -743,19 +745,19 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CArray</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">size</span><span class="p">;</span><span class="c1">//数组元素的个数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span><span class="c1">//指向动态分配的数组
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">public</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span><span class="c1">//指向动态分配的数组
+</span></span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="n">CArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span><span class="c1">//s代表数组元素的个数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">CArray</span><span class="p">(</span><span class="n">CArray</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">		<span class="n">CArray</span><span class="p">(</span><span class="n">CArray</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="o">~</span><span class="n">CArray</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">push_back</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">);</span><span class="c1">//用于在数组尾部添加一个元素v
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">CArray</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">CArray</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">);</span><span class="c1">//用于数组对象间的赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">int</span> <span class="nf">length</span><span class="p">(){</span><span class="k">return</span> <span class="n">size</span><span class="p">;}</span><span class="c1">//返回数组元素个数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">int</span><span class="o">&amp;</span> <span class="n">CArray</span><span class="o">::</span><span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span>
+</span></span></span><span class="line"><span class="cl">		<span class="n">CArray</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">CArray</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">);</span><span class="c1">//用于数组对象间的赋值
+</span></span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="nf">length</span><span class="p">(){</span><span class="k">return</span> <span class="n">size</span><span class="p">;}</span><span class="c1">//返回数组元素个数
+</span></span></span><span class="line"><span class="cl">		<span class="kt">int</span><span class="o">&amp;</span> <span class="n">CArray</span><span class="o">::</span><span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="c1">//返回值为int不行！不支持a[i]=4
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">//因为非引用的函数返回值不可以作为左值使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">//这里的重载用以支持根据下标访问数组元素，如n=a[i];和a[i]=4;这样的语句
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">return</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span></span><span class="line"><span class="cl">			<span class="c1">//因为非引用的函数返回值不可以作为左值使用
+</span></span></span><span class="line"><span class="cl">			<span class="c1">//这里的重载用以支持根据下标访问数组元素，如n=a[i];和a[i]=4;这样的语句
+</span></span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
@@ -848,17 +850,17 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">CArray</span><span class="o">&amp;</span> <span class="n">CArray</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">CArray</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//赋值号的作用手机是使=左边的对象里存放的数组，大小和内容都和右边的对象一样
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="o">==</span><span class="n">a</span><span class="p">.</span><span class="n">ptr</span><span class="p">)</span><span class="c1">//防止a=a这样的赋值导致出错
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="o">==</span><span class="n">a</span><span class="p">.</span><span class="n">ptr</span><span class="p">)</span><span class="c1">//防止a=a这样的赋值导致出错
+</span></span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">ptr</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span><span class="c1">//如果a里面的数组是空的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="k">delete</span> <span class="p">[]</span><span class="n">ptr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">ptr</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">size</span><span class="o">&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">){</span><span class="c1">//如果原有空间够大，就不用分配新的空间
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="k">delete</span> <span class="p">[]</span><span class="n">ptr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">ptr</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
@@ -891,26 +893,28 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">CArray</span><span class="o">::</span><span class="n">push_back</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span><span class="c1">//在数组尾部添加一个元素
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">){</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">ptr</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span><span class="o">*</span> <span class="n">tmpPtr</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">size</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span><span class="c1">//重新分配空间
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">memcpy</span><span class="p">(</span><span class="n">tmpPtr</span><span class="p">,</span><span class="n">ptr</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">size</span><span class="p">);</span><span class="c1">//拷贝原数组内容
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">delete</span> <span class="p">[]</span><span class="n">ptr</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">		<span class="n">memcpy</span><span class="p">(</span><span class="n">tmpPtr</span><span class="p">,</span><span class="n">ptr</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">size</span><span class="p">);</span><span class="c1">//拷贝原数组内容
+</span></span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="p">[]</span><span class="n">ptr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">ptr</span><span class="o">=</span><span class="n">tmpPtr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="k">else</span><span class="c1">//如果数组本来是空的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">ptr</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span></span><span class="line"><span class="cl">		<span class="n">ptr</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">	<span class="n">ptr</span><span class="p">[</span><span class="n">size</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">v</span><span class="p">;</span><span class="c1">//加入新的数组元素
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><h2 id="5流插入运算符和流提取运算符的重载">5.流插入运算符和流提取运算符的重载</h2>
 <blockquote>
-<p>本小节中提到的流插入运算符和流提取运算符本质上是左移运算符和右移运算符进行重载。</p></blockquote>
+<p>本小节中提到的流插入运算符和流提取运算符本质上是左移运算符和右移运算符进行重载。</p>
+</blockquote>
 <h3 id="问题引入">问题引入</h3>
 <blockquote>
 <p><code>cout &lt;&lt; 5 &lt;&lt; &quot;this&quot;</code> 为什么能够成立？</p>
 <p><code>cout</code> 是什么？</p>
-<p><code>&lt;&lt;</code> 为什么能用在 <code>cout</code> 上？</p></blockquote>
+<p><code>&lt;&lt;</code> 为什么能用在 <code>cout</code> 上？</p>
+</blockquote>
 <h3 id="流插入运算符的重载">流插入运算符的重载</h3>
 <ul>
 <li><code>cout</code> 是在头文件 iostream 中定义的，<strong>ostream</strong> 类的对象</li>
@@ -936,12 +940,12 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">ostream</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="p">......</span><span class="c1">//输出n的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">ostream</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="p">......</span><span class="c1">//输出s的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -962,7 +966,8 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </div>
 </div><p>举例如下</p>
 <blockquote>
-<p>假定下面程序输出为 <code>5hello</code>，应该补写什么？</p></blockquote>
+<p>假定下面程序输出为 <code>5hello</code>，应该补写什么？</p>
+</blockquote>
 <div class="code-block-wrapper">
     <button class="copy-code-button" aria-label="Copy code to clipboard">
         <i class="fa-regular fa-copy"></i>
@@ -1108,7 +1113,7 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
@@ -1120,17 +1125,17 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;+&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;i&#34;</span><span class="p">;</span><span class="c1">//以&#34;a+bi&#34;的形式输出 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="n">os</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">os</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">istream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span><span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">string</span> <span class="n">s</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">;</span><span class="c1">//将&#34;a+bi&#34;作为字符串读入，&#34;a+bi&#34;中间不能有空格 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">pos</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#34;+&#34;</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">pos</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#34;+&#34;</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">string</span> <span class="n">sTmp</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pos</span><span class="p">);</span><span class="c1">//分离出代表实部的字符串 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="o">=</span><span class="n">atof</span><span class="p">(</span><span class="n">sTmp</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="c1">//atof函数能将const char*指针指向的内容转换成float 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">sTmp</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">-</span><span class="n">pos</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="c1">//分离出代表虚部的字符串 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">c</span><span class="p">.</span><span class="n">imag</span><span class="o">=</span><span class="n">atof</span><span class="p">(</span><span class="n">sTmp</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="o">=</span><span class="n">atof</span><span class="p">(</span><span class="n">sTmp</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="c1">//atof函数能将const char*指针指向的内容转换成float 
+</span></span></span><span class="line"><span class="cl">	<span class="n">sTmp</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">-</span><span class="n">pos</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="c1">//分离出代表虚部的字符串 
+</span></span></span><span class="line"><span class="cl">	<span class="n">c</span><span class="p">.</span><span class="n">imag</span><span class="o">=</span><span class="n">atof</span><span class="p">(</span><span class="n">sTmp</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">is</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -1226,7 +1231,7 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">;</span>
@@ -1234,7 +1239,7 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></span><span class="line"><span class="cl">    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">imag</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="n">istream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// 修正1：移除const
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;+&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;i&#34;</span><span class="p">;</span>
@@ -1246,22 +1251,22 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></span><span class="line"><span class="cl">    <span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 检查字符串以i结尾
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">||</span> <span class="n">s</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">!=</span> <span class="sc">&#39;i&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">||</span> <span class="n">s</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">!=</span> <span class="sc">&#39;i&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">is</span><span class="p">.</span><span class="n">setstate</span><span class="p">(</span><span class="n">ios</span><span class="o">::</span><span class="n">failbit</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">is</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 查找最后一个+或-作为分隔符
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">size_t</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">find_last_of</span><span class="p">(</span><span class="s">&#34;+-&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">find_last_of</span><span class="p">(</span><span class="s">&#34;+-&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">==</span> <span class="n">string</span><span class="o">::</span><span class="n">npos</span> <span class="o">||</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">is</span><span class="p">.</span><span class="n">setstate</span><span class="p">(</span><span class="n">ios</span><span class="o">::</span><span class="n">failbit</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">is</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 分割实部和虚部
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">string</span> <span class="n">realPart</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">realPart</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">imagPart</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="n">pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 去掉i
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">atof</span><span class="p">(</span><span class="n">realPart</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">atof</span><span class="p">(</span><span class="n">imagPart</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">
@@ -1305,21 +1310,21 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span><span class="n">imag</span><span class="p">(</span><span class="n">i</span><span class="p">){};</span>
 </span></span><span class="line"><span class="cl">		<span class="k">operator</span> <span class="nf">double</span><span class="p">(){</span><span class="k">return</span> <span class="n">real</span><span class="p">;}</span><span class="c1">//重载强制类型转换运算符double 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span> 
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span> 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">Complex</span> <span class="n">c</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">3.4</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span><span class="c1">//输出1.2 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">double</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">+</span><span class="n">c</span><span class="p">;</span><span class="c1">//等价于double n=2+c.operator double() 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span><span class="c1">//输出3.2 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">+</span><span class="n">c</span><span class="p">;</span><span class="c1">//等价于double n=2+c.operator double() 
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span><span class="c1">//输出3.2 
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><h3 id="自增自减运算符的重载">自增、自减运算符的重载</h3>
@@ -1333,7 +1338,8 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <li>重载为全局函数 <code>T1 operator++(T2,int);</code> <code>T1 operator--(T2,int);</code></li>
 </ul>
 <blockquote>
-<p>在没有后置运算符重载而有前置运算符重载的情况下，在 Visual Studio 中，<code>obj++</code> 也调用前置重载，而 DEV C++ 则令 <code>obj++</code> 编译出错。</p></blockquote>
+<p>在没有后置运算符重载而有前置运算符重载的情况下，在 Visual Studio 中，<code>obj++</code> 也调用前置重载，而 DEV C++ 则令 <code>obj++</code> 编译出错。</p>
+</blockquote>
 <p>举例说明，如下是希望实现的功能</p>
 <div class="code-block-wrapper">
     <button class="copy-code-button" aria-label="Copy code to clipboard">
@@ -1359,13 +1365,13 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CDemo</span> <span class="n">d</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">d</span><span class="o">++</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span><span class="c1">//等价于d.operator++(0);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="o">++</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span><span class="c1">//等价于d.operator++();
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">d</span><span class="o">--</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span><span class="c1">//等价于d.operator--(d,0);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="o">--</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span><span class="p">;</span><span class="c1">//等价于d.operator--(d);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -1435,30 +1441,30 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="n">CDemo</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">n</span><span class="p">(</span><span class="n">i</span><span class="p">){}</span>
 </span></span><span class="line"><span class="cl">		<span class="n">CDemo</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">++</span><span class="p">();</span><span class="c1">//用于前置形式
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">CDemo</span> <span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="c1">//用于后置形式
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">operator</span> <span class="nf">int</span><span class="p">(){</span><span class="k">return</span> <span class="n">n</span><span class="p">;};</span>
+</span></span></span><span class="line"><span class="cl">		<span class="n">CDemo</span> <span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="c1">//用于后置形式
+</span></span></span><span class="line"><span class="cl">	<span class="k">operator</span> <span class="nf">int</span><span class="p">(){</span><span class="k">return</span> <span class="n">n</span><span class="p">;};</span>
 </span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="n">CDemo</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">--</span><span class="p">(</span><span class="n">CDemo</span><span class="o">&amp;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="n">CDemo</span> <span class="k">operator</span><span class="o">--</span><span class="p">(</span><span class="n">CDemo</span><span class="o">&amp;</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">CDemo</span><span class="o">&amp;</span> <span class="n">CDemo</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(){</span><span class="c1">//前置++
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">++</span><span class="n">n</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="o">++</span><span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span><span class="o">*</span> <span class="k">this</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//++s即为s.operator++();
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">CDemo</span> <span class="n">CDemo</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">){</span><span class="c1">//后置++
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">CDemo</span> <span class="nf">tmp</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span><span class="c1">//记录修改前的对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">n</span><span class="o">++</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">CDemo</span> <span class="nf">tmp</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span><span class="c1">//记录修改前的对象
+</span></span></span><span class="line"><span class="cl">	<span class="n">n</span><span class="o">++</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">tmp</span><span class="p">;</span><span class="c1">//返回修改前的对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span><span class="c1">//s++即为s.operator(0);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//s++即为s.operator(0);
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">CDemo</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">--</span><span class="p">(</span><span class="n">CDemo</span><span class="o">&amp;</span> <span class="n">d</span><span class="p">){</span><span class="c1">//前置--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">d</span><span class="p">.</span><span class="n">n</span><span class="o">--</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">d</span><span class="p">.</span><span class="n">n</span><span class="o">--</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">d</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//--s即为operator--(s);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">CDemo</span> <span class="k">operator</span><span class="o">--</span><span class="p">(</span><span class="n">CDemo</span><span class="o">&amp;</span> <span class="n">d</span><span class="p">,</span><span class="kt">int</span><span class="p">){</span><span class="c1">//后置--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">CDemo</span> <span class="nf">tmp</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">CDemo</span> <span class="nf">tmp</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">d</span><span class="p">.</span><span class="n">n</span><span class="o">--</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">tmp</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span><span class="c1">//s--即为operator--(s,0);
@@ -1551,7 +1557,7 @@ STL 容器（如字符串、动态数组）的 <code>=</code> 运算符已经被
         </main>
         <footer class="site-footer">
     <div class="container">
-        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+        <p>&copy; 2026 Kibrac. All rights reserved.</p>
     </div>
 </footer>
 

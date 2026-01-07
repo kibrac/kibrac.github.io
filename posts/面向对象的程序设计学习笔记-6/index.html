@@ -181,7 +181,7 @@
 </span></span><span class="line"><span class="cl">	<span class="n">CDerived</span> <span class="n">ODerived</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CBase</span><span class="o">*</span> <span class="n">p</span><span class="o">=&amp;</span><span class="n">ODerived</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">p</span><span class="o">-&gt;</span><span class="n">SomeVirtualFunction</span><span class="p">();</span><span class="c1">//调用哪个虚函数取决于p指向哪种类型的对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -235,7 +235,7 @@
 </span></span><span class="line"><span class="cl">	<span class="n">CDerived</span> <span class="n">ODerived</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CBase</span><span class="o">&amp;</span> <span class="n">r</span><span class="o">=</span><span class="n">ODerived</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">r</span><span class="p">.</span><span class="n">SomeVirtualFunction</span><span class="p">();</span><span class="c1">//调用哪个虚函数取决于r引用哪种类型的对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -286,7 +286,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -397,32 +397,32 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CCreature</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">protected</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nPower</span><span class="p">;</span><span class="c1">//攻击力
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">int</span> <span class="n">nLifeValue</span><span class="p">;</span><span class="c1">//生命值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nLifeValue</span><span class="p">;</span><span class="c1">//生命值
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDragon</span><span class="o">:</span><span class="k">public</span> <span class="n">CCreature</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">Attack</span><span class="p">(</span><span class="n">CWolf</span><span class="o">*</span> <span class="n">pWolf</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="p">......</span><span class="c1">//表现攻击动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">pWolf</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">pWolf</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">			<span class="n">pWolf</span><span class="o">-&gt;</span><span class="n">FightBack</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">Attack</span><span class="p">(</span><span class="n">CGhost</span><span class="o">*</span> <span class="n">pGhost</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="p">......</span><span class="c1">//表现攻击动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">pGhost</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">pGhost</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">			<span class="n">pGhost</span><span class="o">-&gt;</span><span class="n">FightBack</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">Hurted</span><span class="p">(</span><span class="kt">int</span> <span class="n">nPower</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="p">......</span><span class="c1">//表现受伤动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">nLifeValue</span><span class="o">-=</span><span class="n">nPower</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">nLifeValue</span><span class="o">-=</span><span class="n">nPower</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">FightBack</span><span class="p">(</span><span class="n">CWolf</span><span class="o">*</span> <span class="n">pWolf</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="p">......</span><span class="c1">//表现反击动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">pWolf</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="c1">//这里只是象征性地对反击的攻击力进行了调整
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">pWolf</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="c1">//这里只是象征性地对反击的攻击力进行了调整
+</span></span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">FightBack</span><span class="p">(</span><span class="n">CGhost</span><span class="o">*</span> <span class="n">pWolf</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="p">......</span><span class="c1">//表现反击动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">pGhost</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">pGhost</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">nPower</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
@@ -491,7 +491,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CCreature</span><span class="p">{</span><span class="c1">//基类CCreature
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">protected</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">protected</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">m_nLifeValue</span><span class="p">,</span><span class="n">m_nPower</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Attack</span><span class="p">(</span><span class="n">CCreature</span><span class="o">*</span> <span class="n">pCreature</span><span class="p">){}</span>
@@ -500,7 +500,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDragon</span><span class="o">:</span><span class="k">public</span> <span class="n">CCreature</span><span class="p">{</span><span class="c1">//派生类CDragon
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">public</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Attack</span><span class="p">(</span><span class="n">CCreature</span><span class="o">*</span> <span class="n">pCreature</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Hurted</span><span class="p">(</span><span class="kt">int</span> <span class="n">nPower</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">FightBack</span><span class="p">(</span><span class="n">CCreature</span><span class="o">*</span> <span class="n">pCreature</span><span class="p">);</span>
@@ -508,19 +508,19 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">CDragon</span><span class="o">::</span><span class="n">Attack</span><span class="p">(</span><span class="n">CCreature</span><span class="o">*</span> <span class="n">p</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="p">......</span><span class="c1">//表现攻击动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">p</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">m_nPower</span><span class="p">);</span><span class="c1">//多态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">p</span><span class="o">-&gt;</span><span class="n">FightBack</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="c1">//多态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">p</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">m_nPower</span><span class="p">);</span><span class="c1">//多态
+</span></span></span><span class="line"><span class="cl">	<span class="n">p</span><span class="o">-&gt;</span><span class="n">FightBack</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="c1">//多态
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">CDragon</span><span class="o">::</span><span class="n">Hurted</span><span class="p">(</span><span class="kt">int</span> <span class="n">nPower</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="p">......</span><span class="c1">//表现受伤动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">m_nLifeValue</span><span class="o">-=</span><span class="n">nPower</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">m_nLifeValue</span><span class="o">-=</span><span class="n">nPower</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">CDragon</span><span class="o">::</span><span class="n">FightBack</span><span class="p">(</span><span class="n">CCreature</span><span class="o">*</span> <span class="n">p</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="p">......</span><span class="c1">//表现反击动作的代码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">p</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">m_nPower</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="c1">//多态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl">	<span class="n">p</span><span class="o">-&gt;</span><span class="n">Hurted</span><span class="p">(</span><span class="n">m_nPower</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="c1">//多态
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><ul>
@@ -544,8 +544,8 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">CDragon</span> <span class="n">Dragon</span><span class="p">;</span><span class="n">CWolf</span> <span class="n">Wolf</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">CGhost</span> <span class="n">Ghost</span><span class="p">;</span><span class="n">CThunderBird</span> <span class="n">Bird</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">Dragon</span><span class="p">.</span><span class="n">Attack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Wolf</span><span class="p">);</span><span class="c1">//(1)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Dragon</span><span class="p">.</span><span class="n">Attack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Ghost</span><span class="p">);</span><span class="c1">//(2)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Dragon</span><span class="p">.</span><span class="n">Attack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Bird</span><span class="p">);</span><span class="c1">//(3)
+</span></span></span><span class="line"><span class="cl"><span class="n">Dragon</span><span class="p">.</span><span class="n">Attack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Ghost</span><span class="p">);</span><span class="c1">//(2)
+</span></span></span><span class="line"><span class="cl"><span class="n">Dragon</span><span class="p">.</span><span class="n">Attack</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Bird</span><span class="p">);</span><span class="c1">//(3)
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -732,12 +732,12 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CShape</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">double</span> <span class="n">Area</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="c1">//纯虚数：连函数体都没有的虚函数 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">PrintInfo</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
+</span></span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">PrintInfo</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CRectangle</span><span class="o">:</span><span class="k">public</span> <span class="n">CShape</span><span class="p">{</span>
@@ -790,11 +790,11 @@
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">MyCompare</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">s1</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">s2</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CShape</span><span class="o">**</span><span class="n">p1</span><span class="p">;</span><span class="c1">//s1、s2是void*，不可写*s1来获取s1指向的内容 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">CShape</span><span class="o">**</span><span class="n">p2</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">CShape</span><span class="o">**</span><span class="n">p2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">p1</span><span class="o">=</span><span class="p">(</span><span class="n">CShape</span><span class="o">**</span><span class="p">)</span><span class="n">s1</span><span class="p">;</span><span class="c1">//s1、s2指向pShapes数组中的元素，数组元素的类型是CShape* 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">p2</span><span class="o">=</span><span class="p">(</span><span class="n">CShape</span><span class="o">**</span><span class="p">)</span><span class="n">s2</span><span class="p">;</span><span class="c1">//故p1、p2都是指向指针的指针，类型为CShape** 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">a1</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">p1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Area</span><span class="p">();</span><span class="c1">//*p1的类型是CShape*，是基类指针，故此句为多态 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">a2</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">p2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Area</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">p2</span><span class="o">=</span><span class="p">(</span><span class="n">CShape</span><span class="o">**</span><span class="p">)</span><span class="n">s2</span><span class="p">;</span><span class="c1">//故p1、p2都是指向指针的指针，类型为CShape** 
+</span></span></span><span class="line"><span class="cl">	<span class="n">a1</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">p1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Area</span><span class="p">();</span><span class="c1">//*p1的类型是CShape*，是基类指针，故此句为多态 
+</span></span></span><span class="line"><span class="cl">	<span class="n">a2</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">p2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Area</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">a1</span><span class="o">&lt;</span><span class="n">a2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">a2</span><span class="o">&lt;</span><span class="n">a1</span><span class="p">)</span>
@@ -870,8 +870,8 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">fun1</span><span class="p">(){</span><span class="n">fun2</span><span class="p">();}</span><span class="c1">//等价于void fun1(){this-&gt;fun2();}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="c1">//而this是基类指针，fun2是虚函数，所以是多态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">fun2</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base::fun2()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
+</span></span></span><span class="line"><span class="cl">							<span class="c1">//而this是基类指针，fun2是虚函数，所以是多态
+</span></span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">fun2</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base::fun2()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span><span class="k">public</span> <span class="n">Base</span><span class="p">{</span>
@@ -934,7 +934,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">myclass</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -948,7 +948,7 @@
 </span></span><span class="line"><span class="cl">	<span class="n">son</span><span class="p">(){</span><span class="n">hello</span><span class="p">();}</span>
 </span></span><span class="line"><span class="cl">	<span class="o">~</span><span class="n">son</span><span class="p">(){</span><span class="n">bye</span><span class="p">();}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span><span class="c1">//派生类中和基类中虚函数同名同参数表的函数，不加virtual也自动成为虚函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">grandson</span><span class="o">:</span><span class="k">public</span> <span class="n">son</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">hello</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;hello from grandson&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;}</span>
@@ -962,7 +962,7 @@
 </span></span><span class="line"><span class="cl">	<span class="n">son</span><span class="o">*</span> <span class="n">pson</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">pson</span><span class="o">=&amp;</span><span class="n">gson</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">pson</span><span class="o">-&gt;</span><span class="n">hello</span><span class="p">();</span><span class="c1">//多态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -1021,7 +1021,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -1114,7 +1114,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -1134,11 +1134,11 @@
 </span></span><span class="line"><span class="cl">	<span class="n">A</span> <span class="n">a</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="o">*</span> <span class="n">pa</span><span class="o">=</span><span class="k">new</span> <span class="n">B</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">	<span class="n">pa</span><span class="o">-&gt;</span><span class="n">Func</span><span class="p">();</span><span class="c1">//64位程序指针为8字节，输出B::Func 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">long</span> <span class="kt">long</span><span class="o">*</span> <span class="n">p1</span><span class="o">=</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="kt">long</span> <span class="kt">long</span><span class="o">*</span> <span class="n">p1</span><span class="o">=</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">long</span> <span class="kt">long</span><span class="o">*</span> <span class="n">p2</span><span class="o">=</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">pa</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="n">p2</span><span class="o">=*</span><span class="n">p1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">pa</span><span class="o">-&gt;</span><span class="n">Func</span><span class="p">();</span><span class="c1">//输出A::Func 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -1170,8 +1170,8 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span> <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>  <span class="c1">// 获取A实例的虚表指针
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span> <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">pa</span><span class="p">;</span>  <span class="c1">// 获取B实例的虚表指针
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="o">*</span><span class="n">p1</span><span class="p">;</span>  <span class="c1">// 用A的虚表覆盖B的虚表
+</span></span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span> <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">pa</span><span class="p">;</span>  <span class="c1">// 获取B实例的虚表指针
+</span></span></span><span class="line"><span class="cl"><span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="o">*</span><span class="n">p1</span><span class="p">;</span>  <span class="c1">// 用A的虚表覆盖B的虚表
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -1240,7 +1240,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">son</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -1346,7 +1346,7 @@
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Print</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="c1">//纯虚函数，如果不是=0而是{}，也认为是有函数体
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><ul>
@@ -1370,8 +1370,8 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">A</span> <span class="n">a</span><span class="p">;</span><span class="c1">//错，A是抽象类，不能创建对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">A</span><span class="o">*</span> <span class="n">pa</span><span class="p">;</span><span class="c1">//ok，可以定义抽象类的指针和引用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">pa</span><span class="o">=</span><span class="k">new</span> <span class="n">A</span><span class="p">;</span><span class="c1">//错误，A是抽象类，不能创建对象
+</span></span></span><span class="line"><span class="cl"><span class="n">A</span><span class="o">*</span> <span class="n">pa</span><span class="p">;</span><span class="c1">//ok，可以定义抽象类的指针和引用
+</span></span></span><span class="line"><span class="cl"><span class="n">pa</span><span class="o">=</span><span class="k">new</span> <span class="n">A</span><span class="p">;</span><span class="c1">//错误，A是抽象类，不能创建对象
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -1409,14 +1409,14 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="k">virtual</span> <span class="kt">void</span> <span class="n">f</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="c1">//纯虚函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">void</span> <span class="nf">g</span><span class="p">(){</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">f</span><span class="p">();}</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">//A(){f();}//编译错误，构造函数中不是多态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">g</span><span class="p">(){</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">f</span><span class="p">();}</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl">		<span class="c1">//A(){f();}//编译错误，构造函数中不是多态
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -1426,7 +1426,7 @@
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">B</span> <span class="n">b</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">b</span><span class="p">.</span><span class="n">g</span><span class="p">();</span><span class="c1">//输出B:f()
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -1501,7 +1501,7 @@
         </main>
         <footer class="site-footer">
     <div class="container">
-        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+        <p>&copy; 2026 Kibrac. All rights reserved.</p>
     </div>
 </footer>
 

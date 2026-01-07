@@ -136,7 +136,7 @@
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="nf">Area</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="nf">Perimeter</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">Init</span><span class="p">(</span><span class="kt">int</span> <span class="n">w_</span><span class="p">,</span><span class="kt">int</span> <span class="n">h_</span><span class="p">);</span><span class="c1">//成员函数仅在此声明
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">CRectangle</span><span class="o">::</span><span class="n">Area</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
@@ -157,7 +157,9 @@
 <blockquote>
 <p>private: 私有成员，只能在成员函数内访问</p>
 <p>public: 共有成员，可以在任何地方访问</p>
-<p>protected: 保护成员，以后再说</p></blockquote></blockquote>
+<p>protected: 保护成员，以后再说</p>
+</blockquote>
+</blockquote>
 <p>定义一个类</p>
 <div class="code-block-wrapper">
     <button class="copy-code-button" aria-label="Copy code to clipboard">
@@ -191,8 +193,10 @@
 <p>在类的成员函数内部，能够访问</p>
 <blockquote>
 <p>当前对象的全部属性、函数
-同类其它对象的全部属性、函数</p></blockquote>
-<p>在类的成员函数以外的地方，只能够访问该类对象的公有成员</p></blockquote>
+同类其它对象的全部属性、函数</p>
+</blockquote>
+<p>在类的成员函数以外的地方，只能够访问该类对象的公有成员</p>
+</blockquote>
 <h3 id="私有成员变量的隐藏">私有成员变量的隐藏</h3>
 <p>设置私有成员的机制，叫“<strong>隐藏</strong>”</p>
 <p>“<strong>隐藏</strong>”的目的是强制对成员变量的访问一定要通过成员函数进行，那么以后成员变量的类型等属性修改后，只需要更改成员函数即可。否则，所有直接访问成员变量的语句都需要修改。</p>
@@ -236,7 +240,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Location</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
@@ -258,7 +262,7 @@
 </span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="p">.</span><span class="n">valueX</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">A</span><span class="p">.</span><span class="n">valueX</span><span class="p">();</span><span class="c1">//输出5
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -303,9 +307,9 @@
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">Set</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span><span class="c1">//编译器自动生成默认构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span><span class="c1">//默认构造函数被调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span><span class="o">*</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">;</span><span class="c1">//默认构造函数被调用
+</span></span></span><span class="line"><span class="cl"><span class="n">Complex</span><span class="o">*</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">;</span><span class="c1">//默认构造函数被调用
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -344,8 +348,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span><span class="c1">//error，缺少构造函数的参数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span><span class="o">*</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">;</span><span class="c1">//error，没有参数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span> <span class="nf">c1</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="n">Complex</span><span class="o">*</span> <span class="n">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">;</span><span class="c1">//error，没有参数
+</span></span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="nf">c1</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="c1">//ok
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -354,7 +358,8 @@
 </ul>
 <blockquote>
 <p>一段话描述“重载”的概念</p>
-<p>在编程中，<strong>重载（Overload）<strong>可以理解为“<strong>同一个名字，多种用法</strong>”。就像你家的洗衣机有一个“洗涤”按钮，但根据你放入的衣物类型（毛衣、羽绒服、衬衫），它会自动调整水温、转速和时间。重载也是类似逻辑：程序员可以给</strong>同一个函数名</strong>写多个版本的实现，而这些版本的<strong>参数必须不同</strong>（比如参数类型、数量或顺序）。例如，一个叫 <code>加法</code> 的函数，既能处理两个整数相加，也能处理三个小数相加，甚至拼接两个字符串——只要参数不同，编译器就能自动根据你传入的数据<strong>匹配对应的版本</strong>。这样一来，代码更简洁直观，开发者不用死记硬背 <code>加整数</code>、<code>加小数</code> 等五花八门的名字，只需记住一个 <code>加法</code> 就能应对多种场景。</p></blockquote>
+<p>在编程中，<strong>重载（Overload）<strong>可以理解为“<strong>同一个名字，多种用法</strong>”。就像你家的洗衣机有一个“洗涤”按钮，但根据你放入的衣物类型（毛衣、羽绒服、衬衫），它会自动调整水温、转速和时间。重载也是类似逻辑：程序员可以给</strong>同一个函数名</strong>写多个版本的实现，而这些版本的<strong>参数必须不同</strong>（比如参数类型、数量或顺序）。例如，一个叫 <code>加法</code> 的函数，既能处理两个整数相加，也能处理三个小数相加，甚至拼接两个字符串——只要参数不同，编译器就能自动根据你传入的数据<strong>匹配对应的版本</strong>。这样一来，代码更简洁直观，开发者不用死记硬背 <code>加整数</code>、<code>加小数</code> 等五花八门的名字，只需记住一个 <code>加法</code> 就能应对多种场景。</p>
+</blockquote>
 <h2 id="3复制构造函数">3.复制构造函数</h2>
 <h3 id="复制构造函数的基本概念">复制构造函数的基本概念</h3>
 <ol>
@@ -384,7 +389,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span><span class="c1">//调用缺省无参构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Complex</span> <span class="nf">c2</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="c1">//调用缺省的复制构造函数，将c2初始化成和c1一样
+</span></span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="nf">c2</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="c1">//调用缺省的复制构造函数，将c2初始化成和c1一样
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -440,7 +445,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -496,7 +501,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -526,10 +531,13 @@
 <blockquote>
 <p>在原视频老师的讲解中，输出的内容为</p>
 <blockquote>
-<p>Copy constructor called4</p></blockquote>
+<p>Copy constructor called4</p>
+</blockquote>
 <p>但在 DEV-C++ 5.11 中实际运行以上代码，输出结果为</p>
 <blockquote>
-<p>4</p></blockquote></blockquote>
+<p>4</p>
+</blockquote>
+</blockquote>
 <p>原因如下</p>
 <p>根据代码逻辑和 C++ 的拷贝构造函数调用规则，输出结果为：<strong>4</strong>，而不会打印 &ldquo;Copy constructor called&rdquo;。以下是关键原因分析：</p>
 <ol>
@@ -599,7 +607,7 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CMyclass</span><span class="p">(){};</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CMyclass</span><span class="p">(</span><span class="n">CMyclass</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">){</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="p">.</span><span class="n">n</span><span class="p">;}</span><span class="c1">//此处仅为说明问题，并不推荐复制函数这样书写
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CMyclass</span> <span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">;</span>
@@ -648,7 +656,7 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="k">const</span> <span class="n">CMyclass</span> <span class="o">&amp;</span> <span class="n">obj</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//函数中任何试图改变obj值的语句都变成非法语句
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><h2 id="4类型转换构造函数">4.类型转换构造函数</h2>
@@ -689,7 +697,7 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">real</span><span class="p">,</span><span class="n">imag</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">Complex</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span><span class="c1">//类型转换构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IntConstructor called&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IntConstructor called&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">			<span class="n">real</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">imag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span><span class="p">,</span><span class="kt">double</span> <span class="n">i</span><span class="p">){</span><span class="n">real</span><span class="o">=</span><span class="n">r</span><span class="p">;</span><span class="n">imag</span><span class="o">=</span><span class="n">i</span><span class="p">;}</span>
@@ -699,7 +707,7 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
 </span></span><span class="line"><span class="cl">	<span class="n">Complex</span> <span class="n">c1</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">Complex</span> <span class="n">c2</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">c1</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span><span class="c1">//9被自动转换成一个临时Complex对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;,&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -824,10 +832,10 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Ctest</span><span class="o">*</span> <span class="n">pTest</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">pTest</span><span class="o">=</span><span class="k">new</span> <span class="n">Ctest</span><span class="p">;</span><span class="c1">//构造函数调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="n">pTest</span><span class="p">;</span><span class="c1">//析构函数调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl"><span class="k">delete</span> <span class="n">pTest</span><span class="p">;</span><span class="c1">//析构函数调用
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">pTest</span><span class="o">=</span><span class="k">new</span> <span class="n">Ctest</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span><span class="c1">//构造函数调用3次
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="p">[]</span><span class="n">pTest</span><span class="p">;</span><span class="c1">//析构函数调用3次
+</span></span></span><span class="line"><span class="cl"><span class="k">delete</span> <span class="p">[]</span><span class="n">pTest</span><span class="p">;</span><span class="c1">//析构函数调用3次
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -878,7 +886,7 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Demo</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
@@ -1029,7 +1037,7 @@ C++ 编译器在函数返回局部对象时，会进行<strong>返回值优化�
         </main>
         <footer class="site-footer">
     <div class="container">
-        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+        <p>&copy; 2026 Kibrac. All rights reserved.</p>
     </div>
 </footer>
 

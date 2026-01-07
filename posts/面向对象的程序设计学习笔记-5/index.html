@@ -176,16 +176,16 @@
 </span></span><span class="line"><span class="cl">		<span class="kt">bool</span> <span class="n">IsThreeGood</span><span class="p">(){};</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">SetName</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">){</span><span class="n">sName</span><span class="o">=</span><span class="n">name</span><span class="p">;}</span>
 </span></span><span class="line"><span class="cl">		<span class="c1">//......
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CUndergraduateStudent</span><span class="o">:</span><span class="k">public</span> <span class="n">CStudent</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nDepartment</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">bool</span> <span class="n">IsThreeGood</span><span class="p">(){...};</span><span class="c1">//覆盖
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">bool</span> <span class="nf">CanBaoYan</span><span class="p">(){...};</span>
+</span></span></span><span class="line"><span class="cl">		<span class="kt">bool</span> <span class="nf">CanBaoYan</span><span class="p">(){...};</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span><span class="c1">//派生类写法-类名:public 基类名
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CGraduatedStudent</span><span class="o">:</span><span class="k">public</span> <span class="n">CStudent</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nDepartment</span><span class="p">;</span>
@@ -229,7 +229,8 @@
 </div>
 </div><h3 id="继承实例程序学籍管理">继承实例程序：学籍管理</h3>
 <blockquote>
-<p>在原视频中展示的代码，缺少了对基类 <code>CStudent</code> 中 <code>PrintInfo</code> 和 <code>SetInfo</code> 的实现代码，此处进行了补齐。</p></blockquote>
+<p>在原视频中展示的代码，缺少了对基类 <code>CStudent</code> 中 <code>PrintInfo</code> 和 <code>SetInfo</code> 的实现代码，此处进行了补齐。</p>
+</blockquote>
 <div class="code-block-wrapper">
     <button class="copy-code-button" aria-label="Copy code to clipboard">
         <i class="fa-regular fa-copy"></i>
@@ -294,14 +295,14 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"> 
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CStudent</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">name</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">id</span><span class="p">;</span><span class="c1">//学号 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">char</span> <span class="n">gender</span><span class="p">;</span><span class="c1">//性别，F代表女，M代表男 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">		<span class="kt">char</span> <span class="n">gender</span><span class="p">;</span><span class="c1">//性别，F代表女，M代表男 
+</span></span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">	    <span class="kt">void</span> <span class="n">PrintInfo</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Name:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>
@@ -321,20 +322,20 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CUndergraduateStudent</span><span class="o">:</span><span class="k">public</span> <span class="n">CStudent</span><span class="p">{</span><span class="c1">//本科生类，继承了CStudent类 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">private</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="n">string</span> <span class="n">department</span><span class="p">;</span><span class="c1">//学生所属系的名称 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">public</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="n">QualifiedForBaoyan</span><span class="p">(){</span><span class="c1">//给予保研资格 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;qualified for baoyan&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;qualified for baoyan&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span> 
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">PrintInfo</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">			<span class="n">CStudent</span><span class="o">::</span><span class="n">PrintInfo</span><span class="p">();</span><span class="c1">//调用基类的PrintInfo 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Department:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">department</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Department:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">department</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">SetInfo</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name_</span><span class="p">,</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">id_</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">					<span class="kt">int</span> <span class="n">age_</span><span class="p">,</span><span class="kt">char</span> <span class="n">gender_</span><span class="p">,</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">department_</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">			<span class="n">CStudent</span><span class="o">::</span><span class="n">SetInfo</span><span class="p">(</span><span class="n">name_</span><span class="p">,</span><span class="n">id_</span><span class="p">,</span><span class="n">age_</span><span class="p">,</span><span class="n">gender_</span><span class="p">);</span><span class="c1">//调用基类的SetInfo 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">department</span><span class="o">=</span><span class="n">department_</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">			<span class="n">department</span><span class="o">=</span><span class="n">department_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
@@ -417,7 +418,7 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CPoint</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="k">class</span> <span class="nc">CCircle</span><span class="p">;</span><span class="c1">//便于CCircle类操作其圆心
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CCircle</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">r</span><span class="p">;</span>
@@ -519,7 +520,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">;</span><span class="c1">//CMaster必须提前声明，不能先写CMaster类后写CDog类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CMaster</span><span class="o">*</span> <span class="n">pm</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
@@ -554,7 +555,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CMaster</span><span class="p">;</span><span class="c1">//CMaster必须提前声明，不能先写CMaster类后写CDog类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CDog</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CMaster</span><span class="o">*</span> <span class="n">pm</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
@@ -611,17 +612,17 @@
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">derived</span><span class="o">:</span><span class="k">public</span> <span class="n">base</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">i</span><span class="p">;</span><span class="c1">//这里只是为了说明，实际上一般不会在基类和派生类中写同名变量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">void</span> <span class="nf">access</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">access</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">void</span> <span class="nf">func</span><span class="p">();</span><span class="c1">//但写同名函数是很常见的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">derived</span><span class="o">::</span><span class="n">access</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">j</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//error，这是基类的私有成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//引用的是派生类的i
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">base</span><span class="o">::</span><span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//引用的是基类的i
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">func</span><span class="p">();</span><span class="c1">//派生类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">base</span><span class="o">::</span><span class="n">func</span><span class="p">();</span><span class="c1">//基类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//引用的是派生类的i
+</span></span></span><span class="line"><span class="cl">	<span class="n">base</span><span class="o">::</span><span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//引用的是基类的i
+</span></span></span><span class="line"><span class="cl">	<span class="n">func</span><span class="p">();</span><span class="c1">//派生类
+</span></span></span><span class="line"><span class="cl">	<span class="n">base</span><span class="o">::</span><span class="n">func</span><span class="p">();</span><span class="c1">//基类
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">derived</span> <span class="n">obj</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">obj</span><span class="p">.</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
@@ -697,32 +698,32 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Father</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nPrivate</span><span class="p">;</span><span class="c1">//私有成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">public</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nPublic</span><span class="p">;</span><span class="c1">//共有成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">protected</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">protected</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">nProtected</span><span class="p">;</span><span class="c1">//保护成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Son</span><span class="o">:</span><span class="k">public</span> <span class="n">Father</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">AccessFather</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">		<span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//wrong
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok，访问从基类继承的protected成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Son</span> <span class="n">f</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">		<span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//wrong
+</span></span></span><span class="line"><span class="cl">		<span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok，访问从基类继承的protected成员
+</span></span></span><span class="line"><span class="cl">		<span class="n">Son</span> <span class="n">f</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">f</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">Father</span> <span class="n">f</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">Son</span> <span class="n">s</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">f</span><span class="p">.</span><span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="p">.</span><span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">f</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">f</span><span class="p">.</span><span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">s</span><span class="p">.</span><span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">s</span><span class="p">.</span><span class="n">nPublic</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl">	<span class="n">f</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl">	<span class="n">f</span><span class="p">.</span><span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl">	<span class="n">s</span><span class="p">.</span><span class="n">nProtected</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl">	<span class="n">s</span><span class="p">.</span><span class="n">nPrivate</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -748,7 +749,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Son</span> <span class="n">f</span><span class="p">;</span>         <span class="c1">// 创建一个 Son 对象 f
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ✔️ 合法：通过 Son 对象访问 Father 的 protected 成员
+</span></span></span><span class="line"><span class="cl"><span class="n">f</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ✔️ 合法：通过 Son 对象访问 Father 的 protected 成员
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -780,10 +781,10 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Father</span> <span class="n">f</span><span class="p">;</span>  <span class="c1">// 基类对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：外部函数无法访问基类的 protected 成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl"><span class="n">f</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：外部函数无法访问基类的 protected 成员
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Son</span> <span class="n">s</span><span class="p">;</span>     <span class="c1">// 派生类对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">s</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：外部函数无法通过派生类对象间接访问基类的 protected 成员
+</span></span></span><span class="line"><span class="cl"><span class="n">s</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：外部函数无法通过派生类对象间接访问基类的 protected 成员
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -832,8 +833,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Son</span><span class="o">::</span><span class="n">AccessFather</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Father</span> <span class="n">base</span><span class="p">;</span>        <span class="c1">// 创建一个基类对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">base</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：派生类无法通过基类对象访问 protected 成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl">    <span class="n">base</span><span class="p">.</span><span class="n">nProtected</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ❌ 非法：派生类无法通过基类对象访问 protected 成员
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><p>因为此处 <code>base</code> 是基类对象，而非派生类对象。</p>
@@ -919,25 +920,25 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//错误的FlyBug构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FlyBug</span><span class="o">::</span><span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">){</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">FlyBug</span><span class="o">::</span><span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">nLegs</span><span class="o">=</span><span class="n">legs</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nColor</span><span class="o">=</span><span class="n">color</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nType</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nWings</span><span class="o">=</span><span class="n">wings</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">nColor</span><span class="o">=</span><span class="n">color</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl">	<span class="n">nType</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl">	<span class="n">nWings</span><span class="o">=</span><span class="n">wings</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//正确的FlyBug构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FlyBug</span><span class="o">::</span><span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">)</span><span class="o">:</span><span class="n">Bug</span><span class="p">(</span><span class="n">legs</span><span class="p">,</span><span class="n">color</span><span class="p">){</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">FlyBug</span><span class="o">::</span><span class="n">FlyBug</span><span class="p">(</span><span class="kt">int</span> <span class="n">legs</span><span class="p">,</span><span class="kt">int</span> <span class="n">color</span><span class="p">,</span><span class="kt">int</span> <span class="n">wings</span><span class="p">)</span><span class="o">:</span><span class="n">Bug</span><span class="p">(</span><span class="n">legs</span><span class="p">,</span><span class="n">color</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">//直接在初始化列表里面对基类的私有成员进行初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">nWings</span><span class="o">=</span><span class="n">wings</span><span class="p">;</span><span class="c1">//这里也可以同样在初始化列表中进行初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">nWings</span><span class="o">=</span><span class="n">wings</span><span class="p">;</span><span class="c1">//这里也可以同样在初始化列表中进行初始化
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 </span></span><span class="line"><span class="cl">	<span class="n">FlyBug</span> <span class="n">fb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">fb</span><span class="p">.</span><span class="n">PrintBug</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">	<span class="n">fb</span><span class="p">.</span><span class="n">nType</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">fb</span><span class="p">.</span><span class="n">nLegs</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="c1">//error，nLegs是私有成员
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -981,7 +982,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -1053,8 +1054,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">base</span><span class="p">{};</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">derived</span><span class="o">:</span><span class="k">public</span> <span class="n">base</span><span class="p">{};</span><span class="c1">//实际上还可以写protected、private
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="c1">//当写public时称为公有继承
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">base</span> <span class="n">b</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">							<span class="c1">//当写public时称为公有继承
+</span></span></span><span class="line"><span class="cl"><span class="n">base</span> <span class="n">b</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">derived</span> <span class="n">d</span><span class="p">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -1119,7 +1120,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">public</span><span class="o">:</span>
@@ -1236,7 +1237,7 @@
         </main>
         <footer class="site-footer">
     <div class="container">
-        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+        <p>&copy; 2026 Kibrac. All rights reserved.</p>
     </div>
 </footer>
 

@@ -171,7 +171,7 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">r</span><span class="o">=</span><span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">r</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span><span class="c1">//编译错
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">n</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span><span class="c1">//没问题
+</span></span></span><span class="line"><span class="cl"><span class="n">n</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span><span class="c1">//没问题
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -202,8 +202,8 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="o">*</span><span class="n">p</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="c1">//编译出错
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">p</span><span class="o">=&amp;</span><span class="n">m</span><span class="p">;</span><span class="c1">//ok，常量指针的指向可以变化
+</span></span></span><span class="line"><span class="cl"><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="n">p</span><span class="o">=&amp;</span><span class="n">m</span><span class="p">;</span><span class="c1">//ok，常量指针的指向可以变化
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -225,8 +225,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">p1</span><span class="p">;</span><span class="kt">int</span><span class="o">*</span> <span class="n">p2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">p1</span><span class="o">=</span><span class="n">p2</span><span class="p">;</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="p">;</span><span class="c1">//error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">p2</span><span class="o">=</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">p1</span><span class="p">;</span><span class="c1">//ok，强制类型转换
+</span></span></span><span class="line"><span class="cl"><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="p">;</span><span class="c1">//error
+</span></span></span><span class="line"><span class="cl"><span class="n">p2</span><span class="o">=</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">p1</span><span class="p">;</span><span class="c1">//ok，强制类型转换
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -250,8 +250,8 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">MyPrintf</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">strcpy</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#34;this&#34;</span><span class="p">);</span><span class="c1">//编译出错
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span><span class="n">p</span><span class="p">);</span><span class="c1">//ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span><span class="n">p</span><span class="p">);</span><span class="c1">//ok
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><h2 id="3动态内存分配">3.动态内存分配</h2>
@@ -461,13 +461,14 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span><span class="kt">int</span> <span class="n">x2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="kt">int</span> <span class="n">x3</span><span class="o">=</span><span class="mi">3</span><span class="p">){}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">func</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//等效于func(10,2,3)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">func</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span><span class="c1">//等效于func(10,8,3)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">func</span><span class="p">(</span><span class="mi">10</span><span class="p">,,</span><span class="mi">8</span><span class="p">);</span><span class="c1">//不行，只能最右边的连续若干个参数缺省
+</span></span></span><span class="line"><span class="cl"><span class="n">func</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span><span class="c1">//等效于func(10,8,3)
+</span></span></span><span class="line"><span class="cl"><span class="n">func</span><span class="p">(</span><span class="mi">10</span><span class="p">,,</span><span class="mi">8</span><span class="p">);</span><span class="c1">//不行，只能最右边的连续若干个参数缺省
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div><blockquote>
-<p>函数参数可缺省的目的在于提高程序的可扩充性，即如果某个写好的函数想要添加新的参数，而原先那些调用该函数的语句，未必需要使用新增的参数，那么为了避免对原先那些函数调用语句的修改，就可以使用缺省参数。</p></blockquote>
+<p>函数参数可缺省的目的在于提高程序的可扩充性，即如果某个写好的函数想要添加新的参数，而原先那些调用该函数的语句，未必需要使用新增的参数，那么为了避免对原先那些函数调用语句的修改，就可以使用缺省参数。</p>
+</blockquote>
 <h2 id="5类和对象的基本概念">5.类和对象的基本概念</h2>
 <p>面向对象的程序设计具有<strong>抽象、封装、继承、多态</strong>四个基本特点。</p>
 <h3 id="从客观事物中抽象出类">从客观事物中抽象出类</h3>
@@ -477,11 +478,15 @@
 <blockquote>
 <p>比如对于“矩形”这种东西，要用一个类表示，该如何做抽象？</p>
 <blockquote>
-<p>矩形的属性就是长和宽。因此需要两个变量，分别代表长和宽。</p></blockquote>
+<p>矩形的属性就是长和宽。因此需要两个变量，分别代表长和宽。</p>
+</blockquote>
 <p>一个矩形，可以有哪些行为呢？</p>
 <blockquote>
 <p>矩形可以设置长和宽，算面积以及算周长这三种行为（当然也可以设置其他行为）
-这三种行为，可以各用一个函数来实现，他们都需要用到长和宽这两个变量。</p></blockquote></blockquote></blockquote>
+这三种行为，可以各用一个函数来实现，他们都需要用到长和宽这两个变量。</p>
+</blockquote>
+</blockquote>
+</blockquote>
 <ul>
 <li>将长、宽变量和设置长、宽，求面积，以及求周长的三个函数<strong>封装</strong>在一起，就能形成一个<strong>矩形类</strong>。</li>
 <li>长、宽变量成为该“矩形类”的<strong>成员变量</strong>，三个函数成为该类的<strong>成员函数</strong>。成员变量和成员函数统称为<strong>类的成员</strong>。</li>
@@ -551,7 +556,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">CRectangle</span> <span class="n">r</span><span class="p">;</span><span class="c1">//r是一个对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">w</span> <span class="o">&gt;&gt;</span> <span class="n">h</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">w</span> <span class="o">&gt;&gt;</span> <span class="n">h</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">r</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">Area</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">Perimeter</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -723,7 +728,7 @@
         </main>
         <footer class="site-footer">
     <div class="container">
-        <p>&copy; 2025 Kibrac. All rights reserved.</p>
+        <p>&copy; 2026 Kibrac. All rights reserved.</p>
     </div>
 </footer>
 
