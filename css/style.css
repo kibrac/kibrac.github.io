@@ -82,7 +82,7 @@ html {
     --nav-color: #24292f;          /* Same as primary for consistency */
     --code-bg: #f6f8fa;            /* Code background */
     --code-inline-bg: rgba(175, 184, 193, 0.2); /* Inline code background */
-    --code-inline-color: #cf222e;  /* GitHub's danger color for inline code */
+    --code-inline-color: #0969da;  /* Blue color for inline code - consistent with dark mode */
 }
 
 body {
@@ -1595,8 +1595,8 @@ code, pre {
 
 /* Inline Code - Simple & Clean */
 :not(pre) > code {
-    background-color: rgba(175, 184, 193, 0.2);
-    color: #24292f;
+    background-color: var(--code-inline-bg);
+    color: var(--code-inline-color);
     padding: 0.2em 0.4em;
     margin: 0;
     font-size: 0.9em;
@@ -1767,7 +1767,66 @@ html[data-theme='dark'] .expand-code-button:hover {
     border-color: var(--secondary-color);
 }
 
-/* GitHub Dark Syntax Highlighting Overrides */
+/* GitHub Dark Syntax Highlighting - Applied to both light and dark modes */
+/* Since code blocks always use dark background, we use the same syntax colors */
+.chroma { color: #d4d4d4; background-color: transparent; }
+.chroma .err { color: #f85149; }
+.chroma .k { color: #ff7b72; }
+.chroma .kc { color: #ff7b72; }
+.chroma .kd { color: #ff7b72; }
+.chroma .kn { color: #ff7b72; }
+.chroma .kp { color: #ff7b72; }
+.chroma .kr { color: #ff7b72; }
+.chroma .kt { color: #ff7b72; }
+.chroma .o { color: #ff7b72; font-weight: normal; }
+.chroma .ow { color: #ff7b72; font-weight: normal; }
+.chroma .c { color: #8b949e; font-style: italic; }
+.chroma .ch { color: #8b949e; font-style: italic; }
+.chroma .cm { color: #8b949e; font-style: italic; }
+.chroma .c1 { color: #8b949e; font-style: italic; }
+.chroma .cs { color: #8b949e; font-style: italic; }
+.chroma .cp { color: #8b949e; font-style: italic; }
+.chroma .cpf { color: #8b949e; font-style: italic; }
+.chroma .gd { color: #ffa198; background-color: #490202; }
+.chroma .gi { color: #56d364; background-color: #033a16; }
+.chroma .gu { color: #79c0ff; }
+.chroma .n { color: #c9d1d9; }
+.chroma .na { color: #7ee787; }
+.chroma .nb { color: #c9d1d9; }
+.chroma .nc { color: #d2a8ff; font-weight: normal; }
+.chroma .no { color: #79c0ff; }
+.chroma .nd { color: #d2a8ff; font-weight: normal; }
+.chroma .ni { color: #79c0ff; }
+.chroma .ne { color: #ffa198; font-weight: normal; }
+.chroma .nf { color: #d2a8ff; font-weight: normal; }
+.chroma .nl { color: #79c0ff; }
+.chroma .nt { color: #7ee787; }
+.chroma .nv { color: #79c0ff; }
+.chroma .l { color: #a5d6ff; }
+.chroma .ld { color: #a5d6ff; }
+.chroma .s { color: #a5d6ff; }
+.chroma .sa { color: #a5d6ff; }
+.chroma .sb { color: #a5d6ff; }
+.chroma .sc { color: #a5d6ff; }
+.chroma .dl { color: #a5d6ff; }
+.chroma .sd { color: #a5d6ff; }
+.chroma .s2 { color: #a5d6ff; }
+.chroma .se { color: #79c0ff; }
+.chroma .sh { color: #a5d6ff; }
+.chroma .si { color: #a5d6ff; }
+.chroma .sx { color: #a5d6ff; }
+.chroma .sr { color: #a5d6ff; }
+.chroma .s1 { color: #a5d6ff; }
+.chroma .ss { color: #a5d6ff; }
+.chroma .m { color: #79c0ff; }
+.chroma .mb { color: #79c0ff; }
+.chroma .mf { color: #79c0ff; }
+.chroma .mh { color: #79c0ff; }
+.chroma .mi { color: #79c0ff; }
+.chroma .il { color: #79c0ff; }
+.chroma .mo { color: #79c0ff; }
+
+/* Dark mode uses the same colors (no need to override) */
 html[data-theme='dark'] .chroma { color: var(--primary-color); background-color: transparent; }
 html[data-theme='dark'] .chroma .err { color: #f85149; }
 html[data-theme='dark'] .chroma .k { color: #ff7b72; }
