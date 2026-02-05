@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+<script>
+  
+  
+  (function() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本地部署大模型——Safetensors 格式 | Kibrac&#39;s Blog</title>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+
+
+<link rel="preload" href="https://fonts.gstatic.com/s/ysabeauoffice/v1/LDIqapSCOBt_aeQQ7ftydoa0kePuk5A1-_qyGsrzqw.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="kind-page section-posts">
+    <div class="site-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-content">
+    
+    <div class="sidebar-author">
+        
+            
+                <div class="author-avatar">
+                    <img src="/images/avatar.webp" alt="Author Avatar">
+                </div>
+            
+            <h1 class="author-name">Kibrac</h1>
+            <p class="author-bio">Stay Hungry Stay Foolish</p>
+        
+        
+        
+        <div class="social-links">
+            
+                
+                    <a href="mailto:kibrachen@outlook.com" target="_blank" rel="noopener noreferrer" title="Email">
+                        
+                            <svg class="icon"><use href="#tabler-mail"></use></svg>
+                        
+                    </a>
+                
+                    <a href="https://github.com/kibrac" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        
+                            <svg class="icon"><use href="#tabler-brand-github"></use></svg>
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
+    
+    
+    <nav class="sidebar-nav">
+        <ul>
+            
+            
+                
+                
+                
+                <li class="">
+                    <a href="/">
+                        
+                            <svg class="icon"><use href="#tabler-home"></use></svg>
+                        
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
+            
+                
+                
+                
+                <li class="active">
+                    <a href="/posts/">
+                        
+                            <svg class="icon"><use href="#tabler-notebook"></use></svg>
+                        
+                        <span class="nav-text">Posts</span>
+                    </a>
+                </li>
+            
+                
+                
+                
+                <li class="">
+                    <a href="/archive/">
+                        
+                            <svg class="icon"><use href="#tabler-archive"></use></svg>
+                        
+                        <span class="nav-text">Archive</span>
+                    </a>
+                </li>
+            
+                
+                
+                
+                <li class="">
+                    <a href="/tags/">
+                        
+                            <svg class="icon"><use href="#tabler-tags"></use></svg>
+                        
+                        <span class="nav-text">Tags</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    
+    
+    <div class="theme-toggle-section">
+        <button id="theme-toggle" class="theme-toggle-btn">
+            🌙☀️
+        </button>
+    </div>
+    
+    
+    <div class="sidebar-footer">
+        <div class="footer-content">
+            <p class="copyright">© 2026 Kibrac</p>
+            <p class="powered-by">Powered by <a href="https://gohugo.io" target="_blank">Hugo</a></p>
+        </div>
+    </div>
+</div>
+
+
+<button class="mobile-menu-toggle" id="mobile-menu-toggle">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+</button>
+        </aside>
+        
+        
+        <div class="main-wrapper">
+            <main class="main-content">
+                
+<div class="content-container">
+    <article class="post-single">
+        <header class="post-header">
+            <h1 class="post-title">本地部署大模型——Safetensors 格式</h1>
+            
+                <p class="post-description">这是一篇详细的本地大模型部署实操记录，介绍如何在Windows环境下使用llama.cpp将Baichuan-M2-32B模型的Safetensors格式转换为GGUF格式，重点分享了CMake编译过程中遇到的问题及解决方案，包括VS环境配置、curl库安装等技术细节。</p>
+            
+            <div class="post-meta">
+                <span class="post-date">August 25, 2025</span>
+                <span class="post-reading-time">6 min read</span>
+                
+                    <div class="post-tags">
+                        
+                            <a href="/tags/llm" class="tag">LLM</a>
+                        
+                            <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2" class="tag">模型部署</a>
+                        
+                            <a href="/tags/%E6%8A%80%E6%9C%AF" class="tag">技术</a>
+                        
+                    </div>
+                
+            </div>
+        </header>
+
+        
+            <div class="post-cover">
+                <img src="https://images.unsplash.com/photo-1745674684539-d90293d659a9?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="本地部署大模型——Safetensors 格式" loading="lazy">
+            </div>
+        
+
+        <div class="post-content">
+            <p>偶然看到这样一篇公众号文章：<a href="https://mp.weixin.qq.com/s/SbsYn-DO9UAkyu09C9mwIg">Baichuan-M2：百川的医疗答卷｜模型解读</a>，于是一时兴起决定拿来作为自己第一个本地部署大模型的练手项目。</p>
+<h2 id="环境和模型来源">环境和模型来源</h2>
+<p>本机环境是 4*2080ti 共 88G 显存，关于模型运行的硬件配置要求可以参考 <a href="https://aibook.ren/archives/llm-deploy-computility-table">这篇文章</a> 以及模型自身的参考文档。</p>
+<p>模型下载链接：<a href="https://huggingface.co/baichuan-inc/Baichuan-M2-32B">Baichuan-M2-32B · HuggingFace</a>，当然也可以选择国内的魔搭社区：<a href="https://www.modelscope.cn/models/baichuan-inc/Baichuan-M2-32B">Baichuan-M2-32B · ModelScope</a>。</p>
+<p>此外还需要本机配置好 Ollama，尽管 Ollama 现在已经拥有了自己的客户端界面，但你仍然可以选择接入到例如 CherryStudio 中以使用更多功能。关于软件的配置非常简单，这里提供一个参考（这里包括了如何将 Ollama 中的模型导入 CherryStudio 中，虽然笔者觉得后者在使用上已经足够浅显了）：<a href="https://developer.aliyun.com/article/1669891">DeepSeek R1+Ollama+Cherry Studio实现本地知识库的搭建-阿里云开发者社区</a>。</p>
+<h2 id="部署过程">部署过程</h2>
+<p>由于从模型库下载得到的模型文件为 Safetensors 格式，所以本次部署采用的方法是先使用 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 工具将模型文件转换为 GGUF 格式（事实上 Ollama 可以直接导入 Safetensors 格式的模型文件，但是笔者只是一个什么也不懂的小白，实在是不想去处理五花八门的配置文件，所以选择了这样一个貌似更傻瓜式的处理方式——殊不知为了避开麻烦只会遇到更多麻烦）。</p>
+<p>如果顺利的话，参考以下教程可以非常简单地完成从模型下载到格式转换最后成功部署，本文对于大多数教程都会呈现的步骤不予重复，只记录个人实践中存在的问题。</p>
+<p><a href="https://blog.csdn.net/weixin_41688410/article/details/145797979">Ollama部署本地大模型DeepSeek-R1-Distill-Llama-70B-CSDN博客</a></p>
+<h2 id="编译问题令人头疼的-cmake">编译问题：令人头疼的 Cmake</h2>
+<p>在笔者的实操过程中，最费时间的就是对 llama.cpp 进行编译安装的这一步（时不时弹出的环境和模型文件下载报错也是件糟心的事情，但这通常是网络的问题只能姑且受着，也可以采取换源等方法进行解决这里不做阐述），由于笔者是在 Windows 操作系统上进行部署，并不具备 Linux 的天然优势，所以必须自行配置好 Cmake 环境。</p>
+<h3 id="下载安装">下载安装</h3>
+<p>比较简易的方法是下载 Visual Studio（注意不是 Visual Studio Code，这两个有本质上的区别），在安装时勾选“C++ 桌面开发”（Desktop development with C++），并确保”Windows 10/11 SDK”被选中（通常默认包含）。它会自动包含 <code>nmake</code> （Windows 的 make 工具）和其他必要的编译工具。</p>
+<p>也可以选择自行配置 MinGW（GCC 在 Windows 上的移植版）——对于嫌麻烦的笔者来说选择上一种方法。这里两种方法的教程都附上：<a href="https://blog.csdn.net/qq_51341501/article/details/148776334">在 Windows 上安装和编译 llama.cpp-CSDN博客</a>。</p>
+<p>需要注意的是执行类似于 <code>cmake -G &quot;MinGW Makefiles&quot; ..</code> 时需要确保 <code>build</code> 文件夹中是空的，否则可能会出现这样的报错</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="nb">PS </span><span class="n">E:</span><span class="p">\</span><span class="n">llama</span><span class="p">.</span><span class="nb">cpp-master</span><span class="p">\</span><span class="n">build</span><span class="p">&gt;</span> <span class="n">cmake</span> <span class="n">-G</span> <span class="s2">&#34;MinGW Makefiles&#34;</span> <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Error</span><span class="err">:</span> <span class="n">Error</span><span class="err">:</span> <span class="n">generator</span> <span class="err">:</span> <span class="n">MinGW</span> <span class="n">Makefiles</span>
+</span></span><span class="line"><span class="cl"><span class="n">Does</span> <span class="n">not</span> <span class="n">match</span> <span class="n">the</span> <span class="n">generator</span> <span class="n">used</span> <span class="n">previously</span><span class="err">:</span> <span class="n">NMake</span> <span class="n">Makefiles</span>
+</span></span><span class="line"><span class="cl"><span class="n">Either</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">CMakeCache</span><span class="p">.</span><span class="py">txt</span> <span class="n">file</span> <span class="n">and</span> <span class="n">CMakeFiles</span> <span class="n">directory</span> <span class="n">or</span> <span class="n">choose</span> <span class="n">a</span> <span class="n">different</span> <span class="n">binary</span> <span class="n">directory</span><span class="p">.</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="安装了但是执行-cmake-命令还是报错">安装了但是执行 <code>cmake</code> 命令还是报错？</h3>
+<p>问题当然还没有结束，笔者又遇到了下面这样的报错</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="nb">PS </span><span class="n">E:</span><span class="p">\</span><span class="n">llama</span><span class="p">.</span><span class="nb">cpp-master</span><span class="p">\</span><span class="n">build</span><span class="p">&gt;</span> <span class="n">cmake</span> <span class="n">-G</span> <span class="s2">&#34;MinGW Makefiles&#34;</span> <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">The</span> <span class="n">C</span> <span class="n">compiler</span> <span class="n">identification</span> <span class="n">is</span> <span class="n">GNU</span> <span class="mf">15.2</span><span class="p">.</span><span class="py">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">The</span> <span class="n">CXX</span> <span class="n">compiler</span> <span class="n">identification</span> <span class="n">is</span> <span class="n">GNU</span> <span class="mf">15.2</span><span class="p">.</span><span class="py">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Check</span> <span class="k">for</span> <span class="n">working</span> <span class="n">C</span> <span class="n">compiler</span><span class="err">:</span> <span class="n">D:</span><span class="p">/</span><span class="n">mingw64</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">cc</span><span class="p">.</span><span class="py">exe</span> <span class="p">-</span> <span class="n">skipped</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compile</span> <span class="n">features</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compile</span> <span class="n">features</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Check</span> <span class="k">for</span> <span class="n">working</span> <span class="n">CXX</span> <span class="n">compiler</span><span class="err">:</span> <span class="n">D:</span><span class="p">/</span><span class="n">mingw64</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">c</span><span class="p">++.</span><span class="py">exe</span> <span class="p">-</span> <span class="n">skipped</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compile</span> <span class="n">features</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compile</span> <span class="n">features</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="n">Git</span> <span class="p">(</span><span class="n">missing</span><span class="err">:</span> <span class="n">GIT_EXECUTABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="n">Git</span> <span class="p">(</span><span class="n">missing</span><span class="err">:</span> <span class="n">GIT_EXECUTABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Warning</span> <span class="n">at</span> <span class="n">cmake</span><span class="p">/</span><span class="nb">build-info</span><span class="p">.</span><span class="n">cmake</span><span class="err">:</span><span class="mf">14</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Git</span> <span class="n">not</span> <span class="n">found</span><span class="p">.</span>  <span class="n">Build</span> <span class="n">info</span> <span class="n">will</span> <span class="n">not</span> <span class="n">be</span> <span class="n">accurate</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Call</span> <span class="n">Stack</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">first</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="err">:</span><span class="mf">89</span> <span class="p">(</span><span class="n">include</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">CMAKE_HAVE_LIBC_PTHREAD</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">CMAKE_HAVE_LIBC_PTHREAD</span> <span class="p">-</span> <span class="n">Failed</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Check</span> <span class="k">if</span> <span class="n">compiler</span> <span class="n">accepts</span> <span class="n">-pthread</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">Threads</span><span class="err">:</span> <span class="n">TRUE</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Warning</span><span class="err">:</span> <span class="n">ccache</span> <span class="n">not</span> <span class="n">found</span> <span class="p">-</span> <span class="n">consider</span> <span class="n">installing</span> <span class="n">it</span> <span class="k">for</span> <span class="n">faster</span> <span class="n">compilation</span> <span class="n">or</span> <span class="n">disable</span> <span class="n">this</span> <span class="n">warning</span> <span class="n">with</span> <span class="n">GGML_CCACHE</span><span class="p">=</span><span class="n">OFF</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">CMAKE_SYSTEM_PROCESSOR</span><span class="err">:</span> <span class="n">AMD64</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">GGML_SYSTEM_ARCH</span><span class="err">:</span> <span class="n">x86</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Including</span> <span class="n">CPU</span> <span class="n">backend</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">OpenMP_C</span><span class="err">:</span> <span class="n">-fopenmp</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="s2">&#34;4.5&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">OpenMP_CXX</span><span class="err">:</span> <span class="n">-fopenmp</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="s2">&#34;4.5&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">OpenMP</span><span class="err">:</span> <span class="n">TRUE</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="s2">&#34;4.5&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">x86</span> <span class="n">detected</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Adding</span> <span class="n">CPU</span> <span class="n">backend</span> <span class="n">variant</span> <span class="nb">ggml-cpu</span><span class="err">:</span> <span class="n">-march</span><span class="p">=</span><span class="n">native</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">ggml</span> <span class="n">version</span><span class="err">:</span> <span class="mf">0.0</span><span class="p">.</span><span class="py">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">ggml</span> <span class="n">commit</span><span class="err">:</span>  <span class="n">unknown</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthreads</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthreads</span> <span class="p">-</span> <span class="n">not</span> <span class="n">found</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthread</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthread</span> <span class="p">-</span> <span class="n">found</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Warning</span> <span class="n">at</span> <span class="n">common</span><span class="p">/</span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="err">:</span><span class="mf">32</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Git</span> <span class="n">repository</span> <span class="n">not</span> <span class="n">found</span><span class="p">;</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">automatic</span> <span class="n">generation</span> <span class="n">of</span> <span class="n">build</span> <span class="n">info</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">make</span> <span class="n">sure</span> <span class="n">Git</span> <span class="n">is</span> <span class="n">installed</span> <span class="n">and</span> <span class="n">the</span> <span class="n">project</span> <span class="n">is</span> <span class="n">a</span> <span class="n">Git</span> <span class="n">repository</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="nb">CURL </span><span class="p">(</span><span class="n">missing</span><span class="err">:</span> <span class="n">CURL_LIBRARY</span> <span class="n">CURL_INCLUDE_DIR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Error</span> <span class="n">at</span> <span class="n">common</span><span class="p">/</span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="err">:</span><span class="mf">85</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="n">CURL</span><span class="p">.</span>  <span class="n">Hint</span><span class="err">:</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">this</span> <span class="n">feature</span><span class="p">,</span> <span class="nb">set </span><span class="n">-DLLAMA_CURL</span><span class="p">=</span><span class="n">OFF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Configuring</span> <span class="n">incomplete</span><span class="p">,</span> <span class="n">errors</span> <span class="n">occurred</span><span class="p">!</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>根本看不懂，这个时候明智的选择是丢给 AI，它告诉我</p>
+<blockquote>
+<p>这个新的错误信息非常清晰，指出了两个主要问题：</p>
+<ol>
+<li>缺少 Git：这是一个警告，不会导致配置失败，但会影响版本信息。</li>
+<li>缺少 CURL 库：这是一个错误，并且错误信息明确告诉你如何解决它。</li>
+</ol>
+</blockquote>
+<h3 id="关于-curl-包的安装">关于 curl 包的安装</h3>
+<p>之后的流程基本是参考 AI 给出的回答然后逐个尝试看哪一个能解决问题，最后笔者的解决方法大致包含以下两步：（以下回答来自 GLM-4.5）</p>
+<h3 id="curl-安装之-vcpkg-管理依赖">curl 安装之 vcpkg 管理依赖</h3>
+<p>vcpkg 是一个由微软维护的 C++ 包管理器，可以非常方便地为 Visual Studio 下载和配置像 CURL 这样的库。</p>
+<ol>
+<li>
+<p>安装 vcpkg:</p>
+<p>如果你还没有安装 vcpkg，请先从它的 GitHub 仓库下载：<a href="https://github.com/microsoft/vcpkg">https://github.com/microsoft/vcpkg</a></p>
+<p>解压到一个你喜欢的位置，例如 <code>C:\dev\vcpkg</code>。</p>
+</li>
+<li>
+<p>集成 vcpkg 到 Visual Studio:</p>
+<p>在 PowerShell 中，运行以下命令（请将路径替换为你自己的 vcpkg 解压路径）：</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">C:</span><span class="p">\</span><span class="n">dev</span><span class="p">\</span><span class="n">vcpkg</span>
+</span></span><span class="line"><span class="cl"><span class="n">vcpkg</span> <span class="n">integrate</span> <span class="n">install</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>这个命令会修改你的 Visual Studio 安装，使其在编译项目时自动使用 vcpkg 提供的库。</p>
+</li>
+<li>
+<p>使用 vcpkg 安装 CURL:</p>
+<p>现在，在同一个 vcpkg 目录下，运行：</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="n">vcpkg</span> <span class="n">install</span> <span class="n">curl</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>这会下载并编译适用于 Visual Studio 的 CURL 库。</p>
+</li>
+<li>
+<p>重新配置项目:</p>
+<p>回到你的 <code>E:\llama.cpp-master\build</code> 目录，删除旧的 CMake 缓存文件（<code>CMakeCache.txt</code> 和 <code>CMakeFiles</code> 文件夹），然后重新运行 CMake：</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">E:</span><span class="p">\</span><span class="n">llama</span><span class="p">.</span><span class="nb">cpp-master</span><span class="p">\</span><span class="n">build</span>
+</span></span><span class="line"><span class="cl"><span class="n">cmake</span> <span class="err">…</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>这次，vcpkg 会告诉 CMake 在哪里找到 CURL，配置应该会成功。</p>
+</li>
+</ol>
+<h3 id="安装-curl-的过程可能还会遇到">安装 curl 的过程可能还会遇到？</h3>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="nb">PS </span><span class="n">D:</span><span class="p">\</span><span class="n">vcpkg</span><span class="p">&gt;</span> <span class="n">vcpkg</span> <span class="n">integrate</span> <span class="n">install</span>
+</span></span><span class="line"><span class="cl"><span class="n">Applied</span> <span class="nb">user-wide</span> <span class="n">integration</span> <span class="k">for</span> <span class="n">this</span> <span class="n">vcpkg</span> <span class="n">root</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">projects</span> <span class="n">should</span> <span class="n">use</span><span class="err">:</span> <span class="s2">&#34;-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">All</span> <span class="n">MSBuild</span> <span class="n">C</span><span class="p">++</span> <span class="n">projects</span> <span class="n">can</span> <span class="n">now</span> <span class="c">#include any installed libraries. Linking will be handled automatically. Installing new libraries will make them instantly available.</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="nb">PS </span><span class="n">D:</span><span class="p">\</span><span class="n">vcpkg</span><span class="p">&gt;</span> <span class="n">vcpkg</span> <span class="n">install</span> <span class="nb">curl
+</span></span></span><span class="line"><span class="cl"><span class="n">Computing</span> <span class="n">installation</span> <span class="n">plan</span><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">are</span> <span class="n">already</span> <span class="n">installed</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">curl</span><span class="p">[</span><span class="n">core</span><span class="p">,</span><span class="n">sspi</span><span class="p">,</span><span class="n">ssl</span><span class="p">,</span><span class="nb">non-http</span><span class="p">]</span><span class="err">:</span><span class="nb">x64-windows</span><span class="nv">@8</span><span class="p">.</span><span class="py">15</span><span class="p">.</span><span class="mf">0</span><span class="c">#1</span>
+</span></span><span class="line"><span class="cl"><span class="n">Total</span> <span class="n">install</span> <span class="n">time</span><span class="err">:</span> <span class="mf">532</span> <span class="n">us</span>
+</span></span><span class="line"><span class="cl"><span class="nb">curl </span><span class="n">is</span> <span class="n">compatible</span> <span class="n">with</span> <span class="nb">built-in</span> <span class="n">CMake</span> <span class="n">targets</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">find_package</span><span class="p">(</span><span class="nb">CURL </span><span class="n">REQUIRED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target_link_libraries</span><span class="p">(</span><span class="n">main</span> <span class="n">PRIVATE</span> <span class="n">CURL</span><span class="p">::</span><span class="n">libcurl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">All</span> <span class="n">requested</span> <span class="n">installations</span> <span class="n">completed</span> <span class="n">successfully</span> <span class="k">in</span><span class="err">:</span> <span class="mf">532</span> <span class="n">us</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="nb">PS </span><span class="n">E:</span><span class="p">\</span><span class="n">llama</span><span class="p">.</span><span class="n">cpp</span><span class="p">\</span><span class="n">build</span><span class="p">&gt;</span> <span class="n">cmake</span> <span class="p">..</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Building</span> <span class="k">for</span><span class="err">:</span> <span class="n">Visual</span> <span class="n">Studio</span> <span class="mf">17</span> <span class="mf">2022</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Selecting</span> <span class="n">Windows</span> <span class="n">SDK</span> <span class="n">version</span> <span class="mf">10.0</span><span class="p">.</span><span class="py">26100</span><span class="p">.</span><span class="py">0</span> <span class="n">to</span> <span class="n">target</span> <span class="n">Windows</span> <span class="mf">10.0</span><span class="p">.</span><span class="py">19045</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">The</span> <span class="n">C</span> <span class="n">compiler</span> <span class="n">identification</span> <span class="n">is</span> <span class="n">MSVC</span> <span class="mf">19.44</span><span class="p">.</span><span class="py">35214</span><span class="p">.</span><span class="py">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">The</span> <span class="n">CXX</span> <span class="n">compiler</span> <span class="n">identification</span> <span class="n">is</span> <span class="n">MSVC</span> <span class="mf">19.44</span><span class="p">.</span><span class="py">35214</span><span class="p">.</span><span class="py">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Check</span> <span class="k">for</span> <span class="n">working</span> <span class="n">C</span> <span class="n">compiler</span><span class="err">:</span> <span class="n">D:</span><span class="p">/</span><span class="n">Visual</span> <span class="n">Studio</span><span class="p">/</span><span class="n">VC</span><span class="p">/</span><span class="n">Tools</span><span class="p">/</span><span class="n">MSVC</span><span class="p">/</span><span class="mf">14.44</span><span class="p">.</span><span class="mf">35207</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">Hostx64</span><span class="p">/</span><span class="n">x64</span><span class="p">/</span><span class="n">cl</span><span class="p">.</span><span class="py">exe</span> <span class="p">-</span> <span class="n">skipped</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compile</span> <span class="n">features</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">C</span> <span class="n">compile</span> <span class="n">features</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compiler</span> <span class="n">ABI</span> <span class="n">info</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Check</span> <span class="k">for</span> <span class="n">working</span> <span class="n">CXX</span> <span class="n">compiler</span><span class="err">:</span> <span class="n">D:</span><span class="p">/</span><span class="n">Visual</span> <span class="n">Studio</span><span class="p">/</span><span class="n">VC</span><span class="p">/</span><span class="n">Tools</span><span class="p">/</span><span class="n">MSVC</span><span class="p">/</span><span class="mf">14.44</span><span class="p">.</span><span class="mf">35207</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">Hostx64</span><span class="p">/</span><span class="n">x64</span><span class="p">/</span><span class="n">cl</span><span class="p">.</span><span class="py">exe</span> <span class="p">-</span> <span class="n">skipped</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compile</span> <span class="n">features</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Detecting</span> <span class="n">CXX</span> <span class="n">compile</span> <span class="n">features</span> <span class="p">-</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="n">Git</span> <span class="p">(</span><span class="n">missing</span><span class="err">:</span> <span class="n">GIT_EXECUTABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="n">Git</span> <span class="p">(</span><span class="n">missing</span><span class="err">:</span> <span class="n">GIT_EXECUTABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Warning</span> <span class="n">at</span> <span class="n">cmake</span><span class="p">/</span><span class="nb">build-info</span><span class="p">.</span><span class="n">cmake</span><span class="err">:</span><span class="mf">14</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Git</span> <span class="n">not</span> <span class="n">found</span><span class="p">.</span>  <span class="n">Build</span> <span class="n">info</span> <span class="n">will</span> <span class="n">not</span> <span class="n">be</span> <span class="n">accurate</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Call</span> <span class="n">Stack</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">first</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="err">:</span><span class="mf">89</span> <span class="p">(</span><span class="n">include</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">CMAKE_HAVE_LIBC_PTHREAD</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">CMAKE_HAVE_LIBC_PTHREAD</span> <span class="p">-</span> <span class="n">Failed</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthreads</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthreads</span> <span class="p">-</span> <span class="n">not</span> <span class="n">found</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthread</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Looking</span> <span class="k">for</span> <span class="n">pthread_create</span> <span class="k">in</span> <span class="n">pthread</span> <span class="p">-</span> <span class="n">not</span> <span class="n">found</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">Threads</span><span class="err">:</span> <span class="n">TRUE</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Warning</span><span class="err">:</span> <span class="n">ccache</span> <span class="n">not</span> <span class="n">found</span> <span class="p">-</span> <span class="n">consider</span> <span class="n">installing</span> <span class="n">it</span> <span class="k">for</span> <span class="n">faster</span> <span class="n">compilation</span> <span class="n">or</span> <span class="n">disable</span> <span class="n">this</span> <span class="n">warning</span> <span class="n">with</span> <span class="n">GGML_CCACHE</span><span class="p">=</span><span class="n">OFF</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">CMAKE_SYSTEM_PROCESSOR</span><span class="err">:</span> <span class="n">AMD64</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">CMAKE_GENERATOR_PLATFORM</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">GGML_SYSTEM_ARCH</span><span class="err">:</span> <span class="n">x86</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Including</span> <span class="n">CPU</span> <span class="n">backend</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">OpenMP_C</span><span class="err">:</span> <span class="n">-openmp</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="s2">&#34;2.0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">OpenMP_CXX</span><span class="err">:</span> <span class="n">-openmp</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="s2">&#34;2.0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Found</span> <span class="n">OpenMP</span><span class="err">:</span> <span class="n">TRUE</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="s2">&#34;2.0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">x86</span> <span class="n">detected</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX_1</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX_1</span> <span class="p">-</span> <span class="n">Success</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX2_1</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX2_1</span> <span class="p">-</span> <span class="n">Success</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_FMA_1</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_FMA_1</span> <span class="p">-</span> <span class="n">Success</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX512_1</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX512_1</span> <span class="p">-</span> <span class="n">Failed</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX512_2</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Performing</span> <span class="n">Test</span> <span class="n">HAS_AVX512_2</span> <span class="p">-</span> <span class="n">Failed</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Adding</span> <span class="n">CPU</span> <span class="n">backend</span> <span class="n">variant</span> <span class="nb">ggml-cpu</span><span class="err">:</span> <span class="p">/</span><span class="n">arch</span><span class="err">:</span><span class="n">AVX2</span> <span class="n">GGML_AVX2</span><span class="p">;</span><span class="n">GGML_FMA</span><span class="p">;</span><span class="n">GGML_F16C</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">ggml</span> <span class="n">version</span><span class="err">:</span> <span class="mf">0.0</span><span class="p">.</span><span class="py">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">ggml</span> <span class="n">commit</span><span class="err">:</span>  <span class="n">unknown</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Warning</span> <span class="n">at</span> <span class="n">common</span><span class="p">/</span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="err">:</span><span class="mf">32</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Git</span> <span class="n">repository</span> <span class="n">not</span> <span class="n">found</span><span class="p">;</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">automatic</span> <span class="n">generation</span> <span class="n">of</span> <span class="n">build</span> <span class="n">info</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">make</span> <span class="n">sure</span> <span class="n">Git</span> <span class="n">is</span> <span class="n">installed</span> <span class="n">and</span> <span class="n">the</span> <span class="n">project</span> <span class="n">is</span> <span class="n">a</span> <span class="n">Git</span> <span class="n">repository</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="nb">CURL </span><span class="p">(</span><span class="n">missing</span><span class="err">:</span> <span class="n">CURL_LIBRARY</span> <span class="n">CURL_INCLUDE_DIR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CMake</span> <span class="n">Error</span> <span class="n">at</span> <span class="n">common</span><span class="p">/</span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="err">:</span><span class="mf">85</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Could</span> <span class="n">NOT</span> <span class="n">find</span> <span class="n">CURL</span><span class="p">.</span>  <span class="n">Hint</span><span class="err">:</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">this</span> <span class="n">feature</span><span class="p">,</span> <span class="nb">set </span><span class="n">-DLLAMA_CURL</span><span class="p">=</span><span class="n">OFF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">--</span> <span class="n">Configuring</span> <span class="n">incomplete</span><span class="p">,</span> <span class="n">errors</span> <span class="n">occurred</span><span class="p">!</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>一长串的其实只说了一件事，curl 装了但是没找着。AI 提供的分析如下（笔者已实践可行）</p>
+<p>错误原因</p>
+<ol>
+<li>vcpkg 安装成功: <code>vcpkg install curl</code> 命令已经成功将 <code>curl</code> 库安装到了 <code>D:\vcpkg</code> 目录中。</li>
+<li>缺少工具链文件: CMake 本身不知道 vcpkg 的存在。你需要通过一个特殊的“工具链文件”（Toolchain File）来告诉 CMake：“当你需要找库的时候，请先去 <code>D:\vcpkg</code> 里看看”。</li>
+<li>CMAKE_TOOLCHAIN_FILE: 这个文件就是 <code>D:/vcpkg/scripts/buildsystems/vcpkg.cmake</code>。vcpkg 在 <code>integrate install</code> 时已经提示过你了。</li>
+</ol>
+<p>解决方案</p>
+<p>你需要重新运行 CMake，并加上 <code>-DCMAKE_TOOLCHAIN_FILE</code> 参数。</p>
+<ol>
+<li>
+<p>清理旧的配置: 首先，确保删除掉之前失败的配置文件，以免它们干扰新的配置。</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="c"># 在 E:\llama.cpp\build 目录下执行</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Remove-Item</span> <span class="n">CMakeCache</span><span class="p">.</span><span class="py">txt</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Remove-Item</span> <span class="n">CMakeFiles</span> <span class="n">-Recurse</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div></li>
+<li>
+<p>重新运行 CMake (关键步骤): 现在，在 <code>E:\llama.cpp\build</code> 目录下，使用以下命令重新配置项目。注意 <code>DCMAKE_TOOLCHAIN_FILE</code> 参数。</p>
+</li>
+</ol>
+<p>看到 <code>Found CURL</code> 这一行，就说明配置成功了！</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="n">cmake</span> <span class="n">-G</span> <span class="s2">&#34;Visual Studio 17 2022&#34;</span> <span class="n">-A</span> <span class="n">x64</span> <span class="n">-DCMAKE_TOOLCHAIN_FILE</span><span class="p">=</span><span class="n">D:</span><span class="p">/</span><span class="n">vcpkg</span><span class="p">/</span><span class="n">scripts</span><span class="p">/</span><span class="n">buildsystems</span><span class="p">/</span><span class="n">vcpkg</span><span class="p">.</span><span class="py">cmake</span> <span class="p">..</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>命令解释:</p>
+<ul>
+<li><code>G &quot;Visual Studio 17 2022&quot;</code>: 指定使用 Visual Studio 2022 作为生成器。</li>
+<li><code>A x64</code>: 强烈建议添加。这会告诉 CMake 生成一个 64位 的解决方案。对于拥有4张 RTX 2080 Ti 的系统，64位是必须的，可以充分利用大内存。</li>
+<li><code>DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake</code>: 这是核心。它告诉 CMake 使用 vcpkg 的工具链文件，从而能自动找到 <code>curl</code> 等库。
+运行这个命令后，你应该会看到类似这样的输出：</li>
+</ul>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-- Using vcpkg installed libraries
+</span></span><span class="line"><span class="cl">-- Found CURL: D:/vcpkg/installed/x64-windows/lib/libcurl.lib (found version &#34;8.15.0&#34;)
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><h3 id="编译项目">编译项目</h3>
+<p>一旦 CMake 配置成功，下一步就是编译。 在 <code>E:\llama.cpp\build</code> 目录下，运行以下命令：</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="n">cmake</span> <span class="p">-</span><span class="n">-build</span> <span class="p">.</span> <span class="p">-</span><span class="n">-config</span> <span class="n">Release</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>命令解释:</p>
+<ul>
+<li><code>cmake --build .</code>: 告诉 CMake 使用当前目录（即 <code>build</code> 目录）中的项目文件进行构建。</li>
+<li><code>-config Release</code>: 指定构建 <code>Release</code>（发布）版本，这是优化过的、性能最好的版本。 编译过程可能需要几分钟。完成后，你可以在 <code>E:\llama.cpp\build\Release</code> 目录下找到所有编译好的可执行文件，比如 <code>llama-cli.exe</code>、<code>llama-server.exe</code> 等。</li>
+</ul>
+<h3 id="可能还有问题心得">可能还有问题？——心得</h3>
+<p>在这之后的转换格式阶段可能还会遇到有关 python 包的安装问题或者环境冲突问题，这些问题的处理就比较简单了，笔者的建议是遇到长串报错自己完全无法判断就交给 AI 分析（只要有错就一股脑地丢给它也不失为一种省力的方法），AI 提供的方法针对简单问题往往是有效的，但是遇到复杂问题则有可能不知所云，这比较依赖不同模型自己的能力。所以笔者认为借助 AI 分析问题是快捷的，但知晓问题之后不必死磕 AI 让其提供解决方案，搜索引擎依旧是最强大的第二大脑。</p>
+<p>最后附上一张笔者部署成功的截图以作留念。</p>
+<p><img src="https://raw.githubusercontent.com/kibrac/img_vault/main/Blog_img/20250911210544050.png" alt="IMG-本地部署大模型——Safetensors 格式"></p>
+
+        </div>
+
+        
+
+    </article>
+</div>
+
+
+<aside class="hover-toc">
+    <div class="hover-toc-indicator"></div>
+    <div class="hover-toc-panel">
+        <h4>In this article</h4>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#环境和模型来源">环境和模型来源</a></li>
+    <li><a href="#部署过程">部署过程</a></li>
+    <li><a href="#编译问题令人头疼的-cmake">编译问题：令人头疼的 Cmake</a>
+      <ul>
+        <li><a href="#下载安装">下载安装</a></li>
+        <li><a href="#安装了但是执行-cmake-命令还是报错">安装了但是执行 <code>cmake</code> 命令还是报错？</a></li>
+        <li><a href="#关于-curl-包的安装">关于 curl 包的安装</a></li>
+        <li><a href="#curl-安装之-vcpkg-管理依赖">curl 安装之 vcpkg 管理依赖</a></li>
+        <li><a href="#安装-curl-的过程可能还会遇到">安装 curl 的过程可能还会遇到？</a></li>
+        <li><a href="#编译项目">编译项目</a></li>
+        <li><a href="#可能还有问题心得">可能还有问题？——心得</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</aside>
+
+
+            </main>
+        </div>
+    </div>
+    
+    
+    <div class="mobile-overlay"></div>
+    
+    <a id="back-to-top" href="#" title="返回顶部">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </a>
+    
+    
+    <svg style="display: none;">
+        <defs>
+            <symbol id="tabler-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </symbol>
+            <symbol id="tabler-notebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                <path d="M9 8h6"></path>
+                <path d="M9 12h6"></path>
+                <path d="M9 16h6"></path>
+            </symbol>
+            <symbol id="tabler-article" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4zM3 10a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z"></path>
+                <path d="M7 13h10M7 16h6"></path>
+            </symbol>
+            <symbol id="tabler-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="4" rx="2"></rect>
+                <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"></path>
+                <path d="M10 12h4"></path>
+            </symbol>
+            <symbol id="tabler-tags" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7v4a1 1 0 0 0 .293.707l8 8a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0 0-1.414l-8-8A1 1 0 0 0 8 6H4a1 1 0 0 0-1 1z"></path>
+                <path d="M7 10h.01"></path>
+                <path d="M12 6l5.5 5.5a1 1 0 0 1 0 1.414L15 15.5"></path>
+            </symbol>
+            <symbol id="tabler-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+            </symbol>
+            <symbol id="tabler-brand-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+            </symbol>
+            <symbol id="tabler-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m2 6 10 6 10-6"></path>
+            </symbol>
+            <symbol id="tabler-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
+                <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
+            </symbol>
+            <symbol id="tabler-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+            </symbol>
+        </defs>
+    </svg>
+    
+    <script src="/js/theme-switcher.js"></script>
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
