@@ -17,7 +17,7 @@
   })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Archive | Kibrac&#39;s Blog</title>
+<title>重装系统备忘录 | Kibrac&#39;s Blog</title>
 <link rel="icon" type="image/png" href="/images/favicon.png">
 
 
@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/css/style.css">
 
 </head>
-<body class="kind-page">
+<body class="kind-page section-posts">
     <div class="site-layout">
         
         <aside class="sidebar">
@@ -88,7 +88,7 @@
                 
                 
                 
-                <li class="">
+                <li class="active">
                     <a href="/posts/">
                         
                             <svg class="icon"><use href="#tabler-notebook"></use></svg>
@@ -100,7 +100,7 @@
                 
                 
                 
-                <li class="active">
+                <li class="">
                     <a href="/archive/">
                         
                             <svg class="icon"><use href="#tabler-archive"></use></svg>
@@ -153,107 +153,104 @@
             <main class="main-content">
                 
 <div class="content-container">
-    
-    <header class="page-header">
-        <h1 class="page-title">Archive</h1>
-        <p class="page-subtitle">Memories preserved in time</p>
-    </header>
-    
-    
-    <div class="archive-two-columns">
-        
-        
-        
-            <div class="archive-year-section">
-                <div class="archive-year-header">
-                    <h2 class="year-title">2026</h2>
-                    <span class="year-count">1 posts</span>
-                </div>
+    <article class="post-single">
+        <header class="post-header">
+            <h1 class="post-title">重装系统备忘录</h1>
+            
+            <div class="post-meta">
+                <span class="post-date">February 27, 2026</span>
+                <span class="post-reading-time">1 min read</span>
                 
+                    <div class="post-tags">
+                        
+                            <a href="/tags/" class="tag"></a>
+                        
+                    </div>
                 
-                <div class="archive-months-grid">
-                    
-                    
-                        <div class="archive-month-block">
-                            <h3 class="month-header">
-                                
-                                February
-                                <span class="month-count">1</span>
-                            </h3>
-                            <div class="archive-month-posts">
-                                
-                                    <article class="archive-post-item">
-                                        <a href="https://kibrac.github.io/posts/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%A4%87%E5%BF%98%E5%BD%95/" class="archive-post-link">
-                                            <div class="archive-post-info">
-                                                <div class="archive-post-header">
-                                                    <div class="archive-post-date">27</div>
-                                                    <h4 class="archive-post-title">重装系统备忘录</h4>
-                                                </div>
-                                                <div class="archive-post-meta">
-                                                    <span class="reading-time">1min</span>
-                                                    
-                                                        
-                                                            <a href="/tags/" class="tag"></a>
-                                                        
-                                                    
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </article>
-                                
-                            </div>
-                        </div>
-                    
-                </div>
             </div>
+        </header>
+
         
-            <div class="archive-year-section">
-                <div class="archive-year-header">
-                    <h2 class="year-title">2025</h2>
-                    <span class="year-count">1 posts</span>
-                </div>
-                
-                
-                <div class="archive-months-grid">
-                    
-                    
-                        <div class="archive-month-block">
-                            <h3 class="month-header">
-                                
-                                August
-                                <span class="month-count">1</span>
-                            </h3>
-                            <div class="archive-month-posts">
-                                
-                                    <article class="archive-post-item">
-                                        <a href="https://kibrac.github.io/posts/local-deployment-llm-safetensors-format/" class="archive-post-link">
-                                            <div class="archive-post-info">
-                                                <div class="archive-post-header">
-                                                    <div class="archive-post-date">25</div>
-                                                    <h4 class="archive-post-title">本地部署大模型——Safetensors 格式</h4>
-                                                </div>
-                                                <div class="archive-post-meta">
-                                                    <span class="reading-time">6min</span>
-                                                    
-                                                        
-                                                            <a href="/tags/llm" class="tag">LLM</a>
-                                                        
-                                                            <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2" class="tag">模型部署</a>
-                                                        
-                                                    
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </article>
-                                
-                            </div>
-                        </div>
-                    
-                </div>
-            </div>
-        
-    </div>
+
+        <div class="post-content">
+            <h2 id="git-配置">Git 配置</h2>
+<p>以下代码均在 <code>Git Bash</code> 中运行。</p>
+<h3 id="设置用户信息">设置用户信息</h3>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global user.name <span class="s2">&#34;Name Here&#34;</span> //设置用户名
+</span></span><span class="line"><span class="cl">git config --global user.email admin@example.com //设置自己的邮箱</span></span></code></pre></td></tr></table>
 </div>
+</div>
+</div><h3 id="git-通过-ssh-连接到-github">Git 通过 SSH 连接到 Github</h3>
+<h4 id="本地创建密钥文件">本地创建密钥文件</h4>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -t rsa -C <span class="s2">&#34;这里换上你的邮箱&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><p>执行命令后一路点击确认即可。</p>
+<blockquote>
+<p>其中涉及到的操作包含确认 Key 的保存路径，如果路径下原来已有密钥文件则确认是否覆盖，创建密码——直接回车代表不需要密码，确认密码。）</p>
+</blockquote>
+<p>命令执行完成后会在上述提到的保存路径中生成两个文件，分别名为 <code>id_rsa</code> 和 <code>id_rsa.pub</code>。</p>
+<h4 id="github-配置">Github 配置</h4>
+<p>在 Github 的 Settings 左侧边栏中选择 <code>SSH and GPG keys</code>，点击 <code>New SSH key</code>，Title 可以自己取，<code>Key type</code> 保持为 <code>Authentication Key</code>，然后将之前生成的 id_rsa.pub 用文本工具例如记事本打开，将其中的内容粘贴到输入框中保存即可。</p>
+<p>使用下列命令可以测试是否设置成功。</p>
+<div class="code-block-wrapper">
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -T git@github.com</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</div><blockquote>
+<p>首次配置需要确认一次，输入 yes 之后出现欢迎语句即表明配置成功，如下图示例。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/kibrac/img_vault/main/Blog_img/20260227211254425.png" alt=""></p>
+<h2 id="picgo-配置以-github-图床为例">PicGO 配置（以 Github 图床为例）</h2>
+<h3 id="生成-github-token">生成 Github Token</h3>
+<ol>
+<li>在 GitHub 的 Settings 左侧边栏中选择 <code>Developer settings</code>；</li>
+<li>点击 <code>Personal access tokens</code> 选择 <code>Tokens(classic)</code> 生成一个新 Token 并确保勾选了 <code>repo</code> 权限；</li>
+<li>复制生成的 Token（注意只会显示一次，所以此时应当妥善保存）。</li>
+</ol>
+<h3 id="picgo-配置">PicGo 配置</h3>
+<ol>
+<li>在软件的图床设置中选择 Github；</li>
+<li>点击加号新建一个配置，从上到下依次是图床配置名（可自定义）、设定仓库名（Github中对应仓库的名字）、设定分支名、设定 Token（即此前生成的 Token）、设定存储路径（如可指定仓库下的特定文件夹）、设定自定义域名（如果有的话，否则可置空）</li>
+<li>保存配置。</li>
+</ol>
+
+        </div>
+
+        
+<nav class="post-navigation">
+    
+    <a href="/posts/local-deployment-llm-safetensors-format/" class="prev">
+        &laquo; 本地部署大模型——Safetensors 格式
+    </a>
+    
+    
+    
+</nav>
+
+
+    </article>
+</div>
+
+
 
             </main>
         </div>
